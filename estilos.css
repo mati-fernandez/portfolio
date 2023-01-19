@@ -70,18 +70,18 @@ header {
     padding-bottom: 50px;
 }
 
-.aptitudes {
-    width: 50%;
-}
-
 .tech-list {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-content: center;
     padding: 10px;
+    flex-wrap: wrap;
+    width: 90%;
 }
 
 .tech {
-    height: 90px;
+    height: 6rem;
+    margin: 1.5rem;
 }
 
 .tres {
@@ -159,7 +159,7 @@ footer {
         align-items: flex-start;
     }
 
-    .aptitudes {
+    .tech {
         width: auto;
     }
 
@@ -189,4 +189,40 @@ footer {
     .red-social {
         margin: 0 10px 0 10px;
     }
+}
+
+.html-5 {
+    order: 1;
+}
+
+.css-3 {
+    order: 2;
+}
+
+.javascript {
+    order: 3;
+}
+
+.c {
+    order: 4;
+}
+
+.cpp {
+    order: 5;
+}
+
+.excelpvba {
+    order: 6;
+}
+
+.animate {
+    order: 7;
+}
+
+.premiere {
+    order: 8;
+}
+
+.fireworks {
+    order: 9;
 }
