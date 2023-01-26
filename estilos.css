@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    line-height: 2rem;
 }
 
 body {
@@ -14,14 +15,25 @@ header {
     align-items: center;
     padding-left: 25px;
     color: #303030;
+    scroll-snap-align: start;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+.container {
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+    height: 100vh;
 }
 
 .cara {
-    border-radius: 500px;
+    border-radius: 20px;
     height: 17.5rem;
 }
 
-.uno {
+.seccion-presentacion {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -29,17 +41,17 @@ header {
     height: calc(100vh - 65px);
     background-color: #303030;
     color: white;
-    /* padding-top: 10%; */
+    scroll-snap-align: start;
 }
 
 .caja-central {
-    margin-top: 10%;
+    margin: 13vh;
     width: 50%;
     display: flex;
     flex-direction: row;
     border-radius: 20px;
-    overflow: hidden;
-    height: 50%;
+    overflow: auto;
+
 }
 
 .caja-cara {
@@ -57,12 +69,40 @@ header {
     width: 60%;
     background-color: #E3E1D2;
     color: #303030;
-    padding: 20px 10px 30px 15px;
+    padding: 20px 20px 30px 15px;
 }
 
-.dos {
+.seccion-sobre-mi {
     background-color: #E3E1D2;
-    /* height: 1000px; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #303030;
+    padding-left: 20%;
+    padding-right: 20%;
+    scroll-snap-align: start;
+}
+
+.seccion-aptitudes {
+    background-color: #303030;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #E3E1D2;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    scroll-snap-align: start;
+}
+
+.seccion-tecnologias {
+    background-color: #fff;
+    height: 57vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,7 +111,8 @@ header {
     padding-left: 20%;
     padding-right: 20%;
     padding-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 40px;
+    scroll-snap-align: start;
 }
 
 .tech-list {
@@ -88,41 +129,8 @@ header {
     margin: 1.5rem;
 }
 
-.tres {
-    background-color: #303030;
-    height: 600px;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    color: #F2F2F2;
-}
-
-.proyectos {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.card {
-    text-align: center;
-    width: 30%;
-    border: solid #F2F2F2 1px;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.card img {
-    width: 100%;
-}
-
-.card a,
-footer a {
-    color: white;
-}
-
 .red-social {
-    height: 60px;
+    height: 3.75rem;
     /* background-color: #F2F2F2; */
     border-radius: 10px;
 }
@@ -134,69 +142,77 @@ footer {
     justify-content: center;
     align-items: center;
     color: #F2F2F2;
-    height: 250px;
-
+    height: 35vh;
 }
 
 .contacto {
     width: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding-bottom: 50px;
+    margin-top: 20px;
 }
 
 @media (max-width: 1000px) {
     .caja-central {
         width: 90%;
-        height: 70%;
+        height: fit-content;
+        min-height: 40%;
         flex-direction: column;
+        margin: auto;
     }
 
     .caja-cara {
         width: 100%;
-        height: 50%;
+        /* height: 50%; */
     }
 
     .cara {
-        height: 10rem;
+        height: 11rem;
+        border-radius: 0;
     }
 
     .caja-presentacion {
         width: 100%;
-        height: 50%;
-        align-items: flex-start;
+        padding-right: 1.2rem;
+    }
+
+    .tech-list {
+        padding: 0;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
     .tech {
-        width: auto;
+        height: 4.5rem;
+        margin: 2.25rem;
     }
 
-    .dos {
+    .seccion-sobre-mi {
         height: auto;
-        padding: 0 10px 10px 10px;
+        padding: 13px;
 
     }
 
-    .tres {
-        height: auto;
+    .seccion-tecnologias {
+        padding: 0;
+        margin: 0;
+        height: 75vh;
     }
 
-    .proyectos {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 20px;
+    footer {
+        height: 25vh;
+        /* padding-bottom: 20px; */
     }
 
-    .card {
-        width: 80%;
-        margin-top: 20px;
+    .contacto {
+        padding: 0;
+        align-content: space-between;
+        justify-content: center;
+        margin: auto;
     }
 
-    .red-social {
-        margin: 0 10px 0 10px;
-    }
+    .red-social {}
 }
 
 .html-5 {
