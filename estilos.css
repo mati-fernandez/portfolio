@@ -131,8 +131,8 @@ div {
 
 .red-social {
     height: 3.75rem;
-    /* background-color: #F2F2F2; */
     border-radius: 10px;
+    padding: 0 40px;
 }
 
 footer {
@@ -148,12 +148,19 @@ footer {
 .contacto {
     width: 30%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: flex-end;
     padding-bottom: 50px;
     margin-top: 20px;
 }
 
 @media (max-width: 1000px) {
+    .container {
+        text-align: justify;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
     .caja-central {
         width: 90%;
         height: fit-content;
@@ -189,9 +196,13 @@ footer {
     }
 
     .seccion-sobre-mi {
-        height: auto;
-        padding: 13px;
+        height: 100vh;
+        padding: 0 10%;
 
+    }
+
+    .seccion-aptitudes {
+        padding: 0 10%;
     }
 
     .seccion-tecnologias {
@@ -202,17 +213,16 @@ footer {
 
     footer {
         height: 25vh;
-        /* padding-bottom: 20px; */
     }
 
-    .contacto {
-        padding: 0;
-        align-content: space-between;
-        justify-content: center;
-        margin: auto;
+    .red-social {
+        margin: 0 10px 0 10px;
+        padding: 0 10px;
     }
 
-    .red-social {}
+    #contactame {
+        margin-top: 55px;
+    }
 }
 
 .html-5 {
