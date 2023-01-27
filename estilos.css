@@ -187,7 +187,9 @@ footer {
     .tech-list {
         padding: 0;
         flex-wrap: wrap;
-        width: 100%;
+        /* width: 100%; */
+        flex-basis: 33.33333%
+            /* For 3 items in a row*/
     }
 
     .tech {
