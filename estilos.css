@@ -132,7 +132,7 @@ div {
 .red-social {
     height: 3.75rem;
     border-radius: 10px;
-    padding: 0 40px;
+    margin: 0 40px;
 }
 
 footer {
@@ -197,8 +197,8 @@ footer {
 
     .tech {
         height: 3.5rem;
-        margin: 1.25rem;
-        flex-shrink: 1;
+        /* margin: 1.25rem; */
+
     }
 
     .seccion-sobre-mi {
@@ -222,8 +222,8 @@ footer {
     }
 
     .red-social {
-        margin: 0 10px 0 10px;
-        padding: 0 10px;
+        margin: 10px;
+        height: 3.5rem;
     }
 
     #contactame {
