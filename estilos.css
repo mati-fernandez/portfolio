@@ -1,3 +1,8 @@
+:root {
+    --color-claro: #E3E1D2;
+    --color-oscuro: #303030;
+}
+
 html {
     scroll-behavior: smooth;
     line-height: 2rem;
@@ -10,11 +15,11 @@ body {
 
 header {
     height: 10vh;
-    background-color: #E3E1D2;
+    background-color: var(--color-claro);
     display: flex;
     align-items: center;
     padding-left: 25px;
-    color: #303030;
+    color: var(--color-oscuro);
     scroll-snap-align: start;
 }
 
@@ -39,9 +44,8 @@ div {
     flex-direction: row;
     justify-content: center;
     height: 90vh;
-    background-color: #303030;
+    background-color: var(--color-oscuro);
     color: white;
-    scroll-snap-align: start;
 }
 
 .caja-central {
@@ -67,13 +71,13 @@ div {
     justify-content: center;
     align-items: center;
     width: 60%;
-    background-color: #E3E1D2;
+    background-color: var(--color-claro);
     color: #303030;
     padding: 20px 20px 30px 15px;
 }
 
 .seccion-sobre-mi {
-    background-color: #E3E1D2;
+    background-color: var(--color-claro);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -86,13 +90,13 @@ div {
 }
 
 .seccion-aptitudes {
-    background-color: #303030;
+    background-color: var(--color-oscuro);
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #E3E1D2;
+    color: var(--color-claro);
     padding-left: 20%;
     padding-right: 20%;
     padding-top: 20px;
@@ -136,7 +140,7 @@ div {
 }
 
 footer {
-    background-color: #424242;
+    background-color: var(--color-oscuro);
     display: flex;
     flex-direction: column;
     justify-content: center;
