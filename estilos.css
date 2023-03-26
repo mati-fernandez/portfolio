@@ -33,7 +33,7 @@ div {
     height: 100vh;
 }
 
-.cara {
+.caja-cara img {
     border-radius: 20px;
     height: 17.5rem;
 }
@@ -200,26 +200,33 @@ footer {
         line-height: 1.2rem;
     }
 
-    .caja-central {
-        width: 90%;
+    .seccion-presentacion {
         height: fit-content;
-        min-height: 40%;
+    }
+
+    .caja-central {
+        width: 100%;
+        height: fit-content;
         flex-direction: column;
         margin: auto;
+        border-radius: 0;
     }
 
     .caja-cara {
         width: 100%;
-        /* height: 50%; */
+        background-color: var(--color-oscuro);
+        margin-top: 50px;
     }
 
-    .cara {
+    .caja-cara img {
         height: 11rem;
         border-radius: 0;
     }
 
     .caja-presentacion {
         width: 100%;
+        background-color: var(--color-oscuro);
+        color: var(--color-claro);
         /* padding-right: 1.2rem; */
     }
 
@@ -241,13 +248,14 @@ footer {
     }
 
     .seccion-sobre-mi {
-        height: 100vh;
-        padding: 0 5%;
+        height: fit-content;
+        padding: 5%;
 
     }
 
     .seccion-aptitudes {
-        padding: 0 5%;
+        height: fit-content;
+        padding: 5%;
     }
 
     .seccion-tecnologias {
