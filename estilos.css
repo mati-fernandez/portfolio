@@ -105,7 +105,7 @@ div {
 }
 
 .seccion-tecnologias {
-    background-color: #fff;
+    background-color: var(--color-claro);
     height: 57vh;
     display: flex;
     flex-direction: column;
@@ -122,7 +122,7 @@ div {
 .tech-list {
     display: flex;
     justify-content: center;
-    align-content: center;
+    /* align-content: center; */
     padding: 10px;
     flex-wrap: wrap;
     width: 90%;
@@ -133,6 +133,41 @@ div {
     margin: 1.5rem;
 }
 
+.seccion-cursos-proyectos {
+    background-color: var(--color-oscuro);
+    height: 75vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    color: #F2F2F2;
+    padding-top: 25px;
+}
+
+.cursos-proyectos {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.card {
+    text-align: center;
+    width: 30%;
+    border: solid #F2F2F2 1px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card a,
+footer a {
+    color: rgb(255, 254, 254);
+}
+
 .red-social {
     height: 3.75rem;
     border-radius: 10px;
@@ -140,13 +175,13 @@ div {
 }
 
 footer {
-    background-color: var(--color-oscuro);
+    background-color: var(--color-claro);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #F2F2F2;
-    height: 35vh;
+    color: var(--color-oscuro);
+    height: 25vh;
 }
 
 .contacto {
@@ -154,8 +189,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 50px;
-    margin-top: 20px;
+    padding-bottom: 27px;
+    padding-top: 8px;
 }
 
 @media (max-width: 1000px) {
@@ -221,6 +256,34 @@ footer {
         height: 75vh;
     }
 
+    .seccion-cursos-proyectos {
+        background-color: var(--color-oscuro);
+        height: fit-content;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: center;
+        color: #F2F2F2;
+        padding-top: 10px;
+    }
+
+    .cursos-proyectos {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 5px 20px;
+        gap: 20px;
+    }
+
+    .card {
+        text-align: center;
+        width: 100%;
+        border: solid #F2F2F2 1px;
+        border-radius: 10px;
+        padding: 10px;
+
+    }
+
     footer {
         height: 25vh;
     }
@@ -231,7 +294,7 @@ footer {
     }
 
     #contactame {
-        margin-top: 55px;
+        margin-top: 30px;
     }
 }
 
