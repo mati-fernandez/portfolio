@@ -20,14 +20,39 @@
     <div class="container">
         <header>
             <h3>👉 Matías Fernández</h3>
-            <div id="sfca5qe9x3t14gj8p8b57d89xz2fw7ex2rq"></div>
+            <div class="stat">
+                <span class="stat-count">0</span>
+                <!-- <p class="stat-detail">Visitantes</p> -->
+            </div>
+            <script>
+                jQuery(document).ready(function () {
+                    function count($this) {
+                        var current = parseInt($this.html(), 10);
+                        current = current + 1; /* Where 1 is increment */
+
+                        $this.html(++current);
+                        if (current > $this.data('count')) {
+                            $this.html($this.data('count'));
+                        } else {
+                            setTimeout(function () { count($this) }, 50);
+                        }
+                    }
+
+                    jQuery(".stat-count").each(function () {
+                        jQuery(this).data('count', parseInt(jQuery(this).html(), 10));
+                        jQuery(this).html('0');
+                        count(jQuery(this));
+                    });
+                });
+            </script>
+            <!-- <div id="sfca5qe9x3t14gj8p8b57d89xz2fw7ex2rq"></div>
             <script type="text/javascript"
                 src="https://counter10.optistats.ovh/private/counter.js?c=a5qe9x3t14gj8p8b57d89xz2fw7ex2rq&down=async"
                 async></script><noscript><a href="https://www.contadorvisitasgratis.com"
                     title="contador de visitas para tumblr"><img
                         src="https://counter10.optistats.ovh/private/contadorvisitasgratis.php?c=a5qe9x3t14gj8p8b57d89xz2fw7ex2rq"
                         border="0" title="contador de visitas para tumblr"
-                        alt="contador de visitas para tumblr"></a></noscript>
+                        alt="contador de visitas para tumblr"></a></noscript> -->
         </header>
         <section class="seccion-presentacion">
             <div class="caja-central">

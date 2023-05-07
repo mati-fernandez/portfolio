@@ -27,9 +27,16 @@ div {
     box-sizing: border-box;
 }
 
+.stat {
+    position: absolute;
+    right: 20px;
+}
+
+.stat-count {
+    font-size: 35px;
+}
+
 .container {
-    /* scroll-snap-type: y proximity;
-    overflow-y: scroll; */
     height: 100vh;
 }
 
