@@ -23,17 +23,14 @@ header {
     scroll-snap-align: start;
 }
 
+#sfcnkee6z6zlbgkzh6n5tx9trg8wywfmnwe {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
 div {
     box-sizing: border-box;
-}
-
-.stat {
-    position: absolute;
-    right: 20px;
-}
-
-.stat-count {
-    font-size: 35px;
 }
 
 .container {
