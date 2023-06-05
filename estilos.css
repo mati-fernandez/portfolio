@@ -1,5 +1,5 @@
 :root {
-    --color-claro: #E3E1D2;
+    --color-claro: #799e5a;
     --color-oscuro: #303030;
 }
 
@@ -20,7 +20,6 @@ header {
     align-items: center;
     padding-left: 25px;
     color: var(--color-oscuro);
-    scroll-snap-align: start;
 }
 
 #sfcnkee6z6zlbgkzh6n5tx9trg8wywfmnwe {
@@ -33,12 +32,9 @@ div {
     box-sizing: border-box;
 }
 
-.container {
-    height: 100vh;
-}
-
 .caja-cara img {
     border-radius: 20px;
+    height: 100%;
 }
 
 .seccion-presentacion {
@@ -144,7 +140,7 @@ div {
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    color: #F2F2F2;
+    color: #ffffff;
     padding-top: 25px;
 }
 
@@ -158,7 +154,7 @@ div {
 .card {
     text-align: center;
     width: 30%;
-    border: solid #F2F2F2 1px;
+    border: solid var(--color-claro) 1px;
     border-radius: 10px;
     padding: 10px;
 }
@@ -225,7 +221,13 @@ footer {
 
     .caja-cara img {
         border-radius: 200px;
+        width: 100%;
     }
+
+    /* img:hover {
+        width: 2rem;
+        height: 2rem;
+    } */
 
     .caja-presentacion {
         width: 100%;
