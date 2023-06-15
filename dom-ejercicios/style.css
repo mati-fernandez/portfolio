@@ -322,6 +322,10 @@ section {
     color: #3e3c3c;
 }
 
+video[data-smart-video] {
+    max-width: 100%;
+}
+
 /* **********-------Scroll Spy-------********* */
 @media screen and (min-width: 1024px) {
     body {
@@ -378,9 +382,6 @@ section {
         left: calc(4.25rem + 1vw);
     }
 
-    video[data-smart-video] {
-        width: 100%;
-    }
 }
 
 /* **********-------ContactForm Validations-------********* */
