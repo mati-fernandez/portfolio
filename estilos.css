@@ -152,7 +152,10 @@ div {
 }
 
 .card {
+    display: grid;
+    grid-template-rows: 20% 70% 10%;
     text-align: center;
+    align-items: center;
     width: 30%;
     border: solid var(--color-claro) 1px;
     border-radius: 10px;
@@ -221,7 +224,7 @@ footer {
 
     .caja-cara img {
         border-radius: 200px;
-        width: 100%;
+        max-width: 70%;
     }
 
     /* img:hover {
@@ -313,6 +316,7 @@ footer {
     }
 }
 
+/*Orden de las tecnologias*/
 .html-5 {
     order: 1;
 }
