@@ -200,7 +200,9 @@ section {
 .dark-mode {
     background-color: var(--second-color);
     color: var(--main-color);
-
+    & a {
+        color:#fff;
+    }
     & .stage {
         background-color: gray;
     }
