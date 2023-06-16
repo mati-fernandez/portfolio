@@ -2,7 +2,7 @@ export default function webCam(id) {
     const $video = document.getElementById(id);
 
     if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+        navigator.mediaDevices.getUserMedia({video: true}).then(stream => {
             $video.srcObject = stream;
             $video.play();
         }).catch(err => {
