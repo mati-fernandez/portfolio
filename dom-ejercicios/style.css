@@ -322,8 +322,13 @@ section {
     color: #3e3c3c;
 }
 
-video[data-smart-video] {
+video {
     max-width: 100%;
+    border-radius: 5%;
+}
+
+textarea {
+    max-width: 80%;
 }
 
 /* **********-------Scroll Spy-------********* */
