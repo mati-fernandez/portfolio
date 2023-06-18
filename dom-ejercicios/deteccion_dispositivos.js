@@ -38,6 +38,15 @@ export default function userDeviceInfo(id) {
     <ul>
         <li>User Agent: <b>${navigator.userAgent}</b></li>
         <li>Plataforma: <b>${isMobile.any() ? isMobile.any() : isDesktop.any()}</b></li>
+        <li>Navegador: <b>${isBrowser.any()}</b></li>
     </ul>
     `;
-};
+
+    if (isBrowser.chrome()) {
+      $id.innerHTML += `<p><mark>Este contenido solo se ve en Chrome</mark><p>`;
+    }
+
+    if (isBrowser.firefox()) {
+      $id.innerHTML += `<p><mark>Este contenido solo se ve en Firefox</mark><p>`;
+    }
+  };
