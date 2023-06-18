@@ -49,4 +49,23 @@ export default function userDeviceInfo(id) {
     if (isBrowser.firefox()) {
       $id.innerHTML += `<p><mark>Este contenido solo se ve en Firefox</mark><p>`;
     }
+
+    if (isDesktop.linux()) {
+      $id.innerHTML += `<p><mark>Descarga nuestro software para Linux</mark><p>`;
+    }
+
+    if (isDesktop.mac()) {
+      $id.innerHTML += `<p><mark>Descarga nuestro software para Mac OS</mark><p>`;
+    }
+
+    if (isDesktop.windows()) {
+      $id.innerHTML += `<p><mark>Descarga nuestro software para Windows</mark><p>`;
+    }
+
+    //REDIRECCIONES: En el caso que quisiera mandar al sitio versión móvil como por ej hacen en facebook "m.facebook.com"
+    // if (isMobile.android()) {
+    //   window.location.href = "https://translate.google.com.ar/?hl=es&sl=en&tl=es&text=This%20is%20the%20mobile%20version%20of%20the%20site%20(known%20as%20%22m.yoursite.com%22)&op=translate";
+    // }
+
+
   };
