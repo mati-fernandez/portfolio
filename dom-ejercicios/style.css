@@ -1,9 +1,9 @@
 :root {
     --main-font: sans-serif;
     --font-size: 16px;
-    --main-color: #F7DF1E;
+    --main-color: #a9bab2;
     --second-color: #222;
-    --main-modal-color: rgba(247, 222, 30, 0.85);
+    --main-modal-color: rgba(169, 186, 178, 0.85);
     --second-modal-color: rgba(34, 34, 34, 0.85);
     --container-width: 1200px;
 }
