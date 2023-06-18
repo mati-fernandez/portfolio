@@ -11,7 +11,7 @@ export default function userDeviceInfo(id) {
     const isDesktop = {
         linux: () => navigator.userAgent.match(/linux/i),
         mac: () => navigator.userAgent.match(/mac os/i),
-        windows: () => navigator.userAgent.match(/windows nt/),
+        windows: () => navigator.userAgent.match(/windows nt/i),
         any: function () {
             return this.linux() || this.mac() || this.windows();
         },
