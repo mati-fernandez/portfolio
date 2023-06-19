@@ -55,10 +55,10 @@ div {
   position: absolute;
   border-radius: 20px;
   height: 100%;
+  transition: opacity 1s ease-in-out;
 }
 
 .caja-cara img.profile-pic:hover {
-  transition: opacity 1s ease-in-out;
   opacity: 0;
 }
 
