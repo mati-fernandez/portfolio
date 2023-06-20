@@ -29,7 +29,7 @@
     <section class="seccion-presentacion">
         <div class="caja-central">
             <div class="caja-cara">
-              <img src="profile-pic-hover.png" alt="Matias profile picture">
+              <img src="profile-pic-hover.png" alt="Matias profile picture" class="matrix">
               <img src="profile-pic.png" alt="Matias profile picture" class="profile-pic">
             </div>
             <div class="caja-presentacion">
@@ -142,11 +142,34 @@
             <a href="https://instagram.com/maromasfrutossecos/" target="_blank">
                 <img src="instagram.png" class="red-social" alt="instagram">
             </a>
-            <a href="https://github.com/faust-dev" target="_blank">
+            <a href="https://github.com/mati-fernandez" target="_blank">
                 <img src="github.png" class="red-social" alt="github">
             </a>
         </div>
     </footer>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", (e) => {
+        const $profilePic = document.querySelector(".matrix");
+        profilePicSound($profilePic);
+        console.log($profilePic);
+      });
+      const profilePicSound = ($profilePic) => {
+        document.addEventListener("click", (e) => {
+        if (e.target.matches("img")) {
+          const $sound = document.createElement("audio");
+          $sound.src = "profile-pic-sound.mp3";
+          $sound.play();
+          console.log($sound);
+          // alert("funciona el evento");
+          "img".classList.toggle("is-active");
+          if ("img".classList("isActive")) {
+            $sound.pause();
+            $profilePic.classList.toggle("is-active");
+          }
+        };
+      });
+      }
+    </script> -->
 </body>
 
 </html>
