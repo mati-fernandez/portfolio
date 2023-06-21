@@ -29,8 +29,8 @@
     <section class="seccion-presentacion">
         <div class="caja-central">
             <div class="caja-cara">
-              <img src="profile-pic-hover.png" alt="Matias profile picture" class="matrix">
-              <img src="profile-pic.png" alt="Matias profile picture" class="profile-pic">
+              <img src="profile-pic-hover.jpg" alt="Matrix profile picture" id="matrix">
+              <img src="profile-pic.jpg" alt="Matias profile picture" id="profile-pic">
             </div>
             <div class="caja-presentacion">
                 <div>
@@ -147,29 +147,36 @@
             </a>
         </div>
     </footer>
-    <!-- <script>
+    <script>
       document.addEventListener("DOMContentLoaded", (e) => {
-        const $profilePic = document.querySelector(".matrix");
+        const $profilePic = document.querySelector("#matrix");
         profilePicSound($profilePic);
         console.log($profilePic);
       });
-      const profilePicSound = ($profilePic) => {
-        document.addEventListener("click", (e) => {
-        if (e.target.matches("img")) {
-          const $sound = document.createElement("audio");
+      const profilePicSound = (pP) => {
+        let soundTempo;
+        const $sound = document.createElement("audio");
           $sound.src = "profile-pic-sound.mp3";
-          $sound.play();
           console.log($sound);
+        document.addEventListener("mouseover", (e) => {
+        if (e.target.matches("img#matrix")) {//me funciona solo si al matches le paso tags pero no con ids ni clases
+          soundTempo = setTimeout(()=> {
+            $sound.play();
+          }, 0);
+          
           // alert("funciona el evento");
-          "img".classList.toggle("is-active");
-          if ("img".classList("isActive")) {
+          // "img".classList.toggle("is-active");
+          document.addEventListener("mouseout", e => {
+            // if ("img".classList("isActive")) {
+            clearTimeout(soundTempo);
             $sound.pause();
-            $profilePic.classList.toggle("is-active");
-          }
+            // $profilePic.classList.toggle("is-active");
+          // }
+          });
         };
-      });
+       });
       }
-    </script> -->
+    </script>
 </body>
 
 </html>
