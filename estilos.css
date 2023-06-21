@@ -58,7 +58,7 @@ div {
   transition: opacity 1s ease-in-out;
 }
 
-.caja-cara img.profile-pic:hover {
+.caja-cara img#profile-pic:hover {
   opacity: 0;
 }
 
