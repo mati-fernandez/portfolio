@@ -337,6 +337,17 @@ footer {
 
     }
 
+    #msje-condicional div {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem 0rem 1rem;
+    }
+
+    #a-ver {
+      margin-bottom: 1.7rem;
+    }
+
     footer {
         height: 25vh;
     }
