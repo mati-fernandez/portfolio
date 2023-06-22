@@ -194,6 +194,18 @@ footer a {
     margin: 0 40px;
 }
 
+#msje-condicional div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#a-ver {
+  margin-left: 1rem;
+  height: 2rem;
+  width: 4rem;
+}
+
 footer {
     background-color: var(--color-claro);
     display: flex;

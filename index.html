@@ -134,6 +134,12 @@
             </div>
         </div>
     </section>
+    <section id="msje-condicional">
+      <div>
+        <p>Menos mal que no tocaste mi foto de perfil, si no se caía el sistema 😁</p> 
+        <button id="a-ver">A ver...</button>
+      </div>
+    </section>
     <footer>
         <h2 id="contactame">Contactame</h2>
         <div class="contacto">
@@ -154,25 +160,26 @@
           document.querySelector("#audio-off").style.opacity = 0;
         });
         profilePicSound();
+        document.addEventListener("click", (e) => {
+        if (e.target.matches("#a-ver")) {
+            window.scrollTo({
+                behavior: "smooth",
+                top: 0,
+                //left: 0 si usara tambien desplazamiento horizontal
+            });
+          }
+        });
       });
       const profilePicSound = () => {
         let soundTempo;
         const $sound = document.createElement("audio");
           $sound.src = "profile-pic-sound.mp3";
         document.addEventListener("mouseover", (e) => {
-        if (e.target.matches("img#profile-pic")) {//me funciona solo si al matches le paso tags pero no con ids ni clases
-          soundTempo = setTimeout(()=> {
+        if (e.target.matches("img#profile-pic")) {
             $sound.play();
-          }, 0);
-          
-          // alert("funciona el evento");
-          // "img".classList.toggle("is-active");
+            document.getElementById("msje-condicional").style.display = "none";
           document.addEventListener("mouseout", e => {
-            // if ("img".classList("isActive")) {
-            clearTimeout(soundTempo);
             $sound.pause();
-            // $profilePic.classList.toggle("is-active");
-          // }
           });
         };
        });
