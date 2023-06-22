@@ -32,6 +32,16 @@ div {
     box-sizing: border-box;
 }
 
+#audio-off {
+  width: 5%;
+  height: 5%;
+  position: absolute;
+  top: 14vh;
+  right: 20px;
+  transition: opacity .5s ease-in-out;
+}
+
+
 .caja-central {
     margin: 13vh;
     width: 70%;
@@ -55,10 +65,10 @@ div {
   position: absolute;
   border-radius: 20px;
   height: 100%;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2.8s ease-in-out;
 }
 
-.caja-cara img#profile-pic:hover {
+img#profile-pic:hover {
   opacity: 0;
 }
 

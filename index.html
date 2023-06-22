@@ -27,6 +27,7 @@
                     border="0" title="contador de visitas html" alt="contador de visitas html"></a></noscript>
     </header>
     <section class="seccion-presentacion">
+        <img src="audio-off.svg" id="audio-off">
         <div class="caja-central">
             <div class="caja-cara">
               <img src="profile-pic-hover.jpg" alt="Matrix profile picture" id="matrix">
@@ -147,19 +148,19 @@
             </a>
         </div>
     </footer>
-    <script>
+    <script> //agregar boton de audio a la derecha arriba que solo cambie a activado y desaparezca, es para saltear la restriccion de chrome
       document.addEventListener("DOMContentLoaded", (e) => {
-        const $profilePic = document.querySelector("#matrix");
-        profilePicSound($profilePic);
-        console.log($profilePic);
+        document.addEventListener("click",e=>{
+          document.querySelector("#audio-off").style.opacity = 0;
+        });
+        profilePicSound();
       });
-      const profilePicSound = (pP) => {
+      const profilePicSound = () => {
         let soundTempo;
         const $sound = document.createElement("audio");
           $sound.src = "profile-pic-sound.mp3";
-          console.log($sound);
         document.addEventListener("mouseover", (e) => {
-        if (e.target.matches("img#matrix")) {//me funciona solo si al matches le paso tags pero no con ids ni clases
+        if (e.target.matches("img#profile-pic")) {//me funciona solo si al matches le paso tags pero no con ids ni clases
           soundTempo = setTimeout(()=> {
             $sound.play();
           }, 0);
