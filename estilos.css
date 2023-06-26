@@ -37,13 +37,17 @@ div {
     box-sizing: border-box;
 }
 
-#audio-off {
-  width: 5%;
-  height: 5%;
+#audio-toggle {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 25px;
   position: absolute;
-  top: 14vh;
+  top: 12vh;
   right: 20px;
-  transition: opacity .5s ease-in-out;
+  background: none;
+  z-index: 999;
 }
 
 
@@ -355,6 +359,9 @@ footer {
       margin-bottom: 1.7rem;
     }
 
+    .contacto a {
+      margin: 0;
+    }
     footer {
         height: 25vh;
     }

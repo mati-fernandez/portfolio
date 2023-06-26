@@ -27,7 +27,8 @@
                     border="0" title="contador de visitas html" alt="contador de visitas html"></a></noscript>
     </header>
     <section class="seccion-presentacion">
-        <img src="audio-off.svg" id="audio-off">
+        <button id="audio-toggle">🔇</button>
+        <audio class="profile-audio"></audio>
         <div class="caja-central">
             <div class="caja-cara">
               <img src="prof-pic-hover.jpg" alt="Matrix profile picture" id="matrix">
@@ -150,32 +151,38 @@
             </a>
         </div>
     </footer>
-    <script> //agregar boton de audio a la derecha arriba que solo cambie a activado y desaparezca, es para saltear la restriccion de chrome
+    <script> 
       document.addEventListener("DOMContentLoaded", (e) => {
-        // document.addEventListener("click", e => {
-        //   if (e.target.matches("#sfcnkee6z6zlbgkzh6n5tx9trg8wywfmnwe")) {
-        //     e.preventDefault();
-        //   };
-        // });
-        document.addEventListener("click",e=>{
-          document.querySelector("#audio-off").style.opacity = 0;
-        });
-
+        toggleMuted();
         profilePicSound();
         document.addEventListener("click", (e) => {
         if (e.target.matches("#a-ver")) {
             window.scrollTo({
                 behavior: "smooth",
-                top: 0,
-                //left: 0 si usara tambien desplazamiento horizontal
+                top: 0
             });
           }
         });
       });
+      function toggleMuted() {
+        const $audioToggleBtn = document.querySelector("#audio-toggle");
+        const audioOn = "🔊", audioOff = "🔇";
+        document.addEventListener("click", (e) => {
+        if (e.target.matches("#audio-toggle")) {
+            if ($audioToggleBtn.textContent === audioOff) {
+                document.querySelector("audio").setAttribute("src", "profile-pic-sound.mp3");
+                $audioToggleBtn.textContent = audioOn;
+            } else {
+              document.querySelector("audio").setAttribute("src", "");
+              $audioToggleBtn.textContent = audioOff;
+            }
+        }
+    });
+
+      }
       const profilePicSound = () => {
         let soundTempo;
-        const $sound = document.createElement("audio");
-          $sound.src = "profile-pic-sound.mp3";
+        const $sound = document.querySelector(".profile-audio");
         document.addEventListener("mouseover", (e) => {
         if (e.target.matches("img#profile-pic")) {
             $sound.play();
