@@ -11,6 +11,10 @@ html {
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    text-align: justify;
 }
 
 header {
@@ -43,8 +47,8 @@ div {
 
 
 .caja-central {
-    margin: 13vh;
-    width: 70%;
+    margin: 20vh;
+    width: 55%;
     min-width: 700px;
     display: flex;
     flex-direction: row;
@@ -80,7 +84,7 @@ img#profile-pic:hover {
     width: 60%;
     background-color: var(--color-claro);
     color: #303030;
-    padding: 20px 20px 30px 15px;
+    padding: 28px 30px 30px 25px;
 }
 
 .seccion-presentacion {
