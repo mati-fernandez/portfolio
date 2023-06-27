@@ -28,7 +28,7 @@
     </header>
     <section class="seccion-presentacion">
         <button id="audio-toggle">🔇</button>
-        <audio class="profile-audio"></audio>
+        <audio class="profile-audio" src="profile-pic-sound.mp3"></audio>
         <div class="caja-central">
             <div class="caja-cara">
               <img src="prof-pic-hover.jpg" alt="Matrix profile picture" id="matrix">
@@ -153,7 +153,6 @@
     </footer>
     <script> 
       document.addEventListener("DOMContentLoaded", (e) => {
-        toggleMuted();
         profilePicSound();
         document.addEventListener("click", (e) => {
         if (e.target.matches("#a-ver")) {
@@ -164,34 +163,31 @@
           }
         });
       });
-      function toggleMuted() {
-        const $audioToggleBtn = document.querySelector("#audio-toggle");
-        const audioOn = "🔊", audioOff = "🔇";
-        document.addEventListener("click", (e) => {
-        if (e.target.matches("#audio-toggle")) {
-            if ($audioToggleBtn.textContent === audioOff) {
-                document.querySelector("audio").setAttribute("src", "profile-pic-sound.mp3");
-                $audioToggleBtn.textContent = audioOn;
-            } else {
-              document.querySelector("audio").setAttribute("src", "");
-              $audioToggleBtn.textContent = audioOff;
-            }
-        }
-    });
-
-      }
       const profilePicSound = () => {
         let soundTempo;
-        const $sound = document.querySelector(".profile-audio");
-        document.addEventListener("mouseover", (e) => {
-        if (e.target.matches("img#profile-pic")) {
-            $sound.play();
-            document.getElementById("msje-condicional").style.display = "none";
-          document.addEventListener("mouseout", e => {
-            $sound.pause();
+        const $audioToggleBtn = document.querySelector("#audio-toggle"),
+         audioOn = "🔊", audioOff = "🔇",
+         $sound = document.querySelector(".profile-audio");
+         document.addEventListener("click", (e) => {
+            if (e.target.matches("#audio-toggle")) {
+                if ($audioToggleBtn.textContent === audioOff) {
+                  $audioToggleBtn.textContent = audioOn;
+                } else {
+                  $audioToggleBtn.textContent = audioOff;
+                }
+            }
           });
-        };
-       });
+         document.addEventListener("mouseover", (e) => {
+            if (e.target.matches("img#profile-pic")) {
+                if ($audioToggleBtn.textContent == audioOn) {
+                  $sound.play();
+                  document.getElementById("msje-condicional").style.display = "none";
+                }
+              document.addEventListener("mouseout", e => {
+                $sound.pause();
+              });
+            };
+          });
       }
     </script>
 </body>
