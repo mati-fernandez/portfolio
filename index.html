@@ -99,7 +99,7 @@
             <li data-aos="zoom-in">Portugués: Nivel básico.</li>
         </ul>
         </p>
-        <i class="fa fa-solid fa-chevron-down fa-bounce" id="third-page"></i>
+        <i class="fa fa-solid fa-chevron-down fa-bounce" id="second-page"></i>
     </section>
     <section class="seccion-tecnologias">
         <div class="tech-list">
@@ -160,12 +160,9 @@
       document.addEventListener("DOMContentLoaded", (e) => {
           document.addEventListener("click", (e) => {
             if (e.target.matches("#first-page")) {
-                document.querySelector(".seccion-sobre-mi").scrollIntoView();
-            };
-            if (e.target.matches("#second-page")) {
                 document.querySelector(".seccion-aptitudes").scrollIntoView();
             };
-            if (e.target.matches("#third-page")) {
+            if (e.target.matches("#second-page")) {
                 document.querySelector(".seccion-tecnologias").scrollIntoView();
             };
           });
