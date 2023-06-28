@@ -26,6 +26,7 @@ const profilePicSound = () => {
       if (e.target.matches("#audio-toggle")) {
           if ($audioToggleBtn.textContent === audioOff) {
             $audioToggleBtn.textContent = audioOn;
+            document.querySelector(".fa-arrow-up").style.display = "none";
           } else {
             $audioToggleBtn.textContent = audioOff;
           }
@@ -38,7 +39,7 @@ const profilePicSound = () => {
           }
           let timerMsje = setTimeout(()=>{
             document.getElementById("msje-condicional").style.display = "none";
-          },2000);
+          },1500);
         document.addEventListener("mouseout", e => {
           $sound.pause();
           clearTimeout(timerMsje);

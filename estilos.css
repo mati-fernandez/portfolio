@@ -50,6 +50,12 @@ div {
   z-index: 999;
 }
 
+.fa-arrow-up {
+  color: #808080;
+  position: absolute;
+  top: 80px;
+  right: 36px;
+}
 
 .caja-central {
     margin: 20vh;
@@ -234,6 +240,7 @@ footer {
 section {
   position: relative;
 }
+
 .fa-chevron-down {
   font-size: 1em;
   color: gray;
