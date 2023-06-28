@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilos.css">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -28,9 +29,9 @@
                     border="0" title="contador de visitas html" alt="contador de visitas html"></a></noscript>
     </header>
     <section class="seccion-presentacion">
-        <button id="audio-toggle">🔇</button>
+        <button id="audio-toggle" data-aos="fade-in">🔇</button>
         <audio class="profile-audio" src="profile-pic-sound.mp3"></audio>
-        <div class="caja-central">
+        <div class="caja-central" data-aos="zoom-in">
             <div class="caja-cara">
               <img src="prof-pic-hover.jpg" alt="Matrix profile picture" id="matrix">
               <img src="profile-pic.jpg" alt="Matias profile picture" id="profile-pic">
@@ -53,10 +54,11 @@
                 </div>
             </div>
         </div>
-    </section>
+        <i class="fa fa-solid fa-chevron-down fa-bounce" id="first-page"></i>
+      </section>
     <section class="seccion-sobre-mi">
-        <h2>Sobre mí</h2>
-        <p>
+        <h2 data-aos="zoom-in">Sobre mí</h2>
+        <p data-aos="zoom-in">
             Empecé una carrera en la UBA, análisis de sistemas, en el año 2009. No terminé de superar el CBC y me
             fui en
             2011 definitivamente.
@@ -76,57 +78,59 @@
             curso "Responsive Web Design" de la misma plataforma para repasar y aprender algún concepto nuevo.
             También estoy realizando pequeños proyectos y otros cursos en paralelo que iré sumando a este medio.
         </p>
+        <i class="fa fa-solid fa-chevron-down fa-bounce" id="second-page"></i>
     </section>
     <section class="seccion-aptitudes">
-        <h2>Aptitudes</h2>
-        <p>
+        <h2 data-aos="zoom-in">Aptitudes</h2>
+        <p data-aos="zoom-in">
             Estas son algunas de las tecnologías en las que tengo conocimientos y algunas otras aptitudes:
         <ul>
-            <li>Microsoft Excel: Nivel intermedio (con conocimiento en VBA para Macros).</li>
-            <li>Microsoft Word: Nivel avanzado.</li>
-            <li>Adobe Fireworks: Nivel avanzado.</li>
-            <li>Adobe Animate: Nivel avanzado.</li>
-            <li>Adobe Premiere: Nivel intermedio.</li>
-            <li>C++: Nivel intermedio.</li>
-            <li>C: Nivel intermedio.</li>
-            <li>Java: Nivel básico.</li>
-            <li>HTML 5, CSS 3: Nivel intermedio.</li>
-            <li>JavaScript: Nivel intermedio.</li>
-            <li>Inglés: Nivel avanzado.</li>
-            <li>Portugués: Nivel básico.</li>
+            <li data-aos="zoom-in">Microsoft Excel: Nivel intermedio (con conocimiento en VBA para Macros).</li>
+            <li data-aos="zoom-in">Microsoft Word: Nivel avanzado.</li>
+            <li data-aos="zoom-in">Adobe Fireworks: Nivel avanzado.</li>
+            <li data-aos="zoom-in">Adobe Animate: Nivel avanzado.</li>
+            <li data-aos="zoom-in">Adobe Premiere: Nivel intermedio.</li>
+            <li data-aos="zoom-in">C++: Nivel intermedio.</li>
+            <li data-aos="zoom-in">C: Nivel intermedio.</li>
+            <li data-aos="zoom-in">Java: Nivel básico.</li>
+            <li data-aos="zoom-in">HTML 5, CSS 3: Nivel intermedio.</li>
+            <li data-aos="zoom-in">JavaScript: Nivel intermedio.</li>
+            <li data-aos="zoom-in">Inglés: Nivel avanzado.</li>
+            <li data-aos="zoom-in">Portugués: Nivel básico.</li>
         </ul>
         </p>
+        <i class="fa fa-solid fa-chevron-down fa-bounce" id="third-page"></i>
     </section>
     <section class="seccion-tecnologias">
         <div class="tech-list">
-            <img src="c++.png" class="tech cpp" alt="c++">
-            <img src="js.png" class="tech javascript" alt="JavaScript">
-            <img src="excel+vba.png" class="tech excelpvba" alt="excel+vba">
-            <img src="c.png" class="tech c" alt="lenguaje de programacion c">
-            <img src="html-5.png" class="tech html-5" alt="html-5">
-            <img src="css-3.png" class="tech css-3" alt="css-3">
-            <img src="animate.png" class="tech animate" alt="Adobe Animate">
-            <img src="premiere.png" class="tech premiere" alt="Adobe Premiere">
-            <img src="fireworks.png" class="tech fireworks" alt="Adobe Fireworks">
+          <img data-aos="flip-left" src="html-5.png" class="tech html-5" alt="html-5">
+          <img data-aos="flip-left" data-aos-duration="1000" src="css-3.png" class="tech css-3" alt="css-3">
+          <img data-aos="flip-left" data-aos-duration="2000" src="js.png" class="tech javascript" alt="JavaScript">
+          <img data-aos="flip-left" data-aos-duration="3000" src="c.png" class="tech c" alt="lenguaje de programacion c">
+          <img data-aos="flip-left" data-aos-duration="4000" src="c++.png" class="tech cpp" alt="c++">
+          <img data-aos="flip-left" data-aos-duration="5000" src="excel+vba.png" class="tech excelpvba" alt="excel+vba">
+          <img data-aos="flip-left" data-aos-duration="6000" src="animate.png" class="tech animate" alt="Adobe Animate">
+          <img data-aos="flip-left" data-aos-duration="7000" src="premiere.png" class="tech premiere" alt="Adobe Premiere">
+          <img data-aos="flip-left" data-aos-duration="8000" src="fireworks.png" class="tech fireworks" alt="Adobe Fireworks">
         </div>
     </section>
     <section class="seccion-cursos-proyectos">
-        <h2>Cursos / Proyectos</h2>
+        <h2 data-aos="zoom-in">Cursos / Proyectos</h2>
         <div class="cursos-proyectos">
-            <div class="card">
+            <div class="card" data-aos="zoom-in">
                 <h3>Certificado en Responsive Web Design</h3>
                 <img src="certificado-responsive-web-design.jpg" alt="Certificado responsive web design">
                 <a href="https://www.freecodecamp.org/certification/matifer/responsive-web-design" target="_blank">Ver
                     proyectos</a>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in">
                 <h3>Certificado en Javascript Algorithms and Data Structures</h3>
                 <img src="certificado-javascript-algorithms-and-data-structures.jpg"
                     alt="Certificado javascript algorithms and data structures">
                 <a href="https://www.freecodecamp.org/certification/matifer/javascript-algorithms-and-data-structures"
                     target="_blank">Ver proyectos</a>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in">
                 <h3>Ejercicios del DOM</h3>
                 <img src="dom-ejercicios.jpg"
                     alt="Ejercicios del Document Object Module">
@@ -135,25 +139,36 @@
             </div>
         </div>
     </section>
-    <section id="msje-condicional">
+    <section id="msje-condicional" data-aos="zoom-in">
       <div>
         <p>Menos mal que no tocaste mi foto de perfil, si no se caía el sistema!</p> 
         <button id="a-ver">A ver...</button>
       </div>
     </section>
     <footer>
-        <h2 id="contactame">Contactame</h2>
+        <h2 id="contactame" data-aos="zoom-in">Contactame</h2>
         <div class="contacto">
-            <a href="https://www.linkedin.com/in/mati-fernandez/" target="_blank">
+            <a href="https://www.linkedin.com/in/mati-fernandez/" target="_blank" data-aos="zoom-in" data-aos-offset="70">
                 <img src="linkedin.jpg" class="red-social" alt="linkedin">
             </a>
-            <a href="https://github.com/mati-fernandez" target="_blank">
+            <a href="https://github.com/mati-fernandez" target="_blank" data-aos="zoom-in" data-aos-offset="70">
                 <img src="github.jpg" class="red-social" alt="github">
             </a>
         </div>
     </footer>
     <script> 
       document.addEventListener("DOMContentLoaded", (e) => {
+          document.addEventListener("click", (e) => {
+            if (e.target.matches("#first-page")) {
+                document.querySelector(".seccion-sobre-mi").scrollIntoView();
+            };
+            if (e.target.matches("#second-page")) {
+                document.querySelector(".seccion-aptitudes").scrollIntoView();
+            };
+            if (e.target.matches("#third-page")) {
+                document.querySelector(".seccion-tecnologias").scrollIntoView();
+            };
+          });
         profilePicSound();
         document.addEventListener("click", (e) => {
         if (e.target.matches("#a-ver")) {
@@ -190,6 +205,10 @@
             };
           });
       }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
 </body>
 
