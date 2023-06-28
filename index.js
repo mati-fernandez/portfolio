@@ -33,12 +33,15 @@ const profilePicSound = () => {
     });
    document.addEventListener("mouseover", (e) => {
       if (e.target.matches("img#profile-pic")) {
-          document.getElementById("msje-condicional").style.display = "none";
           if ($audioToggleBtn.textContent == audioOn) {
             $sound.play();
           }
+          let timerMsje = setTimeout(()=>{
+            document.getElementById("msje-condicional").style.display = "none";
+          },2000);
         document.addEventListener("mouseout", e => {
           $sound.pause();
+          clearTimeout(timerMsje);
         });
       };
     });
