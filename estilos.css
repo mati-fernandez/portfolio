@@ -327,13 +327,11 @@ section {
     }
 
     .seccion-cursos-proyectos {
-        background-color: var(--color-oscuro);
         height: fit-content;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
         align-items: center;
-        color: #F2F2F2;
         padding-top: 10px;
     }
 
@@ -348,7 +346,6 @@ section {
     .card {
         text-align: center;
         width: 100%;
-        border: solid #F2F2F2 1px;
         border-radius: 10px;
         padding: 10px;
 
