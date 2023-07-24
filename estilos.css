@@ -27,10 +27,23 @@ header {
     color: var(--color-oscuro);
 }
 
-#sfcnkee6z6zlbgkzh6n5tx9trg8wywfmnwe {
+#prevent-counter-interaction {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  opacity: 100;
+  width: 120px;
+  height: 40px;
+  text-align: right;
+  z-index: 999;
+}
+
+#counter {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 20px;
+    opacity: 0;
+    transition: 1s;
 }
 
 div {
@@ -251,6 +264,15 @@ section {
 }
 
 @media (max-width: 1000px) {
+
+    #prevent-counter-interaction {
+      top: 27px
+    }
+
+    #counter {
+      top: 27px
+    }
+
     .container {
         text-align: justify;
         font-size: 1rem;
