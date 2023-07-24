@@ -30,7 +30,7 @@ header {
 #prevent-counter-interaction {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 23px;
   opacity: 100;
   width: 120px;
   height: 40px;
@@ -41,7 +41,7 @@ header {
 #counter {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 23px;
     opacity: 0;
     transition: 1s;
 }
