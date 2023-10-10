@@ -1,6 +1,6 @@
 :root {
-    --color-claro: #a9bab2;
-    --color-oscuro: #303030;
+  --color-claro: #a9bab2;
+  --color-oscuro: #303030;
 }
 
 ::-webkit-scrollbar {
@@ -8,23 +8,23 @@
 }
 
 html {
-    scroll-behavior: smooth;
-    line-height: 2rem;
+  scroll-behavior: smooth;
+  line-height: 2rem;
 }
 
 body {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    text-align: justify;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  text-align: justify;
 }
 
 header {
-    height: 10vh;
-    background-color: var(--color-claro);
-    display: flex;
-    align-items: center;
-    padding-left: 25px;
-    color: var(--color-oscuro);
+  height: 10vh;
+  background-color: var(--color-claro);
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  color: var(--color-oscuro);
 }
 
 #prevent-counter-interaction {
@@ -39,15 +39,15 @@ header {
 }
 
 #counter {
-    position: absolute;
-    right: 20px;
-    top: 23px;
-    opacity: 0;
-    transition: 1s;
+  position: absolute;
+  right: 20px;
+  top: 23px;
+  opacity: 0;
+  transition: 1s;
 }
 
 div {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #audio-toggle {
@@ -71,21 +71,21 @@ div {
 }
 
 .caja-central {
-    margin: 20vh;
-    width: 55%;
-    min-width: 700px;
-    display: flex;
-    flex-direction: row;
-    border-radius: 20px;
-    overflow: hidden;
+  margin: 20vh;
+  width: 55%;
+  min-width: 700px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .caja-cara {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
 }
 
 .caja-cara img {
@@ -100,15 +100,15 @@ img#profile-pic:hover {
 }
 
 .caja-presentacion {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-    background-color: var(--color-claro);
-    color: #303030;
-    padding: 28px 30px 30px 25px;
-    line-height: 3.5vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: var(--color-claro);
+  color: #303030;
+  padding: 28px 30px 30px 25px;
+  line-height: 3.5vh;
 }
 
 .seccion-presentacion {
@@ -122,99 +122,98 @@ img#profile-pic:hover {
 }
 
 .seccion-sobre-mi {
-    background-color: var(--color-claro);
-    height: 100vh;
-    display: flex;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #303030;
-    padding-left: 20%;
-    padding-right: 20%;
+  background-color: var(--color-claro);
+  height: 100vh;
+  display: flex;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #303030;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .seccion-aptitudes {
-    background-color: var(--color-claro);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-oscuro);
-    padding-left: 20%;
-    padding-right: 20%;
+  background-color: var(--color-claro);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-oscuro);
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .seccion-tecnologias {
-    background-color: var(--color-oscuro);
-    height: 57vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #303030;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 20px;
-    padding-bottom: 40px;
+  background-color: var(--color-oscuro);
+  height: 57vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #303030;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .tech-list {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    flex-wrap: wrap;
-    width: 90%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  flex-wrap: wrap;
+  width: 90%;
 }
 
 .tech {
-    height: 6rem;
-    margin: 1.5rem;
+  height: 6rem;
+  margin: 1.5rem;
 }
 
 .seccion-cursos-proyectos {
-    background-color: var(--color-claro);
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: center;
-    color: var(--color-oscuro);
-    padding-top: 20px;
-    padding-bottom: 50px;
+  background-color: var(--color-claro);
+  color: var(--color-oscuro);
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-align: center;
 }
 
 .cursos-proyectos {
-    width: 75%;
-    display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
+  width: 85%;
+  display: grid;
+  grid-template-columns: repeat(3, 10fr 1fr);
+  margin: auto;
+  padding-top: 10px;
 }
 
 .card {
-    display: grid;
-    grid-template-rows: 20% 70% 10%;
-    text-align: center;
-    align-items: center;
-    width: 30%;
-    border: solid var(--color-oscuro) 1px;
-    border-radius: 10px;
-    padding: 10px;
+  display: grid;
+  grid-template-rows: 20% 70% 10%;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  border: solid var(--color-oscuro) 1px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 40px;
 }
 
 .card img {
-    width: 100%;
+  width: 100%;
 }
 
 .card a,
 footer a {
-    color: var(--color-oscuro);
+  color: var(--color-oscuro);
 }
 
 .red-social {
-    height: 3.75rem;
-    border-radius: 10px;
-    margin: 0 40px;
+  height: 3.75rem;
+  border-radius: 10px;
+  margin: 0 40px;
 }
 
 #msje-condicional div {
@@ -231,24 +230,24 @@ footer a {
 }
 
 footer {
-    background-color: var(--color-oscuro);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-weight: lighter;
+  background-color: var(--color-oscuro);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: lighter;
 }
 
 .contacto {
-    width: 55%;
-    display: flex;
-    justify-content: center;
-    /* align-items: flex-end; */
-    padding: 10px 0 25px 0;
-    & a {
-      margin: 0 -30px 0 -30px;
-    }
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; */
+  padding: 10px 0 25px 0;
+  & a {
+    margin: 0 -30px 0 -30px;
+  }
 }
 
 section {
@@ -264,147 +263,144 @@ section {
 }
 
 @media (max-width: 1000px) {
+  #prevent-counter-interaction {
+    top: 27px;
+  }
 
-    #prevent-counter-interaction {
-      top: 27px
-    }
+  #counter {
+    top: 27px;
+  }
 
-    #counter {
-      top: 27px
-    }
+  .container {
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
 
-    .container {
-        text-align: justify;
-        font-size: 1rem;
-        line-height: 1.2rem;
-    }
+  .seccion-presentacion {
+    height: fit-content;
+  }
 
-    .seccion-presentacion {
-        height: fit-content;
-    }
+  .caja-central {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    height: fit-content;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 0;
+  }
 
-    .caja-central {
-        position: relative;
-        width: 100%;
-        min-width: 0;
-        height: fit-content;
-        flex-direction: column;
-        margin: auto;
-        border-radius: 0;
-    }
+  .caja-presentacion {
+    position: static;
+  }
 
-    .caja-presentacion {
-      position: static;
-    }
-    
-    .caja-cara {
-        position: relative;
-        width: 100%;
-        height: 25vh;
-        margin-top: 50px;
-    }
+  .caja-cara {
+    position: relative;
+    width: 100%;
+    height: 25vh;
+    margin-top: 50px;
+  }
 
-    .caja-cara img {
-        position: absolute;
-        border-radius: 200px;
-        max-width: 70%;
-    }
-    /*TENDRE QUE VER COMO HACER PARA QUE AL TOCAR LA IMAGEN EN MOVIL NO ABRA OPCIONES DEL NAVEGADOR, SUPONGO QUE CON JS PREVENT_DEFAULT*/
-    .caja-cara img.profile-pic:hover {
-      opacity: 100;
-    }
-    .caja-cara img.profile-pic:active {
-      opacity: 0;
-    }
+  .caja-cara img {
+    position: absolute;
+    border-radius: 200px;
+    max-width: 70%;
+  }
+  /*TENDRE QUE VER COMO HACER PARA QUE AL TOCAR LA IMAGEN EN MOVIL NO ABRA OPCIONES DEL NAVEGADOR, SUPONGO QUE CON JS PREVENT_DEFAULT*/
+  .caja-cara img.profile-pic:hover {
+    opacity: 100;
+  }
+  .caja-cara img.profile-pic:active {
+    opacity: 0;
+  }
 
-    .caja-presentacion {
-        width: 100%;
-        background-color: var(--color-oscuro);
-        color: var(--color-claro);
-    }
+  .caja-presentacion {
+    width: 100%;
+    background-color: var(--color-oscuro);
+    color: var(--color-claro);
+  }
 
-    .tech-list {
-        padding: 0;
-        flex-wrap: wrap;
-        flex-basis: 30%;
-    }
+  .tech-list {
+    padding: 0;
+    flex-wrap: wrap;
+    flex-basis: 30%;
+  }
 
-    .tech {
-        height: 3.5rem;
-    }
+  .tech {
+    height: 3.5rem;
+  }
 
-    .seccion-sobre-mi {
-        height: fit-content;
-        padding: 5%;
-        position: relative;
+  .seccion-sobre-mi {
+    height: fit-content;
+    padding: 5%;
+    position: relative;
+  }
 
-    }
+  .seccion-aptitudes {
+    height: fit-content;
+    padding: 5%;
+  }
 
-    .seccion-aptitudes {
-        height: fit-content;
-        padding: 5%;
-    }
+  .seccion-aptitudes li {
+    margin-left: -20px;
+  }
 
-    .seccion-aptitudes li {
-        margin-left: -20px;
-    }
+  .seccion-tecnologias {
+    padding: 0;
+    margin: 0;
+    height: fit-content;
+    padding: 10% 0;
+  }
 
-    .seccion-tecnologias {
-        padding: 0;
-        margin: 0;
-        height: fit-content;
-        padding: 10% 0;
-    }
+  .seccion-cursos-proyectos {
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+  }
 
-    .seccion-cursos-proyectos {
-        height: fit-content;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 10px;
-    }
+  .cursos-proyectos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px 20px;
+    gap: 20px;
+  }
 
-    .cursos-proyectos {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 10px 5px 20px;
-        gap: 20px;
-    }
+  .card {
+    text-align: center;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+  }
 
-    .card {
-        text-align: center;
-        width: 100%;
-        border-radius: 10px;
-        padding: 10px;
+  #msje-condicional div {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem 0rem 1rem;
+  }
 
-    }
+  #a-ver {
+    margin-bottom: 1.7rem;
+  }
 
-    #msje-condicional div {
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      padding: 0 1rem 0rem 1rem;
-    }
+  .contacto a {
+    margin: 0;
+  }
+  footer {
+    height: 25vh;
+  }
 
-    #a-ver {
-      margin-bottom: 1.7rem;
-    }
+  .red-social {
+    margin: 0 10px;
+    height: 3rem;
+  }
 
-    .contacto a {
-      margin: 0;
-    }
-    footer {
-        height: 25vh;
-    }
-
-    .red-social {
-        margin: 0 10px;
-        height: 3rem;
-    }
-
-    #contactame {
-        margin-top: 30px;
-    }
+  #contactame {
+    margin-top: 30px;
+  }
 }
