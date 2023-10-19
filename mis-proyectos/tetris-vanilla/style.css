@@ -32,6 +32,7 @@ section {
   display: grid;
   font-size: 48px;
   place-content: center;
+  cursor: pointer;
 }
 
 #contenedor {
