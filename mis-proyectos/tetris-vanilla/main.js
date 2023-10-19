@@ -1,6 +1,6 @@
 const BLOCK_SIZE = 20;
 const BOARD_WIDTH = 14;
-const BOARD_HEIGHT = 30;
+const BOARD_HEIGHT = 27;
 
 // 1. inicializar el canvas
 const canvas = document.querySelector('canvas');
