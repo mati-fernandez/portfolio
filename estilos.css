@@ -4,10 +4,18 @@
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 1vw;
 }
-
-html {
+::-webkit-scrollbar-track {
+  background: grey;
+}
+::-webkit-scrollbar-thumb {
+  background: darkgrey;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+*/ html {
   scroll-behavior: smooth;
   line-height: 2rem;
 }
