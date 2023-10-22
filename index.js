@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", e => {
   document.addEventListener("keyup", e => {
     if (e.key === "c" && e.altKey) {
       console.log("hola")
-      $counter.style.opacity = 1000;
+      $counter.style.opacity = 100;
       setTimeout(() => {
         $counter.style.opacity = 0;
       }, 1000);
