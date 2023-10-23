@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", e => {
   });
 
   document.addEventListener("mouseover", e=> {
-    if (e.target.matches("#prevent-counter-interaction")) $counter.style.opacity = 1000;
+    if (e.target.matches("#prevent-counter-interaction")) $counter.style.opacity = 100;
   });
   document.addEventListener("mouseout", e=> {
     if (e.target.matches("#prevent-counter-interaction")) $counter.style.opacity = 0;
