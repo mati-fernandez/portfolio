@@ -23,7 +23,7 @@ html {
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-  text-align: justify;
+  text-wrap: balance;
 }
 
 header {
@@ -35,27 +35,21 @@ header {
   color: var(--color-oscuro);
 }
 
-#prevent-counter-interaction {
-  position: absolute;
-  right: 20px;
-  top: 23px;
-  opacity: 100;
-  width: 120px;
-  height: 40px;
-  text-align: right;
-  z-index: 999;
-}
-
-#counter {
-  position: absolute;
-  right: 20px;
-  top: 23px;
-  opacity: 0;
-  transition: 1s;
-}
-
 div {
   box-sizing: border-box;
+}
+
+#img-toggle {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 25px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  z-index: 999;
 }
 
 #audio-toggle {
@@ -80,8 +74,8 @@ div {
 
 .caja-central {
   margin: 20vh;
-  width: 55%;
-  min-width: 700px;
+  min-width: 550px;
+  max-width: 800px;
   display: flex;
   flex-direction: row;
   border-radius: 20px;
@@ -93,12 +87,11 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 50%;
 }
 
 .caja-cara img {
   position: absolute;
-  border-radius: 20px;
   height: 100%;
   transition: opacity 2.8s ease-in-out;
 }
@@ -112,7 +105,7 @@ img#profile-pic:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 50%;
   background-color: var(--color-claro);
   color: #303030;
   padding: 28px 30px 30px 25px;
@@ -150,30 +143,28 @@ img#profile-pic:hover {
   justify-content: center;
   align-items: center;
   color: var(--color-oscuro);
-  padding-left: 20%;
-  padding-right: 20%;
+  text-wrap: balance;
+}
+
+.seccion-aptitudes > p:nth-of-type(1) {
+  text-align: center;
 }
 
 .seccion-tecnologias {
   background-color: var(--color-oscuro);
-  height: 57vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #303030;
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 20px;
-  padding-bottom: 40px;
 }
 
 .tech-list {
   display: flex;
   justify-content: center;
-  padding: 10px;
   flex-wrap: wrap;
-  width: 90%;
+  gap: 20px;
 }
 
 .tech {
@@ -270,7 +261,7 @@ section {
   cursor: pointer;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 560px) {
   #prevent-counter-interaction {
     top: 27px;
   }
@@ -290,7 +281,6 @@ section {
   }
 
   .caja-central {
-    position: relative;
     width: 100%;
     min-width: 0;
     height: fit-content;
@@ -299,12 +289,7 @@ section {
     border-radius: 0;
   }
 
-  .caja-presentacion {
-    position: static;
-  }
-
   .caja-cara {
-    position: relative;
     width: 100%;
     height: 25vh;
     margin-top: 50px;
@@ -327,6 +312,13 @@ section {
     width: 100%;
     background-color: var(--color-oscuro);
     color: var(--color-claro);
+    text-align: center;
+    padding: 20px 5% 42px;
+  }
+
+  .seccion-aptitudes > p:nth-of-type(1) {
+    text-align: left;
+    text-wrap: wrap;
   }
 
   .tech-list {

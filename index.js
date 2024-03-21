@@ -1,74 +1,80 @@
+//Establecer todo el js en la carga del dom:
+document.addEventListener('DOMContentLoaded', (e) => {
+  //Creando interval global
+  let interval = 0;
+  //Reemplazo de la profile pic a v2
+  const imgInterval = (mode) => {
+    clearInterval(interval);
+    console.log('Interval cleared');
+    interval = setInterval(() => {
+      const pp = document.querySelector('#profile-pic');
+      const pph = document.querySelector('#matrix');
+      if (pp.src.includes('prof-pic.jpg')) {
+        pp.src = 'prof-pic-v2.jpg';
+        pph.src = 'prof-pic-hover-v2.jpg';
+      } else {
+        pp.src = 'prof-pic.jpg';
+        pph.src = 'prof-pic-hover.jpg';
+      }
+      console.log('interval ID', interval);
+    }, 33000);
+    console.log('Interval Created!');
+  };
 
-document.addEventListener("DOMContentLoaded", e => {
-  const $counter = document.querySelector("#counter"),
-    $message = document.querySelector("#prevent-counter-interaction");
-  setTimeout(()=> {
-    $message.style.opacity = 0;
-  },2000)
-  document.addEventListener("keyup", e => {
-    if (e.key === "c" && e.altKey) {
-      console.log("hola")
-      $counter.style.opacity = 100;
-      setTimeout(() => {
-        $counter.style.opacity = 0;
-      }, 1000);
-    }
-  });
-
-  document.addEventListener("mouseover", e=> {
-    if (e.target.matches("#prevent-counter-interaction")) $counter.style.opacity = 100;
-  });
-  document.addEventListener("mouseout", e=> {
-    if (e.target.matches("#prevent-counter-interaction")) $counter.style.opacity = 0;
-  });
-
-
+  imgInterval('Create');
+  //Manejo del botón de sonido
   const profilePicSound = () => {
     let soundTempo;
-    const $audioToggleBtn = document.querySelector("#audio-toggle"),
-    audioOn = "🔊", audioOff = "🔇",
-    $sound = document.querySelector(".profile-audio");
-    document.addEventListener("click", (e) => {
-        if (e.target.matches("#audio-toggle")) {
-            if ($audioToggleBtn.textContent === audioOff) {
-              $audioToggleBtn.textContent = audioOn;
-              document.querySelector(".fa-arrow-up").style.display = "none";
-            } else {
-              $audioToggleBtn.textContent = audioOff;
-            }
+    const $audioToggleBtn = document.querySelector('#audio-toggle'),
+      audioOn = '🔊',
+      audioOff = '🔇',
+      $sound = document.querySelector('.profile-audio');
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('#audio-toggle')) {
+        if ($audioToggleBtn.textContent === audioOff) {
+          $audioToggleBtn.textContent = audioOn;
+          document.querySelector('.fa-arrow-up').style.display = 'none';
+        } else {
+          $audioToggleBtn.textContent = audioOff;
         }
-      });
-    document.addEventListener("mouseover", (e) => {
-        if (e.target.matches("img#profile-pic")) {
-            if ($audioToggleBtn.textContent == audioOn) {
-              $sound.play();
-            }
-            let timerMsje = setTimeout(()=>{
-              document.getElementById("msje-condicional").style.display = "none";
-            },1500);
-          document.addEventListener("mouseout", e => {
+      }
+    });
+    //Manejo del sonido al hacer hover y msje condicional
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.matches('img#profile-pic')) {
+        if ($audioToggleBtn.textContent == audioOn) {
+          $sound.play();
+        }
+        imgInterval('Create');
+        let timerMsje = setTimeout(() => {
+          document.getElementById('msje-condicional').style.display = 'none';
+        }, 1500);
+        document.addEventListener('mouseout', (e) => {
+          if (e.target.matches('img#profile-pic')) {
             $sound.pause();
             clearTimeout(timerMsje);
-          });
-        };
-      });
-  }
-  document.addEventListener("click", (e) => {
-    if (e.target.matches("#first-page")) {
-        document.querySelector(".seccion-aptitudes").scrollIntoView();
-    };
-    if (e.target.matches("#second-page")) {
-        document.querySelector(".seccion-tecnologias").scrollIntoView();
-    };
+          }
+        });
+      }
+    });
+  };
+
+  //Manejo de los botones flecha animadas para deslizar pagina
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('#first-page')) {
+      document.querySelector('.seccion-aptitudes').scrollIntoView();
+    }
+    if (e.target.matches('#second-page')) {
+      document.querySelector('.seccion-tecnologias').scrollIntoView();
+    }
   });
   profilePicSound();
-  document.addEventListener("click", (e) => {
-  if (e.target.matches("#a-ver")) {
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('#a-ver')) {
       window.scrollTo({
-          behavior: "smooth",
-          top: 0
+        behavior: 'smooth',
+        top: 0,
       });
     }
   });
-
-}); 
+});
