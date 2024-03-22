@@ -69,7 +69,7 @@ div {
   color: #808080;
   position: absolute;
   top: 80px;
-  right: 36px;
+  right: 27px;
 }
 
 .seccion-presentacion {
@@ -85,7 +85,7 @@ div {
 .caja-central {
   margin: 20vh;
   min-width: 550px;
-  max-width: 800px;
+  max-width: 650px;
   display: flex;
   flex-direction: row;
   border-radius: 20px;

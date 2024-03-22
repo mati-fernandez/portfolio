@@ -2,47 +2,55 @@
 document.addEventListener('DOMContentLoaded', (e) => {
   //Creando interval global
   let interval = 0;
-  //Reemplazo de la profile pic a v2
+  //Funcion de cambio de prof-pic
+  const imgToggle = () => {
+    const pp = document.querySelector('#profile-pic');
+    const pph = document.querySelector('#matrix');
+    if (pp.src.includes('prof-pic.jpg')) {
+      pp.src = 'prof-pic-v2.jpg';
+      pph.src = 'prof-pic-hover-v2.jpg';
+    } else {
+      pp.src = 'prof-pic.jpg';
+      pph.src = 'prof-pic-hover.jpg';
+    }
+  };
+  //Reemplazo de prof-pic por tiempo
   const imgInterval = (mode) => {
     clearInterval(interval);
     console.log('Interval cleared');
     interval = setInterval(() => {
-      const pp = document.querySelector('#profile-pic');
-      const pph = document.querySelector('#matrix');
-      if (pp.src.includes('prof-pic.jpg')) {
-        pp.src = 'prof-pic-v2.jpg';
-        pph.src = 'prof-pic-hover-v2.jpg';
-      } else {
-        pp.src = 'prof-pic.jpg';
-        pph.src = 'prof-pic-hover.jpg';
-      }
+      imgToggle();
       console.log('interval ID', interval);
     }, 33000);
     console.log('Interval Created!');
   };
-
   imgInterval('Create');
+  //Manejo del boton change para prof-pic
+  const $changeImg = document.querySelector('#img-toggle');
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('#img-toggle')) {
+      imgInterval('Create');
+      imgToggle();
+    }
+  });
+
   //Manejo del botón de sonido
   const profilePicSound = () => {
     let soundTempo;
     const $audioToggleBtn = document.querySelector('#audio-toggle'),
-      audioOn = '🔊',
-      audioOff = '🔇',
-      $sound = document.querySelector('.profile-audio');
+      $sound = document.querySelector('.profile-audio'),
+      $suggestiveArrow = document.querySelector('.fa-arrow-up');
     document.addEventListener('click', (e) => {
       if (e.target.matches('#audio-toggle')) {
-        if ($audioToggleBtn.textContent === audioOff) {
-          $audioToggleBtn.textContent = audioOn;
-          document.querySelector('.fa-arrow-up').style.display = 'none';
-        } else {
-          $audioToggleBtn.textContent = audioOff;
-        }
+        $suggestiveArrow.style.display = 'none';
+        $audioToggleBtn.classList.toggle('fa-volume-high');
+        $audioToggleBtn.classList.toggle('fa-volume-xmark');
       }
     });
     //Manejo del sonido al hacer hover y msje condicional
     document.addEventListener('mouseover', (e) => {
       if (e.target.matches('img#profile-pic')) {
-        if ($audioToggleBtn.textContent == audioOn) {
+        if ($audioToggleBtn.classList.contains('fa-volume-high')) {
           $sound.play();
         }
         imgInterval('Create');
@@ -58,6 +66,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       }
     });
   };
+  profilePicSound();
 
   //Manejo de los botones flecha animadas para deslizar pagina
   document.addEventListener('click', (e) => {
@@ -68,7 +77,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
       document.querySelector('.seccion-tecnologias').scrollIntoView();
     }
   });
-  profilePicSound();
+
+  //
   document.addEventListener('click', (e) => {
     if (e.target.matches('#a-ver')) {
       window.scrollTo({
