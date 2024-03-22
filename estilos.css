@@ -36,6 +36,10 @@ header {
   color: var(--color-oscuro);
 }
 
+section {
+  position: relative;
+}
+
 div {
   box-sizing: border-box;
 }
@@ -73,7 +77,7 @@ div {
   right: 27px;
 }
 
-.seccion-presentacion {
+#seccion-presentacion {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -83,7 +87,7 @@ div {
   color: white;
 }
 
-.caja-central {
+#caja-central {
   margin: 20vh;
   min-width: 550px;
   max-width: 650px;
@@ -94,7 +98,7 @@ div {
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.368);
 }
 
-.caja-cara {
+#caja-cara {
   position: relative;
   display: flex;
   justify-content: center;
@@ -102,7 +106,7 @@ div {
   width: 40%;
 }
 
-.caja-cara img {
+#caja-cara img {
   position: absolute;
   height: 100%;
   transition: opacity 2.8s ease-in-out;
@@ -112,7 +116,7 @@ img#profile-pic:hover {
   opacity: 0;
 }
 
-.caja-presentacion {
+#caja-presentacion {
   position: relative;
   display: flex;
   justify-content: center;
@@ -127,9 +131,14 @@ img#profile-pic:hover {
 
 .fa-chevron-down {
   padding: 30px 50px 10px;
+  font-size: 1em;
+  color: gray;
+  position: absolute;
+  bottom: 20px;
+  cursor: pointer;
 }
 
-.seccion-sobre-mi {
+#seccion-sobre-mi {
   background-color: var(--color-claro);
   height: 100vh;
   display: flex;
@@ -142,7 +151,7 @@ img#profile-pic:hover {
   padding-right: 20%;
 }
 
-.seccion-aptitudes {
+#seccion-aptitudes {
   background-color: var(--color-claro);
   height: 100vh;
   display: flex;
@@ -153,11 +162,11 @@ img#profile-pic:hover {
   text-wrap: balance;
 }
 
-.seccion-aptitudes > p:nth-of-type(1) {
+#seccion-aptitudes > p:nth-of-type(1) {
   text-align: center;
 }
 
-.seccion-tecnologias {
+#seccion-tecnologias {
   background-color: var(--color-oscuro);
   height: 75vh;
   display: flex;
@@ -167,7 +176,7 @@ img#profile-pic:hover {
   color: #303030;
 }
 
-.tech-list {
+#tech-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -179,7 +188,7 @@ img#profile-pic:hover {
   margin: 1.5rem;
 }
 
-.seccion-cursos-proyectos {
+#seccion-cursos-proyectos {
   background-color: var(--color-claro);
   color: var(--color-oscuro);
   padding-top: 20px;
@@ -187,7 +196,7 @@ img#profile-pic:hover {
   text-align: center;
 }
 
-.cursos-proyectos {
+#cursos-proyectos {
   width: 85%;
   display: grid;
   grid-template-columns: repeat(3, 10fr 1fr);
@@ -249,7 +258,7 @@ footer {
   font-weight: lighter;
 }
 
-.contacto {
+#contacto {
   width: 55%;
   display: flex;
   justify-content: center;
@@ -258,18 +267,6 @@ footer {
   & a {
     margin: 0 -30px 0 -30px;
   }
-}
-
-section {
-  position: relative;
-}
-
-.fa-chevron-down {
-  font-size: 1em;
-  color: gray;
-  position: absolute;
-  bottom: 20px;
-  cursor: pointer;
 }
 
 @media (max-width: 630px) {

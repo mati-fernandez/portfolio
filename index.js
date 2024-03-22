@@ -1,5 +1,24 @@
 //Establecer todo el js en la carga del dom:
 document.addEventListener('DOMContentLoaded', (e) => {
+  //Evitar el long press en mobile
+  document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+    if (event.target.matches('div#caja-central')) {
+      alert('entró');
+      const cajaCentral = document.getElementById('caja-central');
+      const gifAnimado = document.createElement('img');
+      gifAnimado.src = 'guitar.gif';
+      gifAnimado.alt = 'GIF animado, guitarra se convierte en hacha';
+
+      // Agregar el GIF animado a #caja-central
+      cajaCentral.appendChild(gifAnimado);
+
+      // Eliminar el GIF animado después de 3 segundos (3000 milisegundos)
+      setTimeout(() => {
+        cajaCentral.removeChild(gifAnimado); // Eliminar el GIF animado de #caja-central
+      }, 3000); // Cambia este valor según la duración deseada del GIF animado
+    }
+  });
   //Creando interval global
   let interval = 0;
   //Funcion de cambio de prof-pic
@@ -38,7 +57,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   const profilePicSound = () => {
     let soundTempo;
     const $audioToggleBtn = document.querySelector('#audio-toggle'),
-      $sound = document.querySelector('.profile-audio'),
+      $sound = document.querySelector('#profile-audio'),
       $suggestiveArrow = document.querySelector('.fa-arrow-up');
     document.addEventListener('click', (e) => {
       if (e.target.matches('#audio-toggle')) {
@@ -71,7 +90,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de los botones flecha animadas para deslizar pagina
   document.addEventListener('click', (e) => {
     if (e.target.matches('#first-page')) {
-      document.querySelector('.seccion-aptitudes').scrollIntoView();
+      document.querySelector('#seccion-aptitudes').scrollIntoView();
     }
     if (e.target.matches('#second-page')) {
       document.querySelector('.seccion-tecnologias').scrollIntoView();
