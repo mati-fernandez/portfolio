@@ -54,7 +54,7 @@ div {
   top: 20px;
   left: 20px;
   background: none;
-  z-index: 999;
+  z-index: 1;
 }
 
 #audio-toggle {
@@ -67,7 +67,7 @@ div {
   top: 20px;
   right: 20px;
   background: none;
-  z-index: 999;
+  z-index: 1;
 }
 
 .fa-arrow-up {
@@ -85,6 +85,13 @@ div {
   height: 90vh;
   background-color: var(--color-oscuro);
   color: white;
+}
+
+#guitar-gif {
+  display: none;
+  position: absolute;
+  top: 60px;
+  z-index: 1;
 }
 
 #caja-central {
@@ -270,25 +277,16 @@ footer {
 }
 
 @media (max-width: 630px) {
-  #prevent-counter-interaction {
-    top: 27px;
-  }
-
-  #counter {
-    top: 27px;
-  }
-
-  .container {
-    text-align: justify;
-    font-size: 1rem;
-    line-height: 1.2rem;
-  }
-
-  .seccion-presentacion {
+  #seccion-presentacion {
     height: fit-content;
+    position: relative;
   }
 
-  .caja-central {
+  #guitar-gif {
+    display: none;
+  }
+
+  #caja-central {
     width: 100%;
     min-width: 0;
     height: fit-content;
@@ -298,28 +296,28 @@ footer {
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0); /*para pisar el otro*/
   }
 
-  .caja-cara {
+  #caja-cara {
     width: 100%;
     height: 25vh;
     margin-top: 50px;
   }
 
-  .caja-cara img {
+  #caja-cara img {
     position: absolute;
     border-radius: 200px;
     max-width: 70%;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.367);
     z-index: 1;
   }
-  /*TENDRE QUE VER COMO HACER PARA QUE AL TOCAR LA IMAGEN EN MOVIL NO ABRA OPCIONES DEL NAVEGADOR, SUPONGO QUE CON JS PREVENT_DEFAULT*/
-  .caja-cara img.profile-pic:hover {
+
+  #caja-cara img.profile-pic:hover {
     opacity: 100;
   }
-  .caja-cara img.profile-pic:active {
+  #caja-cara img.profile-pic:active {
     opacity: 0;
   }
 
-  .caja-presentacion {
+  #caja-presentacion {
     width: 100%;
     background-color: var(--color-oscuro);
     color: var(--color-claro);
@@ -327,12 +325,12 @@ footer {
     padding: 20px 5% 42px;
   }
 
-  .seccion-aptitudes > p:nth-of-type(1) {
+  #seccion-aptitudes > p:nth-of-type(1) {
     text-align: left;
     text-wrap: wrap;
   }
 
-  .tech-list {
+  #tech-list {
     padding: 0;
     flex-wrap: wrap;
     flex-basis: 30%;
@@ -342,29 +340,29 @@ footer {
     height: 3.5rem;
   }
 
-  .seccion-sobre-mi {
+  #seccion-sobre-mi {
     height: fit-content;
     padding: 5%;
     position: relative;
   }
 
-  .seccion-aptitudes {
+  #seccion-aptitudes {
     height: fit-content;
     padding: 5%;
   }
 
-  .seccion-aptitudes li {
+  #seccion-aptitudes li {
     margin-left: -20px;
   }
 
-  .seccion-tecnologias {
+  #seccion-tecnologias {
     padding: 0;
     margin: 0;
     height: fit-content;
     padding: 10% 0;
   }
 
-  .seccion-cursos-proyectos {
+  #seccion-cursos-proyectos {
     height: fit-content;
     display: flex;
     justify-content: flex-start;
@@ -373,7 +371,7 @@ footer {
     padding-top: 10px;
   }
 
-  .cursos-proyectos {
+  #cursos-proyectos {
     width: 100%;
     display: flex;
     flex-direction: column;
