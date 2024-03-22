@@ -72,6 +72,16 @@ div {
   right: 36px;
 }
 
+.seccion-presentacion {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 90vh;
+  background-color: var(--color-oscuro);
+  color: white;
+}
+
 .caja-central {
   margin: 20vh;
   min-width: 550px;
@@ -80,6 +90,7 @@ div {
   flex-direction: row;
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.368);
 }
 
 .caja-cara {
@@ -111,22 +122,6 @@ img#profile-pic:hover {
   padding: 28px 30px 30px 25px;
   line-height: 3.5vh;
   text-align: center;
-}
-
-.caja-presentacion > div {
-  /* box-shadow: 10px 10px 10px 10px black; */
-  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
-  border-radius: 50px;
-}
-
-.seccion-presentacion {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 90vh;
-  background-color: var(--color-oscuro);
-  color: white;
 }
 
 .seccion-sobre-mi {
@@ -211,6 +206,10 @@ img#profile-pic:hover {
   width: 100%;
 }
 
+.card h3 {
+  margin-bottom: 0;
+}
+
 .card a,
 footer a {
   color: var(--color-oscuro);
@@ -268,7 +267,7 @@ section {
   cursor: pointer;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 630px) {
   #prevent-counter-interaction {
     top: 27px;
   }
@@ -294,6 +293,7 @@ section {
     flex-direction: column;
     margin: auto;
     border-radius: 0;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0); /*para pisar el otro*/
   }
 
   .caja-cara {
@@ -306,6 +306,8 @@ section {
     position: absolute;
     border-radius: 200px;
     max-width: 70%;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.367);
+    z-index: 1;
   }
   /*TENDRE QUE VER COMO HACER PARA QUE AL TOCAR LA IMAGEN EN MOVIL NO ABRA OPCIONES DEL NAVEGADOR, SUPONGO QUE CON JS PREVENT_DEFAULT*/
   .caja-cara img.profile-pic:hover {
@@ -382,6 +384,10 @@ section {
     width: 100%;
     border-radius: 10px;
     padding: 10px;
+  }
+
+  .card h3 {
+    margin-bottom: 10%;
   }
 
   #msje-condicional div {
