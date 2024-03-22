@@ -24,6 +24,7 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   text-wrap: balance;
+  user-select: none;
 }
 
 header {
@@ -122,6 +123,10 @@ img#profile-pic:hover {
   padding: 28px 30px 30px 25px;
   line-height: 3.5vh;
   text-align: center;
+}
+
+.fa-chevron-down {
+  padding: 30px 50px 10px;
 }
 
 .seccion-sobre-mi {
