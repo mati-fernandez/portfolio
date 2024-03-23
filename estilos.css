@@ -20,20 +20,20 @@ html {
   line-height: 2rem;
 }
 
+header {
+  height: 10vh;
+  background-color: var(--color-claro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-oscuro);
+}
+
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   text-wrap: balance;
   user-select: none;
-}
-
-header {
-  height: 10vh;
-  background-color: var(--color-claro);
-  display: flex;
-  align-items: center;
-  padding-left: 25px;
-  color: var(--color-oscuro);
 }
 
 section {
@@ -221,6 +221,7 @@ img#profile-pic:hover {
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 40px;
+  gap: 3px;
 }
 
 .card img {
@@ -228,7 +229,7 @@ img#profile-pic:hover {
 }
 
 .card h3 {
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .card a,
@@ -263,9 +264,15 @@ footer {
   align-items: center;
   color: #fff;
   font-weight: lighter;
+  height: 25vh;
+  padding-bottom: 30px;
 }
 
 #contacto {
+  margin-bottom: 30px;
+}
+
+#contacto-links {
   width: 55%;
   display: flex;
   justify-content: center;
@@ -308,13 +315,6 @@ footer {
     max-width: 70%;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.367);
     z-index: 1;
-  }
-
-  #caja-cara img.profile-pic:hover {
-    opacity: 100;
-  }
-  #caja-cara img.profile-pic:active {
-    opacity: 0;
   }
 
   #caja-presentacion {
@@ -375,8 +375,8 @@ footer {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px 5px 20px;
-    gap: 20px;
+    padding: 10px 5px;
+    gap: 0px;
   }
 
   .card {
@@ -384,6 +384,10 @@ footer {
     width: 100%;
     border-radius: 10px;
     padding: 10px;
+  }
+
+  .card:last-child {
+    margin-bottom: -15px;
   }
 
   .card h3 {
@@ -401,19 +405,15 @@ footer {
     margin-bottom: 1.7rem;
   }
 
-  .contacto a {
-    margin: 0;
-  }
   footer {
     height: 25vh;
   }
 
-  .red-social {
-    margin: 0 10px;
-    height: 3rem;
+  #contacto {
+    margin-bottom: 40px;
   }
 
-  #contactame {
-    margin-top: 30px;
+  .red-social {
+    height: 3rem;
   }
 }

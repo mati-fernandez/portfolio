@@ -1,6 +1,9 @@
 const d = document;
 //Establecer todo el js en la carga del dom:
 d.addEventListener('DOMContentLoaded', (e) => {
+  //Inicializando timeout global
+  let timeout = 0;
+  console.log('Timeout Initialized!');
   //Evitar el long press en mobile
   d.addEventListener('contextmenu', function (event) {
     event.preventDefault();
@@ -13,12 +16,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
       const cajaCentralWidth = parseFloat(computedStyle.width);
       // Establecer el ancho de gifAnimado con el ancho de cajaCentral
       guiterGif.style.width = cajaCentralWidth + 'px';
-      setTimeout(() => {
+      clearTimeout(timeout);
+      console.log('Timeout cleared');
+      timeout = setTimeout(() => {
+        console.log('Timeout Created!');
         guiterGif.style.display = 'none';
       }, 3000);
     }
   });
-  //Creando interval global
+  //Inicializando interval global
   let interval = 0;
   //Funcion de cambio de prof-pic
   const imgToggle = () => {
