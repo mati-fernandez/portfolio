@@ -70,7 +70,7 @@ div {
   z-index: 1;
 }
 
-.fa-arrow-up {
+#suggestive-arrow {
   color: #808080;
   position: absolute;
   top: 80px;
@@ -103,6 +103,7 @@ div {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.368);
+  transition: box-shadow 100ms ease-in-out;
 }
 
 #caja-cara {
@@ -116,7 +117,7 @@ div {
 #caja-cara img {
   position: absolute;
   height: 100%;
-  transition: opacity 2.8s ease-in-out;
+  transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
 }
 
 img#profile-pic:hover {
@@ -266,6 +267,7 @@ footer {
   font-weight: lighter;
   height: 25vh;
   padding-bottom: 30px;
+  position: relative;
 }
 
 #contacto {
@@ -283,6 +285,14 @@ footer {
   }
 }
 
+#scroll-to-top {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  cursor: pointer;
+  padding: 10px;
+}
+
 @media (max-width: 630px) {
   #seccion-presentacion {
     height: fit-content;
@@ -291,6 +301,19 @@ footer {
 
   #guitar-gif {
     display: none;
+  }
+
+  #img-toggle {
+    padding: 25px;
+  }
+
+  #audio-toggle {
+    padding: 25px;
+  }
+
+  #suggestive-arrow {
+    top: 100px;
+    right: 51px;
   }
 
   #caja-central {
@@ -313,7 +336,7 @@ footer {
     position: absolute;
     border-radius: 200px;
     max-width: 70%;
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.367);
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.156);
     z-index: 1;
   }
 
@@ -415,5 +438,11 @@ footer {
 
   .red-social {
     height: 3rem;
+  }
+
+  #scroll-to-top {
+    top: 50px;
+    right: 50px;
+    padding: 10px;
   }
 }
