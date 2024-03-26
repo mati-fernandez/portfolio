@@ -68,6 +68,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $audioEffect1.play();
     }
     if (window.innerWidth > 630) {
+      $cajaCentral.style.transition = 'box-shadow 100ms ease-in-out';
       $cajaCentral.style.boxShadow = '0 0 50px 1px white';
       const timeout = setTimeout(() => {
         $cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.368)';

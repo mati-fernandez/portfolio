@@ -103,7 +103,6 @@ div {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.368);
-  transition: box-shadow 100ms ease-in-out;
 }
 
 #caja-cara {
@@ -146,19 +145,6 @@ img#profile-pic:hover {
   cursor: pointer;
 }
 
-#seccion-sobre-mi {
-  background-color: var(--color-claro);
-  height: 100vh;
-  display: flex;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #303030;
-  padding-left: 20%;
-  padding-right: 20%;
-}
-
 #seccion-aptitudes {
   background-color: var(--color-claro);
   height: 100vh;
@@ -176,12 +162,13 @@ img#profile-pic:hover {
 
 #seccion-tecnologias {
   background-color: var(--color-oscuro);
-  height: 75vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #303030;
+  padding: 3% 21%;
 }
 
 #tech-list {
@@ -348,6 +335,10 @@ footer {
     padding: 20px 5% 42px;
   }
 
+  .fa-chevron-down {
+    bottom: 10px;
+  }
+
   #seccion-aptitudes > p:nth-of-type(1) {
     text-align: left;
     text-wrap: wrap;
@@ -363,15 +354,10 @@ footer {
     height: 3.5rem;
   }
 
-  #seccion-sobre-mi {
-    height: fit-content;
-    padding: 5%;
-    position: relative;
-  }
-
   #seccion-aptitudes {
     height: fit-content;
     padding: 5%;
+    padding-bottom: 10%;
   }
 
   #seccion-aptitudes li {
