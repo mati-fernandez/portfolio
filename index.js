@@ -12,6 +12,35 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
 
+  /************************* ESPACIO ******************************/
+
+  //Efecto fade in para audio
+  function fadeInOut(audioElement, fadeIn) {
+    let volume = fadeIn ? 0 : 1;
+    const fadeInterval = setInterval(() => {
+      if (fadeIn) {
+        audioElement.play();
+        if (volume < 0.9) {
+          console.log(volume);
+          volume += 0.1;
+          //   if (volume > 1) volume = 1;
+        } else {
+          clearInterval(fadeInterval);
+        }
+      } else {
+        if (volume > 0.1) {
+          console.log(volume);
+          volume -= 0.1;
+          //   if (volume < 0) volume = 0;
+        } else {
+          clearInterval(fadeInterval);
+          audioElement.pause();
+        }
+      }
+      audioElement.volume = volume;
+    }, 222);
+  }
+
   //Evitar el long press en mobile
   d.addEventListener('contextmenu', function (event) {
     event.preventDefault();
@@ -105,24 +134,28 @@ d.addEventListener('DOMContentLoaded', (e) => {
     });
 
     //Manejo del sonido al hacer hover y msje condicional
+    let timerMsje = null;
     d.addEventListener('mouseover', (e) => {
       if (e.target.matches('img#profile-pic')) {
         if ($audioToggleBtn.classList.contains('fa-volume-high')) {
-          $sound.play();
+          console.log('Mouseover detectado');
+          fadeInOut($sound, true);
         }
         imgInterval('Create');
-        let timerMsje = setTimeout(() => {
+        timerMsje = setTimeout(() => {
           d.getElementById('msje-condicional').style.display = 'none';
         }, 1500);
-        d.addEventListener('mouseout', (e) => {
-          if (e.target.matches('img#profile-pic')) {
-            $sound.pause();
-            clearTimeout(timerMsje);
-          }
-        });
+      }
+    });
+
+    d.addEventListener('mouseout', (e) => {
+      if (e.target.matches('img#profile-pic')) {
+        fadeInOut($sound, false);
+        clearTimeout(timerMsje);
       }
     });
   };
+
   profilePicSound();
 
   //Manejo de los botones flecha animadas para deslizar pagina
@@ -144,6 +177,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       });
     }
   });
+
   //Scroll to top general
   d.addEventListener('click', (e) => {
     if (e.target.matches('#scroll-to-top')) {
