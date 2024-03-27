@@ -3,6 +3,8 @@ const d = document;
 d.addEventListener('DOMContentLoaded', (e) => {
   //Variables de uso global:
   let timeout = 0;
+  let fadeInterval = 0;
+
   console.log('Timeout Initialized!');
   //Selectores de uso global
   const $cajaCentral = d.getElementById('caja-central'),
@@ -14,30 +16,40 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   /************************* ESPACIO ******************************/
 
-  //Efecto fade in para audio
-  function fadeInOut(audioElement, fadeIn) {
-    let volume = fadeIn ? 0 : 1;
-    const fadeInterval = setInterval(() => {
-      if (fadeIn) {
-        audioElement.play();
-        if (volume < 0.9) {
-          console.log(volume);
-          volume += 0.1;
-          //   if (volume > 1) volume = 1;
+  //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
+  function fadeInOut(audio) {
+    // Limpiar intervalo existente si hay uno
+    if (fadeInterval) {
+      clearInterval(fadeInterval);
+    }
+
+    // Determinar si el audio se está desvaneciendo o no
+    const isFadingOut = audio.volume > 0.1;
+
+    fadeInterval = setInterval(() => {
+      console.log('Fade interval ID', fadeInterval);
+
+      if (isFadingOut) {
+        // Desvanecer el audio
+        if (audio.volume > 0.1) {
+          console.log(audio.volume);
+          audio.volume -= 0.1;
         } else {
           clearInterval(fadeInterval);
+          audio.pause();
+          fadeInterval = null; // Restablecer el intervalo para el próximo fadeIn
         }
       } else {
-        if (volume > 0.1) {
-          console.log(volume);
-          volume -= 0.1;
-          //   if (volume < 0) volume = 0;
+        // Aumentar el volumen del audio
+        audio.play();
+        if (audio.volume < 0.9) {
+          console.log(audio.volume);
+          audio.volume += 0.1;
         } else {
           clearInterval(fadeInterval);
-          audioElement.pause();
+          fadeInterval = null; // Restablecer el intervalo para el próximo fadeOut
         }
       }
-      audioElement.volume = volume;
     }, 222);
   }
 
@@ -135,11 +147,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     //Manejo del sonido al hacer hover y msje condicional
     let timerMsje = null;
+    $sound.volume = 0;
     d.addEventListener('mouseover', (e) => {
       if (e.target.matches('img#profile-pic')) {
         if ($audioToggleBtn.classList.contains('fa-volume-high')) {
           console.log('Mouseover detectado');
-          fadeInOut($sound, true);
+          fadeInOut($sound);
         }
         imgInterval('Create');
         timerMsje = setTimeout(() => {
@@ -150,7 +163,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     d.addEventListener('mouseout', (e) => {
       if (e.target.matches('img#profile-pic')) {
-        fadeInOut($sound, false);
+        fadeInOut($sound);
         clearTimeout(timerMsje);
       }
     });
