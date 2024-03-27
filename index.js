@@ -162,6 +162,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     d.addEventListener('mouseout', (e) => {
       if (e.target.matches('img#profile-pic')) {
+        $sound.volume = 0.5;
         fadeInOut($sound);
         clearTimeout(timerMsje);
       }
