@@ -18,8 +18,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
   function fadeInOut(audio) {
-    // Limpiar intervalo existente si hay uno
+    if (!$audioToggleBtn.classList.contains('fa-volume-high')) return;
     if (fadeInterval) {
+      // Limpiar intervalo existente si hay uno
       clearInterval(fadeInterval);
     }
 
@@ -150,10 +151,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $sound.volume = 0;
     d.addEventListener('mouseover', (e) => {
       if (e.target.matches('img#profile-pic')) {
-        if ($audioToggleBtn.classList.contains('fa-volume-high')) {
-          console.log('Mouseover detectado');
-          fadeInOut($sound);
-        }
+        console.log('Mouseover detectado');
+        fadeInOut($sound);
         imgInterval('Create');
         timerMsje = setTimeout(() => {
           d.getElementById('msje-condicional').style.display = 'none';
