@@ -183,7 +183,7 @@ img#profile-pic:hover {
   margin: 1.5rem;
 }
 
-#seccion-cursos-proyectos {
+#seccion-cpe {
   background-color: var(--color-claro);
   color: var(--color-oscuro);
   padding-top: 20px;
@@ -191,33 +191,33 @@ img#profile-pic:hover {
   text-align: center;
 }
 
-#cursos-proyectos {
+#seccion-cpe h2 {
+  margin: 50px 0;
+}
+
+.cpe {
   width: 85%;
   display: grid;
-  grid-template-columns: repeat(3, 10fr 1fr);
+  grid-template-columns: 10fr 1fr 10fr 1fr 10fr;
   margin: auto;
   padding-top: 10px;
 }
 
 .card {
   display: grid;
-  grid-template-rows: 20% 70% 10%;
+  grid-template-rows: 10% 80% 10%;
   text-align: center;
   align-items: center;
   width: 100%;
-  border: solid var(--color-oscuro) 1px;
+  /* border: solid var(--color-oscuro) 1px; */
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   gap: 3px;
 }
 
 .card img {
   width: 100%;
-}
-
-.card h3 {
-  margin-bottom: 10px;
 }
 
 .card a,
@@ -360,10 +360,6 @@ footer {
     padding-bottom: 10%;
   }
 
-  #seccion-aptitudes li {
-    margin-left: -20px;
-  }
-
   #seccion-tecnologias {
     padding: 0;
     margin: 0;
@@ -371,7 +367,7 @@ footer {
     padding: 10% 0;
   }
 
-  #seccion-cursos-proyectos {
+  #seccion-cpe {
     height: fit-content;
     display: flex;
     justify-content: flex-start;
@@ -380,12 +376,12 @@ footer {
     padding-top: 10px;
   }
 
-  #cursos-proyectos {
+  .cpe {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding: 10px 5px;
-    gap: 0px;
+    gap: 20px;
   }
 
   .card {
@@ -393,10 +389,6 @@ footer {
     width: 100%;
     border-radius: 10px;
     padding: 10px;
-  }
-
-  .card:last-child {
-    margin-bottom: -15px;
   }
 
   .card h3 {
