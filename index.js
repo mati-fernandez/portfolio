@@ -152,6 +152,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     d.addEventListener('mouseover', (e) => {
       if (e.target.matches('img#profile-pic')) {
         console.log('Mouseover detectado');
+        $sound.volume = 0;
         fadeInOut($sound);
         imgInterval('Create');
         timerMsje = setTimeout(() => {
