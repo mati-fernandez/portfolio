@@ -120,7 +120,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       pph.src = 'prof-pic-hover-v2.png';
     } else {
       pp.src = 'prof-pic.jpg';
-      pph.src = 'prof-pic-hover.jpg';
+      pph.src = 'prof-pic-hover.png';
     }
   };
 
