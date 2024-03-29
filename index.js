@@ -2,8 +2,8 @@ const d = document;
 //Establecer todo el js después de la carga del dom:
 d.addEventListener('DOMContentLoaded', (e) => {
   //Variables de uso global:
-  let timeout = 0;
   let fadeInterval = 0;
+  let autoImginterval = 0;
 
   console.log('Timeout Initialized!');
   //Selectores de uso global
@@ -17,16 +17,49 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $seccionAptitudes = d.querySelector('#seccion-aptitudes'),
     $seccionTecnologias = d.querySelector('#seccion-tecnologias'),
     $seccionCpe = d.querySelector('#seccion-cpe'),
-    $footer = d.querySelector('footer');
+    $footer = d.querySelector('footer'),
+    $msjeCondicional = d.getElementById('msje-condicional'),
+    $quoteMode = d.getElementById('quote-mode'),
+    $suggestiveFinger1 = d.getElementById('suggestive-finger1'),
+    $profileAudio = d.querySelector('#profile-audio'),
+    $thunderAudio = d.querySelector('#thunder'),
+    $rainAudio = d.querySelector('#rain'),
+    $suggestiveArrow = d.querySelector('#suggestive-arrow');
+  let contextIsOn = false;
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
 
   /************************* ESPACIO ******************************/
 
-  //Funcion de cambio de fondo al seccion-presentacion cuando hover en profile-pic
-  function presentacionBgChange(hover) {
+  //Funcion de cambio de fondo cuando hover en profile-pic
+  function matrixBg(hover) {
     const video = d.getElementById('matrix-bg');
     if (hover) {
+      $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
+      $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
+      $footer.style.backgroundColor = 'rgba(0,0,0,0)';
+      video.style.opacity = 100;
+    } else if (!contextIsOn) {
+      video.style.opacity = 0;
+      $header.style.backgroundColor = 'var(--color1)';
+      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
+      $seccionAptitudes.style.backgroundColor = 'var(--color2)';
+      $seccionTecnologias.style.backgroundColor = 'var(--color1)';
+      $seccionCpe.style.backgroundColor = 'var(--color2)';
+      $footer.style.backgroundColor = 'var(--color1)';
+      if (window.innerWidth > 630)
+        $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+    }
+  }
+
+  //Funcion de cambio de fondo al hacer click derecho en prof-pic
+  function matrix2Bg(clicked) {
+    const video = d.getElementById('matrix2-bg');
+    if (clicked) {
       $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
       $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
@@ -61,7 +94,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     fadeInterval = setInterval(() => {
       console.log('Fade interval ID', fadeInterval);
-
       if (isFadingOut) {
         // Desvanecer el audio
         if (audio.volume > 0.1) {
@@ -72,7 +104,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
           audio.pause();
           fadeInterval = null; // Restablecer el intervalo para el próximo fadeIn
         }
-      } else {
+      } else if (!contextIsOn) {
         // Aumentar el volumen del audio
         audio.play();
         if (audio.volume < 0.9) {
@@ -82,6 +114,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
           clearInterval(fadeInterval);
           fadeInterval = null; // Restablecer el intervalo para el próximo fadeOut
         }
+      } else {
+        clearInterval(fadeInterval); //para no seguir ejecuntando el intervalo en contextIsOn
       }
     }, 222);
   }
@@ -89,27 +123,39 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Evitar el long press en mobile
   d.addEventListener('contextmenu', function (event) {
     event.preventDefault();
-    if (window.innerWidth > 630) {
-      const guiterGif = d.getElementById('guitar-gif');
-      guiterGif.style.display = 'block';
-      const computedStyle = window.getComputedStyle($cajaCentral);
-
-      // Obtener el ancho exacto de $cajaCentral en píxeles
-      const $cajaCentralWidth = parseFloat(computedStyle.width);
-
-      // Establecer el ancho de gifAnimado con el ancho de $cajaCentral
-      guiterGif.style.width = $cajaCentralWidth + 'px';
-      clearTimeout(timeout);
-      console.log('Timeout cleared');
-      timeout = setTimeout(() => {
-        console.log('Timeout Created!');
-        guiterGif.style.display = 'none';
-      }, 3000);
+    if (event.target.matches('img#profile-pic')) {
+      if (!contextIsOn) {
+        $profileAudio.pause();
+        $thunderAudio.play();
+        $rainAudio.volume = 0.5;
+        console.log($rainAudio.volume);
+        $rainAudio.play();
+        //hacer aca cambio de foto
+        $msjeCondicional.style.display = 'none';
+        $quoteMode.style.opacity = 100;
+        $suggestiveFinger1.style.opacity = 100;
+        matrix2Bg(true);
+      }
+      contextIsOn = true;
     }
-  });
+    // if (window.innerWidth > 630) {
+    //   const guiterGif = d.getElementById('guitar-gif');
+    //   guiterGif.style.display = 'block';
+    //   const computedStyle = window.getComputedStyle($cajaCentral);
 
-  //Inicializando interval global
-  let interval = 0;
+    //   // Obtener el ancho exacto de $cajaCentral en píxeles
+    //   const $cajaCentralWidth = parseFloat(computedStyle.width);
+
+    //   // Establecer el ancho de gifAnimado con el ancho de $cajaCentral
+    //   guiterGif.style.width = $cajaCentralWidth + 'px';
+    //   clearTimeout(timeout);
+    //   console.log('Timeout cleared');
+    //   timeout = setTimeout(() => {
+    //     console.log('Timeout Created!');
+    //     guiterGif.style.display = 'none';
+    //   }, 3000);
+    // }
+  });
 
   //Funcion de cambio de prof-pic
   const imgToggle = () => {
@@ -126,11 +172,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Reemplazo de prof-pic por tiempo
   const imgInterval = (mode) => {
-    clearInterval(interval);
+    clearInterval(autoImginterval);
     console.log('Interval cleared');
-    interval = setInterval(() => {
+    autoImginterval = setInterval(() => {
       imgToggle();
-      console.log('interval ID', interval);
+      console.log('interval ID', autoImginterval);
     }, 33000);
     console.log('Interval Created!');
   };
@@ -156,23 +202,23 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
   };
 
-  //Manejo del boton change para prof-pic
-  const $changeImg = d.querySelector('#img-toggle');
+  //Manejo de eventos click
   d.addEventListener('click', (e) => {
+    //Manejo del boton change para prof-pic
     if (e.target.matches('#img-toggle')) {
       imgInterval('Create');
       imgToggle();
       imgToggleEffect();
+      $suggestiveFinger1.style.opacity = 0;
     }
   });
 
   //Manejo del botón de sonido
   const profilePicSound = () => {
-    const $sound = d.querySelector('#profile-audio'),
-      $suggestiveArrow = d.querySelector('#suggestive-arrow');
     d.addEventListener('click', (e) => {
       if (e.target.matches('#audio-toggle')) {
-        $suggestiveArrow.style.display = 'none';
+        $suggestiveArrow.style.display =
+          $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
         $audioToggleBtn.classList.toggle('fa-volume-high');
         $audioToggleBtn.classList.toggle('fa-volume-xmark');
       }
@@ -180,14 +226,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     //Manejo del sonido al hacer hover y msje condicional
     let timerMsje = null;
-    $sound.volume = 0;
+    $profileAudio.volume = 0;
     d.addEventListener('mouseover', (e) => {
-      if (e.target.matches('img#profile-pic')) {
+      if (e.target.matches('img#profile-pic') && !contextIsOn) {
         console.log('Mouseover detectado');
-        $sound.volume = 0;
-        fadeInOut($sound);
+        $profileAudio.volume = 0;
+        fadeInOut($profileAudio);
         imgInterval('Create');
-        presentacionBgChange(true);
+        matrixBg(true);
         timerMsje = setTimeout(() => {
           d.getElementById('msje-condicional').style.display = 'none';
         }, 1500);
@@ -196,9 +242,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     d.addEventListener('mouseout', (e) => {
       if (e.target.matches('img#profile-pic')) {
-        $sound.volume = 0.5;
-        fadeInOut($sound);
-        presentacionBgChange(false);
+        $profileAudio.volume = 0.5;
+        fadeInOut($profileAudio);
+        matrixBg(false);
         clearTimeout(timerMsje);
       }
     });
