@@ -7,14 +7,46 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   console.log('Timeout Initialized!');
   //Selectores de uso global
-  const $cajaCentral = d.getElementById('caja-central'),
+  const $body = d.getElementsByTagName('body'),
+    $header = d.getElementById('header'),
+    $cajaCentral = d.getElementById('caja-central'),
     $cajaCara = d.querySelector('#caja-cara img:nth-child(2)'),
+    $cajaPresentacion = d.querySelector('#caja-presentacion'),
     $audioEffect1 = d.createElement('audio'),
-    $audioToggleBtn = d.querySelector('#audio-toggle');
+    $audioToggleBtn = d.querySelector('#audio-toggle'),
+    $seccionAptitudes = d.querySelector('#seccion-aptitudes'),
+    $seccionTecnologias = d.querySelector('#seccion-tecnologias'),
+    $seccionCpe = d.querySelector('#seccion-cpe'),
+    $footer = d.querySelector('footer');
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
 
   /************************* ESPACIO ******************************/
+
+  //Funcion de cambio de fondo al seccion-presentacion cuando hover en profile-pic
+  function presentacionBgChange(hover) {
+    const video = d.getElementById('matrix-bg');
+    if (hover) {
+      $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
+      $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
+      $footer.style.backgroundColor = 'rgba(0,0,0,0)';
+      video.style.opacity = 100;
+    } else {
+      video.style.opacity = 0;
+      $header.style.backgroundColor = 'var(--color1)';
+      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
+      $seccionAptitudes.style.backgroundColor = 'var(--color2)';
+      $seccionTecnologias.style.backgroundColor = 'var(--color1)';
+      $seccionCpe.style.backgroundColor = 'var(--color2)';
+      $footer.style.backgroundColor = 'var(--color1)';
+      if (window.innerWidth > 630)
+        $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+    }
+  }
 
   //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
   function fadeInOut(audio) {
@@ -84,8 +116,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     const pp = d.querySelector('#profile-pic');
     const pph = d.querySelector('#matrix');
     if (pp.src.includes('prof-pic.jpg')) {
-      pp.src = 'prof-pic-v2.jpg';
-      pph.src = 'prof-pic-hover-v2.jpg';
+      pp.src = 'prof-pic-v2.png';
+      pph.src = 'prof-pic-hover-v2.png';
     } else {
       pp.src = 'prof-pic.jpg';
       pph.src = 'prof-pic-hover.jpg';
@@ -155,6 +187,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $sound.volume = 0;
         fadeInOut($sound);
         imgInterval('Create');
+        presentacionBgChange(true);
         timerMsje = setTimeout(() => {
           d.getElementById('msje-condicional').style.display = 'none';
         }, 1500);
@@ -165,6 +198,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (e.target.matches('img#profile-pic')) {
         $sound.volume = 0.5;
         fadeInOut($sound);
+        presentacionBgChange(false);
         clearTimeout(timerMsje);
       }
     });

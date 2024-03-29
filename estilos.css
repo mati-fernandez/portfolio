@@ -1,6 +1,9 @@
 :root {
-  --color-claro: #a9bab2;
-  --color-oscuro: #303030;
+  --color1: #303e2d;
+  --color2: #000000;
+  --color3: #ffffff;
+  --matrixBgTransition: background-color 2.8s ease-in-out;
+  --matrixOpTransition: opacity 2.8s ease-in-out;
 }
 
 ::-webkit-scrollbar {
@@ -20,13 +23,29 @@ html {
   line-height: 2rem;
 }
 
+#matrix-bg {
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: var(--matrixOpTransition);
+  opacity: 0;
+}
+
 header {
   height: 10vh;
-  background-color: var(--color-claro);
+  background-color: var(--color1);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-oscuro);
+  color: var(--color3);
+  z-index: 1;
+  position: relative;
+  transition: var(--matrixBgTransition);
 }
 
 body {
@@ -34,6 +53,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   text-wrap: balance;
   user-select: none;
+  background-color: var(--color2);
 }
 
 section {
@@ -54,7 +74,7 @@ div {
   top: 20px;
   left: 20px;
   background: none;
-  z-index: 1;
+  z-index: 5;
 }
 
 #audio-toggle {
@@ -67,7 +87,7 @@ div {
   top: 20px;
   right: 20px;
   background: none;
-  z-index: 1;
+  z-index: 5;
 }
 
 #suggestive-arrow {
@@ -75,6 +95,7 @@ div {
   position: absolute;
   top: 80px;
   right: 27px;
+  z-index: 5;
 }
 
 #seccion-presentacion {
@@ -83,7 +104,7 @@ div {
   flex-direction: row;
   justify-content: center;
   height: 90vh;
-  background-color: var(--color-oscuro);
+  background-color: var(--color2);
   color: white;
 }
 
@@ -91,7 +112,7 @@ div {
   display: none;
   position: absolute;
   top: 60px;
-  z-index: 1;
+  z-index: 5;
 }
 
 #caja-central {
@@ -103,6 +124,7 @@ div {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.368);
+  z-index: 1;
 }
 
 #caja-cara {
@@ -129,11 +151,12 @@ img#profile-pic:hover {
   justify-content: center;
   align-items: center;
   width: 60%;
-  background-color: var(--color-claro);
-  color: #303030;
+  background-color: var(--color1);
+  color: var(--color3);
   padding: 28px 30px 30px 25px;
   line-height: 3.5vh;
   text-align: center;
+  transition: var(--matrixBgTransition);
 }
 
 .fa-chevron-down {
@@ -143,17 +166,20 @@ img#profile-pic:hover {
   position: absolute;
   bottom: 20px;
   cursor: pointer;
+  z-index: 5;
 }
 
 #seccion-aptitudes {
-  background-color: var(--color-claro);
+  background-color: var(--color2);
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--color-oscuro);
+  color: var(--color3);
   text-wrap: balance;
+  z-index: 1;
+  transition: var(--matrixBgTransition);
 }
 
 #seccion-aptitudes > p:nth-of-type(1) {
@@ -161,14 +187,15 @@ img#profile-pic:hover {
 }
 
 #seccion-tecnologias {
-  background-color: var(--color-oscuro);
+  background-color: var(--color1);
   height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #303030;
   padding: 3% 21%;
+  z-index: 1;
+  transition: var(--matrixBgTransition);
 }
 
 #tech-list {
@@ -184,11 +211,13 @@ img#profile-pic:hover {
 }
 
 #seccion-cpe {
-  background-color: var(--color-claro);
-  color: var(--color-oscuro);
+  background-color: var(--color2);
+  color: var(--color3);
   padding-top: 20px;
   padding-bottom: 50px;
   text-align: center;
+  z-index: 1;
+  transition: var(--matrixBgTransition);
 }
 
 #seccion-cpe h2 {
@@ -222,7 +251,7 @@ img#profile-pic:hover {
 
 .card a,
 footer a {
-  color: var(--color-oscuro);
+  color: var(--color3);
 }
 
 .red-social {
@@ -231,10 +260,16 @@ footer a {
   margin: 0 40px;
 }
 
+#msje-condicional {
+  z-index: 1;
+}
+
 #msje-condicional div {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--color2);
+  background-color: #ffffff;
 }
 
 #a-ver {
@@ -245,16 +280,18 @@ footer a {
 }
 
 footer {
-  background-color: var(--color-oscuro);
+  background-color: var(--color1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--color3);
   font-weight: lighter;
   height: 25vh;
   padding-bottom: 30px;
   position: relative;
+  z-index: 1;
+  transition: var(--matrixBgTransition);
 }
 
 #contacto {
@@ -265,7 +302,6 @@ footer {
   width: 55%;
   display: flex;
   justify-content: center;
-  /* align-items: flex-end; */
   padding: 10px 0 25px 0;
   & a {
     margin: 0 -30px 0 -30px;
@@ -309,8 +345,7 @@ footer {
     height: fit-content;
     flex-direction: column;
     margin: auto;
-    border-radius: 0;
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0); /*para pisar el otro*/
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0); /*para pisar el otro */
   }
 
   #caja-cara {
