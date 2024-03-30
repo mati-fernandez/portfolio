@@ -4,8 +4,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Variables de uso global:
   let fadeInterval = 0;
   let autoImginterval = 0;
+  const pic1 = d.querySelector('#profile-pic').src;
+  const pic1h = d.querySelector('#matrix').src;
+  const pic2 = 'prof-pic.png';
+  const pic2h = 'prof-pic-hover.png';
 
-  console.log('Timeout Initialized!');
   //Selectores de uso global
   const $body = d.getElementsByTagName('body'),
     $header = d.getElementById('header'),
@@ -24,7 +27,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $profileAudio = d.querySelector('#profile-audio'),
     $thunderAudio = d.querySelector('#thunder'),
     $rainAudio = d.querySelector('#rain'),
-    $suggestiveArrow = d.querySelector('#suggestive-arrow');
+    $suggestiveArrow = d.querySelector('#suggestive-arrow'),
+    $cajaFondo = d.querySelector('#caja-fondo'),
+    $imgProfPic = d.querySelector('#profile-pic'),
+    $imgToggle = d.querySelector('#img-toggle');
   let contextIsOn = false;
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
@@ -42,6 +48,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
       $footer.style.backgroundColor = 'rgba(0,0,0,0)';
+      $cajaFondo.style.opacity = 0;
+      $imgProfPic.style.opacity = 0;
       video.style.opacity = 100;
     } else if (!contextIsOn) {
       video.style.opacity = 0;
@@ -51,8 +59,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'var(--color1)';
       $seccionCpe.style.backgroundColor = 'var(--color2)';
       $footer.style.backgroundColor = 'var(--color1)';
+      $cajaFondo.style.opacity = 100;
+      $imgProfPic.style.opacity = 100;
       if (window.innerWidth > 630)
-        $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+        $cajaFondo.style.backgroundColor = 'var(--color1)';
     }
   }
 
@@ -67,6 +77,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
       $footer.style.backgroundColor = 'rgba(0,0,0,0)';
+      $imgToggle.classList.add('fa-shake');
       video.style.opacity = 100;
     } else {
       video.style.opacity = 0;
@@ -76,6 +87,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'var(--color1)';
       $seccionCpe.style.backgroundColor = 'var(--color2)';
       $footer.style.backgroundColor = 'var(--color1)';
+      $imgToggle.classList.remove('fa-shake');
       if (window.innerWidth > 630)
         $cajaPresentacion.style.backgroundColor = 'var(--color1)';
     }
@@ -125,15 +137,19 @@ d.addEventListener('DOMContentLoaded', (e) => {
     event.preventDefault();
     if (event.target.matches('img#profile-pic')) {
       if (!contextIsOn) {
-        $profileAudio.pause();
-        $thunderAudio.play();
-        $rainAudio.volume = 0.5;
-        console.log($rainAudio.volume);
-        $rainAudio.play();
+        if ($audioToggleBtn.classList.contains('fa-volume-high')) {
+          $profileAudio.pause();
+          $thunderAudio.play();
+          $rainAudio.volume = 0.5;
+          console.log($rainAudio.volume); //ver este tema
+          $rainAudio.play();
+        }
         //hacer aca cambio de foto
         $msjeCondicional.style.display = 'none';
         $quoteMode.style.opacity = 100;
-        $suggestiveFinger1.style.opacity = 100;
+        setTimeout(() => {
+          $suggestiveFinger1.style.opacity = 100;
+        }, 2000);
         matrix2Bg(true);
       }
       contextIsOn = true;
@@ -161,24 +177,24 @@ d.addEventListener('DOMContentLoaded', (e) => {
   const imgToggle = () => {
     const pp = d.querySelector('#profile-pic');
     const pph = d.querySelector('#matrix');
-    if (pp.src.includes('prof-pic.jpg')) {
-      pp.src = 'prof-pic-v2.png';
-      pph.src = 'prof-pic-hover-v2.png';
+    if (pp.src.includes(pic1)) {
+      pp.src = pic2;
+      pph.src = pic2h;
     } else {
-      pp.src = 'prof-pic.jpg';
-      pph.src = 'prof-pic-hover.png';
+      pp.src = pic1;
+      pph.src = pic1h;
     }
   };
 
   //Reemplazo de prof-pic por tiempo
   const imgInterval = (mode) => {
     clearInterval(autoImginterval);
-    console.log('Interval cleared');
+    console.log('auto change img Interval cleared');
     autoImginterval = setInterval(() => {
       imgToggle();
-      console.log('interval ID', autoImginterval);
+      console.log('auto change img interval ID', autoImginterval);
     }, 33000);
-    console.log('Interval Created!');
+    console.log('auto change img Interval CREATED!');
   };
   imgInterval('Create');
 
@@ -214,13 +230,20 @@ d.addEventListener('DOMContentLoaded', (e) => {
   });
 
   //Manejo del botón de sonido
-  const profilePicSound = () => {
+  const handleSound = () => {
     d.addEventListener('click', (e) => {
       if (e.target.matches('#audio-toggle')) {
         $suggestiveArrow.style.display =
           $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
         $audioToggleBtn.classList.toggle('fa-volume-high');
         $audioToggleBtn.classList.toggle('fa-volume-xmark');
+        if ($rainAudio.paused && contextIsOn) {
+          $rainAudio.play();
+          $thunderAudio.play();
+        } else {
+          $rainAudio.pause();
+          $thunderAudio.pause();
+        }
       }
     });
 
@@ -250,7 +273,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     });
   };
 
-  profilePicSound();
+  handleSound();
 
   //Manejo de los botones flecha animadas para deslizar pagina
   d.addEventListener('click', (e) => {

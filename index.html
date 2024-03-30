@@ -23,7 +23,6 @@
     />
     <link rel="stylesheet" href="estilos.css" />
   </head>
-
   <body>
     <h3 id="quote-mode">Quote Mode ON!</h3>
     <video src="matrix-bg.mp4" id="matrix-bg" autoplay muted loop></video>
@@ -33,11 +32,13 @@
     </header>
 
     <section id="seccion-presentacion">
-      <i
-        id="suggestive-finger1"
-        class="fa-solid fa-hand-point-up fa-bounce fa-xl"
-        data-aos="fade-in"
-      ></i>
+      <div id="suggestive-finger1-wrapper">
+        <div
+          id="suggestive-finger1"
+          class="fa-solid fa-hand-point-up fa-bounce"
+          data-aos="fade-in"
+        ></div>
+      </div>
       <i
         id="img-toggle"
         class="fa-solid fa-arrows-rotate"
@@ -48,7 +49,12 @@
         class="fa-solid fa-volume-xmark"
         data-aos="fade-in"
       ></i>
-      <i id="suggestive-arrow" class="fa-solid fa-arrow-up fa-bounce fa-lg"></i>
+      <div id="suggestive-arrow-wrapper">
+        <div
+          id="suggestive-arrow"
+          class="fa-solid fa-arrow-up fa-bounce fa-lg"
+        ></div>
+      </div>
       <audio id="profile-audio" src="profile-pic-sound.mp3"></audio>
       <audio id="thunder" src="thunder.mp3"></audio>
       <audio id="rain" src="rain.mp3" loop></audio>
@@ -58,6 +64,7 @@
         id="guitar-gif"
       />
       <div id="caja-central" data-aos="zoom-in">
+        <div id="caja-fondo"></div>
         <div id="caja-cara">
           <img
             src="prof-pic-hover-v2.png"
@@ -84,7 +91,7 @@
       </div>
       <i class="fa fa-solid fa-chevron-down fa-bounce" id="first-page"></i>
     </section>
-    <section id="seccion-aptitudes">
+    <section id="seccion-aptitudes" loading="lazy">
       <h2 data-aos="zoom-in" data-aos-offset="40">Aptitudes</h2>
       <!-- Las aptitudes si se siguen sumando quizas es mejor en cuadros, podria unificarlo con los de la siguiente sección -->
       <ul>
@@ -123,7 +130,7 @@
       </ul>
       <i class="fa fa-solid fa-chevron-down fa-bounce" id="second-page"></i>
     </section>
-    <section id="seccion-tecnologias">
+    <section id="seccion-tecnologias" loading="lazy">
       <div id="tech-list">
         <img
           data-aos-offset="50"
@@ -197,7 +204,7 @@
         />
       </div>
     </section>
-    <section id="seccion-cpe">
+    <section id="seccion-cpe" loading="lazy">
       <div>
         <!-- CERTIFICACIONES -->
         <h2 data-aos="zoom-in" data-aos-offset="50">Certificaciones</h2>
@@ -334,7 +341,7 @@
         <button id="a-ver">A ver...</button>
       </div>
     </section>
-    <footer>
+    <footer loading="lazy">
       <h2 id="contacto" data-aos="zoom-in" data-aos-offset="-100">Contacto</h2>
       <div class="contacto-links">
         <a
