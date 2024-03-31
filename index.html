@@ -24,13 +24,12 @@
     <link rel="stylesheet" href="estilos.css" />
   </head>
   <body>
-    <h3 id="quote-mode">Quote Mode ON!</h3>
+    <img src="quote-mode.gif" id="quote-mode" />
     <video src="matrix-bg.mp4" id="matrix-bg" autoplay muted loop></video>
     <video src="matrix2-bg.mp4" id="matrix2-bg" autoplay muted loop></video>
     <header id="header">
       <h3 class="animate__animated animate__backInDown">Fernández Matías</h3>
     </header>
-
     <section id="seccion-presentacion">
       <div id="suggestive-finger1-wrapper">
         <div
@@ -58,11 +57,6 @@
       <audio id="profile-audio" src="profile-pic-sound.mp3"></audio>
       <audio id="thunder" src="thunder.mp3"></audio>
       <audio id="rain" src="rain.mp3" loop></audio>
-      <img
-        src="guitar.gif"
-        alt="GIF animado, guitarra se convierte en hacha"
-        id="guitar-gif"
-      />
       <div id="caja-central" data-aos="zoom-in">
         <div id="caja-fondo"></div>
         <div id="caja-cara">
@@ -333,35 +327,37 @@
         </div>
       </div>
     </section>
-    <section id="msje-condicional" data-aos="zoom-in" data-aos-offset="80">
+    <section id="msje-condicional">
       <div>
-        <p>
+        <p data-aos="zoom-in" data-aos-offset="80">
           Menos mal que no tocaste mi foto de perfil, si no se caía el sistema!
         </p>
-        <button id="a-ver">A ver...</button>
+        <button id="a-ver" data-aos="zoom-in" data-aos-offset="80">
+          A ver...
+        </button>
       </div>
     </section>
     <footer loading="lazy">
       <h2 id="contacto" data-aos="zoom-in" data-aos-offset="-100">Contacto</h2>
       <div class="contacto-links">
-        <a
-          href="https://www.linkedin.com/in/mati-fernandez/"
-          target="_blank"
-          data-aos="flip-right"
-          data-aos-offset="-100"
-        >
-          <img src="linkedin.jpg" class="red-social" alt="linkedin" />
-        </a>
-        <a
-          href="https://github.com/mati-fernandez"
-          target="_blank"
-          data-aos="flip-left"
-          data-aos-offset="-100"
-        >
-          <img src="github.jpg" class="red-social" alt="github" />
-        </a>
+        <a href="https://www.linkedin.com/in/mati-fernandez" target="_blank">
+          <img
+            src="linkedin.jpg"
+            class="red-social"
+            alt="linkedin"
+            data-aos="flip-right"
+            data-aos-offset="-180"
+        /></a>
+        <a href="https://github.com/mati-fernandez" target="_blank">
+          <img
+            src="github.jpg"
+            class="red-social"
+            alt="github"
+            data-aos="flip-left"
+            data-aos-offset="-180"
+        /></a>
       </div>
-      <i id="scroll-to-top" class="fa-solid fa-arrow-up fa-lg"></i>
+      <i id="scroll-to-top" class="fas fa-arrow-up fa-lg"></i>
     </footer>
     <!-- Scripts cargan al final -->
     <script

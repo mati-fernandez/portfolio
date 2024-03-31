@@ -13,10 +13,10 @@
   background: grey;
 }
 ::-webkit-scrollbar-thumb {
-  background: darkgrey;
+  background: rgb(255, 255, 255);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #505050;
+  background: #000000;
 }
 html {
   scroll-behavior: smooth;
@@ -50,15 +50,14 @@ html {
 }
 
 #quote-mode {
-  position: absolute;
-  z-index: 5;
-  top: 8vh;
-  left: 50%;
+  position: fixed;
+  display: none;
+  top: 50vh;
+  left: 50vw;
   transform: translate(-50%, -50%);
-  color: var(--color3);
-  transition: var(--matrixOpTransition);
-  opacity: 0;
-  text-align: center;
+  width: 800px;
+  height: 400px;
+  z-index: 7;
 }
 
 header {

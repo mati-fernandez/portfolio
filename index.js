@@ -22,7 +22,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $seccionCpe = d.querySelector('#seccion-cpe'),
     $footer = d.querySelector('footer'),
     $msjeCondicional = d.getElementById('msje-condicional'),
-    $quoteMode = d.getElementById('quote-mode'),
     $suggestiveFinger1 = d.getElementById('suggestive-finger1'),
     $profileAudio = d.querySelector('#profile-audio'),
     $thunderAudio = d.querySelector('#thunder'),
@@ -30,7 +29,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $suggestiveArrow = d.querySelector('#suggestive-arrow'),
     $cajaFondo = d.querySelector('#caja-fondo'),
     $imgProfPic = d.querySelector('#profile-pic'),
-    $imgToggle = d.querySelector('#img-toggle');
+    $imgToggle = d.querySelector('#img-toggle'),
+    $quoteModeGif = d.querySelector('#quote-mode');
+
   let contextIsOn = false;
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
@@ -146,10 +147,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
         }
         //hacer aca cambio de foto
         $msjeCondicional.style.display = 'none';
-        $quoteMode.style.opacity = 100;
+        $quoteModeGif.style.display = 'block';
         setTimeout(() => {
+          $quoteModeGif.style.display = 'none';
           $suggestiveFinger1.style.opacity = 100;
-        }, 2000);
+        }, 3700);
         matrix2Bg(true);
       }
       contextIsOn = true;
