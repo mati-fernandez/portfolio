@@ -31,7 +31,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $imgProfPic = d.querySelector('#profile-pic'),
     $imgToggle = d.querySelector('#img-toggle'),
     $quoteModeGif = d.querySelector('#quote-mode'),
-    $cajaFdoMobile = d.querySelector('#caja-fondo-mobile');
+    $cajaFdoMobile = d.querySelector('#caja-fondo-mobile'),
+    $qModeBkgIntro = d.querySelector('#quote-mode-bkg-intro'),
+    $mobileQModeBkgIntro = d.querySelector('#mobile-quote-mode-bkg-intro');
 
   let contextIsOn = false;
   $audioEffect1.src = 'toggleImg.mp3';
@@ -150,9 +152,21 @@ d.addEventListener('DOMContentLoaded', (e) => {
         }
         //hacer aca cambio de foto
         $msjeCondicional.style.display = 'none';
+        $cajaCentral.style.opacity = 0;
         $quoteModeGif.style.display = 'block';
+        if (window.innerWidth > 630) {
+          $qModeBkgIntro.style.display = 'block';
+        } else {
+          $mobileQModeBkgIntro.style.display = 'block';
+        }
         setTimeout(() => {
+          $cajaCentral.style.opacity = 100;
           $quoteModeGif.style.display = 'none';
+          if (window.innerWidth > 630) {
+            $qModeBkgIntro.style.display = 'none';
+          } else {
+            $mobileQModeBkgIntro.style.display = 'none';
+          }
           $suggestiveFinger1.style.opacity = 100;
         }, 3700);
         matrix2Bg(true);
@@ -218,7 +232,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
       $cajaCara.style.boxShadow = '0 0 20px 3px white';
       const timeout = setTimeout(() => {
-        $cajaCara.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.156)';
+        $cajaCara.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
       }, 200);
     }
   };

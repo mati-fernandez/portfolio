@@ -60,6 +60,18 @@ html {
   z-index: 7;
 }
 
+#mobile-quote-mode-bkg-intro {
+  display: none;
+}
+
+#quote-mode-bkg-intro {
+  position: absolute;
+  width: 100%;
+  top: 10vh;
+  display: none;
+  z-index: 1;
+}
+
 header {
   height: 10vh;
   background-color: var(--color1);
@@ -142,7 +154,7 @@ div {
 
 #caja-central {
   margin: auto;
-  width: 580px;
+  width: 600px;
   height: 300px;
   display: flex;
   flex-direction: row;
@@ -162,7 +174,6 @@ div {
 #caja-cara {
   position: relative;
   display: flex;
-  justify-content: center;
   width: 40%;
 }
 
@@ -365,6 +376,18 @@ footer {
     z-index: 7;
   }
 
+  #mobile-quote-mode-bkg-intro {
+    position: absolute;
+    width: 100%;
+    top: 10vh;
+    display: none;
+    z-index: 1;
+  }
+
+  #quote-mode-bkg-intro {
+    top: 10vh;
+  }
+
   #seccion-presentacion {
     height: 90svh;
   }
@@ -418,6 +441,7 @@ footer {
     overflow: hidden;
     border-radius: 200px;
     transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
+    justify-content: center;
   }
 
   #caja-fondo-mobile {
