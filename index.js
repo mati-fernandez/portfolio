@@ -13,7 +13,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   const $body = d.getElementsByTagName('body'),
     $header = d.getElementById('header'),
     $cajaCentral = d.getElementById('caja-central'),
-    $cajaCara = d.querySelector('#caja-cara img:nth-child(2)'),
+    $cajaCara = d.querySelector('#caja-cara'),
     $cajaPresentacion = d.querySelector('#caja-presentacion'),
     $audioEffect1 = d.createElement('audio'),
     $audioToggleBtn = d.querySelector('#audio-toggle'),
@@ -26,11 +26,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $profileAudio = d.querySelector('#profile-audio'),
     $thunderAudio = d.querySelector('#thunder'),
     $rainAudio = d.querySelector('#rain'),
-    $suggestiveArrow = d.querySelector('#suggestive-arrow'),
+    $suggestiveArrow = d.querySelector('#suggestive-arrow-wrapper'),
     $cajaFondo = d.querySelector('#caja-fondo'),
     $imgProfPic = d.querySelector('#profile-pic'),
     $imgToggle = d.querySelector('#img-toggle'),
-    $quoteModeGif = d.querySelector('#quote-mode');
+    $quoteModeGif = d.querySelector('#quote-mode'),
+    $cajaFdoMobile = d.querySelector('#caja-fondo-mobile');
 
   let contextIsOn = false;
   $audioEffect1.src = 'toggleImg.mp3';
@@ -50,6 +51,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
       $footer.style.backgroundColor = 'rgba(0,0,0,0)';
       $cajaFondo.style.opacity = 0;
+      $cajaFdoMobile.style.opacity = 0;
       $imgProfPic.style.opacity = 0;
       video.style.opacity = 100;
     } else if (!contextIsOn) {
@@ -61,6 +63,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionCpe.style.backgroundColor = 'var(--color2)';
       $footer.style.backgroundColor = 'var(--color1)';
       $cajaFondo.style.opacity = 100;
+      $cajaFdoMobile.style.opacity = 100;
       $imgProfPic.style.opacity = 100;
       if (window.innerWidth > 630)
         $cajaFondo.style.backgroundColor = 'var(--color1)';
@@ -249,7 +252,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
     });
 
-    //Manejo del sonido al hacer hover y msje condicional
+    //Manejo del hover en profile-pic y msje condicional
     let timerMsje = null;
     $profileAudio.volume = 0;
     d.addEventListener('mouseover', (e) => {

@@ -90,9 +90,6 @@ div {
 
 #img-toggle {
   cursor: pointer;
-  outline: 0;
-  border: 0;
-  border-radius: 50%;
   font-size: 25px;
   position: absolute;
   top: 50px;
@@ -143,13 +140,6 @@ div {
   color: white;
 }
 
-#guitar-gif {
-  display: none;
-  position: absolute;
-  top: 60px;
-  z-index: 5;
-}
-
 #caja-central {
   margin: auto;
   width: 580px;
@@ -158,7 +148,6 @@ div {
   flex-direction: row;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.368);
   z-index: 1;
 }
 
@@ -174,7 +163,6 @@ div {
   position: relative;
   display: flex;
   justify-content: center;
-  padding-left: 80px;
   width: 40%;
 }
 
@@ -186,6 +174,10 @@ div {
 
 img#profile-pic {
   z-index: 1;
+}
+
+#caja-fondo-mobile {
+  display: none;
 }
 
 img#matrix {
@@ -209,7 +201,7 @@ img#matrix {
 .fa-chevron-down {
   padding: 30px 50px 10px;
   font-size: 1em;
-  color: gray;
+  color: var(--color3);
   position: absolute;
   bottom: 20px;
   cursor: pointer;
@@ -364,26 +356,42 @@ footer {
 }
 
 @media (max-width: 630px) {
-  #seccion-presentacion {
-    height: fit-content;
-    position: relative;
+  #quote-mode {
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 50vw;
+    z-index: 7;
   }
 
-  #guitar-gif {
-    display: none;
+  #seccion-presentacion {
+    height: 90svh;
+  }
+
+  #suggestive-finger1-wrapper {
+    position: absolute;
+    z-index: 5;
+    top: 120px;
+    left: 57px;
+    transform: rotate(0deg);
   }
 
   #suggestive-finger1 {
-    top: 100px;
-    left: 55px;
+    opacity: 0;
+    font-size: 50px;
   }
 
   #img-toggle {
     padding: 25px;
+    top: 25px;
+    left: 25px;
   }
 
   #audio-toggle {
     padding: 25px;
+    top: 25px;
+    right: 25px;
   }
 
   #suggestive-arrow {
@@ -392,26 +400,35 @@ footer {
   }
 
   #caja-central {
-    width: 100%;
-    min-width: 0;
+    overflow: visible;
     height: fit-content;
     flex-direction: column;
-    margin: auto;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0); /*para pisar el otro */
   }
 
-  #caja-cara {
-    width: 100%;
-    height: 25vh;
-    margin-top: 50px;
+  #caja-fondo {
+    display: none;
   }
 
-  #caja-cara img {
-    position: absolute;
+  #caja-cara {
+    height: 30vh;
+    width: 30vh;
+    margin-top: 50px;
+    margin: auto;
+    overflow: hidden;
     border-radius: 200px;
-    max-width: 70%;
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.156);
-    z-index: 1;
+    transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
+  }
+
+  #caja-fondo-mobile {
+    display: block;
+    background-color: var(--color1);
+    position: absolute;
+    justify-content: center;
+    border-radius: 200px;
+    width: 100%;
+    height: 100%;
+    transition: var(--matrixOpTransition);
   }
 
   #caja-presentacion {
