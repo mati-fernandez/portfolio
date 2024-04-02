@@ -4,6 +4,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Selectores de uso global
   const $body = d.getElementsByTagName('body'),
     $header = d.getElementById('header'),
+    $seccionPresentacion = d.getElementById('seccion-presentacion'),
     $cajaCentral = d.getElementById('caja-central'),
     $cajaCara = d.querySelector('#caja-cara'),
     $cajaPresentacion = d.querySelector('#caja-presentacion'),
@@ -21,7 +22,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $suggestiveArrow = d.querySelector('#suggestive-arrow-wrapper'),
     $cajaFondo = d.querySelector('#caja-fondo'),
     $imgProfPic = d.querySelector('#profile-pic'),
-    $imgToggle = d.querySelector('#img-toggle'),
+    $changeButton = d.querySelector('#change-button'),
     $quoteModeGif = d.querySelector('#quote-mode'),
     $cajaFdoMobile = d.querySelector('#caja-fondo-mobile'),
     $qModeBkgIntro = d.querySelector('#quote-mode-bkg-intro'),
@@ -31,13 +32,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
     pic1h = d.querySelector('#matrix').src,
     pic2 = 'prof-pic.png',
     pic2h = 'prof-pic-hover.png',
-    $quoteText = d.querySelector('#presentacion');
+    $quoteText = d.querySelector('#presentacion'),
+    $typing = d.querySelector('#typing');
 
   //Variables de uso global:
   let fadeInterval = 0;
   let autoImginterval = 0;
   console.log('Auto Image interval INITIALIZED!!!');
-  let contextIsOn = false;
+  let quoteModeIsOn = false;
+  let quoteModeFirstLoad = true;
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
   const quotes = [
@@ -49,6 +52,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Downward Is The Only Way Forward.',
     "Dreams Feel Real While We're In Them. It's Only When We Wake Up That We Realize Something Was Actually Strange.",
     ' Many Dreams Within Dreams Is Too Unstable.',
+    'Have you ever felt that there is a script written by something greater than us?',
+    'In this game, the battle is for your soul. And the battle field is your mind',
+    "Agent Smith could be anywhere. Don't let him in",
+    'Respect the simulation',
+    "I'm trying to free your mind. But I can only show you the door. You're the one that has to walk through it.",
+    'The dream has become their reality. Who are you to say otherwise?',
+    "What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.",
+    'Never recreate from your memory. Always imagine new places!',
+    ' You keep telling yourself what you know. But what do you believe? What do you feel?',
+    'I’m Still Dreaming.',
+    'Admit It: You Don’t Believe In One Reality Anymore.',
+    'In The Dream State, Your Conscious Defenses Are Lowered And It Makes Your Thoughts Vulnerable To Theft.',
   ];
   const images = [
     'quote-mode-pic1.png',
@@ -59,6 +74,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let quoteImg = images[imgPosition];
   let quotePosition = 0;
   let quote = quotes[quotePosition];
+  let typed = null;
+
+  //Establecer volumenes (en hmtl no los toma al menos en chrome)
+  $typing.volume = 0.3;
 
   /************************* ESPACIO ******************************/
 
@@ -77,7 +96,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $cajaFdoMobile.style.opacity = 0;
       $imgProfPic.style.opacity = 0;
       video.style.opacity = 100;
-    } else if (!contextIsOn) {
+    } else if (!quoteModeIsOn) {
       video.style.opacity = 0;
       $header.style.backgroundColor = 'var(--color1)';
       $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
@@ -104,7 +123,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
       $footer.style.backgroundColor = 'rgba(0,0,0,0)';
-      $imgToggle.classList.add('fa-shake');
+      $changeButton.classList.add('fa-shake');
       video.style.opacity = 100;
     } else {
       video.style.opacity = 0;
@@ -114,7 +133,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'var(--color1)';
       $seccionCpe.style.backgroundColor = 'var(--color2)';
       $footer.style.backgroundColor = 'var(--color1)';
-      $imgToggle.classList.remove('fa-shake');
+      $changeButton.classList.remove('fa-shake');
       if (window.innerWidth > 630)
         $cajaPresentacion.style.backgroundColor = 'var(--color1)';
     }
@@ -143,7 +162,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
           audio.pause();
           fadeInterval = null; // Restablecer el intervalo para el próximo fadeIn
         }
-      } else if (!contextIsOn) {
+      } else if (!quoteModeIsOn) {
         // Aumentar el volumen del audio
         audio.play();
         if (audio.volume < 0.9) {
@@ -154,24 +173,54 @@ d.addEventListener('DOMContentLoaded', (e) => {
           fadeInterval = null; // Restablecer el intervalo para el próximo fadeOut
         }
       } else {
-        clearInterval(fadeInterval); //para no seguir ejecuntando el intervalo en contextIsOn
+        clearInterval(fadeInterval); //para no seguir ejecuntando el intervalo en quoteModeIsOn
       }
     }, 222);
   }
+
+  //Red pill animation
+  const animateRedPill = () => {
+    const tl = gsap.timeline();
+    tl.set('#red-pill', { display: 'block' });
+    tl.from('#red-pill', { duration: 4, y: -150 });
+    tl.from(
+      '#red-pill',
+      {
+        duration: 5,
+        opacity: 0,
+        ease: 'CustomEase.create("custom", "M0,0 C0,0 0.084,1.829 0.13,1.88 0.158,1.911 0.273,0.295 0.3,0.318 0.324,0.338 0.347,1.956 0.371,1.982 0.399,2.012 0.468,0.529 0.5,0.55 0.524,0.566 0.528,2.068 0.553,2.09 0.589,2.121 0.66,0.783 0.7,0.798 0.73,0.809 0.727,2.199 0.759,2.217 0.808,2.244 0.852,1.022 0.9,1.062 0.927,1.085 1,2.281 1,2.281 ")',
+      },
+      '-=5'
+    );
+    tl.to('#red-pill', {
+      duration: 1,
+      opacity: 0,
+      scaleX: 0.5,
+      scaleY: 0.5,
+      ease: 'slow',
+    });
+    tl.set('#red-pill', { display: 'none' });
+  };
 
   //Long press en mobile, click derecho en pc
   d.addEventListener('contextmenu', function (event) {
     event.preventDefault();
     if (event.target.matches('img#profile-pic')) {
-      if (!contextIsOn) {
+      if (!quoteModeIsOn) {
+        if (quoteModeFirstLoad) {
+          //////////////NADA POR AHORA ACA
+        }
         //manejo del sonido
         if ($audioToggleBtn.classList.contains('fa-volume-high')) {
           $profileAudio.pause();
+          $rainAudio.volume = 0.2;
+          $thunderAudio.volume = 0.3;
           $thunderAudio.play();
-          $rainAudio.volume = 0.5;
-          console.log($rainAudio.volume); //ver este tema
           $rainAudio.play();
         }
+        ///////////////////////////////
+        $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
+        animateRedPill();
         clearInterval(autoImginterval);
         console.log('auto img interval CLEARED!');
         $imgProfPic.style.opacity = 0;
@@ -180,14 +229,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $quoteModeGif.style.display = 'block';
         $quoteText.textContent = quotes[0];
         $quoteText.style.textShadow =
-          '2px 2px 2px #0033ff, -2px -2px 2px #0033ff';
+          '2px 2px 2px #b00000, -2px -2px 2px #b00000';
+
         if (window.innerWidth > 630) {
           $qModeBkgIntro.style.display = 'block';
         } else {
           $mobileQModeBkgIntro.style.display = 'block';
         }
         setTimeout(() => {
-          $imgToggle.style.textShadow =
+          $changeButton.style.textShadow =
             '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
           $matrixProfPic.src = quoteImg;
           $cajaCentral.style.opacity = 100;
@@ -201,13 +251,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
         }, 3700);
         matrix2Bg(true);
       }
-      contextIsOn = true;
+      quoteModeIsOn = true;
     }
   });
 
-  //Funcion de cambio de prof-pic
-  const imgToggle = () => {
-    if (!contextIsOn) {
+  //Funciones asignadas al changeButton
+  const handleChange = () => {
+    if (!quoteModeIsOn) {
       if ($imgProfPic.src.includes(pic1)) {
         $imgProfPic.src = pic2;
         $matrixProfPic.src = pic2h;
@@ -216,7 +266,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $matrixProfPic.src = pic1h;
       }
     } else {
-      //Aca recorrer array con +1 de las img y las quotes (mejor para ver si el texto entra en conflicto con la img, se pueden tocar)
       //Iteracion imagenes
       if (imgPosition < images.length - 1) {
         quoteImg = images[imgPosition + 1];
@@ -231,14 +280,38 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
       $matrixProfPic.src = quoteImg;
       //Iteracion quotes
+      console.log('Quote number', quotePosition + 2);
       if (quotePosition < quotes.length - 1) {
         quote = quotes[quotePosition + 1];
         quotePosition += 1;
       } else {
+        //   exitQuoteMode();
+        // location.reload();
         quote = quotes[0];
         quotePosition = 0;
       }
       $quoteText.textContent = quote;
+      //Typed.js
+      if (typed) {
+        typed.destroy();
+      }
+      let options = {
+        showCursor: false,
+        strings: [quote],
+        typeSpeed: 50,
+        loop: false,
+        smartBackspace: false,
+        backDelay: 50000, //ms
+        preStringTyped: (arrayPos, self) => {
+          if ($audioToggleBtn.classList.contains('fa-volume-high'))
+            $typing.play();
+        },
+        onComplete: (self) => {
+          $typing.pause();
+          $typing.currentTime = 0;
+        },
+      };
+      typed = new Typed('#presentacion', options);
     }
   };
 
@@ -247,7 +320,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     clearInterval(autoImginterval);
     console.log('auto change img Interval cleared');
     autoImginterval = setInterval(() => {
-      imgToggle();
+      handleChange();
       console.log('auto change img interval ID', autoImginterval);
     }, 33000);
     console.log('auto change img Interval CREATED!');
@@ -262,13 +335,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     if (window.innerWidth > 630) {
       $cajaCentral.style.transition = 'box-shadow 100ms ease-in-out';
-      $cajaCentral.style.boxShadow = '0 0 50px 1px white';
+      quoteModeIsOn
+        ? ($cajaCentral.style.boxShadow = '0 0 50px 1px red')
+        : ($cajaCentral.style.boxShadow = '0 0 50px 1px white');
       const timeout = setTimeout(() => {
         $cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.368)';
       }, 200);
     } else {
       $cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
-      $cajaCara.style.boxShadow = '0 0 20px 3px white';
+      quoteModeIsOn
+        ? ($cajaCara.style.boxShadow = '0 0 50px 1px red')
+        : ($cajaCara.style.boxShadow = '0 0 50px 1px white');
       const timeout = setTimeout(() => {
         $cajaCara.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
       }, 200);
@@ -278,12 +355,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
     //Manejo del boton change para prof-pic
-    if (e.target.matches('#img-toggle')) {
-      if (!contextIsOn) imgInterval('Create');
-      imgToggle();
+    if (e.target.matches('#change-button')) {
+      if (!quoteModeIsOn) imgInterval('Create');
+      handleChange();
       imgToggleEffect();
       $suggestiveFinger1.style.opacity = 0;
-      $imgToggle.style.textShadow = '';
+      $changeButton.style.textShadow = '';
     }
     //Manejo de los botones flecha animadas para deslizar pagina
     if (e.target.matches('#first-page')) {
@@ -316,12 +393,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
           $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
         $audioToggleBtn.classList.toggle('fa-volume-high');
         $audioToggleBtn.classList.toggle('fa-volume-xmark');
-        if ($rainAudio.paused && contextIsOn) {
+        if ($rainAudio.paused && quoteModeIsOn) {
+          $rainAudio.volume = 0.2;
+          $thunderAudio.volume = 0.3;
           $rainAudio.play();
           $thunderAudio.play();
         } else {
           $rainAudio.pause();
           $thunderAudio.pause();
+          $typing.pause();
         }
       }
     });
@@ -330,7 +410,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     let timerMsje = null;
     $profileAudio.volume = 0;
     d.addEventListener('mouseover', (e) => {
-      if (e.target.matches('img#profile-pic') && !contextIsOn) {
+      if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
         console.log('Mouseover detectado');
         $profileAudio.volume = 0;
         fadeInOut($profileAudio);
