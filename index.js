@@ -50,11 +50,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "Dreams Feel Real While We're In Them. It's Only When We Wake Up That We Realize Something Was Actually Strange.",
     ' Many Dreams Within Dreams Is Too Unstable.',
   ];
-  const quoteImg = [
-    'quote-quote-mode-pic1.png',
-    'quote-quote-mode-pic2.png',
-    'quote-quote-mode-pic3.png',
+  const images = [
+    'quote-mode-pic1.png',
+    'quote-mode-pic2.png',
+    'quote-mode-pic3.png',
   ];
+  let imgPosition = 0;
+  let quoteImg = images[imgPosition];
+  let quotePosition = 0;
+  let quote = quotes[quotePosition];
 
   /************************* ESPACIO ******************************/
 
@@ -175,13 +179,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $cajaCentral.style.opacity = 0;
         $quoteModeGif.style.display = 'block';
         $quoteText.textContent = quotes[0];
+        $quoteText.style.textShadow =
+          '2px 2px 2px #0033ff, -2px -2px 2px #0033ff';
         if (window.innerWidth > 630) {
           $qModeBkgIntro.style.display = 'block';
         } else {
           $mobileQModeBkgIntro.style.display = 'block';
         }
         setTimeout(() => {
-          $matrixProfPic.src = 'quote-mode-pic1.png';
+          $imgToggle.style.textShadow =
+            '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
+          $matrixProfPic.src = quoteImg;
           $cajaCentral.style.opacity = 100;
           $quoteModeGif.style.display = 'none';
           if (window.innerWidth > 630) {
@@ -209,6 +217,28 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
     } else {
       //Aca recorrer array con +1 de las img y las quotes (mejor para ver si el texto entra en conflicto con la img, se pueden tocar)
+      //Iteracion imagenes
+      if (imgPosition < images.length - 1) {
+        quoteImg = images[imgPosition + 1];
+        imgPosition += 1;
+        console.log('position', imgPosition);
+        console.log('img', quoteImg);
+      } else {
+        quoteImg = images[0];
+        imgPosition = 0;
+        console.log('position', imgPosition);
+        console.log('img', quoteImg);
+      }
+      $matrixProfPic.src = quoteImg;
+      //Iteracion quotes
+      if (quotePosition < quotes.length - 1) {
+        quote = quotes[quotePosition + 1];
+        quotePosition += 1;
+      } else {
+        quote = quotes[0];
+        quotePosition = 0;
+      }
+      $quoteText.textContent = quote;
     }
   };
 
@@ -253,6 +283,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       imgToggle();
       imgToggleEffect();
       $suggestiveFinger1.style.opacity = 0;
+      $imgToggle.style.textShadow = '';
     }
     //Manejo de los botones flecha animadas para deslizar pagina
     if (e.target.matches('#first-page')) {

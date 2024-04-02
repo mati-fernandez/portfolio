@@ -6,6 +6,10 @@
   --matrixOpTransition: opacity 2.8s ease-in-out;
 }
 
+/* #presentacion {
+  text-shadow: 2px 2px 2px #ff0000, -2px -2px 2px #ff0000;
+} */
+
 ::-webkit-scrollbar {
   width: 1vw;
 }
