@@ -62,13 +62,15 @@ html {
 
 #mobile-quote-mode-bkg-intro {
   display: none;
+  opacity: 80%;
 }
 
 #quote-mode-bkg-intro {
   position: absolute;
+  display: none;
+  opacity: 80%;
   width: 100%;
   top: 10vh;
-  display: none;
   z-index: 1;
 }
 
