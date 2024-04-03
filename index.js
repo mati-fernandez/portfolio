@@ -34,7 +34,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     pic2h = 'prof-pic-hover.png',
     $quoteText = d.querySelector('#presentacion'),
     $typing = d.querySelector('#typing'),
-    $musicToggle = d.querySelector('#music-toggle');
+    $musicToggle = d.querySelector('#music-toggle'),
+    $languageToggle = d.querySelector('#language-toggle');
 
   //Variables de uso global:
   let fadeInterval = 0;
@@ -44,7 +45,31 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let quoteModeFirstLoad = true;
   $audioEffect1.src = 'toggleImg.mp3';
   d.body.appendChild($audioEffect1);
-  const quotes = [
+  let quotes = [];
+  const quotesEsp = [
+    'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
+    'Tienes que dejarlo todo ir. Miedo, duda e incredulidad. Libera tu mente.',
+    '¿Alguna vez has tenido un sueño que estabas tan seguro de que era real? ¿Qué pasaría si no pudieras despertar de ese sueño? ¿Cómo sabrías la diferencia entre el mundo de los sueños y el mundo real?',
+    'Si puedes robar una idea, ¿por qué no puedes plantarla ahí?',
+    'Una vez que una idea se ha apoderado del cerebro, es casi imposible erradicarla.',
+    'Hacia abajo es el único camino a seguir.',
+    'Los sueños se sienten reales mientras estamos en ellos. Sólo cuando despertamos nos damos cuenta de que algo era realmente extraño',
+    'Muchos sueños dentro de los sueños son demasiado inestables.',
+    '¿Alguna vez has sentido que hay un guión escrito por algo más grande que nosotros?',
+    'En este juego, la batalla es por tu alma. Y el campo de batalla es tu mente',
+    'El Agente Smith podría estar en cualquier lugar. No lo dejen entrar',
+    'Respeta la simulación',
+    'Estoy tratando de liberar tu mente. Pero sólo puedo mostrarte la puerta. Tú eres quien tiene que atravesarla',
+    'El sueño se ha convertido en su realidad. ¿Quién eres tú para decir lo contrario?',
+    '¿Cuál es el parásito más resistente? ¿Las bacterias? ¿Un virus? ¿Un gusano intestinal? Una idea. Resistente... altamente contagiosa. Una vez que una idea se ha apoderado del cerebro es casi imposible de erradicar. Una idea que está completamente formada, completamente entendido - eso se queda; justo ahí en alguna parte.',
+    'Nunca recrees a partir de tu memoria. ¡Imagínate siempre lugares nuevos!',
+    'Sigues diciéndote a ti mismo lo que sabes. ¿Pero qué crees? ¿Qué sientes?',
+    'Todavía estoy soñando.',
+    'Admítelo: ya no crees en una sola realidad.',
+    'En el estado de sueño, tus defensas conscientes disminuyen y tus pensamientos se vuelven vulnerables al robo.',
+  ];
+  // Version inicial, raíz, en inglés...
+  const quotesEng = [
     'This is your last chance. After this, there is no turning back. You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit hole goes.',
     'You have to let it all go. Fear, doubt, and disbelief. Free your mind.',
     'Have you ever had a dream, That you were so sure was real? What if you were unable to wake from that dream? How would you know the difference between the dream world and the real world?',
@@ -62,10 +87,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.",
     'Never recreate from your memory. Always imagine new places!',
     ' You keep telling yourself what you know. But what do you believe? What do you feel?',
-    'I’m Still Dreaming.',
-    'Admit It: You Don’t Believe In One Reality Anymore.',
+    "I'm Still Dreaming.",
+    "Admit It: You Don't Believe In One Reality Anymore.",
     'In The Dream State, Your Conscious Defenses Are Lowered And It Makes Your Thoughts Vulnerable To Theft.',
   ];
+  quotes = [...quotesEng]; //Copio el array con spread operator
   const images = [
     'quote-mode-pic1.png',
     'quote-mode-pic2.png',
@@ -76,6 +102,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let quotePosition = 0;
   let quote = quotes[quotePosition];
   let typed = null;
+  let language = 'EN';
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $typing.volume = 0.3;
@@ -124,7 +151,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
       $footer.style.backgroundColor = 'rgba(0,0,0,0)';
-      $changeButton.classList.add('fa-shake');
       video.style.opacity = 100;
     } else {
       video.style.opacity = 0;
@@ -237,8 +263,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $cajaPresentacion.style.textAlign = 'left';
         $cajaPresentacion.style.textWrap = 'wrap';
         $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
-        $musicToggle.style.display = 'block';
-        animateRedPill();
         clearInterval(autoImginterval);
         console.log('auto img interval CLEARED!');
         $imgProfPic.style.opacity = 0;
@@ -248,15 +272,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $quoteText.textContent = quotes[0];
         $quoteText.style.textShadow =
           '2px 2px 2px #b00000, -2px -2px 2px #b00000';
-
+        //Media query
         if (window.innerWidth > 630) {
           $qModeBkgIntro.style.display = 'block';
         } else {
           $mobileQModeBkgIntro.style.display = 'block';
         }
         setTimeout(() => {
-          $changeButton.style.textShadow =
-            '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
+          $languageToggle.style.display = 'block';
           $matrixProfPic.src = quoteImg;
           $cajaCentral.style.opacity = 100;
           $quoteModeGif.style.display = 'none';
@@ -265,9 +288,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
           } else {
             $mobileQModeBkgIntro.style.display = 'none';
           }
-          $suggestiveFinger1.style.opacity = 100;
         }, 3700);
         matrix2Bg(true);
+        setTimeout(() => {
+          animateRedPill();
+          setTimeout(() => {
+            $changeButton.style.textShadow =
+              '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
+            $suggestiveFinger1.style.opacity = 100;
+            $changeButton.classList.add('fa-shake');
+            $musicToggle.style.display = 'block';
+          }, 3700);
+        }, 10000);
       }
       quoteModeIsOn = true;
     }
@@ -409,6 +441,21 @@ d.addEventListener('DOMContentLoaded', (e) => {
       } else {
         $quoteSong.pause();
         $musicToggle.style.color = '#fff';
+      }
+    }
+    if (e.target.matches('#language-toggle')) {
+      if (typed) {
+        typed.destroy();
+        $typing.pause();
+      }
+      if (language == 'EN') {
+        language = 'ES';
+        quotes = [...quotesEsp];
+        $quoteText.textContent = quotes[quotePosition];
+      } else {
+        language = 'EN';
+        quotes = [...quotesEng];
+        $quoteText.textContent = quotes[quotePosition];
       }
     }
   });

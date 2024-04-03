@@ -233,6 +233,15 @@ img#matrix {
   z-index: 0;
 }
 
+#language-toggle {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+
 .fa-chevron-down {
   padding: 30px 50px 10px;
   font-size: 1em;
@@ -413,7 +422,7 @@ footer {
   }
 
   #seccion-presentacion {
-    height: 90svh;
+    height: 90vh;
   }
 
   #suggestive-finger1-wrapper {
@@ -494,6 +503,11 @@ footer {
     color: var(--color-claro);
     text-align: center;
     padding: 20px 5% 42px;
+  }
+
+  #language-toggle {
+    padding: 25px;
+    right: 25px;
   }
 
   .fa-chevron-down {
