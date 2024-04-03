@@ -429,6 +429,10 @@ footer {
     font-size: 50px;
   }
 
+  #red-pill {
+    top: 123px;
+  }
+
   #change-button {
     padding: 25px;
     top: 25px;
@@ -444,6 +448,11 @@ footer {
   #suggestive-arrow {
     top: 100px;
     right: 51px;
+  }
+
+  #music-toggle {
+    padding: 25px;
+    right: 25px;
   }
 
   #caja-central {

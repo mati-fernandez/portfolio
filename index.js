@@ -203,6 +203,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
     tl.set('#red-pill', { display: 'none' });
   };
 
+  //Cargar canciones
+  const loadSongs = () => {
+    $quoteSong = d.createElement('audio');
+    $quoteSong.src = 'quote-mode-song.mp3';
+    d.body.insertAdjacentElement('beforeend', $quoteSong);
+  };
+
   //Long press en mobile, click derecho en pc
   d.addEventListener('contextmenu', function (event) {
     event.preventDefault();
@@ -210,12 +217,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (!quoteModeIsOn) {
         //Solo en primera carga del quote mode
         if (quoteModeFirstLoad) {
-          $quoteSong = d.createElement('audio');
-          $quoteSong.src = 'quote-mode-song.mp3';
-          d.body.insertAdjacentElement('beforeend', $quoteSong);
+          loadSongs();
         }
         //Fin de solo primera carga
-        //Siempre que entra al quote mode
+
+        //////Siempre que entra al quote mode///////
+
         //Manejo del sonido
         if ($audioToggleBtn.classList.contains('fa-volume-high')) {
           $profileAudio.pause();
@@ -223,7 +230,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
           $thunderAudio.volume = 0.3;
           $thunderAudio.play();
           $rainAudio.play();
-        } //Fin manejo sonido
+        }
+        //Fin manejo sonido
+
+        $musicToggle.style.color = '#fff';
+        $cajaPresentacion.style.textAlign = 'left';
+        $cajaPresentacion.style.textWrap = 'wrap';
         $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
         $musicToggle.style.display = 'block';
         animateRedPill();
