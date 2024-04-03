@@ -55,8 +55,8 @@ html {
   top: 50vh;
   left: 50vw;
   transform: translate(-50%, -50%);
-  width: 800px;
-  height: 400px;
+  width: 600px;
+  height: 200px;
   z-index: 7;
 }
 
@@ -70,8 +70,10 @@ html {
   display: none;
   opacity: 80%;
   width: 100%;
-  top: 0;
   z-index: 1;
+  align-items: center;
+  top: 50%; /*Para centrar el eje vertical (por caso de pantalla cuadrada)*/
+  transform: translate(0, -50%);
 }
 
 header {
@@ -233,6 +235,17 @@ img#matrix {
   z-index: 0;
 }
 
+#exit-quote-mode {
+  display: none;
+  transform: scaleX(-1);
+  position: absolute;
+  z-index: 5;
+  bottom: 50px;
+  left: 50px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
 #language-toggle {
   display: none;
   position: absolute;
@@ -240,6 +253,7 @@ img#matrix {
   bottom: 30px;
   right: 30px;
   cursor: pointer;
+  font-size: 25px;
 }
 
 .fa-chevron-down {
@@ -503,6 +517,11 @@ footer {
     color: var(--color-claro);
     text-align: center;
     padding: 20px 5% 42px;
+  }
+
+  #exit-quote-mode {
+    padding: 25px;
+    left: 25px;
   }
 
   #language-toggle {

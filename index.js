@@ -2,9 +2,7 @@ const d = document;
 //Establecer todo el js después de la carga del dom:
 d.addEventListener('DOMContentLoaded', (e) => {
   //Selectores de uso global
-  const $body = d.getElementsByTagName('body'),
-    $header = d.getElementById('header'),
-    $seccionPresentacion = d.getElementById('seccion-presentacion'),
+  const $header = d.getElementById('header'),
     $cajaCentral = d.getElementById('caja-central'),
     $cajaCara = d.querySelector('#caja-cara'),
     $cajaPresentacion = d.querySelector('#caja-presentacion'),
@@ -37,18 +35,27 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $musicToggle = d.querySelector('#music-toggle'),
     $languageToggle = d.querySelector('#language-toggle');
 
-  //Variables de uso global:
+  //Valores iniciales en algunos selectores
+  $audioEffect1.src = 'toggleImg.mp3';
+  d.body.appendChild($audioEffect1);
+  //Establecer volumenes (en hmtl no los toma al menos en chrome)
+  $profileAudio.volume = 0;
+  $typing.volume = 0.3;
+
+  //Variables y constantes de uso global:
+  let timerMsje = null;
   let fadeInterval = 0;
   let autoImginterval = 0;
   console.log('Auto Image interval INITIALIZED!!!');
   let quoteModeIsOn = false;
   let quoteModeFirstLoad = true;
-  $audioEffect1.src = 'toggleImg.mp3';
-  d.body.appendChild($audioEffect1);
-  let quotes = [];
+  let imgPosition = 0;
+  let quotePosition = 0;
+  let typed = null;
+  let language = 'EN';
   const quotesEsp = [
     'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
-    'Tienes que dejarlo todo ir. Miedo, duda e incredulidad. Libera tu mente.',
+    'Tienes que dejar ir todo. Miedo, duda e incredulidad. Libera tu mente.',
     '¿Alguna vez has tenido un sueño que estabas tan seguro de que era real? ¿Qué pasaría si no pudieras despertar de ese sueño? ¿Cómo sabrías la diferencia entre el mundo de los sueños y el mundo real?',
     'Si puedes robar una idea, ¿por qué no puedes plantarla ahí?',
     'Una vez que una idea se ha apoderado del cerebro, es casi imposible erradicarla.',
@@ -61,7 +68,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Respeta la simulación',
     'Estoy tratando de liberar tu mente. Pero sólo puedo mostrarte la puerta. Tú eres quien tiene que atravesarla',
     'El sueño se ha convertido en su realidad. ¿Quién eres tú para decir lo contrario?',
-    '¿Cuál es el parásito más resistente? ¿Las bacterias? ¿Un virus? ¿Un gusano intestinal? Una idea. Resistente... altamente contagiosa. Una vez que una idea se ha apoderado del cerebro es casi imposible de erradicar. Una idea que está completamente formada, completamente entendido - eso se queda; justo ahí en alguna parte.',
+    '¿Cuál es el parásito más resistente? ¿Las bacterias? ¿Un virus? ¿Un gusano intestinal? Una idea. Resistente... altamente contagiosa. Una vez que una idea se ha apoderado del cerebro es casi imposible de erradicar. Una idea que está completamente formada, completamente entendida - eso se queda; justo ahí en alguna parte.',
     'Nunca recrees a partir de tu memoria. ¡Imagínate siempre lugares nuevos!',
     'Sigues diciéndote a ti mismo lo que sabes. ¿Pero qué crees? ¿Qué sientes?',
     'Todavía estoy soñando.',
@@ -91,21 +98,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "Admit It: You Don't Believe In One Reality Anymore.",
     'In The Dream State, Your Conscious Defenses Are Lowered And It Makes Your Thoughts Vulnerable To Theft.',
   ];
-  quotes = [...quotesEng]; //Copio el array con spread operator
+  let quotes = [...quotesEng]; //Copio el array con spread operator
+  let quote = quotes[quotePosition];
   const images = [
     'quote-mode-pic1.png',
     'quote-mode-pic2.png',
     'quote-mode-pic3.png',
   ];
-  let imgPosition = 0;
   let quoteImg = images[imgPosition];
-  let quotePosition = 0;
-  let quote = quotes[quotePosition];
-  let typed = null;
-  let language = 'EN';
-
-  //Establecer volumenes (en hmtl no los toma al menos en chrome)
-  $typing.volume = 0.3;
 
   /************************* ESPACIO ******************************/
 
@@ -236,75 +236,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     d.body.insertAdjacentElement('beforeend', $quoteSong);
   };
 
-  //Long press en mobile, click derecho en pc
-  d.addEventListener('contextmenu', function (event) {
-    event.preventDefault();
-    if (event.target.matches('img#profile-pic')) {
-      if (!quoteModeIsOn) {
-        //Solo en primera carga del quote mode
-        if (quoteModeFirstLoad) {
-          loadSongs();
-        }
-        //Fin de solo primera carga
-
-        //////Siempre que entra al quote mode///////
-
-        //Manejo del sonido
-        if ($audioToggleBtn.classList.contains('fa-volume-high')) {
-          $profileAudio.pause();
-          $rainAudio.volume = 0.2;
-          $thunderAudio.volume = 0.3;
-          $thunderAudio.play();
-          $rainAudio.play();
-        }
-        //Fin manejo sonido
-
-        $musicToggle.style.color = '#fff';
-        $cajaPresentacion.style.textAlign = 'left';
-        $cajaPresentacion.style.textWrap = 'wrap';
-        $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
-        clearInterval(autoImginterval);
-        console.log('auto img interval CLEARED!');
-        $imgProfPic.style.opacity = 0;
-        $msjeCondicional.style.display = 'none';
-        $cajaCentral.style.opacity = 0;
-        $quoteModeGif.style.display = 'block';
-        $quoteText.textContent = quotes[0];
-        $quoteText.style.textShadow =
-          '2px 2px 2px #b00000, -2px -2px 2px #b00000';
-        //Media query
-        if (window.innerWidth > 630) {
-          $qModeBkgIntro.style.display = 'block';
-        } else {
-          $mobileQModeBkgIntro.style.display = 'block';
-        }
-        setTimeout(() => {
-          $languageToggle.style.display = 'block';
-          $matrixProfPic.src = quoteImg;
-          $cajaCentral.style.opacity = 100;
-          $quoteModeGif.style.display = 'none';
-          if (window.innerWidth > 630) {
-            $qModeBkgIntro.style.display = 'none';
-          } else {
-            $mobileQModeBkgIntro.style.display = 'none';
-          }
-        }, 3700);
-        matrix2Bg(true);
-        setTimeout(() => {
-          animateRedPill();
-          setTimeout(() => {
-            $changeButton.style.textShadow =
-              '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
-            $suggestiveFinger1.style.opacity = 100;
-            $changeButton.classList.add('fa-shake');
-            $musicToggle.style.display = 'block';
-          }, 3700);
-        }, 10000);
-      }
-      quoteModeIsOn = true;
-    }
-  });
-
   //Funciones asignadas al changeButton
   const handleChange = () => {
     if (!quoteModeIsOn) {
@@ -375,6 +306,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }, 33000);
     console.log('auto change img Interval CREATED!');
   };
+
   //Llamar a la func de cambio de pic auto al entrar por primera vez a la web
   imgInterval('Create');
 
@@ -404,6 +336,25 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
+    //Manejo del botón de sonido
+    if (e.target.matches('#audio-toggle')) {
+      $suggestiveArrow.style.display =
+        $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
+      $audioToggleBtn.classList.toggle('fa-volume-high');
+      $audioToggleBtn.classList.toggle('fa-volume-xmark');
+      if ($rainAudio.paused && quoteModeIsOn) {
+        $rainAudio.volume = 0.2;
+        $thunderAudio.volume = 0.3;
+        $rainAudio.play();
+        $thunderAudio.play();
+      } else {
+        $rainAudio.pause();
+        $thunderAudio.pause();
+        $thunderAudio.currentTime = 0;
+        $typing.pause();
+        $typing.currentTime = 0;
+      }
+    }
     //Manejo del boton change para prof-pic
     if (e.target.matches('#change-button')) {
       if (!quoteModeIsOn) imgInterval('Create');
@@ -419,20 +370,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if (e.target.matches('#second-page')) {
       d.querySelector('#seccion-tecnologias').scrollIntoView();
     }
-    //Scroll to top del #a-ver
-    if (e.target.matches('#a-ver')) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: 0,
-      });
-    }
-    //Scroll to top general
-    if (e.target.matches('#scroll-to-top')) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: 0,
-      });
-    }
     //Boton de musica
     if (e.target.matches('#music-toggle')) {
       if ($musicToggle.style.color == 'rgb(255, 255, 255)') {
@@ -443,6 +380,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $musicToggle.style.color = '#fff';
       }
     }
+    //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
       if (typed) {
         typed.destroy();
@@ -458,54 +396,114 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $quoteText.textContent = quotes[quotePosition];
       }
     }
+    //Scroll to top del #a-ver
+    if (e.target.matches('#a-ver')) {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      });
+    }
+    //Scroll to top general
+    if (e.target.matches('#scroll-to-top')) {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      });
+    }
   });
 
-  //Manejo del botón de sonido
-  const handleSound = () => {
-    d.addEventListener('click', (e) => {
-      if (e.target.matches('#audio-toggle')) {
-        $suggestiveArrow.style.display =
-          $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
-        $audioToggleBtn.classList.toggle('fa-volume-high');
-        $audioToggleBtn.classList.toggle('fa-volume-xmark');
-        if ($rainAudio.paused && quoteModeIsOn) {
+  //Manejo de eventos hover
+  d.addEventListener('mouseover', (e) => {
+    //Manejo del hover en profile-pic y msje condicional
+    if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
+      console.log('Mouseover detectado');
+      $profileAudio.volume = 0;
+      fadeInOut($profileAudio);
+      imgInterval('Create');
+      matrixBg(true);
+      timerMsje = setTimeout(() => {
+        d.getElementById('msje-condicional').style.display = 'none';
+      }, 1500);
+    }
+  });
+
+  //Manejo de eventos mouseout
+  d.addEventListener('mouseout', (e) => {
+    //Manejo del mouseout en profile pic
+    if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
+      $profileAudio.volume = 0.5;
+      fadeInOut($profileAudio);
+      matrixBg(false);
+      clearTimeout(timerMsje);
+    }
+  });
+
+  //Long press en mobile, click derecho en pc
+  d.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+    if (event.target.matches('img#profile-pic')) {
+      if (!quoteModeIsOn) {
+        //Solo en primera carga del quote mode
+        if (quoteModeFirstLoad) {
+          loadSongs();
+        }
+        //Fin de solo primera carga
+
+        //////Siempre que entra al quote mode///////
+
+        //Manejo del sonido
+        if ($audioToggleBtn.classList.contains('fa-volume-high')) {
+          $profileAudio.pause();
           $rainAudio.volume = 0.2;
           $thunderAudio.volume = 0.3;
-          $rainAudio.play();
           $thunderAudio.play();
-        } else {
-          $rainAudio.pause();
-          $thunderAudio.pause();
-          $typing.pause();
+          $rainAudio.play();
         }
-      }
-    });
+        //Fin manejo sonido
 
-    //Manejo del hover en profile-pic y msje condicional
-    let timerMsje = null;
-    $profileAudio.volume = 0;
-    d.addEventListener('mouseover', (e) => {
-      if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
-        console.log('Mouseover detectado');
-        $profileAudio.volume = 0;
-        fadeInOut($profileAudio);
-        imgInterval('Create');
-        matrixBg(true);
-        timerMsje = setTimeout(() => {
-          d.getElementById('msje-condicional').style.display = 'none';
-        }, 1500);
+        $musicToggle.style.color = '#fff';
+        $cajaPresentacion.style.textAlign = 'left';
+        $cajaPresentacion.style.textWrap = 'wrap';
+        $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
+        clearInterval(autoImginterval);
+        console.log('auto img interval CLEARED!');
+        $imgProfPic.style.opacity = 0;
+        $msjeCondicional.style.display = 'none';
+        $cajaCentral.style.opacity = 0;
+        $quoteModeGif.style.display = 'block';
+        $quoteText.textContent = quotes[0];
+        $quoteText.style.textShadow =
+          '2px 2px 2px #b00000, -2px -2px 2px #b00000';
+        //Media query para el fondo de transicion
+        if (window.innerWidth > 630) {
+          $qModeBkgIntro.style.display = 'block';
+        } else {
+          $mobileQModeBkgIntro.style.display = 'block';
+        }
+        setTimeout(() => {
+          $languageToggle.style.display = 'block';
+          $matrixProfPic.src = quoteImg;
+          $cajaCentral.style.opacity = 100;
+          $quoteModeGif.style.display = 'none';
+          if (window.innerWidth > 630) {
+            $qModeBkgIntro.style.display = 'none';
+          } else {
+            $mobileQModeBkgIntro.style.display = 'none';
+          }
+        }, 3700);
+        matrix2Bg(true);
+        setTimeout(() => {
+          animateRedPill();
+          setTimeout(() => {
+            $changeButton.style.textShadow =
+              '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
+            $suggestiveFinger1.style.opacity = 100;
+            $changeButton.classList.add('fa-shake');
+            $musicToggle.style.display = 'block';
+          }, 3700);
+        }, 10000);
       }
-    });
-
-    d.addEventListener('mouseout', (e) => {
-      if (e.target.matches('img#profile-pic')) {
-        $profileAudio.volume = 0.5;
-        fadeInOut($profileAudio);
-        matrixBg(false);
-        clearTimeout(timerMsje);
-      }
-    });
-  };
-
-  handleSound();
+      quoteModeIsOn = true;
+    }
+  });
 });
