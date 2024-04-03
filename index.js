@@ -33,7 +33,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     pic2 = 'prof-pic.png',
     pic2h = 'prof-pic-hover.png',
     $quoteText = d.querySelector('#presentacion'),
-    $typing = d.querySelector('#typing');
+    $typing = d.querySelector('#typing'),
+    $musicToggle = d.querySelector('#music-toggle');
 
   //Variables de uso global:
   let fadeInterval = 0;
@@ -207,19 +208,24 @@ d.addEventListener('DOMContentLoaded', (e) => {
     event.preventDefault();
     if (event.target.matches('img#profile-pic')) {
       if (!quoteModeIsOn) {
+        //Solo en primera carga del quote mode
         if (quoteModeFirstLoad) {
-          //////////////NADA POR AHORA ACA
+          $quoteSong = d.createElement('audio');
+          $quoteSong.src = 'quote-mode-song.mp3';
+          d.body.insertAdjacentElement('beforeend', $quoteSong);
         }
-        //manejo del sonido
+        //Fin de solo primera carga
+        //Siempre que entra al quote mode
+        //Manejo del sonido
         if ($audioToggleBtn.classList.contains('fa-volume-high')) {
           $profileAudio.pause();
           $rainAudio.volume = 0.2;
           $thunderAudio.volume = 0.3;
           $thunderAudio.play();
           $rainAudio.play();
-        }
-        ///////////////////////////////
+        } //Fin manejo sonido
         $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
+        $musicToggle.style.display = 'block';
         animateRedPill();
         clearInterval(autoImginterval);
         console.log('auto img interval CLEARED!');
@@ -382,6 +388,16 @@ d.addEventListener('DOMContentLoaded', (e) => {
         behavior: 'smooth',
         top: 0,
       });
+    }
+    //Boton de musica
+    if (e.target.matches('#music-toggle')) {
+      if ($musicToggle.style.color == 'rgb(255, 255, 255)') {
+        $quoteSong.play();
+        $musicToggle.style.color = '#ff0000';
+      } else {
+        $quoteSong.pause();
+        $musicToggle.style.color = '#fff';
+      }
     }
   });
 

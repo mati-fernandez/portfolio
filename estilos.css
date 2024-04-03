@@ -155,6 +155,17 @@ div {
   background: none;
   z-index: 5;
 }
+
+#music-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 25px;
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  z-index: 5;
+}
+
 #seccion-presentacion {
   width: 100%;
   display: flex;
