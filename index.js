@@ -33,7 +33,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $quoteText = d.querySelector('#presentacion'),
     $typing = d.querySelector('#typing'),
     $musicToggle = d.querySelector('#music-toggle'),
-    $languageToggle = d.querySelector('#language-toggle');
+    $languageToggle = d.querySelector('#language-toggle'),
+    $understood = d.querySelector('#understood'),
+    $exitQuoteModeBtn = d.querySelector('#exit-quote-mode-wrapper'),
+    $matrixBg = d.getElementById('matrix-bg'),
+    $matrix2Bg = d.querySelector('#matrix2-bg'),
+    $phoneRing = d.querySelector('#phone-ring');
 
   //Valores iniciales en algunos selectores
   $audioEffect1.src = 'toggleImg.mp3';
@@ -43,6 +48,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $typing.volume = 0.3;
 
   //Variables y constantes de uso global:
+  const textoPresentacion =
+    'Cuento con habilidades digitales y emocionales. Orientado al aprendizaje continuo y la comunicación efectiva. Busco nuevos desafíos donde aplicar mis conocimientos tecnológicos, adaptándome a las necesidades del mercado y buscando crecimiento personal y profesional.';
   let timerMsje = null;
   let fadeInterval = 0;
   let autoImginterval = 0;
@@ -106,12 +113,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'quote-mode-pic3.png',
   ];
   let quoteImg = images[imgPosition];
+  let $quoteSong = null;
 
   /************************* ESPACIO ******************************/
 
   //Funcion de cambio de fondo cuando hover en profile-pic
   function matrixBg(hover) {
-    const video = d.getElementById('matrix-bg');
     if (hover) {
       $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
       $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
@@ -123,9 +130,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $cajaFondo.style.opacity = 0;
       $cajaFdoMobile.style.opacity = 0;
       $imgProfPic.style.opacity = 0;
-      video.style.opacity = 100;
+      $matrixBg.style.opacity = 100;
     } else if (!quoteModeIsOn) {
-      video.style.opacity = 0;
+      $matrixBg.style.opacity = 0;
       $header.style.backgroundColor = 'var(--color1)';
       $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
       $seccionAptitudes.style.backgroundColor = 'var(--color2)';
@@ -141,30 +148,40 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
 
   //Funcion de cambio de fondo al hacer click derecho en prof-pic
-  function matrix2Bg(clicked) {
-    const video = d.getElementById('matrix2-bg');
-    if (clicked) {
-      $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
-      $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
-      $footer.style.backgroundColor = 'rgba(0,0,0,0)';
-      video.style.opacity = 100;
-    } else {
-      video.style.opacity = 0;
-      $header.style.backgroundColor = 'var(--color1)';
-      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
-      $seccionAptitudes.style.backgroundColor = 'var(--color2)';
-      $seccionTecnologias.style.backgroundColor = 'var(--color1)';
-      $seccionCpe.style.backgroundColor = 'var(--color2)';
-      $footer.style.backgroundColor = 'var(--color1)';
-      $changeButton.classList.remove('fa-shake');
-      if (window.innerWidth > 630)
-        $cajaPresentacion.style.backgroundColor = 'var(--color1)';
-    }
+  function matrix2Bg() {
+    $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
+    $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    $seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
+    $footer.style.backgroundColor = 'rgba(0,0,0,0)';
+    $matrix2Bg.style.opacity = 100;
   }
+
+  //Funcion de salida del quote mode
+  const exitQuoteMode = () => {
+    quoteModeIsOn = false;
+    if ($audioToggleBtn.classList.contains('fa-volume-high')) $phoneRing.play();
+    matrixBg(false);
+    $matrix2Bg.style.opacity = 0;
+    $changeButton.classList.remove('fa-shake');
+    $quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+    $quoteText.textContent = textoPresentacion;
+    $quoteText.style.textAlign = 'center';
+    $rainAudio.pause();
+    $thunderAudio.pause();
+    $quoteSong.pause();
+    $musicToggle.style.display = 'none';
+    $exitQuoteModeBtn.style.display = 'none';
+    $languageToggle.style.display = 'none';
+    $suggestiveFinger1.style.display = 'none';
+    $changeButton.classList.remove('fa-shake');
+    $changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+    $understood.style.display = 'none';
+    if (window.innerWidth > 630)
+      $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+  };
 
   //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
   function fadeInOut(audio) {
@@ -207,17 +224,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Red pill animation
   const animateRedPill = () => {
-    const tl = gsap.timeline();
-    tl.set('#red-pill', { display: 'block' });
+    let tl = gsap.timeline();
+    tl.set('#red-pill', { display: 'block', opacity: 100 });
     tl.from('#red-pill', { duration: 4, y: -150 });
     tl.from(
       '#red-pill',
       {
         duration: 5,
         opacity: 0,
-        ease: 'CustomEase.create("custom", "M0,0 C0,0 0.084,1.829 0.13,1.88 0.158,1.911 0.273,0.295 0.3,0.318 0.324,0.338 0.347,1.956 0.371,1.982 0.399,2.012 0.468,0.529 0.5,0.55 0.524,0.566 0.528,2.068 0.553,2.09 0.589,2.121 0.66,0.783 0.7,0.798 0.73,0.809 0.727,2.199 0.759,2.217 0.808,2.244 0.852,1.022 0.9,1.062 0.927,1.085 1,2.281 1,2.281 ")',
+        ease: 'slow',
       },
-      '-=5'
+      '-=4'
     );
     tl.to('#red-pill', {
       duration: 1,
@@ -361,7 +378,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       handleChange();
       imgToggleEffect();
       $suggestiveFinger1.style.opacity = 0;
-      $changeButton.style.textShadow = '';
     }
     //Manejo de los botones flecha animadas para deslizar pagina
     if (e.target.matches('#first-page')) {
@@ -380,6 +396,20 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $musicToggle.style.color = '#fff';
       }
     }
+    //Boton "Understood!"
+    if (e.target.matches('#understood')) {
+      $understood.style.display = 'none';
+      animateRedPill();
+      // animateBluePill();
+      setTimeout(() => {
+        $changeButton.style.textShadow =
+          '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
+        $suggestiveFinger1.style.opacity = 100;
+        $changeButton.classList.add('fa-shake');
+        $musicToggle.style.display = 'block';
+        $exitQuoteModeBtn.style.display = 'block';
+      }, 3700);
+    }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
       if (typed) {
@@ -390,11 +420,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
         language = 'ES';
         quotes = [...quotesEsp];
         $quoteText.textContent = quotes[quotePosition];
+        $understood.textContent = '¡Entendido!';
       } else {
         language = 'EN';
         quotes = [...quotesEng];
         $quoteText.textContent = quotes[quotePosition];
+        $understood.textContent = 'Understood!';
       }
+    }
+    //Botón de salida de quote mode
+    if (e.target.matches('#exit-quote-mode')) {
+      exitQuoteMode();
     }
     //Scroll to top del #a-ver
     if (e.target.matches('#a-ver')) {
@@ -441,7 +477,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Long press en mobile, click derecho en pc
   d.addEventListener('contextmenu', function (event) {
     event.preventDefault();
+    //Click derecho en profile pic
     if (event.target.matches('img#profile-pic')) {
+      //Si no estabas en quote mode
       if (!quoteModeIsOn) {
         //Solo en primera carga del quote mode
         if (quoteModeFirstLoad) {
@@ -461,9 +499,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         }
         //Fin manejo sonido
 
-        $musicToggle.style.color = '#fff';
-        $cajaPresentacion.style.textAlign = 'left';
-        $cajaPresentacion.style.textWrap = 'wrap';
+        matrix2Bg(true);
         $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
         clearInterval(autoImginterval);
         console.log('auto img interval CLEARED!');
@@ -471,16 +507,22 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $msjeCondicional.style.display = 'none';
         $cajaCentral.style.opacity = 0;
         $quoteModeGif.style.display = 'block';
-        $quoteText.textContent = quotes[0];
-        $quoteText.style.textShadow =
-          '2px 2px 2px #b00000, -2px -2px 2px #b00000';
+
         //Media query para el fondo de transicion
         if (window.innerWidth > 630) {
           $qModeBkgIntro.style.display = 'block';
         } else {
           $mobileQModeBkgIntro.style.display = 'block';
         }
+
         setTimeout(() => {
+          $understood.style.display = 'block';
+          $quoteText.textContent = quotes[0];
+          $quoteText.style.textShadow =
+            '2px 2px 2px #b00000, -2px -2px 2px #b00000';
+          $musicToggle.style.color = '#fff';
+          $cajaPresentacion.style.textAlign = 'left';
+          $cajaPresentacion.style.textWrap = 'wrap';
           $languageToggle.style.display = 'block';
           $matrixProfPic.src = quoteImg;
           $cajaCentral.style.opacity = 100;
@@ -491,17 +533,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
             $mobileQModeBkgIntro.style.display = 'none';
           }
         }, 3700);
-        matrix2Bg(true);
-        setTimeout(() => {
-          animateRedPill();
-          setTimeout(() => {
-            $changeButton.style.textShadow =
-              '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
-            $suggestiveFinger1.style.opacity = 100;
-            $changeButton.classList.add('fa-shake');
-            $musicToggle.style.display = 'block';
-          }, 3700);
-        }, 10000);
+      } else {
+        console.log(
+          'Por ahora no pasa nada en quote mode si haces click derecho a profile pic'
+        );
       }
       quoteModeIsOn = true;
     }
