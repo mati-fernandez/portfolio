@@ -266,6 +266,7 @@ img#matrix {
 }
 
 #exit-quote-mode-wrapper {
+  pointer-events: none;
   display: none;
   opacity: 0;
   transform: scaleX(-1);

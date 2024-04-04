@@ -206,6 +206,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $quoteText.textContent = textoPresentacion;
       $quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
       $quoteText.style.textAlign = 'center';
+      $exitQuoteModeBtn.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+      $exitQuoteModeBtn.style.pointerEvents = 'none';
     }, 2000);
     setTimeout(() => {
       $cajaCara.style.pointerEvents = 'auto';
@@ -295,6 +297,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
       ease: 'slow',
     });
     tl2.to('#exit-quote-mode-wrapper', { duration: 2, opacity: 1 }, '-=5');
+    tl2.to(
+      '#exit-quote-mode-wrapper',
+      { duration: 2, textShadow: '3px 3px 2px #0000ff, -3px -3px 2px #0000ff' },
+      '-=2'
+    );
     tl2.set('#blue-pill', { display: 'none' });
 
     //Instrucciones al finalizar la timeline tl
@@ -305,8 +312,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $suggestiveFinger1.style.opacity = 100;
       $changeButton.classList.add('fa-shake');
       $musicToggle.style.display = 'block';
-      $exitQuoteModeBtn.style.textShadow =
-        '2px 2px 2px #0000ff, -2px -2px 2px #0000ff';
+      $exitQuoteModeBtn.style.pointerEvents = 'auto';
     });
   };
 
