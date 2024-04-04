@@ -39,7 +39,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $matrixBg = d.getElementById('matrix-bg'),
     $matrix2Bg = d.querySelector('#matrix2-bg'),
     $phoneRing = d.querySelector('#phone-ring'),
-    $pills = d.querySelectorAll('.pill');
+    $pills = d.querySelectorAll('.pill'),
+    $nextSong = d.querySelector('#next-song');
 
   //Valores iniciales en algunos selectores
   $audioEffect1.src = 'toggleImg.mp3';
@@ -183,6 +184,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
     resetPills();
+    $musicToggle.classList.add('fa-beat-fade');
+    $nextSong.classList.add('fa-beat-fade');
+    $nextSong.style.display = 'none';
     $matrix2Bg.style.opacity = 0;
     $changeButton.classList.remove('fa-shake');
     $quoteText.style.opacity = 0;
@@ -316,11 +320,16 @@ d.addEventListener('DOMContentLoaded', (e) => {
     });
   };
 
-  //Cargar canciones
+  //Cargar canciones y sonidos
+  const songsArray = [
+    'simulando-realidad.mp3',
+    'mat-y-las-cuerdas-codificadas-1.mp3',
+  ];
+  let songPosition = 0;
   const loadSounds = () => {
-    //Cancion principal del quote mode
+    //Canciones del quote mode (a partir de la uno se cargan al tocar next song)
     $quoteSong = d.createElement('audio');
-    $quoteSong.src = 'quote-mode-song.mp3';
+    $quoteSong.src = songsArray[0];
     d.body.insertAdjacentElement('beforeend', $quoteSong);
     //Sonido de ingreso de pills
     $pillsSound = d.createElement('audio');
@@ -464,6 +473,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Boton de musica
     if (e.target.matches('#music-toggle')) {
       $musicToggle.classList.remove('fa-beat-fade');
+      $nextSong.style.display = 'block';
       if ($musicToggle.style.color == 'rgb(255, 255, 255)') {
         $quoteSong.play();
         $musicToggle.style.color = '#ff0000';
@@ -471,6 +481,19 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $quoteSong.pause();
         $musicToggle.style.color = '#fff';
       }
+    }
+    //Boton siguiente cancion
+    if (e.target.matches('#next-song')) {
+      $nextSong.classList.remove('fa-beat-fade');
+      if (songPosition < songsArray.length - 1) {
+        $quoteSong.src = songsArray[songPosition + 1];
+        songPosition += 1;
+      } else {
+        $quoteSong.src = songsArray[0];
+        songPosition = 0;
+      }
+      $quoteSong.play();
+      $musicToggle.style.color = 'red';
     }
     //Boton "Understood!"
     if (e.target.matches('#understood')) {

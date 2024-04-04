@@ -136,6 +136,17 @@ div {
   z-index: 5;
 }
 
+#next-song {
+  display: none;
+  cursor: pointer;
+  font-size: 25px;
+  position: absolute;
+  top: 130px;
+  left: 55px;
+  background: none;
+  z-index: 5;
+}
+
 #suggestive-finger1-wrapper {
   position: absolute;
   z-index: 5;
@@ -490,6 +501,12 @@ footer {
 
   #blue-pill {
     bottom: 48px;
+  }
+
+  #next-song {
+    padding: 25px;
+    right: 25px;
+    top: 100px;
   }
 
   #change-button {
