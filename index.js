@@ -119,6 +119,33 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   /************************* ESPACIO ******************************/
 
+  //Cargar canciones y sonidos
+  const songsArray = [
+    'simulando-realidad.mp3',
+    'mat-y-las-cuerdas-codificadas-1.mp3',
+    'mat-rockea-el-cyber-espacio.mp3',
+    'nueva-realidad.mp3',
+    'verse-1.mp3',
+    'desarrollando-webs.mp3',
+    'mat-y-las-cuerdas-codificadas-2.mp3',
+  ];
+  let songPosition = 0;
+  const loadSounds = () => {
+    //Canciones del quote mode (a partir de la uno se cargan al tocar next song)
+    $quoteSong = d.createElement('audio');
+    $quoteSong.src = songsArray[0];
+    d.body.insertAdjacentElement('beforeend', $quoteSong);
+    //Sonido de ingreso de pills
+    $pillsSound = d.createElement('audio');
+    $pillsSound.src = 'pills-intro.mp3';
+    d.body.insertAdjacentElement('beforeend', $pillsSound);
+    //Sonido de fusion de pills
+    $pillsMerge = d.createElement('audio');
+    $pillsMerge.src = 'pills-merge.mp3';
+    $pillsMerge.volume = 0.2;
+    d.body.insertAdjacentElement('beforeend', $pillsMerge);
+  };
+
   //Funcion de cambio de fondo cuando hover en profile-pic
   function matrixBg(hover) {
     if (hover) {
@@ -170,8 +197,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       pill.style.scale = 2;
     });
   }
-
-  console.log($pills);
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
@@ -278,6 +303,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
       scale: 0.5,
       ease: 'slow',
     });
+    tl.add(() => {
+      $pillsMerge.play();
+    }, '-=1');
     tl.set('#red-pill', { display: 'none' });
 
     //Blue pill tl
@@ -318,23 +346,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $musicToggle.style.display = 'block';
       $exitQuoteModeBtn.style.pointerEvents = 'auto';
     });
-  };
-
-  //Cargar canciones y sonidos
-  const songsArray = [
-    'simulando-realidad.mp3',
-    'mat-y-las-cuerdas-codificadas-1.mp3',
-  ];
-  let songPosition = 0;
-  const loadSounds = () => {
-    //Canciones del quote mode (a partir de la uno se cargan al tocar next song)
-    $quoteSong = d.createElement('audio');
-    $quoteSong.src = songsArray[0];
-    d.body.insertAdjacentElement('beforeend', $quoteSong);
-    //Sonido de ingreso de pills
-    $pillsSound = d.createElement('audio');
-    $pillsSound.src = 'pills-intro.mp3';
-    d.body.insertAdjacentElement('beforeend', $pillsSound);
   };
 
   //Funciones asignadas al changeButton

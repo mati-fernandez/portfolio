@@ -503,11 +503,11 @@ footer {
     bottom: 48px;
   }
 
-  #next-song {
+  /* #next-song {
     padding: 25px;
     right: 25px;
     top: 100px;
-  }
+  } */
 
   #change-button {
     padding: 25px;
