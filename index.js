@@ -39,7 +39,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $matrixBg = d.getElementById('matrix-bg'),
     $matrix2Bg = d.querySelector('#matrix2-bg'),
     $phoneRing = d.querySelector('#phone-ring'),
-    $redPill = d.querySelector('#red-pill');
+    $pills = d.querySelectorAll('.pill');
 
   //Valores iniciales en algunos selectores
   $audioEffect1.src = 'toggleImg.mp3';
@@ -160,13 +160,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $matrix2Bg.style.opacity = 100;
   }
 
-  //Resetear estilos de red pill
-  function resetRedPill() {
-    $redPill.style.opacity = 1;
-    $redPill.style.width = '80px';
-    $redPill.style.height = '80px';
-    $redPill.style.scale = 2;
+  //Resetear estilos de pills
+  function resetPills() {
+    $pills.forEach((pill) => {
+      pill.style.opacity = 1;
+      pill.style.width = '80px';
+      pill.style.height = '80px';
+      pill.style.scale = 2;
+    });
   }
+
+  console.log($pills);
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
@@ -178,7 +182,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if ($audioToggleBtn.classList.contains('fa-volume-high')) $phoneRing.play();
     matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
-    resetRedPill();
+    resetPills();
     $matrix2Bg.style.opacity = 0;
     $changeButton.classList.remove('fa-shake');
     $quoteText.style.opacity = 0;
@@ -247,8 +251,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }, 222);
   }
 
-  //Red pill animation
-  const animateRedPill = () => {
+  //Pills animation
+  const animatePills = () => {
+    //Red pill tl
     let tl = gsap.timeline();
     tl.set('#red-pill', { display: 'block' });
     tl.from('#red-pill', { duration: 4, y: -150 });
@@ -268,6 +273,41 @@ d.addEventListener('DOMContentLoaded', (e) => {
       ease: 'slow',
     });
     tl.set('#red-pill', { display: 'none' });
+
+    //Blue pill tl
+    let tl2 = gsap.timeline();
+    tl2.set('#blue-pill', { display: 'block' });
+    tl2.set('#exit-quote-mode-wrapper', { display: 'block' });
+    tl2.from('#blue-pill', { duration: 4, y: -850 });
+    tl2.from(
+      '#blue-pill',
+      {
+        duration: 5,
+        opacity: 0,
+        ease: 'slow',
+      },
+      '-=4'
+    );
+    tl2.to('#blue-pill', {
+      duration: 1,
+      opacity: 0,
+      scale: 0.5,
+      ease: 'slow',
+    });
+    tl2.to('#exit-quote-mode-wrapper', { duration: 2, opacity: 1 }, '-=5');
+    tl2.set('#blue-pill', { display: 'none' });
+
+    //Instrucciones al finalizar la timeline tl
+    tl.eventCallback('onComplete', function () {
+      $changeButton.style.pointerEvents = 'auto';
+      $changeButton.style.textShadow =
+        '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
+      $suggestiveFinger1.style.opacity = 100;
+      $changeButton.classList.add('fa-shake');
+      $musicToggle.style.display = 'block';
+      $exitQuoteModeBtn.style.textShadow =
+        '2px 2px 2px #0000ff, -2px -2px 2px #0000ff';
+    });
   };
 
   //Cargar canciones
@@ -276,10 +316,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $quoteSong = d.createElement('audio');
     $quoteSong.src = 'quote-mode-song.mp3';
     d.body.insertAdjacentElement('beforeend', $quoteSong);
-    //Sonido de ingreso de red pills
-    $redPillsSound = d.createElement('audio');
-    $redPillsSound.src = 'red-pills-intro.mp3';
-    d.body.insertAdjacentElement('beforeend', $redPillsSound);
+    //Sonido de ingreso de pills
+    $pillsSound = d.createElement('audio');
+    $pillsSound.src = 'pills-intro.mp3';
+    d.body.insertAdjacentElement('beforeend', $pillsSound);
   };
 
   //Funciones asignadas al changeButton
@@ -429,18 +469,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Boton "Understood!"
     if (e.target.matches('#understood')) {
       $understood.style.display = 'none';
-      $redPillsSound.play();
-      animateRedPill();
-      // animateBluePill();
-      setTimeout(() => {
-        $changeButton.style.pointerEvents = 'auto';
-        $changeButton.style.textShadow =
-          '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
-        $suggestiveFinger1.style.opacity = 100;
-        $changeButton.classList.add('fa-shake');
-        $musicToggle.style.display = 'block';
-        $exitQuoteModeBtn.style.display = 'block';
-      }, 5500);
+      if ($audioToggleBtn.classList.contains('fa-volume-high'))
+        $pillsSound.play();
+      animatePills();
     }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
