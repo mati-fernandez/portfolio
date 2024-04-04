@@ -38,7 +38,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $exitQuoteModeBtn = d.querySelector('#exit-quote-mode-wrapper'),
     $matrixBg = d.getElementById('matrix-bg'),
     $matrix2Bg = d.querySelector('#matrix2-bg'),
-    $phoneRing = d.querySelector('#phone-ring');
+    $phoneRing = d.querySelector('#phone-ring'),
+    $redPill = d.querySelector('#red-pill');
 
   //Valores iniciales en algunos selectores
   $audioEffect1.src = 'toggleImg.mp3';
@@ -159,6 +160,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $matrix2Bg.style.opacity = 100;
   }
 
+  //Resetear estilos de red pill
+  function resetRedPill() {
+    $redPill.style.opacity = 1;
+    $redPill.style.width = '80px';
+    $redPill.style.height = '80px';
+    $redPill.style.scale = 2;
+  }
+
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
@@ -169,6 +178,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if ($audioToggleBtn.classList.contains('fa-volume-high')) $phoneRing.play();
     matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
+    resetRedPill();
     $matrix2Bg.style.opacity = 0;
     $changeButton.classList.remove('fa-shake');
     $quoteText.style.opacity = 0;
@@ -181,7 +191,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $musicToggle.style.display = 'none';
     $exitQuoteModeBtn.style.display = 'none';
     $languageToggle.style.display = 'none';
-    $suggestiveFinger1.style.display = 'none';
+    $suggestiveFinger1.style.opacity = 0;
     $changeButton.classList.remove('fa-shake');
     $changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
     $understood.style.display = 'none';
@@ -240,7 +250,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Red pill animation
   const animateRedPill = () => {
     let tl = gsap.timeline();
-    tl.set('#red-pill', { display: 'block', opacity: 100 });
+    tl.set('#red-pill', { display: 'block' });
     tl.from('#red-pill', { duration: 4, y: -150 });
     tl.from(
       '#red-pill',
@@ -254,18 +264,22 @@ d.addEventListener('DOMContentLoaded', (e) => {
     tl.to('#red-pill', {
       duration: 1,
       opacity: 0,
-      scaleX: 0.5,
-      scaleY: 0.5,
+      scale: 0.5,
       ease: 'slow',
     });
     tl.set('#red-pill', { display: 'none' });
   };
 
   //Cargar canciones
-  const loadSongs = () => {
+  const loadSounds = () => {
+    //Cancion principal del quote mode
     $quoteSong = d.createElement('audio');
     $quoteSong.src = 'quote-mode-song.mp3';
     d.body.insertAdjacentElement('beforeend', $quoteSong);
+    //Sonido de ingreso de red pills
+    $redPillsSound = d.createElement('audio');
+    $redPillsSound.src = 'red-pills-intro.mp3';
+    d.body.insertAdjacentElement('beforeend', $redPillsSound);
   };
 
   //Funciones asignadas al changeButton
@@ -403,6 +417,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Boton de musica
     if (e.target.matches('#music-toggle')) {
+      $musicToggle.classList.remove('fa-beat-fade');
       if ($musicToggle.style.color == 'rgb(255, 255, 255)') {
         $quoteSong.play();
         $musicToggle.style.color = '#ff0000';
@@ -414,6 +429,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Boton "Understood!"
     if (e.target.matches('#understood')) {
       $understood.style.display = 'none';
+      $redPillsSound.play();
       animateRedPill();
       // animateBluePill();
       setTimeout(() => {
@@ -428,6 +444,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
+      $languageToggle.classList.remove('fa-beat-fade');
       if (typed) {
         typed.destroy();
         $typing.pause();
@@ -499,7 +516,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (!quoteModeIsOn) {
         //Solo en primera carga del quote mode
         if (quoteModeFirstLoad) {
-          loadSongs();
+          loadSounds();
+          quoteModeFirstLoad = false;
         }
         //Fin de solo primera carga
 

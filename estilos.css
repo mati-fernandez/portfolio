@@ -63,6 +63,7 @@ html {
 #mobile-quote-mode-bkg-intro {
   display: none;
   opacity: 80%;
+  mask-image: linear-gradient(transparent, black 10%, black 90%, transparent);
 }
 
 #quote-mode-bkg-intro {
@@ -74,6 +75,7 @@ html {
   align-items: center;
   top: 50%; /*Para centrar el eje vertical (por caso de pantalla cuadrada)*/
   transform: translate(0, -50%);
+  mask-image: linear-gradient(transparent, black 10%, black 90%, transparent);
 }
 
 header {
@@ -254,7 +256,7 @@ img#matrix {
 }
 
 #exit-quote-mode-wrapper {
-  display: none;
+  /* display: none; */
   transform: scaleX(-1);
   position: absolute;
   z-index: 5;
