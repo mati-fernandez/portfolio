@@ -377,13 +377,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (quotePosition < quotes.length - 1) {
         quote = quotes[quotePosition + 1];
         quotePosition += 1;
+        $quoteText.textContent = quote;
       } else {
-        //   exitQuoteMode();
-        // location.reload();
         quote = quotes[0];
         quotePosition = 0;
+        exitQuoteMode();
+        return;
       }
-      $quoteText.textContent = quote;
       //Typed.js
       if (typed) {
         typed.destroy();
