@@ -235,6 +235,10 @@ img#matrix {
   z-index: 0;
 }
 
+#caja-presentacion p {
+  transition: var(--matrixOpTransition);
+}
+
 #understood {
   display: none;
   cursor: pointer;

@@ -162,16 +162,22 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
+    $cajaCara.style.pointerEvents = 'none';
+    if (typed) {
+      typed.destroy();
+    }
     if ($audioToggleBtn.classList.contains('fa-volume-high')) $phoneRing.play();
     matrixBg(false);
+    // bgExitEffect(); El de mis 3 caras en secuencia
     $matrix2Bg.style.opacity = 0;
     $changeButton.classList.remove('fa-shake');
-    $quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
-    $quoteText.textContent = textoPresentacion;
-    $quoteText.style.textAlign = 'center';
+    $quoteText.style.opacity = 0;
     $rainAudio.pause();
     $thunderAudio.pause();
+    $thunderAudio.currentTime = 0;
     $quoteSong.pause();
+    $quoteSong.currentTime = 0;
+    $typing.pause();
     $musicToggle.style.display = 'none';
     $exitQuoteModeBtn.style.display = 'none';
     $languageToggle.style.display = 'none';
@@ -181,6 +187,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $understood.style.display = 'none';
     if (window.innerWidth > 630)
       $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+    setTimeout(() => {
+      $quoteText.style.opacity = 100;
+      $quoteText.textContent = textoPresentacion;
+      $quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+      $quoteText.style.textAlign = 'center';
+    }, 2000);
+    setTimeout(() => {
+      $cajaCara.style.pointerEvents = 'auto';
+    }, 5000);
   };
 
   //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
@@ -372,7 +387,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $typing.currentTime = 0;
       }
     }
-    //Manejo del boton change para prof-pic
+    //Manejo del boton change
     if (e.target.matches('#change-button')) {
       if (!quoteModeIsOn) imgInterval('Create');
       handleChange();
@@ -402,13 +417,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
       animateRedPill();
       // animateBluePill();
       setTimeout(() => {
+        $changeButton.style.pointerEvents = 'auto';
         $changeButton.style.textShadow =
           '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
         $suggestiveFinger1.style.opacity = 100;
         $changeButton.classList.add('fa-shake');
         $musicToggle.style.display = 'block';
         $exitQuoteModeBtn.style.display = 'block';
-      }, 3700);
+      }, 5500);
     }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
@@ -499,6 +515,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         }
         //Fin manejo sonido
 
+        $changeButton.style.pointerEvents = 'none';
         matrix2Bg(true);
         $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
         clearInterval(autoImginterval);
