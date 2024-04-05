@@ -275,6 +275,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $footer.style.backgroundColor = 'rgba(0,0,0,0)';
     $matrix2Bg.style.opacity = 100;
     $cajaFondo.style.opacity = 0; //Por si viene desde el conejo
+    $cajaFdoMobile.style.opacity = 0; //Por si viene desde el conejo
   }
 
   //Resetear estilos de pills
