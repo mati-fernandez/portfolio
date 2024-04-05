@@ -32,7 +32,7 @@
       id="mobile-quote-mode-bkg-intro"
     />
     <video src="matrix2-bg.mp4" id="matrix2-bg" autoplay muted loop></video>
-    <header id="header">
+    <header>
       <h3 class="animate__animated animate__backInDown">Fernández Matías</h3>
     </header>
     <section id="seccion-presentacion">
@@ -67,9 +67,6 @@
           class="fa-solid fa-arrow-up fa-bounce fa-lg"
         ></div>
       </div>
-      <audio id="profile-audio" src="profile-pic-sound.mp3"></audio>
-      <audio id="thunder" src="thunder.mp3"></audio>
-      <audio id="rain" src="rain.mp3" loop></audio>
       <div id="caja-central" data-aos="zoom-in">
         <div id="caja-fondo"></div>
         <div id="caja-cara">
@@ -357,6 +354,18 @@
       </div>
     </section>
     <footer loading="lazy">
+      <img
+        id="white-rabbit"
+        src="white-rabbit.gif"
+        alt="white-rabbit-gif"
+        name="white-rabbit"
+        width="306"
+        height="210"
+        usemap="#m_white-rabbit"
+      />
+      <map name="m_white-rabbit" id="m_white-rabbit">
+        <area shape="poly" coords="194,173,306,173,306,210,194,210,194,173" />
+      </map>
       <h2 id="contacto" data-aos="zoom-in" data-aos-offset="-100">Contacto</h2>
       <div class="contacto-links">
         <a href="https://www.linkedin.com/in/mati-fernandez" target="_blank">
@@ -390,6 +399,10 @@
     <script src="index.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <audio src="toggleImg.mp3" id="toggle-btn-sound"></audio>
+    <audio id="profile-audio" src="profile-pic-sound.mp3"></audio>
+    <audio id="thunder" src="thunder.mp3"></audio>
+    <audio id="rain" src="rain.mp3" loop></audio>
     <audio src="typing.mp3" id="typing"></audio>
     <audio src="phone-ring.mp3" id="phone-ring"></audio>
   </body>

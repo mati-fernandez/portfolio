@@ -2,18 +2,18 @@ const d = document;
 //Establecer todo el js después de la carga del dom:
 d.addEventListener('DOMContentLoaded', (e) => {
   //Selectores de uso global
-  const $header = d.getElementById('header'),
-    $cajaCentral = d.getElementById('caja-central'),
+  const $header = d.querySelector('header'),
+    $cajaCentral = d.querySelector('#caja-central'),
     $cajaCara = d.querySelector('#caja-cara'),
     $cajaPresentacion = d.querySelector('#caja-presentacion'),
-    $audioEffect1 = d.createElement('audio'),
+    $audioEffect1 = d.querySelector('#toggle-btn-sound'),
     $audioToggleBtn = d.querySelector('#audio-toggle'),
     $seccionAptitudes = d.querySelector('#seccion-aptitudes'),
     $seccionTecnologias = d.querySelector('#seccion-tecnologias'),
     $seccionCpe = d.querySelector('#seccion-cpe'),
     $footer = d.querySelector('footer'),
-    $msjeCondicional = d.getElementById('msje-condicional'),
-    $suggestiveFinger1 = d.getElementById('suggestive-finger1'),
+    $msjeCondicional = d.querySelector('#msje-condicional'),
+    $suggestiveFinger1 = d.querySelector('#suggestive-finger1'),
     $profileAudio = d.querySelector('#profile-audio'),
     $thunderAudio = d.querySelector('#thunder'),
     $rainAudio = d.querySelector('#rain'),
@@ -40,14 +40,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $matrix2Bg = d.querySelector('#matrix2-bg'),
     $phoneRing = d.querySelector('#phone-ring'),
     $pills = d.querySelectorAll('.pill'),
-    $nextSong = d.querySelector('#next-song');
+    $nextSong = d.querySelector('#next-song'),
+    $whiteRabbit = d.querySelector('#white-rabbit');
 
-  //Valores iniciales en algunos selectores
-  $audioEffect1.src = 'toggleImg.mp3';
-  d.body.appendChild($audioEffect1);
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
   $typing.volume = 0.3;
+  $phoneRing.volume = 0.4;
 
   //Variables y constantes de uso global:
   const textoPresentacion =
@@ -116,8 +115,97 @@ d.addEventListener('DOMContentLoaded', (e) => {
   ];
   let quoteImg = images[imgPosition];
   let $quoteSong = null;
+  let soundIsOn = false;
 
   /************************* ESPACIO ******************************/
+
+  function startQuoteMode() {
+    //Si no estabas en quote mode
+    if (!quoteModeIsOn) {
+      quoteModeIsOn = true;
+      //Solo en primera carga del quote mode
+      if (quoteModeFirstLoad) {
+        loadSounds();
+        quoteModeFirstLoad = false;
+      }
+      //Fin de solo primera carga
+
+      //////Siempre que entra al quote mode///////
+
+      //Manejo del sonido
+      if (soundIsOn) {
+        $profileAudio.pause();
+        $rainAudio.volume = 0.2;
+        $thunderAudio.volume = 0.3;
+        $thunderAudio.play();
+        $rainAudio.play();
+      }
+      //Fin manejo sonido
+
+      $changeButton.style.pointerEvents = 'none';
+      matrix2Bg(true);
+      $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
+      clearInterval(autoImginterval);
+      console.log('auto img interval CLEARED!');
+      $imgProfPic.style.opacity = 0;
+      $msjeCondicional.style.display = 'none';
+      $cajaCentral.style.opacity = 0;
+      $quoteModeGif.style.display = 'block';
+
+      //Media query para el fondo de transicion
+      if (window.innerWidth > 630) {
+        $qModeBkgIntro.style.display = 'block';
+      } else {
+        $mobileQModeBkgIntro.style.display = 'block';
+      }
+
+      setTimeout(() => {
+        $understood.style.display = 'block';
+        $quoteText.textContent = quotes[0];
+        $quoteText.style.textShadow =
+          '2px 2px 2px #b00000, -2px -2px 2px #b00000';
+        $musicToggle.style.color = '#fff';
+        $cajaPresentacion.style.textAlign = 'left';
+        $cajaPresentacion.style.textWrap = 'wrap';
+        $languageToggle.style.display = 'block';
+        $matrixProfPic.src = quoteImg;
+        $cajaCentral.style.opacity = 100;
+        $quoteModeGif.style.display = 'none';
+        if (window.innerWidth > 630) {
+          $qModeBkgIntro.style.display = 'none';
+        } else {
+          $mobileQModeBkgIntro.style.display = 'none';
+        }
+      }, 3700);
+    } else {
+      console.log(
+        'Por ahora no pasa nada en quote mode si haces click derecho a profile pic'
+      );
+    }
+  }
+
+  //Intersection observer API
+  function handleIntersection(entries) {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log('El footer está en el viewport');
+        if (quoteModeFirstLoad) $whiteRabbit.style.display = 'block';
+      } else {
+        console.log('El footer no está en el viewport');
+      }
+    });
+  }
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+  };
+  const observer = new IntersectionObserver(
+    handleIntersection,
+    observerOptions
+  );
+  //Observar aparición del footer (para white rabbit)
+  observer.observe($footer);
 
   //Cargar canciones y sonidos
   const songsArray = [
@@ -176,7 +264,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
   }
 
-  //Funcion de cambio de fondo al hacer click derecho en prof-pic
+  //Funcion de cambio de fondo al entrar a quote mode
   function matrix2Bg() {
     $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
     $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
@@ -186,6 +274,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
     $footer.style.backgroundColor = 'rgba(0,0,0,0)';
     $matrix2Bg.style.opacity = 100;
+    $cajaFondo.style.opacity = 0; //Por si viene desde el conejo
   }
 
   //Resetear estilos de pills
@@ -205,7 +294,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if (typed) {
       typed.destroy();
     }
-    if ($audioToggleBtn.classList.contains('fa-volume-high')) $phoneRing.play();
+    if (soundIsOn) $phoneRing.play();
     matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
     resetPills();
@@ -245,7 +334,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
   function fadeInOut(audio) {
-    if (!$audioToggleBtn.classList.contains('fa-volume-high')) return;
+    if (!soundIsOn) return;
     if (fadeInterval) {
       // Limpiar intervalo existente si hay uno
       clearInterval(fadeInterval);
@@ -304,8 +393,16 @@ d.addEventListener('DOMContentLoaded', (e) => {
       ease: 'slow',
     });
     tl.add(() => {
-      $pillsMerge.play();
+      if (soundIsOn) $pillsMerge.play();
     }, '-=1');
+    tl.to(
+      '#change-button',
+      {
+        duration: 2,
+        textShadow: '2px 2px 2px #ff0000, -2px -2px 2px #ff0000',
+      },
+      '-=2'
+    );
     tl.set('#red-pill', { display: 'none' });
 
     //Blue pill tl
@@ -396,8 +493,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         smartBackspace: false,
         backDelay: 50000, //ms
         preStringTyped: (arrayPos, self) => {
-          if ($audioToggleBtn.classList.contains('fa-volume-high'))
-            $typing.play();
+          if (soundIsOn) $typing.play();
         },
         onComplete: (self) => {
           $typing.pause();
@@ -424,7 +520,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de efecto en toggleImg
   const imgToggleEffect = () => {
-    if ($audioToggleBtn.classList.contains('fa-volume-high')) {
+    if (soundIsOn) {
       $audioEffect1.play();
     }
     if (window.innerWidth > 630) {
@@ -454,7 +550,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
       $audioToggleBtn.classList.toggle('fa-volume-high');
       $audioToggleBtn.classList.toggle('fa-volume-xmark');
-      if ($rainAudio.paused && quoteModeIsOn) {
+      soundIsOn ? (soundIsOn = false) : (soundIsOn = true);
+      console.log(soundIsOn);
+      if (soundIsOn && quoteModeIsOn) {
         $rainAudio.volume = 0.2;
         $thunderAudio.volume = 0.3;
         $rainAudio.play();
@@ -509,8 +607,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Boton "Understood!"
     if (e.target.matches('#understood')) {
       $understood.style.display = 'none';
-      if ($audioToggleBtn.classList.contains('fa-volume-high'))
-        $pillsSound.play();
+      if (soundIsOn) $pillsSound.play();
       animatePills();
     }
     //Botón de lenguaje
@@ -535,6 +632,16 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Botón de salida de quote mode
     if (e.target.matches('#exit-quote-mode')) {
       exitQuoteMode();
+    }
+    //Agujero del conejo
+    if (e.target.matches('area')) {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      });
+      setTimeout(() => {
+        startQuoteMode();
+      }, 500);
     }
     //Scroll to top del #a-ver
     if (e.target.matches('#a-ver')) {
@@ -583,68 +690,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     event.preventDefault();
     //Click derecho en profile pic
     if (event.target.matches('img#profile-pic')) {
-      //Si no estabas en quote mode
-      if (!quoteModeIsOn) {
-        //Solo en primera carga del quote mode
-        if (quoteModeFirstLoad) {
-          loadSounds();
-          quoteModeFirstLoad = false;
-        }
-        //Fin de solo primera carga
-
-        //////Siempre que entra al quote mode///////
-
-        //Manejo del sonido
-        if ($audioToggleBtn.classList.contains('fa-volume-high')) {
-          $profileAudio.pause();
-          $rainAudio.volume = 0.2;
-          $thunderAudio.volume = 0.3;
-          $thunderAudio.play();
-          $rainAudio.play();
-        }
-        //Fin manejo sonido
-
-        $changeButton.style.pointerEvents = 'none';
-        matrix2Bg(true);
-        $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
-        clearInterval(autoImginterval);
-        console.log('auto img interval CLEARED!');
-        $imgProfPic.style.opacity = 0;
-        $msjeCondicional.style.display = 'none';
-        $cajaCentral.style.opacity = 0;
-        $quoteModeGif.style.display = 'block';
-
-        //Media query para el fondo de transicion
-        if (window.innerWidth > 630) {
-          $qModeBkgIntro.style.display = 'block';
-        } else {
-          $mobileQModeBkgIntro.style.display = 'block';
-        }
-
-        setTimeout(() => {
-          $understood.style.display = 'block';
-          $quoteText.textContent = quotes[0];
-          $quoteText.style.textShadow =
-            '2px 2px 2px #b00000, -2px -2px 2px #b00000';
-          $musicToggle.style.color = '#fff';
-          $cajaPresentacion.style.textAlign = 'left';
-          $cajaPresentacion.style.textWrap = 'wrap';
-          $languageToggle.style.display = 'block';
-          $matrixProfPic.src = quoteImg;
-          $cajaCentral.style.opacity = 100;
-          $quoteModeGif.style.display = 'none';
-          if (window.innerWidth > 630) {
-            $qModeBkgIntro.style.display = 'none';
-          } else {
-            $mobileQModeBkgIntro.style.display = 'none';
-          }
-        }, 3700);
-      } else {
-        console.log(
-          'Por ahora no pasa nada en quote mode si haces click derecho a profile pic'
-        );
-      }
-      quoteModeIsOn = true;
+      startQuoteMode();
     }
   });
 });
