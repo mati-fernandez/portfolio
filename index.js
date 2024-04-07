@@ -49,8 +49,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $phoneRing.volume = 0.4;
 
   //Variables y constantes de uso global:
-  const textoPresentacion =
-    'Cuento con habilidades digitales y emocionales. Orientado al aprendizaje continuo y la comunicación efectiva. Busco nuevos desafíos donde aplicar mis conocimientos tecnológicos, adaptándome a las necesidades del mercado y buscando crecimiento personal y profesional.';
+  const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
   let timerMsje = null;
   let fadeInterval = 0;
   let autoImginterval = 0;
@@ -116,8 +115,19 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let quoteImg = images[imgPosition];
   let $quoteSong = null;
   let soundIsOn = false;
+  const songsArray = [
+    'simulando-realidad.mp3',
+    'mat-y-las-cuerdas-codificadas-1.mp3',
+    'mat-rockea-el-cyber-espacio.mp3',
+    'nueva-realidad.mp3',
+    'verse-1.mp3',
+    'desarrollando-webs.mp3',
+    'mat-y-las-cuerdas-codificadas-2.mp3',
+    'charla-con-la-muerte.mp3',
+  ];
+  let songPosition = 0;
 
-  /************************* ESPACIO ******************************/
+  /************************* FUNCIONES ******************************/
 
   function startQuoteMode() {
     //Si no estabas en quote mode
@@ -208,16 +218,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
   observer.observe($footer);
 
   //Cargar canciones y sonidos
-  const songsArray = [
-    'simulando-realidad.mp3',
-    'mat-y-las-cuerdas-codificadas-1.mp3',
-    'mat-rockea-el-cyber-espacio.mp3',
-    'nueva-realidad.mp3',
-    'verse-1.mp3',
-    'desarrollando-webs.mp3',
-    'mat-y-las-cuerdas-codificadas-2.mp3',
-  ];
-  let songPosition = 0;
   const loadSounds = () => {
     //Canciones del quote mode (a partir de la uno se cargan al tocar next song)
     $quoteSong = d.createElement('audio');
