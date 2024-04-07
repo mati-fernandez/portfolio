@@ -1,0 +1,67 @@
+<title>Monkey Type Clone - Test your typing skills! ⌨</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --green: #00b755;
+    --yellow: #daaf38;
+    --red: #ca4754;
+    --black: #222;
+    --gray: #999;
+  }
+
+  body {
+    background: var(--black);
+    font-family: Menlo, monospace;
+    display: grid;
+    padding: 32px;
+    justify-content: center;
+    margin-top: 32px;
+    padding: 16px;
+  }
+</style>
+
+<body>
+  <main>
+    <section id="game">
+      <time></time>
+      <p></p>
+      <input autofocus />
+    </section>
+  </main>
+</body>
+
+<script>
+  const d = document;
+  const $time = d.querySelector('time');
+  const $paragraph = d.querySelector('p');
+  const $input = d.querySelector('input');
+
+  const INITIAL_TIME = 30;
+
+  const TEXT =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+  let words = [];
+  let currentTime = INITIAL_TIME;
+
+  function initGame() {
+    words = TEXT.split(' ').slice(0, 32);
+    currentTime = INITIAL_TIME;
+
+    $time.textContent = currentTime;
+
+    $paragraph.innerHTML = words.map((word, index) => {
+      const letters = word.split('');
+
+      return `<word>
+        ${letters.map((letter) => `<letter>${letter}</letter>`).join('')}
+        </word>
+        `;
+    });
+  }
+
+  function initEvents() {}
+
+  initGame();
+  initEvents();
+</script>

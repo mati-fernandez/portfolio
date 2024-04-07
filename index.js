@@ -60,28 +60,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let quotePosition = 0;
   let typed = null;
   let language = 'EN';
-  const quotesEsp = [
-    'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
-    'Tienes que dejar ir todo. Miedo, duda e incredulidad. Libera tu mente.',
-    '¿Alguna vez has tenido un sueño que estabas tan seguro de que era real? ¿Qué pasaría si no pudieras despertar de ese sueño? ¿Cómo sabrías la diferencia entre el mundo de los sueños y el mundo real?',
-    'Si puedes robar una idea, ¿por qué no puedes plantarla ahí?',
-    'Una vez que una idea se ha apoderado del cerebro, es casi imposible erradicarla.',
-    'Hacia abajo es el único camino a seguir.',
-    'Los sueños se sienten reales mientras estamos en ellos. Sólo cuando despertamos nos damos cuenta de que algo era realmente extraño',
-    'Muchos sueños dentro de los sueños son demasiado inestables.',
-    '¿Alguna vez has sentido que hay un guión escrito por algo más grande que nosotros?',
-    'En este juego, la batalla es por tu alma. Y el campo de batalla es tu mente',
-    'El Agente Smith podría estar en cualquier lugar. No lo dejen entrar',
-    'Respeta la simulación',
-    'Estoy tratando de liberar tu mente. Pero sólo puedo mostrarte la puerta. Tú eres quien tiene que atravesarla',
-    'El sueño se ha convertido en su realidad. ¿Quién eres tú para decir lo contrario?',
-    '¿Cuál es el parásito más resistente? ¿Las bacterias? ¿Un virus? ¿Un gusano intestinal? Una idea. Resistente... altamente contagiosa. Una vez que una idea se ha apoderado del cerebro es casi imposible de erradicar. Una idea que está completamente formada, completamente entendida - eso se queda; justo ahí en alguna parte.',
-    'Nunca recrees a partir de tu memoria. ¡Imagínate siempre lugares nuevos!',
-    'Sigues diciéndote a ti mismo lo que sabes. ¿Pero qué crees? ¿Qué sientes?',
-    'Todavía estoy soñando.',
-    'Admítelo: ya no crees en una sola realidad.',
-    'En el estado de sueño, tus defensas conscientes disminuyen y tus pensamientos se vuelven vulnerables al robo.',
-  ];
   // Version inicial, raíz, en inglés...
   const quotesEng = [
     'This is your last chance. After this, there is no turning back. You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit hole goes.',
@@ -104,6 +82,30 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "I'm Still Dreaming.",
     "Admit It: You Don't Believe In One Reality Anymore.",
     'In The Dream State, Your Conscious Defenses Are Lowered And It Makes Your Thoughts Vulnerable To Theft.',
+    "NPCs are programmed to attack what they don't understand. And to understand the world in ways that benefits the Game Master, Architect or some other Superior Entities.",
+  ];
+  const quotesEsp = [
+    'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
+    'Tienes que dejar ir todo. Miedo, duda e incredulidad. Libera tu mente.',
+    '¿Alguna vez has tenido un sueño que estabas tan seguro de que era real? ¿Qué pasaría si no pudieras despertar de ese sueño? ¿Cómo sabrías la diferencia entre el mundo de los sueños y el mundo real?',
+    'Si puedes robar una idea, ¿por qué no puedes plantarla ahí?',
+    'Una vez que una idea se ha apoderado del cerebro, es casi imposible erradicarla.',
+    'Hacia abajo es el único camino a seguir.',
+    'Los sueños se sienten reales mientras estamos en ellos. Sólo cuando despertamos nos damos cuenta de que algo era realmente extraño',
+    'Muchos sueños dentro de los sueños son demasiado inestables.',
+    '¿Alguna vez has sentido que hay un guión escrito por algo más grande que nosotros?',
+    'En este juego, la batalla es por tu alma. Y el campo de batalla es tu mente',
+    'El Agente Smith podría estar en cualquier lugar. No lo dejen entrar',
+    'Respeta la simulación',
+    'Estoy tratando de liberar tu mente. Pero sólo puedo mostrarte la puerta. Tú eres quien tiene que atravesarla',
+    'El sueño se ha convertido en su realidad. ¿Quién eres tú para decir lo contrario?',
+    '¿Cuál es el parásito más resistente? ¿Las bacterias? ¿Un virus? ¿Un gusano intestinal? Una idea. Resistente... altamente contagiosa. Una vez que una idea se ha apoderado del cerebro es casi imposible de erradicar. Una idea que está completamente formada, completamente entendida - eso se queda; justo ahí en alguna parte.',
+    'Nunca recrees a partir de tu memoria. ¡Imagínate siempre lugares nuevos!',
+    'Sigues diciéndote a ti mismo lo que sabes. ¿Pero qué crees? ¿Qué sientes?',
+    'Todavía estoy soñando.',
+    'Admítelo: ya no crees en una sola realidad.',
+    'En el estado de sueño, tus defensas conscientes disminuyen y tus pensamientos se vuelven vulnerables al robo.',
+    'Los NPC están programados para atacar lo que no entienden. Y comprender el mundo de manera que beneficie al Game Master, al Arquitecto o a algunas otras Entidades Superiores.',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
