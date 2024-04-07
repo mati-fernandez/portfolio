@@ -129,6 +129,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   /************************* FUNCIONES ******************************/
 
+  function nextSong() {
+    if (songPosition < songsArray.length - 1) {
+      $quoteSong.src = songsArray[songPosition + 1];
+      songPosition += 1;
+    } else {
+      $quoteSong.src = songsArray[0];
+      songPosition = 0;
+    }
+    $quoteSong.play();
+    $musicToggle.style.color = 'red';
+  }
+
   function startQuoteMode() {
     //Si no estabas en quote mode
     if (!quoteModeIsOn) {
@@ -587,6 +599,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if ($musicToggle.style.color == 'rgb(255, 255, 255)') {
         $quoteSong.play();
         $musicToggle.style.color = '#ff0000';
+        //Finalizacion de una cancion
+        $quoteSong.addEventListener('ended', () => {
+          nextSong();
+        });
       } else {
         $quoteSong.pause();
         $musicToggle.style.color = '#fff';
@@ -595,15 +611,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Boton siguiente cancion
     if (e.target.matches('#next-song')) {
       $nextSong.classList.remove('fa-beat-fade');
-      if (songPosition < songsArray.length - 1) {
-        $quoteSong.src = songsArray[songPosition + 1];
-        songPosition += 1;
-      } else {
-        $quoteSong.src = songsArray[0];
-        songPosition = 0;
-      }
-      $quoteSong.play();
-      $musicToggle.style.color = 'red';
+      nextSong();
     }
     //Boton "Understood!"
     if (e.target.matches('#understood')) {
