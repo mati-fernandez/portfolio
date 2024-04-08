@@ -18,6 +18,70 @@
     margin-top: 32px;
     padding: 16px;
   }
+
+  section {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 500px;
+  }
+
+  time {
+    color: var(--yellow);
+  }
+
+  input {
+    z-index: -999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* opacity: 0; */
+  }
+
+  p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 8px;
+    margin: 0;
+  }
+
+  letter {
+    color: var(--gray);
+    position: relative;
+
+    &.active::before {
+      content: '|';
+      color: var(--yellow);
+      font-size: 14px;
+      position: absolute;
+      left: -45%;
+      animation: 1s blink infinite step-end;
+    }
+
+    &.active.is-last::before {
+      left: 45%;
+    }
+
+    &.correct {
+      color: var(--green);
+    }
+
+    &.incorrect {
+      color: var(--red);
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 </style>
 
 <body>
@@ -39,7 +103,7 @@
   const INITIAL_TIME = 30;
 
   const TEXT =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+    'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
   let words = [];
   let currentTime = INITIAL_TIME;
@@ -50,17 +114,97 @@
 
     $time.textContent = currentTime;
 
-    $paragraph.innerHTML = words.map((word, index) => {
-      const letters = word.split('');
+    $paragraph.innerHTML = words
+      .map((word, index) => {
+        const letters = word.split('');
 
-      return `<word>
+        return `<word>
         ${letters.map((letter) => `<letter>${letter}</letter>`).join('')}
         </word>
         `;
-    });
+      })
+      .join('');
+
+    const $firstWord = $paragraph.querySelector('word');
+    $firstWord.classList.add('active');
+    $firstWord.querySelector('letter').classList.add('active');
+
+    const intervalId = setInterval(() => {
+      currentTime--;
+      $time.textContent = currentTime;
+
+      if (currentTime == 0) {
+        clearInterval(intervalId);
+        gameOver();
+      }
+    }, 1000);
   }
 
-  function initEvents() {}
+  function initEvents() {
+    document.addEventListener('keydown', () => {
+      $input.focus();
+    });
+    $input.addEventListener('kewdown', onkeydown);
+    $input.addEventListener('keyup', onkeyup);
+  }
+
+  function onkeydown(e) {
+    //Recuperamos los elementos acutales
+    const $currentWord = $paragraph.querySelector('word.active');
+    const $currentLetter = $currentWord.querySelector('letter.active');
+
+    const { key } = e;
+    if (key === ' ') {
+      e.preventDefault();
+
+      const $nextWord = $currentWord.nextElementSibling;
+      const $nextLetter = $nextWord.querySelector('lette');
+
+      $currentWord.classList.remove('active');
+      $currentLetter.classList.remove('active');
+
+      $nextWord.classList.add('active');
+    }
+  }
+
+  function onkeyup() {
+    //Recuperamos los elementos acutales
+    const $currentWord = $paragraph.querySelector('word.active');
+    const $currentLetter = $currentWord.querySelector('letter.active');
+
+    const currentWord = $currentWord.innerText.trim();
+    $input.maxLength = currentWord.length;
+    console.log({ value: $input.value, currentWord });
+
+    const $allLetters = $currentWord.querySelectorAll('letter');
+
+    $allLetters.forEach(($letter) =>
+      $letter.classList.remove('correct', 'incorrect')
+    );
+
+    $input.value.split('').forEach((char, index) => {
+      const $letter = $allLetters[index];
+      const letterToCheck = currentWord[index];
+
+      const isCorrect = char === letterToCheck;
+      const letterClass = isCorrect ? 'correct' : 'incorrect';
+      $letter.classList.add(letterClass);
+    });
+
+    const inputLength = $input.value.length;
+    const $nextActiveLetter = $allLetters[inputLength];
+
+    if ($nextActiveLetter) {
+      $currentLetter.classList.remove('active', 'is-last');
+      $nextActiveLetter.classList.add('active');
+    } else {
+      $currentLetter.classList.add('is-last');
+    }
+  }
+
+  function gameOver() {
+    console.log('game over');
+  }
 
   initGame();
   initEvents();
