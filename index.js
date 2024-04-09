@@ -88,6 +88,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "NPCs are programmed to attack what they don't understand. And to understand the world in ways that benefits the Game Master, Architect or some other Superior Entities.",
     'Five minutes in the “real world” gives you an hour in dreams.',
     'Creating a dream from your memory is the best way to lose sight of what is real and what is a dream.',
+    "NPCs will collaborate with the architect even if they don't know what they're doing",
   ];
   const quotesEsp = [
     'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
@@ -116,6 +117,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Los NPC están programados para atacar lo que no entienden. Y comprender el mundo de manera que beneficie al Game Master, al Arquitecto o a algunas otras Entidades Superiores.',
     'Cinco minutos en el “mundo real” te da una hora en sueños.',
     'Armar un sueño de tu memoria es la mejor manera de perder de vista que es real y qué es un sueño.',
+    'Los NPC colaborarán con el arquitecto incluso si no saben lo que están haciendo.',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
