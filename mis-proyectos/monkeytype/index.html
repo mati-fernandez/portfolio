@@ -158,15 +158,17 @@
     $input.addEventListener('keyup', onKeyUp);
   }
 
-  function onKeyDown(e) {
+  function onKeyDown(event) {
     console.log('keydown en input');
     //Recuperamos los elementos acutales
     const $currentWord = $paragraph.querySelector('word.active');
     const $currentLetter = $currentWord.querySelector('letter.active');
+    console.log('palabra actual', $currentWord);
+    console.log('letra actual', $currentLetter);
 
-    const { key } = e;
+    const { key } = event;
     if (key === ' ') {
-      e.preventDefault();
+      event.preventDefault();
 
       const $nextWord = $currentWord.nextElementSibling;
       const $nextLetter = $nextWord.querySelector('letter');
@@ -188,12 +190,26 @@
     }
 
     if (key === 'Backspace') {
-      const $prevWord = $currentWord.prevElementSibling;
-      const $prevLetter = $prevWord.querySelector('letter');
+      const $prevWord = $currentWord.previousElementSibling;
+      const $prevLetter = $currentLetter.previousElementSibling;
+      console.log('palabra anterior', $prevWord);
+      console.log('letra anterior', $prevLetter);
 
-      if (!$prevWord && !prevLetter) {
-        e.preventDefault();
-        return;
+      //   if (!$prevWord && !$prevLetter) { Yo siento que esto no va
+      //     e.preventDefault();
+      //     return;
+      //   }
+
+      const $wordMarked = $paragraph.querySelector('word.marked');
+      if ($wordMarked && !$prevLetter) {
+        event.preventDefault();
+        $prevWord.classList.remove('marked');
+        $prevWord.classList.add('active');
+
+        const $letterToGo = $prevWord.querySelector('letter:last-child');
+
+        $currentLetter.classList.remove('active');
+        $letterToGo.classList.add('active');
       }
     }
   }
