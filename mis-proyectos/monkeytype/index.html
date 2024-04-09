@@ -73,6 +73,15 @@
     }
   }
 
+  word {
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+
+    &.marked {
+      border-color: var(--red);
+    }
+  }
+
   @keyframes blink {
     50% {
       opacity: 0;
@@ -143,12 +152,14 @@
   function initEvents() {
     document.addEventListener('keydown', () => {
       $input.focus();
+      console.log('keydown en document');
     });
-    $input.addEventListener('kewdown', onkeydown);
-    $input.addEventListener('keyup', onkeyup);
+    $input.addEventListener('keydown', onKeyDown);
+    $input.addEventListener('keyup', onKeyUp);
   }
 
-  function onkeydown(e) {
+  function onKeyDown(e) {
+    console.log('keydown en input');
     //Recuperamos los elementos acutales
     const $currentWord = $paragraph.querySelector('word.active');
     const $currentLetter = $currentWord.querySelector('letter.active');
@@ -158,16 +169,37 @@
       e.preventDefault();
 
       const $nextWord = $currentWord.nextElementSibling;
-      const $nextLetter = $nextWord.querySelector('lette');
+      const $nextLetter = $nextWord.querySelector('letter');
 
-      $currentWord.classList.remove('active');
+      $currentWord.classList.remove('active', 'marked');
       $currentLetter.classList.remove('active');
 
       $nextWord.classList.add('active');
+      $nextLetter.classList.add('active');
+
+      $input.value = '';
+
+      const hasMissedLetters =
+        $currentWord.querySelectorAll('letter:not(.correct)').length > 0;
+
+      const classToAdd = hasMissedLetters ? 'marked' : 'correct';
+      $currentWord.classList.add(classToAdd);
+      return;
+    }
+
+    if (key === 'Backspace') {
+      const $prevWord = $currentWord.prevElementSibling;
+      const $prevLetter = $prevWord.querySelector('letter');
+
+      if (!$prevWord && !prevLetter) {
+        e.preventDefault();
+        return;
+      }
     }
   }
 
-  function onkeyup() {
+  function onKeyUp() {
+    console.log('keyup en input');
     //Recuperamos los elementos acutales
     const $currentWord = $paragraph.querySelector('word.active');
     const $currentLetter = $currentWord.querySelector('letter.active');

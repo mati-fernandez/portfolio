@@ -136,6 +136,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'desarrollando-webs.mp3',
     'mat-y-las-cuerdas-codificadas-2.mp3',
     'charla-con-la-muerte.mp3',
+    'mi-dulce-matias.mp3',
+    'en-la-oscuridad.mp3',
   ];
   let songPosition = 0;
 
