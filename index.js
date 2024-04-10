@@ -594,7 +594,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $typing.pause();
         $typing.currentTime = 0;
       }
-      if (soundIsOn && firstSoundOn) {
+      if (soundIsOn && firstSoundOn && !quoteModeIsOn) {
         $suggestiveFinger2.style.display = 'block';
         firstSoundOn = false;
       }
