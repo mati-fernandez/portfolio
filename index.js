@@ -12,12 +12,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $seccionTecnologias = d.querySelector('#seccion-tecnologias'),
     $seccionCpe = d.querySelector('#seccion-cpe'),
     $footer = d.querySelector('footer'),
-    $msjeCondicional = d.querySelector('#msje-condicional'),
     $suggestiveFinger1 = d.querySelector('#suggestive-finger1'),
+    $suggestiveFinger2 = d.querySelector('#suggestive-finger2'),
     $profileAudio = d.querySelector('#profile-audio'),
     $thunderAudio = d.querySelector('#thunder'),
     $rainAudio = d.querySelector('#rain'),
-    $suggestiveArrow = d.querySelector('#suggestive-arrow-wrapper'),
+    $suggestiveFinger3 = d.querySelector('#suggestive-finger3-wrapper'),
     $cajaFondo = d.querySelector('#caja-fondo'),
     $imgProfPic = d.querySelector('#profile-pic'),
     $changeButton = d.querySelector('#change-button'),
@@ -142,6 +142,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'en-la-oscuridad.mp3',
   ];
   let songPosition = 0;
+  let firstSoundOn = true;
 
   /************************* FUNCIONES ******************************/
 
@@ -186,7 +187,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       clearInterval(autoImginterval);
       console.log('auto img interval CLEARED!');
       $imgProfPic.style.opacity = 0;
-      $msjeCondicional.style.display = 'none';
+      //   $msjeCondicional.style.display = 'none';
       $cajaCentral.style.opacity = 0;
       $quoteModeGif.style.display = 'block';
 
@@ -575,8 +576,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   d.addEventListener('click', (e) => {
     //Manejo del botón de sonido
     if (e.target.matches('#audio-toggle')) {
-      $suggestiveArrow.style.display =
-        $suggestiveArrow.style.display === 'none' ? 'block' : 'none';
+      $suggestiveFinger3.style.display =
+        $suggestiveFinger3.style.display === 'none' ? 'block' : 'none';
       $audioToggleBtn.classList.toggle('fa-volume-high');
       $audioToggleBtn.classList.toggle('fa-volume-xmark');
       soundIsOn ? (soundIsOn = false) : (soundIsOn = true);
@@ -592,6 +593,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $thunderAudio.currentTime = 0;
         $typing.pause();
         $typing.currentTime = 0;
+      }
+      if (soundIsOn && firstSoundOn) {
+        $suggestiveFinger2.style.display = 'block';
+        firstSoundOn = false;
       }
     }
     //Manejo del boton change
@@ -686,7 +691,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Manejo de eventos hover
   d.addEventListener('mouseover', (e) => {
-    //Manejo del hover en profile-pic y msje condicional
+    //Manejo del hover en profile-pic
     if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
       console.log('Mouseover detectado');
       $profileAudio.volume = 0;
@@ -694,7 +699,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       imgInterval('Create');
       matrixBg(true);
       timerMsje = setTimeout(() => {
-        d.getElementById('msje-condicional').style.display = 'none';
+        $suggestiveFinger2.style.display = 'none';
       }, 1500);
     }
   });

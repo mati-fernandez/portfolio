@@ -157,13 +157,51 @@ div {
 
 #suggestive-finger1 {
   opacity: 0;
-  font-size: 80px;
+  font-size: 50px;
 }
 
-#suggestive-arrow-wrapper {
+#suggestive-finger2-wrapper {
   position: absolute;
-  top: 46px;
-  right: 110px;
+  transform: rotate(90deg);
+  z-index: 11;
+  top: 48%;
+  left: calc(50vw - 350px);
+}
+
+#suggestive-finger2 {
+  display: none;
+  font-size: 50px;
+  animation-duration: 3s;
+  animation-name: sf2;
+  animation-iteration-count: infinite;
+}
+
+@keyframes sf2 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    transform: translatey(-20px);
+  }
+  75% {
+    opacity: 1;
+    transform: translatey(-20px);
+  }
+  90% {
+    transform: translatey(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translatey(-20px);
+    opacity: 0;
+  }
+}
+
+#suggestive-finger3-wrapper {
+  position: absolute;
+  top: 54px;
+  right: 120px;
   transform: rotate(90deg);
   z-index: 6;
 }
@@ -400,25 +438,6 @@ footer a {
   margin: 0 40px;
 }
 
-#msje-condicional {
-  z-index: 1;
-}
-
-#msje-condicional div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--color2);
-  background-color: #ffffff;
-}
-
-#a-ver {
-  margin-left: 1rem;
-  height: 2rem;
-  width: 4rem;
-  cursor: pointer;
-}
-
 footer {
   background-color: var(--color1);
   display: flex;
@@ -504,6 +523,15 @@ area {
   #suggestive-finger1 {
     opacity: 0;
     font-size: 50px;
+  }
+
+  #suggestive-finger2-wrapper {
+    top: 23vh;
+    left: 10vw;
+  }
+
+  #suggestive-finger3-wrapper {
+    top: 40px;
   }
 
   #red-pill {
