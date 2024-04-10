@@ -140,6 +140,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'charla-con-la-muerte.mp3',
     'mi-dulce-matias.mp3',
     'en-la-oscuridad.mp3',
+    'toldo-etereo-4.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
