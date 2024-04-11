@@ -89,6 +89,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Five minutes in the “real world” gives you an hour in dreams.',
     'Creating a dream from your memory is the best way to lose sight of what is real and what is a dream.',
     "NPCs will collaborate with the architect even if they don't know what they're doing",
+    "If the game was single player? Still, you shouldn't lose hope. NPCs are not necessarily always taken by Agent Smith and turned against you. They could also function as allies. What if you can awaken them and connect them with their higher self? Perhaps they would no longer be prone to being used against you. But how long would this effect last? What does it depend on not being an NPC again? Surely I can be one again too.",
   ];
   const quotesEsp = [
     'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
@@ -118,6 +119,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Cinco minutos en el “mundo real” te da una hora en sueños.',
     'Armar un sueño de tu memoria es la mejor manera de perder de vista que es real y qué es un sueño.',
     'Los NPC colaborarán con el arquitecto incluso si no saben lo que están haciendo.',
+    '¿Si el juego fuera para un solo jugador? Aún así, no debes perder la esperanza. Los NPC no necesariamente siempre son tomados por el Agente Smith y se vuelven en tu contra. También podrían funcionar como aliados. ¿Qué pasaría si pudieras despertarlos y conectarlos con su yo superior? Quizás ya no sean propensos a ser utilizados en tu contra. ¿Pero cuánto tiempo duraría este efecto? ¿De qué depende no volver a ser NPC? Seguramente yo también puedo volver a serlo.',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
