@@ -453,6 +453,16 @@ footer {
   transition: var(--matrixBgTransition);
 }
 
+#disclaimer {
+  width: 100%;
+  position: absolute;
+  display: none;
+  text-align: center;
+  padding-bottom: 45px;
+  color: #ffffff;
+  z-index: 25;
+}
+
 #white-rabbit {
   display: none;
   position: absolute;

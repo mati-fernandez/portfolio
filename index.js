@@ -41,7 +41,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $phoneRing = d.querySelector('#phone-ring'),
     $pills = d.querySelectorAll('.pill'),
     $nextSong = d.querySelector('#next-song'),
-    $whiteRabbit = d.querySelector('#white-rabbit');
+    $whiteRabbit = d.querySelector('#white-rabbit'),
+    $disclaimer = d.querySelector('#disclaimer');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -146,6 +147,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
   ];
   let songPosition = 0;
   let firstSoundOn = true;
+  const disclaimer = [
+    $disclaimer.textContent,
+    'Este contenido es puramente ficticio y tiene únicamente fines de entretenimiento. No asumimos responsabilidad por la exactitud o confiabilidad de la información presentada aquí.',
+  ];
 
   /************************* FUNCIONES ******************************/
 
@@ -184,6 +189,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
       //Fin manejo sonido
 
+      $disclaimer.style.display = 'inline-block';
       $changeButton.style.pointerEvents = 'none';
       matrix2Bg(true);
       $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
@@ -323,6 +329,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
+    $disclaimer.style.display = 'none';
     $cajaCara.style.pointerEvents = 'none';
     if (typed) {
       typed.destroy();
@@ -655,11 +662,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
         quotes = [...quotesEsp];
         $quoteText.textContent = quotes[quotePosition];
         $understood.textContent = '¡Entendido!';
+        $disclaimer.textContent = disclaimer[1];
       } else {
         language = 'EN';
         quotes = [...quotesEng];
         $quoteText.textContent = quotes[quotePosition];
         $understood.textContent = 'Understood!';
+        $disclaimer.textContent = disclaimer[0];
       }
     }
     //Botón de salida de quote mode
