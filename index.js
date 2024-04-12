@@ -145,6 +145,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'mi-dulce-matias.mp3',
     'en-la-oscuridad.mp3',
     'toldo-etereo-4.mp3',
+    'nueva-realidad-2.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
