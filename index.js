@@ -42,7 +42,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $pills = d.querySelectorAll('.pill'),
     $nextSong = d.querySelector('#next-song'),
     $whiteRabbit = d.querySelector('#white-rabbit'),
-    $disclaimer = d.querySelector('#disclaimer');
+    $disclaimer = d.querySelector('#disclaimer'),
+    $musicGif = d.querySelector('#music-gif');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -224,6 +225,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
         } else {
           $mobileQModeBkgIntro.style.display = 'none';
         }
+        //Music BTN Appearence
+        setTimeout(() => {
+          if (soundIsOn) $musicBtnAppearance.play();
+        }, 500);
+        setTimeout(() => {
+          $musicGif.style.display = 'block';
+          setTimeout(() => {
+            $musicToggle.style.display = 'block';
+            $musicGif.style.display = 'none';
+          }, 2400);
+        }, 2000);
       }, 3700);
     } else {
       console.log(
@@ -270,6 +282,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $pillsMerge.src = 'pills-merge.mp3';
     $pillsMerge.volume = 0.2;
     d.body.insertAdjacentElement('beforeend', $pillsMerge);
+    //Sonido de aparición del music toggle btn
+    $musicBtnAppearance = d.createElement('audio');
+    $musicBtnAppearance.src = 'music-btn-appearence.mp3';
+    $musicBtnAppearance.volume = 0.4;
   };
 
   //Funcion de cambio de fondo cuando hover en profile-pic
