@@ -156,6 +156,20 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   /************************* FUNCIONES ******************************/
 
+  // Función para reiniciar el GIF
+  function resetGif(gifImg) {
+    // Guarda el valor del atributo src actual
+    const srcActual = gifImg.src;
+
+    // Asigna un valor temporal al atributo src
+    gifImg.src = '';
+
+    // Vuelve a asignar el valor original del atributo src después de un pequeño retraso
+    setTimeout(function () {
+      gifImg.src = srcActual;
+    }, 10);
+  }
+
   function nextSong() {
     if (songPosition < songsArray.length - 1) {
       $quoteSong.src = songsArray[songPosition + 1];
@@ -221,6 +235,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $matrixProfPic.src = quoteImg;
         $cajaCentral.style.opacity = 100;
         $quoteModeGif.style.display = 'none';
+        resetGif($quoteModeGif);
         if (window.innerWidth > 630) {
           $qModeBkgIntro.style.display = 'none';
         } else {
@@ -235,6 +250,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
           setTimeout(() => {
             $musicToggle.style.display = 'block';
             $musicGif.style.display = 'none';
+            resetGif($musicGif);
           }, 2400);
         }, 2000);
       }, 3700);

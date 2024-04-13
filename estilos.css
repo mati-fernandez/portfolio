@@ -222,9 +222,9 @@ div {
 #music-gif {
   display: none;
   position: absolute;
-  width: 25px;
-  top: 130px;
-  right: 50px;
+  width: 35px;
+  top: 125px;
+  right: 45px;
   z-index: 5;
 }
 
@@ -586,8 +586,8 @@ area {
 
   #music-gif {
     padding: 25px;
-    top: 100px;
-    right: 25px;
+    top: 95px;
+    right: 20px;
   }
 
   #music-toggle {
