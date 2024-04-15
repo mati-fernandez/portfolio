@@ -138,7 +138,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'mat-y-las-cuerdas-codificadas-1.mp3',
     'mat-rockea-el-cyber-espacio.mp3',
     'nueva-realidad.mp3',
-    'verse-1.mp3',
     'desarrollando-webs.mp3',
     'mat-y-las-cuerdas-codificadas-2.mp3',
     'charla-con-la-muerte.mp3',
@@ -147,6 +146,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'toldo-etereo-4.mp3',
     'nueva-realidad-2.mp3',
     'deep-resonance.mp3',
+    'simula-el-fuego.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
