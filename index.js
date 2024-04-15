@@ -146,6 +146,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'en-la-oscuridad.mp3',
     'toldo-etereo-4.mp3',
     'nueva-realidad-2.mp3',
+    'deep-resonance.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
@@ -290,6 +291,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $quoteSong = d.createElement('audio');
     $quoteSong.src = songsArray[0];
     d.body.insertAdjacentElement('beforeend', $quoteSong);
+    // $quoteSong.setAttribute('controls', 'true');
+    // $quoteSong.style.display = 'block';
+    // $quoteSong.style.position = 'absolute';
+    // $quoteSong.style.zIndex = 55;
+    // $quoteSong.style.top = '550px';
+
     //Sonido de ingreso de pills
     $pillsSound = d.createElement('audio');
     $pillsSound.src = 'pills-intro.mp3';
