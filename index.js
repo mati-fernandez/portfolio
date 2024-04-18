@@ -191,6 +191,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (quoteModeFirstLoad) {
         loadSounds();
         quoteModeFirstLoad = false;
+        $suggestiveFinger2.style.display = 'none';
       }
       //Fin de solo primera carga
 

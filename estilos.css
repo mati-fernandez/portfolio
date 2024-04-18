@@ -165,7 +165,7 @@ div {
   transform: rotate(90deg);
   z-index: 11;
   top: 48%;
-  left: calc(50vw - 350px);
+  left: calc(50vw - 300px);
 }
 
 #suggestive-finger2 {
