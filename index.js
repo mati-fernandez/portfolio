@@ -43,12 +43,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $nextSong = d.querySelector('#next-song'),
     $whiteRabbit = d.querySelector('#white-rabbit'),
     $disclaimer = d.querySelector('#disclaimer'),
-    $musicGif = d.querySelector('#music-gif');
+    $musicGif = d.querySelector('#music-gif'),
+    $musicBtnAppearance = d.querySelector('#music-btn-appearance-audio');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
   $typing.volume = 0.3;
   $phoneRing.volume = 0.4;
+  $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
@@ -307,10 +309,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $pillsMerge.src = 'pills-merge.mp3';
     $pillsMerge.volume = 0.2;
     d.body.insertAdjacentElement('beforeend', $pillsMerge);
-    //Sonido de aparición del music toggle btn
-    $musicBtnAppearance = d.createElement('audio');
-    $musicBtnAppearance.src = 'music-btn-appearence.mp3';
-    $musicBtnAppearance.volume = 0.4;
   };
 
   //Funcion de cambio de fondo cuando hover en profile-pic
