@@ -18,9 +18,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #000000;
 }
+
+body,
 html {
   scroll-behavior: smooth;
   line-height: 2rem;
+  margin: 0;
 }
 
 #matrix-bg {
