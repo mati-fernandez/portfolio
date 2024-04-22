@@ -149,6 +149,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'nueva-realidad-2.mp3',
     'deep-resonance.mp3',
     'simula-el-fuego.mp3',
+    'frecuencia-perdida.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
