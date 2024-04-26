@@ -94,6 +94,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "NPCs will collaborate with the architect even if they don't know what they're doing",
     "If the game was single player? Still, you shouldn't lose hope. NPCs are not necessarily always taken by Agent Smith and turned against you. They could also function as allies. What if you can awaken them and connect them with their higher self? Perhaps they would no longer be prone to being used against you. But how long would this effect last? What does it depend on not being an NPC again? Surely I can be one again too.",
     "When some said that Matrix is a documentary, it seemed exaggerated and fanciful to me. Now I know it's real. But what good is it if my in-game experience doesn't improve? How do I use it to my advantage?",
+    "If the system told the NPC how something works, no matter how much you try to change that concept in their mind, it will be like talking to a wall.  In the best of cases, if he listens to you, he will believe that you are the crazy one.",
+    "Don't take NPC attacks personally.  It's just the cowardly Matrix hiding behind its characters to keep stealing your energy.  To continue using you as a battery",
+    "The Matrix will always try to agitate you emotionally.  This is how it gets your energy.  Your emotional blood AKA loosh",
   ];
   const quotesEsp = [
     'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
@@ -124,6 +127,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Los NPC colaborarán con el arquitecto incluso si no saben lo que están haciendo.',
     '¿Si el juego fuera para un solo jugador? Aún así, no debes perder la esperanza. Los NPC no necesariamente siempre son tomados por el Agente Smith y se vuelven en tu contra. También podrían funcionar como aliados. ¿Qué pasaría si pudieras despertarlos y conectarlos con su yo superior? Quizás ya no sean propensos a ser utilizados en tu contra. ¿Pero cuánto tiempo duraría este efecto? ¿De qué depende no volver a ser NPC? Seguramente yo también puedo volver a serlo.',
     'Cuando algunos decían que Matrix es un documental, me parecía exagerado y fantasioso. Ahora sé que es real. Pero ¿de qué sirve si mi experiencia en el juego no mejora? ¿Cómo lo uso a mi favor?',
+    'Si el sistema le dijo al NPC cómo funciona algo, no importa cuánto intentes cambiar ese concepto en su mente, será como hablar a una pared. En el mejor de los casos, si te escucha, creerá que el loco sos vos',
+    'No te tomes los ataques de los NPCs de forma personal. Es solo la Matrix cobarde escondiéndose detrás de sus personajes para seguir robándote energía. Para seguir usándote como pila',
+    'Matrix siempre intentará agitarte emocionalmente. Es así cómo obtiene tu energía. Tu sangre emocional también conocida como loosh',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
