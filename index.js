@@ -109,6 +109,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     "When you notice an environment that is too peaceful, it is likely the prelude to some conflict. At least that's what happened to me several times. Duality doing its work. Everything that goes up must come down.",
     'In the end everything I said was in vain. Because every time we throw an idea into the universe, it reinvents itself so that we have more to experience and never arrive at an absolute truth.',
     'Those who hide behind the so-called God and religion while practicing evil are the worst in this world. As they also hide behind so many other supposed noble causes. But the blame also falls on those who believe them, they are the ones who give them power.',
+    'In the 33rd minute of many films it is referred to that this world is illusory.',
+    'In the 33rd second of the intro of the 2022 World Cup they show us who would win and who would be a finalist.',
   ];
   const quotesEsp = [
     'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
@@ -154,6 +156,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Cuando notes un ambiente demasiado pacifico, es probable que sea la antesala de algún conflicto. Al menos asi me pasó varias veces. La dualidad haciendo su trabajo. Todo lo que sube, baja.',
     'Al final todo lo que dije es al pedo. Porque cada vez que tiramos una idea al universo, él se reinventa para que tengamos más para experimentar y nunca lleguemos a una verdad absoluta.',
     'Aquellos que se esconden detrás del supuesto Dios y la religión mientras practican el mal son los peores de este mundo. Como tambien se esconden detras de tantas otras supuestas causas nobles. Pero la culpa tambien recae en quien les creen, son quienes les dan poder.',
+    'En el minuto 33 de muchas películas se hace referencia a que este mundo es ilusorio.',
+    'En el segundo 33 de la intro del mundial 2022 nos muestran quien ganaría y quién sería finalista.',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
@@ -180,6 +184,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'deep-resonance.mp3',
     'simula-el-fuego.mp3',
     'frecuencia-perdida.mp3',
+    'toldo-etereo-2.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
