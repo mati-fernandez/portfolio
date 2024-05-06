@@ -66,98 +66,98 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let language = 'EN';
   // Version inicial, raíz, en inglés...
   const quotesEng = [
-    'This is your last chance. After this, there is no turning back. You take the blue pill - the story ends, you wake up in your bed and believe whatever you want to believe. You take the red pill - you stay in Wonderland and I show you how deep the rabbit hole goes.',
-    'You have to let it all go. Fear, doubt, and disbelief. Free your mind.',
-    'Have you ever had a dream, That you were so sure was real? What if you were unable to wake from that dream? How would you know the difference between the dream world and the real world?',
-    "If You Can Steal An Idea, Why Can't You Plant One There Instead?",
-    "Once An Idea Has Taken Hold Of The Brain, It's Almost Impossible To Eradicate.",
-    'Downward Is The Only Way Forward.',
-    'The more you change things, the projection begins to converge on you. They sense the alien nature of the dreamer, they attack like white blood cells fighting an infection.',
-    "Dreams Feel Real While We're In Them. It's Only When We Wake Up That We Realize Something Was Actually Strange.",
-    ' Many Dreams Within Dreams Is Too Unstable.',
-    'Have you ever felt that there is a script written by something greater than us?',
-    'In this game, the battle is for your soul. And the battle field is your mind',
-    "Agent Smith could be anywhere. Don't let him in.",
-    'Respect the simulation.',
-    "What is real? How do you define 'real'? If you're talking about what you can feel, what you can smell, what you can taste and see, then 'real' is simply electrical signals interpreted by your brain.",
-    "I'm trying to free your mind. But I can only show you the door. You're the one that has to walk through it.",
-    'The dream has become their reality. Who are you to say otherwise?',
-    "What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.",
-    'Never recreate from your memory. Always imagine new places!',
-    ' You keep telling yourself what you know. But what do you believe? What do you feel?',
-    "I'm Still Dreaming.",
-    "Admit It: You Don't Believe In One Reality Anymore.",
-    'In The Dream State, Your Conscious Defenses Are Lowered And It Makes Your Thoughts Vulnerable To Theft.',
-    "NPCs are programmed to attack what they don't understand. And to understand the world in ways that benefits the Game Master, Architect or some other Superior Entities.",
-    'Five minutes in the “real world” gives you an hour in dreams.',
-    'Creating a dream from your memory is the best way to lose sight of what is real and what is a dream.',
-    "NPCs will collaborate with the architect even if they don't know what they're doing",
-    "If the game was single player? Still, you shouldn't lose hope. NPCs are not necessarily always taken by Agent Smith and turned against you. They could also function as allies. What if you can awaken them and connect them with their higher self? Perhaps they would no longer be prone to being used against you. But how long would this effect last? What does it depend on not being an NPC again? Surely I can be one again too.",
-    "When some said that Matrix is a documentary, it seemed exaggerated and fanciful to me. Now I know it's real. But what good is it if my in-game experience doesn't improve? How do I use it to my advantage?",
-    'If the system told the NPC how something works, no matter how much you try to change that concept in their mind, it will be like talking to a wall.  In the best of cases, if he listens to you, he will believe that you are the crazy one.',
-    "Don't take NPC attacks personally.  It's just the cowardly Matrix hiding behind its characters to keep stealing your energy.  To continue using you as a battery.",
-    'The Matrix will always try to agitate you emotionally.  This is how it gets your energy.  Your emotional blood AKA loosh.',
-    'Duality, which rules this world, is a Matrix strategy to harvest our energy. Every time it manages to confront us each other it gets its fuel. Or every time there is tension of any kind between beings.',
-    'With the manipulation of language they manage the masses. Selling your soul is not necessarily that. It means selling your avatar, they partially or totally limit the connection with your self outside the simulation and therefore have more control over it than you.',
-    'Religions are one of the many stories that are imposed on us from childhood to manipulate us. They take advantage of the human need to believe in something higher or, perhaps, the suspicion that something higher exists. But it is necessary that you do not know what the true nature of this world is, that you continue to believe in the game, that you remain immersed.',
-    "The Matrix will always try to trap your mind and destabilize you away from the truth. Stay mentally focused, don't let it shake your being and harvest your energy. Each individual who comes close to the truth is a threat to the world that contains him. At some point you will notice very strange situations because you will no longer fall into common traps, and it will manage to steal your energy in very strange ways (this can help you realize in some of them that this comes from above, or rather, from outside the limits of your perception).",
-    "Everything in principle is mind. If attacks do not pass the mind's filter, your physical and/or emotional body is less likely to be affected. Don't let the Matrix use you to create realities that don't suit you.",
-    "The children's movie of the monsters that harvest energy in this plane is also negative priming.",
-    'The issue with negative priming is understanding that they mix truth with lies and knowing what to stick with.',
-    "Don't let your defenses activate because you believe I'm a flat earther, don't be an NPC, I never talked about flat earthing. I think it is one more issue that they impose to divide and distract us.",
-    "I'm not interested in you agreeing with me. I just try to understand a little more every day. Don't we all want the same thing? Be a little better every day?",
-    "When you notice an environment that is too peaceful, it is likely the prelude to some conflict. At least that's what happened to me several times. Duality doing its work. Everything that goes up must come down.",
-    'In the end everything I said was in vain. Because every time we throw an idea into the universe, it reinvents itself so that we have more to experience and never arrive at an absolute truth.',
-    'Those who hide behind the so-called God and religion while practicing evil are the worst in this world. As they also hide behind so many other supposed noble causes. But the blame also falls on those who believe them, they are the ones who give them power.',
-    'In the 33rd minute of many films it is referred to that this world is illusory.',
-    'In the 33rd second of the intro of the 2022 World Cup they show us who would win and who would be a finalist.',
+    'Uijt!jt!zpvs!mbtu!dibodf/!Bgufs!uijt-!uifsf!jt!op!uvsojoh!cbdl/!Zpv!ublf!uif!cmvf!qjmm!.!uif!tupsz!foet-!zpv!xblf!vq!jo!zpvs!cfe!boe!cfmjfwf!xibufwfs!zpv!xbou!up!cfmjfwf/!Zpv!ublf!uif!sfe!qjmm!.!zpv!tubz!jo!Xpoefsmboe!boe!J!tipx!zpv!ipx!effq!uif!sbccju!ipmf!hpft/',
+    'Zpv!ibwf!up!mfu!ju!bmm!hp/!Gfbs-!epvcu-!boe!ejtcfmjfg/!Gsff!zpvs!njoe/',
+    'Ibwf!zpv!fwfs!ibe!b!esfbn-!Uibu!zpv!xfsf!tp!tvsf!xbt!sfbm@!Xibu!jg!zpv!xfsf!vobcmf!up!xblf!gspn!uibu!esfbn@!Ipx!xpvme!zpv!lopx!uif!ejggfsfodf!cfuxffo!uif!esfbn!xpsme!boe!uif!sfbm!xpsme@',
+    'Jg!Zpv!Dbo!Tufbm!Bo!Jefb-!Xiz!Dbo(u!Zpv!Qmbou!Pof!Uifsf!Jotufbe@',
+    'Podf!Bo!Jefb!Ibt!Ublfo!Ipme!Pg!Uif!Csbjo-!Ju(t!Bmnptu!Jnqpttjcmf!Up!Fsbejdbuf/',
+    'Epxoxbse!Jt!Uif!Pomz!Xbz!Gpsxbse/',
+    'Uif!npsf!zpv!dibohf!uijoht-!uif!qspkfdujpo!cfhjot!up!dpowfshf!po!zpv/!Uifz!tfotf!uif!bmjfo!obuvsf!pg!uif!esfbnfs-!uifz!buubdl!mjlf!xijuf!cmppe!dfmmt!gjhiujoh!bo!jogfdujpo/',
+    'Esfbnt!Gffm!Sfbm!Xijmf!Xf(sf!Jo!Uifn/!Ju(t!Pomz!Xifo!Xf!Xblf!Vq!Uibu!Xf!Sfbmj{f!Tpnfuijoh!Xbt!Bduvbmmz!Tusbohf/',
+    '!Nboz!Esfbnt!Xjuijo!Esfbnt!Jt!Upp!Votubcmf/',
+    'Ibwf!zpv!fwfs!gfmu!uibu!uifsf!jt!b!tdsjqu!xsjuufo!cz!tpnfuijoh!hsfbufs!uibo!vt@',
+    'Jo!uijt!hbnf-!uif!cbuumf!jt!gps!zpvs!tpvm/!Boe!uif!cbuumf!gjfme!jt!zpvs!njoe',
+    'Bhfou!Tnjui!dpvme!cf!bozxifsf/!Epo(u!mfu!ijn!jo/',
+    'Sftqfdu!uif!tjnvmbujpo/',
+    'Xibu!jt!sfbm@!Ipx!ep!zpv!efgjof!(sfbm(@!Jg!zpv(sf!ubmljoh!bcpvu!xibu!zpv!dbo!gffm-!xibu!zpv!dbo!tnfmm-!xibu!zpv!dbo!ubtuf!boe!tff-!uifo!(sfbm(!jt!tjnqmz!fmfdusjdbm!tjhobmt!joufsqsfufe!cz!zpvs!csbjo/',
+    'J(n!uszjoh!up!gsff!zpvs!njoe/!Cvu!J!dbo!pomz!tipx!zpv!uif!epps/!Zpv(sf!uif!pof!uibu!ibt!up!xbml!uispvhi!ju/',
+    'Uif!esfbn!ibt!cfdpnf!uifjs!sfbmjuz/!Xip!bsf!zpv!up!tbz!puifsxjtf@',
+    'Xibu!jt!uif!nptu!sftjmjfou!qbsbtjuf@!Cbdufsjb@!B!wjsvt@!Bo!jouftujobm!xpsn@!Bo!jefb/!Sftjmjfou///!ijhimz!dpoubhjpvt/!Podf!bo!jefb!ibt!ublfo!ipme!pg!uif!csbjo!ju(t!bmnptu!jnqpttjcmf!up!fsbejdbuf/!Bo!jefb!uibu!jt!gvmmz!gpsnfe!.!gvmmz!voefstuppe!.!uibu!tujdlt<!sjhiu!jo!uifsf!tpnfxifsf/',
+    'Ofwfs!sfdsfbuf!gspn!zpvs!nfnpsz/!Bmxbzt!jnbhjof!ofx!qmbdft"',
+    '!Zpv!lffq!ufmmjoh!zpvstfmg!xibu!zpv!lopx/!Cvu!xibu!ep!zpv!cfmjfwf@!Xibu!ep!zpv!gffm@',
+    'J(n!Tujmm!Esfbnjoh/',
+    'Benju!Ju;!Zpv!Epo(u!Cfmjfwf!Jo!Pof!Sfbmjuz!Boznpsf/',
+    'Jo!Uif!Esfbn!Tubuf-!Zpvs!Dpotdjpvt!Efgfotft!Bsf!Mpxfsfe!Boe!Ju!Nblft!Zpvs!Uipvhiut!Wvmofsbcmf!Up!Uifgu/',
+    'OQDt!bsf!qsphsbnnfe!up!buubdl!xibu!uifz!epo(u!voefstuboe/!Boe!up!voefstuboe!uif!xpsme!jo!xbzt!uibu!cfofgjut!uif!Hbnf!Nbtufs-!Bsdijufdu!ps!tpnf!puifs!Tvqfsjps!Foujujft/',
+    'Gjwf!njovuft!jo!uif!#sfbm!xpsme#!hjwft!zpv!bo!ipvs!jo!esfbnt/',
+    'Dsfbujoh!b!esfbn!gspn!zpvs!nfnpsz!jt!uif!cftu!xbz!up!mptf!tjhiu!pg!xibu!jt!sfbm!boe!xibu!jt!b!esfbn/',
+    'OQDt!xjmm!dpmmbcpsbuf!xjui!uif!bsdijufdu!fwfo!jg!uifz!epo(u!lopx!xibu!uifz(sf!epjoh',
+    'Jg!uif!hbnf!xbt!tjohmf!qmbzfs@!Tujmm-!zpv!tipvmeo(u!mptf!ipqf/!OQDt!bsf!opu!ofdfttbsjmz!bmxbzt!ublfo!cz!Bhfou!Tnjui!boe!uvsofe!bhbjotu!zpv/!Uifz!dpvme!bmtp!gvodujpo!bt!bmmjft/!Xibu!jg!zpv!dbo!bxblfo!uifn!boe!dpoofdu!uifn!xjui!uifjs!ijhifs!tfmg@!Qfsibqt!uifz!xpvme!op!mpohfs!cf!qspof!up!cfjoh!vtfe!bhbjotu!zpv/!Cvu!ipx!mpoh!xpvme!uijt!fggfdu!mbtu@!Xibu!epft!ju!efqfoe!po!opu!cfjoh!bo!OQD!bhbjo@!Tvsfmz!J!dbo!cf!pof!bhbjo!upp/',
+    'Xifo!tpnf!tbje!uibu!Nbusjy!jt!b!epdvnfoubsz-!ju!tffnfe!fybhhfsbufe!boe!gbodjgvm!up!nf/!Opx!J!lopx!ju(t!sfbm/!Cvu!xibu!hppe!jt!ju!jg!nz!jo.hbnf!fyqfsjfodf!epfto(u!jnqspwf@!Ipx!ep!J!vtf!ju!up!nz!bewboubhf@',
+    'Jg!uif!tztufn!upme!uif!OQD!ipx!tpnfuijoh!xpslt-!op!nbuufs!ipx!nvdi!zpv!usz!up!dibohf!uibu!dpodfqu!jo!uifjs!njoe-!ju!xjmm!cf!mjlf!ubmljoh!up!b!xbmm/!!Jo!uif!cftu!pg!dbtft-!jg!if!mjtufot!up!zpv-!if!xjmm!cfmjfwf!uibu!zpv!bsf!uif!dsb{z!pof/',
+    'Epo(u!ublf!OQD!buubdlt!qfstpobmmz/!!Ju(t!kvtu!uif!dpxbsemz!Nbusjy!ijejoh!cfijoe!jut!dibsbdufst!up!lffq!tufbmjoh!zpvs!fofshz/!!Up!dpoujovf!vtjoh!zpv!bt!b!cbuufsz/',
+    'Uif!Nbusjy!xjmm!bmxbzt!usz!up!bhjubuf!zpv!fnpujpobmmz/!!Uijt!jt!ipx!ju!hfut!zpvs!fofshz/!!Zpvs!fnpujpobm!cmppe!BLB!mppti/',
+    'Evbmjuz-!xijdi!svmft!uijt!xpsme-!jt!b!Nbusjy!tusbufhz!up!ibswftu!pvs!fofshz/!Fwfsz!ujnf!ju!nbobhft!up!dpogspou!vt!fbdi!puifs!ju!hfut!jut!gvfm/!Ps!fwfsz!ujnf!uifsf!jt!ufotjpo!pg!boz!ljoe!cfuxffo!cfjoht/',
+    'Xjui!uif!nbojqvmbujpo!pg!mbohvbhf!uifz!nbobhf!uif!nbttft/!Tfmmjoh!zpvs!tpvm!jt!opu!ofdfttbsjmz!uibu/!Ju!nfbot!tfmmjoh!zpvs!bwbubs-!uifz!qbsujbmmz!ps!upubmmz!mjnju!uif!dpoofdujpo!xjui!zpvs!tfmg!pvutjef!uif!tjnvmbujpo!boe!uifsfgpsf!ibwf!npsf!dpouspm!pwfs!ju!uibo!zpv/',
+    'Sfmjhjpot!bsf!pof!pg!uif!nboz!tupsjft!uibu!bsf!jnqptfe!po!vt!gspn!dijmeippe!up!nbojqvmbuf!vt/!Uifz!ublf!bewboubhf!pg!uif!ivnbo!offe!up!cfmjfwf!jo!tpnfuijoh!ijhifs!ps-!qfsibqt-!uif!tvtqjdjpo!uibu!tpnfuijoh!ijhifs!fyjtut/!Cvu!ju!jt!ofdfttbsz!uibu!zpv!ep!opu!lopx!xibu!uif!usvf!obuvsf!pg!uijt!xpsme!jt-!uibu!zpv!dpoujovf!up!cfmjfwf!jo!uif!hbnf-!uibu!zpv!sfnbjo!jnnfstfe/',
+    'Uif!Nbusjy!xjmm!bmxbzt!usz!up!usbq!zpvs!njoe!boe!eftubcjmj{f!zpv!bxbz!gspn!uif!usvui/!Tubz!nfoubmmz!gpdvtfe-!epo(u!mfu!ju!tiblf!zpvs!cfjoh!boe!ibswftu!zpvs!fofshz/!Fbdi!joejwjevbm!xip!dpnft!dmptf!up!uif!usvui!jt!b!uisfbu!up!uif!xpsme!uibu!dpoubjot!ijn/!Bu!tpnf!qpjou!zpv!xjmm!opujdf!wfsz!tusbohf!tjuvbujpot!cfdbvtf!zpv!xjmm!op!mpohfs!gbmm!joup!dpnnpo!usbqt-!boe!ju!xjmm!nbobhf!up!tufbm!zpvs!fofshz!jo!wfsz!tusbohf!xbzt!)uijt!dbo!ifmq!zpv!sfbmj{f!jo!tpnf!pg!uifn!uibu!uijt!dpnft!gspn!bcpwf-!ps!sbuifs-!gspn!pvutjef!uif!mjnjut!pg!zpvs!qfsdfqujpo*/',
+    'Fwfszuijoh!jo!qsjodjqmf!jt!njoe/!Jg!buubdlt!ep!opu!qbtt!uif!njoe(t!gjmufs-!zpvs!qiztjdbm!boe0ps!fnpujpobm!cpez!jt!mftt!mjlfmz!up!cf!bggfdufe/!Epo(u!mfu!uif!Nbusjy!vtf!zpv!up!dsfbuf!sfbmjujft!uibu!epo(u!tvju!zpv/',
+    'Uif!dijmesfo(t!npwjf!pg!uif!npotufst!uibu!ibswftu!fofshz!jo!uijt!qmbof!jt!bmtp!ofhbujwf!qsjnjoh/',
+    'Uif!jttvf!xjui!ofhbujwf!qsjnjoh!jt!voefstuboejoh!uibu!uifz!njy!usvui!xjui!mjft!boe!lopxjoh!xibu!up!tujdl!xjui/',
+    'Epo(u!mfu!zpvs!efgfotft!bdujwbuf!cfdbvtf!zpv!cfmjfwf!J(n!b!gmbu!fbsuifs-!epo(u!cf!bo!OQD-!J!ofwfs!ubmlfe!bcpvu!gmbu!fbsuijoh/!J!uijol!ju!jt!pof!npsf!jttvf!uibu!uifz!jnqptf!up!ejwjef!boe!ejtusbdu!vt/',
+    'J(n!opu!joufsftufe!jo!zpv!bhsffjoh!xjui!nf/!J!kvtu!usz!up!voefstuboe!b!mjuumf!npsf!fwfsz!ebz/!Epo(u!xf!bmm!xbou!uif!tbnf!uijoh@!Cf!b!mjuumf!cfuufs!fwfsz!ebz@',
+    'Xifo!zpv!opujdf!bo!fowjsponfou!uibu!jt!upp!qfbdfgvm-!ju!jt!mjlfmz!uif!qsfmvef!up!tpnf!dpogmjdu/!Bu!mfbtu!uibu(t!xibu!ibqqfofe!up!nf!tfwfsbm!ujnft/!Evbmjuz!epjoh!jut!xpsl/!Fwfszuijoh!uibu!hpft!vq!nvtu!dpnf!epxo/',
+    'Jo!uif!foe!fwfszuijoh!J!tbje!xbt!jo!wbjo/!Cfdbvtf!fwfsz!ujnf!xf!uispx!bo!jefb!joup!uif!vojwfstf-!ju!sfjowfout!jutfmg!tp!uibu!xf!ibwf!npsf!up!fyqfsjfodf!boe!ofwfs!bssjwf!bu!bo!bctpmvuf!usvui/',
+    'Uiptf!xip!ijef!cfijoe!uif!tp.dbmmfe!Hpe!boe!sfmjhjpo!xijmf!qsbdujdjoh!fwjm!bsf!uif!xpstu!jo!uijt!xpsme/!Bt!uifz!bmtp!ijef!cfijoe!tp!nboz!puifs!tvqqptfe!opcmf!dbvtft/!Cvu!uif!cmbnf!bmtp!gbmmt!po!uiptf!xip!cfmjfwf!uifn-!uifz!bsf!uif!poft!xip!hjwf!uifn!qpxfs/',
+    'Jo!uif!44se!njovuf!pg!nboz!gjmnt!ju!jt!sfgfssfe!up!uibu!uijt!xpsme!jt!jmmvtpsz/',
+    'Jo!uif!44se!tfdpoe!pg!uif!jousp!pg!uif!3133!Xpsme!Dvq!uifz!tipx!vt!xip!xpvme!xjo!boe!xip!xpvme!cf!b!gjobmjtu/',
   ];
   const quotesEsp = [
-    'Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la pastilla azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Si tomas la pastilla roja, te quedarás en el País de las Maravillas y te mostraré hasta qué punto llega la madriguera del conejo.',
-    'Tienes que dejar ir todo. Miedo, duda e incredulidad. Libera tu mente.',
-    '¿Alguna vez has tenido un sueño que estabas tan seguro de que era real? ¿Qué pasaría si no pudieras despertar de ese sueño? ¿Cómo sabrías la diferencia entre el mundo de los sueños y el mundo real?',
-    'Si puedes robar una idea, ¿por qué no puedes plantarla ahí?',
-    'Una vez que una idea se ha apoderado del cerebro, es casi imposible erradicarla.',
-    'Hacia abajo es el único camino a seguir.',
-    'Mientras mas cambias las cosas, la proyección empieza a converger en ti. Sienten la naturaleza ajena del soñador, atacan como glóbulos blancos combatiendo una infección',
-    'Los sueños se sienten reales mientras estamos en ellos. Sólo cuando despertamos nos damos cuenta de que algo era realmente extraño.',
-    'Muchos sueños dentro de los sueños son demasiado inestables.',
-    '¿Alguna vez has sentido que hay un guión escrito por algo más grande que nosotros?',
-    'En este juego, la batalla es por tu alma. Y el campo de batalla es tu mente.',
-    'El Agente Smith podría estar en cualquier lugar. No lo dejen entrar.',
-    'Respeta la simulación.',
-    '¿Qué es real? ¿Cómo defines lo real? Si estás hablando de lo que puedes sentir, lo que puedes oler, lo que puedes saborear y ver, entonces lo real son simplemente señales eléctricas interpretadas por tu cerebro.',
-    'Estoy tratando de liberar tu mente. Pero sólo puedo mostrarte la puerta. Tú eres quien tiene que atravesarla.',
-    'El sueño se ha convertido en su realidad. ¿Quién eres tú para decir lo contrario?',
-    '¿Cuál es el parásito más resistente? ¿Las bacterias? ¿Un virus? ¿Un gusano intestinal? Una idea. Resistente... altamente contagiosa. Una vez que una idea se ha apoderado del cerebro es casi imposible de erradicar. Una idea que está completamente formada, completamente entendida - eso se queda; justo ahí en alguna parte.',
-    'Nunca recrees a partir de tu memoria. ¡Imagínate siempre lugares nuevos!',
-    'Sigues diciéndote a ti mismo lo que sabes. ¿Pero qué crees? ¿Qué sientes?',
-    'Todavía estoy soñando.',
-    'Admítelo: ya no crees en una sola realidad.',
-    'En el estado de sueño, tus defensas conscientes disminuyen y tus pensamientos se vuelven vulnerables al robo.',
-    'Los NPC están programados para atacar lo que no entienden. Y comprender el mundo de manera que beneficie al Game Master, al Arquitecto o a algunas otras Entidades Superiores.',
-    'Cinco minutos en el “mundo real” te da una hora en sueños.',
-    'Armar un sueño de tu memoria es la mejor manera de perder de vista que es real y qué es un sueño.',
-    'Los NPC colaborarán con el arquitecto incluso si no saben lo que están haciendo.',
-    '¿Si el juego fuera para un solo jugador? Aún así, no debes perder la esperanza. Los NPC no necesariamente siempre son tomados por el Agente Smith y se vuelven en tu contra. También podrían funcionar como aliados. ¿Qué pasaría si pudieras despertarlos y conectarlos con su yo superior? Quizás ya no sean propensos a ser utilizados en tu contra. ¿Pero cuánto tiempo duraría este efecto? ¿De qué depende no volver a ser NPC? Seguramente yo también puedo volver a serlo.',
-    'Cuando algunos decían que Matrix es un documental, me parecía exagerado y fantasioso. Ahora sé que es real. Pero ¿de qué sirve si mi experiencia en el juego no mejora? ¿Cómo lo uso a mi favor?',
-    'Si el sistema le dijo al NPC cómo funciona algo, no importa cuánto intentes cambiar ese concepto en su mente, será como hablar a una pared. En el mejor de los casos, si te escucha, creerá que el loco sos vos.',
-    'No te tomes los ataques de los NPCs de forma personal. Es solo la Matrix cobarde escondiéndose detrás de sus personajes para seguir robándote energía. Para seguir usándote como pila.',
-    'Matrix siempre intentará agitarte emocionalmente. Es así cómo obtiene tu energía. Tu sangre emocional también conocida como loosh.',
-    'La dualidad, que rige este mundo, es una estrategia de Matrix para cosechar nuestra energía. Cada vez que logra enfrentarnos obtiene su combustible. O cada vez que logra tensión de cualquier tipo entre seres.',
-    'Con la manipulación del lenguaje manejan a las masas. Vender tu alma no es necesariamente eso. Significa vender tu avatar, limitan parcial o totalmente la conexión contigo mismo fuera de la simulación y por tanto tienen más control sobre él que tú.',
-    'Las religiones son uno de los tantos cuentos que nos imponen desde pequeños para manipularnos. Se aprovechan de la necesidad del ser humano de creer en algo superior o, quizas en la sospecha de que hay algo superior. Pero necesita que no sepas cual es la verdadera naturaleza de este mundo, que sigas creyendo en el juego, que te mantengas inmerso.',
-    'Matrix siempre intentará atrapar tu mente y desestabilizarte para alejarte de la verdad. Mantente mentalmente enfocado, no dejes que eso sacuda tu ser y coseche tu energía. Cada individuo que se acerca a la verdad es una amenaza para el mundo que lo contiene. En algún momento notarás situaciones muy extrañas porque ya no caerás en trampas comunes, y logrará robarte tu energía de maneras muy extrañas (esto puede ayudarte a darte cuenta en algunas de ellas que esto viene de arriba, o mejor dicho, desde fuera de los límites de tu percepción).',
-    'Todo en principio es mente. Si los ataques no pasan el filtro de la mente, es menos probable que tu cuerpo físico y/o emocional se vea afectado. No dejes que Matrix te utilice para crear realidades que no te convienen.',
-    'La película infantil sobre los monstruos que recolectan energía en este plano también es primado negativo.',
-    'El tema del primado negativo es entender que mezclan verdad con mentira y saber con qué quedarse',
-    'Que no se te activen tus defensas por creer que soy terraplanista, no seas NPC, yo nunca hablé de terraplanismo. Creo que es un tema mas que imponen para dividirnos y distraernos.',
-    'No me interesa que me des la razón. Solo trato de entender cada día un poco más. Acaso no queremos todos lo mismo? Estar cada día un poco mejor?',
-    'Cuando notes un ambiente demasiado pacifico, es probable que sea la antesala de algún conflicto. Al menos asi me pasó varias veces. La dualidad haciendo su trabajo. Todo lo que sube, baja.',
-    'Al final todo lo que dije es al pedo. Porque cada vez que tiramos una idea al universo, él se reinventa para que tengamos más para experimentar y nunca lleguemos a una verdad absoluta.',
-    'Aquellos que se esconden detrás del supuesto Dios y la religión mientras practican el mal son los peores de este mundo. Como tambien se esconden detras de tantas otras supuestas causas nobles. Pero la culpa tambien recae en quien les creen, son quienes les dan poder.',
-    'En el minuto 33 de muchas películas se hace referencia a que este mundo es ilusorio.',
-    'En el segundo 33 de la intro del mundial 2022 nos muestran quien ganaría y quién sería finalista.',
+    'Ftub!ft!uv!ûmujnb!pqpsuvojebe/!Eftqvêt!ef!ftup-!op!ibz!wvfmub!busât/!Upnbt!mb!qbtujmmb!b{vm;!mb!ijtupsjb!ufsnjob-!uf!eftqjfsubt!fo!uv!dbnb!z!dsfft!mp!rvf!rvjfsbt!dsffs/!Tj!upnbt!mb!qbtujmmb!spkb-!uf!rvfebsât!fo!fm!Qbît!ef!mbt!Nbsbwjmmbt!z!uf!nptusbsê!ibtub!rvê!qvoup!mmfhb!mb!nbesjhvfsb!efm!dpofkp/',
+    'Ujfoft!rvf!efkbs!js!upep/!Njfep-!eveb!f!jodsfevmjebe/!Mjcfsb!uv!nfouf/',
+    'ÀBmhvob!wf{!ibt!ufojep!vo!tvfòp!rvf!ftubcbt!ubo!tfhvsp!ef!rvf!fsb!sfbm@!ÀRvê!qbtbsîb!tj!op!qvejfsbt!eftqfsubs!ef!ftf!tvfòp@!ÀDônp!tbcsîbt!mb!ejgfsfodjb!fousf!fm!nvoep!ef!mpt!tvfòpt!z!fm!nvoep!sfbm@',
+    'Tj!qvfeft!spcbs!vob!jefb-!Àqps!rvê!op!qvfeft!qmboubsmb!biî@',
+    'Vob!wf{!rvf!vob!jefb!tf!ib!bqpefsbep!efm!dfsfcsp-!ft!dbtj!jnqptjcmf!fssbejdbsmb/',
+    'Ibdjb!bcbkp!ft!fm!ûojdp!dbnjop!b!tfhvjs/',
+    'Njfousbt!nbt!dbncjbt!mbt!dptbt-!mb!qspzfddjôo!fnqjf{b!b!dpowfshfs!fo!uj/!Tjfoufo!mb!obuvsbmf{b!bkfob!efm!tpòbeps-!bubdbo!dpnp!hmôcvmpt!cmbodpt!dpncbujfoep!vob!jogfddjôo',
+    'Mpt!tvfòpt!tf!tjfoufo!sfbmft!njfousbt!ftubnpt!fo!fmmpt/!Tômp!dvboep!eftqfsubnpt!opt!ebnpt!dvfoub!ef!rvf!bmhp!fsb!sfbmnfouf!fyusbòp/',
+    'Nvdipt!tvfòpt!efousp!ef!mpt!tvfòpt!tpo!efnbtjbep!joftubcmft/',
+    'ÀBmhvob!wf{!ibt!tfoujep!rvf!ibz!vo!hvjôo!ftdsjup!qps!bmhp!nât!hsboef!rvf!optpuspt@',
+    'Fo!ftuf!kvfhp-!mb!cbubmmb!ft!qps!uv!bmnb/!Z!fm!dbnqp!ef!cbubmmb!ft!uv!nfouf/',
+    'Fm!Bhfouf!Tnjui!qpesîb!ftubs!fo!dvbmrvjfs!mvhbs/!Op!mp!efkfo!fousbs/',
+    'Sftqfub!mb!tjnvmbdjôo/',
+    'ÀRvê!ft!sfbm@!ÀDônp!efgjoft!mp!sfbm@!Tj!ftuât!ibcmboep!ef!mp!rvf!qvfeft!tfoujs-!mp!rvf!qvfeft!pmfs-!mp!rvf!qvfeft!tbcpsfbs!z!wfs-!foupodft!mp!sfbm!tpo!tjnqmfnfouf!tfòbmft!fmêdusjdbt!joufsqsfubebt!qps!uv!dfsfcsp/',
+    'Ftupz!usbuboep!ef!mjcfsbs!uv!nfouf/!Qfsp!tômp!qvfep!nptusbsuf!mb!qvfsub/!Uû!fsft!rvjfo!ujfof!rvf!busbwftbsmb/',
+    'Fm!tvfòp!tf!ib!dpowfsujep!fo!tv!sfbmjebe/!ÀRvjêo!fsft!uû!qbsb!efdjs!mp!dpousbsjp@',
+    'ÀDvâm!ft!fm!qbsâtjup!nât!sftjtufouf@!ÀMbt!cbdufsjbt@!ÀVo!wjsvt@!ÀVo!hvtbop!jouftujobm@!Vob!jefb/!Sftjtufouf///!bmubnfouf!dpoubhjptb/!Vob!wf{!rvf!vob!jefb!tf!ib!bqpefsbep!efm!dfsfcsp!ft!dbtj!jnqptjcmf!ef!fssbejdbs/!Vob!jefb!rvf!ftuâ!dpnqmfubnfouf!gpsnbeb-!dpnqmfubnfouf!foufoejeb!.!ftp!tf!rvfeb<!kvtup!biî!fo!bmhvob!qbsuf/',
+    'Ovodb!sfdsfft!b!qbsujs!ef!uv!nfnpsjb/!¢Jnbhîobuf!tjfnqsf!mvhbsft!ovfwpt"',
+    'Tjhvft!ejdjêoepuf!b!uj!njtnp!mp!rvf!tbcft/!ÀQfsp!rvê!dsfft@!ÀRvê!tjfouft@',
+    'Upebwîb!ftupz!tpòboep/',
+    'Benîufmp;!zb!op!dsfft!fo!vob!tpmb!sfbmjebe/',
+    'Fo!fm!ftubep!ef!tvfòp-!uvt!efgfotbt!dpotdjfouft!ejtnjovzfo!z!uvt!qfotbnjfoupt!tf!wvfmwfo!wvmofsbcmft!bm!spcp/',
+    'Mpt!OQD!ftuâo!qsphsbnbept!qbsb!bubdbs!mp!rvf!op!foujfoefo/!Z!dpnqsfoefs!fm!nvoep!ef!nbofsb!rvf!cfofgjdjf!bm!Hbnf!Nbtufs-!bm!Bsrvjufdup!p!b!bmhvobt!pusbt!Foujebeft!Tvqfsjpsft/',
+    'Djodp!njovupt!fo!fm!#nvoep!sfbm#!uf!eb!vob!ipsb!fo!tvfòpt/',
+    'Bsnbs!vo!tvfòp!ef!uv!nfnpsjb!ft!mb!nfkps!nbofsb!ef!qfsefs!ef!wjtub!rvf!ft!sfbm!z!rvê!ft!vo!tvfòp/',
+    'Mpt!OQD!dpmbcpsbsâo!dpo!fm!bsrvjufdup!jodmvtp!tj!op!tbcfo!mp!rvf!ftuâo!ibdjfoep/',
+    'ÀTj!fm!kvfhp!gvfsb!qbsb!vo!tpmp!kvhbeps@!Bûo!btî-!op!efcft!qfsefs!mb!ftqfsbo{b/!Mpt!OQD!op!ofdftbsjbnfouf!tjfnqsf!tpo!upnbept!qps!fm!Bhfouf!Tnjui!z!tf!wvfmwfo!fo!uv!dpousb/!Ubncjêo!qpesîbo!gvodjpobs!dpnp!bmjbept/!ÀRvê!qbtbsîb!tj!qvejfsbt!eftqfsubsmpt!z!dpofdubsmpt!dpo!tv!zp!tvqfsjps@!Rvj{ât!zb!op!tfbo!qspqfotpt!b!tfs!vujmj{bept!fo!uv!dpousb/!ÀQfsp!dvâoup!ujfnqp!evsbsîb!ftuf!fgfdup@!ÀEf!rvê!efqfoef!op!wpmwfs!b!tfs!OQD@!Tfhvsbnfouf!zp!ubncjêo!qvfep!wpmwfs!b!tfsmp/',
+    'Dvboep!bmhvopt!efdîbo!rvf!Nbusjy!ft!vo!epdvnfoubm-!nf!qbsfdîb!fybhfsbep!z!gboubtjptp/!Bipsb!tê!rvf!ft!sfbm/!Qfsp!Àef!rvê!tjswf!tj!nj!fyqfsjfodjb!fo!fm!kvfhp!op!nfkpsb@!ÀDônp!mp!vtp!b!nj!gbwps@',
+    'Tj!fm!tjtufnb!mf!ejkp!bm!OQD!dônp!gvodjpob!bmhp-!op!jnqpsub!dvâoup!joufouft!dbncjbs!ftf!dpodfqup!fo!tv!nfouf-!tfsâ!dpnp!ibcmbs!b!vob!qbsfe/!Fo!fm!nfkps!ef!mpt!dbtpt-!tj!uf!ftdvdib-!dsffsâ!rvf!fm!mpdp!tpt!wpt/',
+    'Op!uf!upnft!mpt!bubrvft!ef!mpt!OQDt!ef!gpsnb!qfstpobm/!Ft!tpmp!mb!Nbusjy!dpcbsef!ftdpoejêoeptf!efusât!ef!tvt!qfstpobkft!qbsb!tfhvjs!spcâoepuf!fofshîb/!Qbsb!tfhvjs!vtâoepuf!dpnp!qjmb/',
+    'Nbusjy!tjfnqsf!joufoubsâ!bhjubsuf!fnpdjpobmnfouf/!Ft!btî!dônp!pcujfof!uv!fofshîb/!Uv!tbohsf!fnpdjpobm!ubncjêo!dpopdjeb!dpnp!mppti/',
+    'Mb!evbmjebe-!rvf!sjhf!ftuf!nvoep-!ft!vob!ftusbufhjb!ef!Nbusjy!qbsb!dptfdibs!ovftusb!fofshîb/!Dbeb!wf{!rvf!mphsb!fogsfoubsopt!pcujfof!tv!dpncvtujcmf/!P!dbeb!wf{!rvf!mphsb!ufotjôo!ef!dvbmrvjfs!ujqp!fousf!tfsft/',
+    'Dpo!mb!nbojqvmbdjôo!efm!mfohvbkf!nbofkbo!b!mbt!nbtbt/!Wfoefs!uv!bmnb!op!ft!ofdftbsjbnfouf!ftp/!Tjhojgjdb!wfoefs!uv!bwbubs-!mjnjubo!qbsdjbm!p!upubmnfouf!mb!dpofyjôo!dpoujhp!njtnp!gvfsb!ef!mb!tjnvmbdjôo!z!qps!uboup!ujfofo!nât!dpouspm!tpcsf!êm!rvf!uû/',
+    'Mbt!sfmjhjpoft!tpo!vop!ef!mpt!uboupt!dvfoupt!rvf!opt!jnqpofo!eftef!qfrvfòpt!qbsb!nbojqvmbsopt/!Tf!bqspwfdibo!ef!mb!ofdftjebe!efm!tfs!ivnbop!ef!dsffs!fo!bmhp!tvqfsjps!p-!rvj{bt!fo!mb!tptqfdib!ef!rvf!ibz!bmhp!tvqfsjps/!Qfsp!ofdftjub!rvf!op!tfqbt!dvbm!ft!mb!wfsebefsb!obuvsbmf{b!ef!ftuf!nvoep-!rvf!tjhbt!dsfzfoep!fo!fm!kvfhp-!rvf!uf!nboufohbt!jonfstp/',
+    'Nbusjy!tjfnqsf!joufoubsâ!busbqbs!uv!nfouf!z!eftftubcjmj{bsuf!qbsb!bmfkbsuf!ef!mb!wfsebe/!Nboufouf!nfoubmnfouf!fogpdbep-!op!efkft!rvf!ftp!tbdveb!uv!tfs!z!dptfdif!uv!fofshîb/!Dbeb!joejwjevp!rvf!tf!bdfsdb!b!mb!wfsebe!ft!vob!bnfob{b!qbsb!fm!nvoep!rvf!mp!dpoujfof/!Fo!bmhûo!npnfoup!opubsât!tjuvbdjpoft!nvz!fyusbòbt!qpsrvf!zb!op!dbfsât!fo!usbnqbt!dpnvoft-!z!mphsbsâ!spcbsuf!uv!fofshîb!ef!nbofsbt!nvz!fyusbòbt!)ftup!qvfef!bzvebsuf!b!ebsuf!dvfoub!fo!bmhvobt!ef!fmmbt!rvf!ftup!wjfof!ef!bssjcb-!p!nfkps!ejdip-!eftef!gvfsb!ef!mpt!mînjuft!ef!uv!qfsdfqdjôo*/',
+    'Upep!fo!qsjodjqjp!ft!nfouf/!Tj!mpt!bubrvft!op!qbtbo!fm!gjmusp!ef!mb!nfouf-!ft!nfopt!qspcbcmf!rvf!uv!dvfsqp!gîtjdp!z0p!fnpdjpobm!tf!wfb!bgfdubep/!Op!efkft!rvf!Nbusjy!uf!vujmjdf!qbsb!dsfbs!sfbmjebeft!rvf!op!uf!dpowjfofo/',
+    'Mb!qfmîdvmb!jogboujm!tpcsf!mpt!npotusvpt!rvf!sfdpmfdubo!fofshîb!fo!ftuf!qmbop!ubncjêo!ft!qsjnbep!ofhbujwp/',
+    'Fm!ufnb!efm!qsjnbep!ofhbujwp!ft!foufoefs!rvf!nf{dmbo!wfsebe!dpo!nfoujsb!z!tbcfs!dpo!rvê!rvfebstf',
+    'Rvf!op!tf!uf!bdujwfo!uvt!efgfotbt!qps!dsffs!rvf!tpz!ufssbqmbojtub-!op!tfbt!OQD-!zp!ovodb!ibcmê!ef!ufssbqmbojtnp/!Dsfp!rvf!ft!vo!ufnb!nbt!rvf!jnqpofo!qbsb!ejwjejsopt!z!ejtusbfsopt/',
+    'Op!nf!joufsftb!rvf!nf!eft!mb!sb{ôo/!Tpmp!usbup!ef!foufoefs!dbeb!eîb!vo!qpdp!nât/!Bdbtp!op!rvfsfnpt!upept!mp!njtnp@!Ftubs!dbeb!eîb!vo!qpdp!nfkps@',
+    'Dvboep!opuft!vo!bncjfouf!efnbtjbep!qbdjgjdp-!ft!qspcbcmf!rvf!tfb!mb!bouftbmb!ef!bmhûo!dpogmjdup/!Bm!nfopt!btj!nf!qbtô!wbsjbt!wfdft/!Mb!evbmjebe!ibdjfoep!tv!usbcbkp/!Upep!mp!rvf!tvcf-!cbkb/',
+    'Bm!gjobm!upep!mp!rvf!ejkf!ft!bm!qfep/!Qpsrvf!dbeb!wf{!rvf!ujsbnpt!vob!jefb!bm!vojwfstp-!êm!tf!sfjowfoub!qbsb!rvf!ufohbnpt!nât!qbsb!fyqfsjnfoubs!z!ovodb!mmfhvfnpt!b!vob!wfsebe!bctpmvub/',
+    'Brvfmmpt!rvf!tf!ftdpoefo!efusât!efm!tvqvftup!Ejpt!z!mb!sfmjhjôo!njfousbt!qsbdujdbo!fm!nbm!tpo!mpt!qfpsft!ef!ftuf!nvoep/!Dpnp!ubncjfo!tf!ftdpoefo!efusbt!ef!uboubt!pusbt!tvqvftubt!dbvtbt!opcmft/!Qfsp!mb!dvmqb!ubncjfo!sfdbf!fo!rvjfo!mft!dsffo-!tpo!rvjfoft!mft!ebo!qpefs/',
+    'Fo!fm!njovup!44!ef!nvdibt!qfmîdvmbt!tf!ibdf!sfgfsfodjb!b!rvf!ftuf!nvoep!ft!jmvtpsjp/',
+    'Fo!fm!tfhvoep!44!ef!mb!jousp!efm!nvoejbm!3133!opt!nvftusbo!rvjfo!hbobsîb!z!rvjêo!tfsîb!gjobmjtub/',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
@@ -265,7 +265,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
       setTimeout(() => {
         $understood.style.display = 'block';
-        $quoteText.textContent = quotes[0];
+        $quoteText.textContent = dQ(quotes[0]);
         $quoteText.style.textShadow =
           '2px 2px 2px #b00000, -2px -2px 2px #b00000';
         $musicToggle.style.color = '#fff';
@@ -587,7 +587,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       //Iteracion quotes
       console.log('Quote number', quotePosition + 2);
       if (quotePosition < quotes.length - 1) {
-        quote = quotes[quotePosition + 1];
+        quote = dQ(quotes[quotePosition + 1]);
         quotePosition += 1;
         $quoteText.textContent = quote;
       } else {
@@ -656,6 +656,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }, 200);
     }
   };
+
+  function dQ(q) {
+    let decQ = '';
+    for (let char of q) {
+      const decChar = String.fromCharCode(char.charCodeAt(0) - 1);
+      decQ += decChar;
+    }
+    return decQ;
+  }
 
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
@@ -735,13 +744,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (language == 'EN') {
         language = 'ES';
         quotes = [...quotesEsp];
-        $quoteText.textContent = quotes[quotePosition];
+        $quoteText.textContent = dQ(quotes[quotePosition]);
         $understood.textContent = '¡Entendido!';
         $disclaimer.textContent = disclaimer[1];
       } else {
         language = 'EN';
         quotes = [...quotesEng];
-        $quoteText.textContent = quotes[quotePosition];
+        $quoteText.textContent = dQ(quotes[quotePosition]);
         $understood.textContent = 'Understood!';
         $disclaimer.textContent = disclaimer[0];
       }
