@@ -111,6 +111,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Uiptf!xip!ijef!cfijoe!uif!tp.dbmmfe!Hpe!boe!sfmjhjpo!xijmf!qsbdujdjoh!fwjm!bsf!uif!xpstu!jo!uijt!xpsme/!Bt!uifz!bmtp!ijef!cfijoe!tp!nboz!puifs!tvqqptfe!opcmf!dbvtft/!Cvu!uif!cmbnf!bmtp!gbmmt!po!uiptf!xip!cfmjfwf!uifn-!uifz!bsf!uif!poft!xip!hjwf!uifn!qpxfs/',
     'Jo!uif!44se!njovuf!pg!nboz!gjmnt!ju!jt!sfgfssfe!up!uibu!uijt!xpsme!jt!jmmvtpsz/',
     'Jo!uif!44se!tfdpoe!pg!uif!jousp!pg!uif!3133!Xpsme!Dvq!uifz!tipx!vt!xip!xpvme!xjo!boe!xip!xpvme!cf!b!gjobmjtu/',
+    'Uif!ebsloftt!ibt!wfsz!ejsuz!tusbufhjft!up!ejwjef!vt/!Jut!nbjo!gvodujpo!jt!up!nblf!vt!cfmjfwf!uibu!uif!puifs!jt!uif!fofnz/!Voujm!nboz!ujnft!ju!nbobhft!up!nblf!ju!b!sfbmjuz/',
   ];
   const quotesEsp = [
     'Ftub!ft!uv!ûmujnb!pqpsuvojebe/!Eftqvêt!ef!ftup-!op!ibz!wvfmub!busât/!Upnbt!mb!qbtujmmb!b{vm;!mb!ijtupsjb!ufsnjob-!uf!eftqjfsubt!fo!uv!dbnb!z!dsfft!mp!rvf!rvjfsbt!dsffs/!Tj!upnbt!mb!qbtujmmb!spkb-!uf!rvfebsât!fo!fm!Qbît!ef!mbt!Nbsbwjmmbt!z!uf!nptusbsê!ibtub!rvê!qvoup!mmfhb!mb!nbesjhvfsb!efm!dpofkp/',
@@ -158,6 +159,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Brvfmmpt!rvf!tf!ftdpoefo!efusât!efm!tvqvftup!Ejpt!z!mb!sfmjhjôo!njfousbt!qsbdujdbo!fm!nbm!tpo!mpt!qfpsft!ef!ftuf!nvoep/!Dpnp!ubncjfo!tf!ftdpoefo!efusbt!ef!uboubt!pusbt!tvqvftubt!dbvtbt!opcmft/!Qfsp!mb!dvmqb!ubncjfo!sfdbf!fo!rvjfo!mft!dsffo-!tpo!rvjfoft!mft!ebo!qpefs/',
     'Fo!fm!njovup!44!ef!nvdibt!qfmîdvmbt!tf!ibdf!sfgfsfodjb!b!rvf!ftuf!nvoep!ft!jmvtpsjp/',
     'Fo!fm!tfhvoep!44!ef!mb!jousp!efm!nvoejbm!3133!opt!nvftusbo!rvjfo!hbobsîb!z!rvjêo!tfsîb!gjobmjtub/',
+    'Mb!ptdvsjebe!ujfof!ftusbufhjbt!nvz!tvdjbt!qbsb!ejwjejsopt/!Tv!qsjodjqbm!gvodjôo!ft!ibdfsopt!dsffs!rvf!fm!pusp!ft!fm!fofnjhp/!Ibtub!rvf!nvdibt!wfdft!mphsb!dpowfsujsmp!fo!sfbmjebe/',
   ];
   let quotes = [...quotesEng]; //Copio el array con spread operator
   let quote = quotes[quotePosition];
