@@ -295,6 +295,7 @@ img#matrix {
 }
 
 #caja-presentacion {
+  font-size: 14px;
   position: relative;
   display: flex;
   justify-content: center;

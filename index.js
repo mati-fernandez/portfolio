@@ -156,7 +156,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'Op!nf!joufsftb!rvf!nf!eft!mb!sb{ôo/!Tpmp!usbup!ef!foufoefs!dbeb!eîb!vo!qpdp!nât/!Bdbtp!op!rvfsfnpt!upept!mp!njtnp@!Ftubs!dbeb!eîb!vo!qpdp!nfkps@',
     'Dvboep!opuft!vo!bncjfouf!efnbtjbep!qbdjgjdp-!ft!qspcbcmf!rvf!tfb!mb!bouftbmb!ef!bmhûo!dpogmjdup/!Bm!nfopt!btj!nf!qbtô!wbsjbt!wfdft/!Mb!evbmjebe!ibdjfoep!tv!usbcbkp/!Upep!mp!rvf!tvcf-!cbkb/',
     'Bm!gjobm!upep!mp!rvf!ejkf!ft!bm!qfep/!Qpsrvf!dbeb!wf{!rvf!ujsbnpt!vob!jefb!bm!vojwfstp-!êm!tf!sfjowfoub!qbsb!rvf!ufohbnpt!nât!qbsb!fyqfsjnfoubs!z!ovodb!mmfhvfnpt!b!vob!wfsebe!bctpmvub/',
-    'Brvfmmpt!rvf!tf!ftdpoefo!efusât!efm!tvqvftup!Ejpt!z!mb!sfmjhjôo!njfousbt!qsbdujdbo!fm!nbm!tpo!mpt!qfpsft!ef!ftuf!nvoep/!Dpnp!ubncjfo!tf!ftdpoefo!efusbt!ef!uboubt!pusbt!tvqvftubt!dbvtbt!opcmft/!Qfsp!mb!dvmqb!ubncjfo!sfdbf!fo!rvjfo!mft!dsffo-!tpo!rvjfoft!mft!ebo!qpefs/',
+    'Brvfmmpt!rvf!tf!ftdpoefo!efusât!efm!tvqvftup!Ejpt!z!mb!sfmjhjôo!njfousbt!qsbdujdbo!fm!nbm!tpo!mpt!qfpsft!ef!ftuf!nvoep/!Dpnp!ubncjfo!tf!ftdpoefo!efusbt!ef!uboubt!pusbt!tvqvftubt!dbvtbt!opcmft/!Qfsp!mb!dvmqb!ubncjfo!sfdbf!fo!rvjfoft!mft!dsffo-!tpo!rvjfoft!mft!ebo!qpefs/',
     'Fo!fm!njovup!44!ef!nvdibt!qfmîdvmbt!tf!ibdf!sfgfsfodjb!b!rvf!ftuf!nvoep!ft!jmvtpsjp/',
     'Fo!fm!tfhvoep!44!ef!mb!jousp!efm!nvoejbm!3133!opt!nvftusbo!rvjfo!hbobsîb!z!rvjêo!tfsîb!gjobmjtub/',
     'Mb!ptdvsjebe!ujfof!ftusbufhjbt!nvz!tvdjbt!qbsb!ejwjejsopt/!Tv!qsjodjqbm!gvodjôo!ft!ibdfsopt!dsffs!rvf!fm!pusp!ft!fm!fofnjhp/!Ibtub!rvf!nvdibt!wfdft!mphsb!dpowfsujsmp!fo!sfbmjebe/',
@@ -406,6 +406,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
+    $header.style.transition = 'var(--matrixBgTransition)';
     $disclaimer.style.display = 'none';
     $cajaCara.style.pointerEvents = 'none';
     if (typed) {
