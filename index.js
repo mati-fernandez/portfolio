@@ -53,6 +53,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
+  let bunnyHandlerUniqueCall = false;
+  let count = 0;
+  let fastClicksInit = false;
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
   let timerMsje = null;
   let fadeInterval = 0;
@@ -319,12 +322,21 @@ d.addEventListener('DOMContentLoaded', (e) => {
     rootMargin: '0px',
     threshold: 0.5,
   };
-  const observer = new IntersectionObserver(
-    handleIntersection,
-    observerOptions
-  );
-  //Observar aparición del footer (para white rabbit)
-  observer.observe($footer);
+
+  //Manejo de la visibilidad del conejo
+  function bunnyHandler() {
+    if (!bunnyHandlerUniqueCall) {
+      $cajaPresentacion.querySelector('p').textContent = 'F T W R';
+      bunnyHandlerUniqueCall = true;
+      console.log('bunnyHandler llamada');
+      const observer = new IntersectionObserver(
+        handleIntersection,
+        observerOptions
+      );
+      //Observar aparición del footer (para white rabbit)
+      observer.observe($footer);
+    }
+  }
 
   //Cargar canciones y sonidos
   const loadSounds = () => {
@@ -671,6 +683,21 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
+    //Manejo del click en prof pic
+    if (e.target.matches('img#profile-pic')) {
+      count++;
+      if (!fastClicksInit) {
+        fastClicksInit = true;
+        setTimeout(() => {
+          fastClicksInit = false;
+          count = 0;
+        }, 2500);
+      }
+      if (count === 6) {
+        bunnyHandler();
+      }
+      console.log(count);
+    }
     //Manejo del botón de sonido
     if (e.target.matches('#audio-toggle')) {
       $suggestiveFinger3.style.display =
@@ -819,7 +846,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     event.preventDefault();
     //Click derecho en profile pic
     if (event.target.matches('img#profile-pic')) {
-      startQuoteMode();
+      //   startQuoteMode();
+      // Agregar algun efecto quizas
     }
   });
 });
