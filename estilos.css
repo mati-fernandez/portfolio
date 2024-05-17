@@ -163,44 +163,6 @@ div {
   font-size: 50px;
 }
 
-#suggestive-finger2-wrapper {
-  position: absolute;
-  transform: rotate(90deg);
-  z-index: 11;
-  top: 48%;
-  left: calc(50vw - 300px);
-}
-
-#suggestive-finger2 {
-  display: none;
-  font-size: 50px;
-  animation-duration: 3s;
-  animation-name: sf2;
-  animation-iteration-count: infinite;
-}
-
-@keyframes sf2 {
-  0% {
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-    transform: translatey(-20px);
-  }
-  75% {
-    opacity: 1;
-    transform: translatey(-20px);
-  }
-  90% {
-    transform: translatey(-20px);
-    opacity: 1;
-  }
-  100% {
-    transform: translatey(-20px);
-    opacity: 0;
-  }
-}
-
 #suggestive-finger3-wrapper {
   position: absolute;
   top: 54px;
@@ -277,6 +239,7 @@ div {
 }
 
 #caja-cara img {
+  cursor: pointer;
   position: absolute;
   height: 100%;
   transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
@@ -284,6 +247,7 @@ div {
 
 img#profile-pic {
   z-index: 1;
+  transition: opacity 2.8s ease-in-out, filter 200ms ease-in-out;
 }
 
 #caja-fondo-mobile {

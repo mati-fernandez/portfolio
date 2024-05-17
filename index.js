@@ -13,7 +13,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $seccionCpe = d.querySelector('#seccion-cpe'),
     $footer = d.querySelector('footer'),
     $suggestiveFinger1 = d.querySelector('#suggestive-finger1'),
-    $suggestiveFinger2 = d.querySelector('#suggestive-finger2'),
     $profileAudio = d.querySelector('#profile-audio'),
     $thunderAudio = d.querySelector('#thunder'),
     $rainAudio = d.querySelector('#rain'),
@@ -44,20 +43,21 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $whiteRabbit = d.querySelector('#white-rabbit'),
     $disclaimer = d.querySelector('#disclaimer'),
     $musicGif = d.querySelector('#music-gif'),
-    $musicBtnAppearance = d.querySelector('#music-btn-appearance-audio');
+    $musicBtnAppearance = d.querySelector('#music-btn-appearance-audio'),
+    $firstSoundOn = d.querySelector('#first-sound-on');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
   $typing.volume = 0.3;
   $phoneRing.volume = 0.4;
   $musicBtnAppearance.volume = 0.4;
+  $firstSoundOn.volume = 0.3;
 
   //Variables y constantes de uso global:
   let bunnyHandlerUniqueCall = false;
   let count = 0;
   let fastClicksInit = false;
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
-  let timerMsje = null;
   let fadeInterval = 0;
   let autoImginterval = 0;
   console.log('Auto Image interval INITIALIZED!!!');
@@ -234,7 +234,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (quoteModeFirstLoad) {
         loadSounds();
         quoteModeFirstLoad = false;
-        $suggestiveFinger2.style.display = 'none';
       }
       //Fin de solo primera carga
 
@@ -325,17 +324,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Manejo de la visibilidad del conejo
   function bunnyHandler() {
-    if (!bunnyHandlerUniqueCall) {
-      $cajaPresentacion.querySelector('p').textContent = 'F T W R';
-      bunnyHandlerUniqueCall = true;
-      console.log('bunnyHandler llamada');
-      const observer = new IntersectionObserver(
-        handleIntersection,
-        observerOptions
-      );
-      //Observar aparición del footer (para white rabbit)
-      observer.observe($footer);
-    }
+    $cajaPresentacion.querySelector('p').textContent = 'F T W R';
+    bunnyHandlerUniqueCall = true;
+    console.log('bunnyHandler llamada');
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions
+    );
+    //Observar aparición del footer (para white rabbit)
+    observer.observe($footer);
   }
 
   //Cargar canciones y sonidos
@@ -685,18 +682,20 @@ d.addEventListener('DOMContentLoaded', (e) => {
   d.addEventListener('click', (e) => {
     //Manejo del click en prof pic
     if (e.target.matches('img#profile-pic')) {
-      count++;
-      if (!fastClicksInit) {
-        fastClicksInit = true;
-        setTimeout(() => {
-          fastClicksInit = false;
-          count = 0;
-        }, 2500);
+      if (!bunnyHandlerUniqueCall) {
+        count++;
+        if (!fastClicksInit) {
+          fastClicksInit = true;
+          setTimeout(() => {
+            fastClicksInit = false;
+            count = 0;
+          }, 2500);
+        }
+        if (count === 6) {
+          bunnyHandler();
+        }
+        console.log(count);
       }
-      if (count === 6) {
-        bunnyHandler();
-      }
-      console.log(count);
     }
     //Manejo del botón de sonido
     if (e.target.matches('#audio-toggle')) {
@@ -705,7 +704,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $audioToggleBtn.classList.toggle('fa-volume-high');
       $audioToggleBtn.classList.toggle('fa-volume-xmark');
       soundIsOn ? (soundIsOn = false) : (soundIsOn = true);
-      console.log(soundIsOn);
+      console.log('soundIsOn', soundIsOn);
       if (soundIsOn && quoteModeIsOn) {
         $rainAudio.volume = 0.2;
         $thunderAudio.volume = 0.3;
@@ -718,8 +717,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $typing.pause();
         $typing.currentTime = 0;
       }
-      if (soundIsOn && firstSoundOn && !quoteModeIsOn) {
-        $suggestiveFinger2.style.display = 'block';
+      if (firstSoundOn && !quoteModeIsOn) {
+        $firstSoundOn.play();
+        $imgProfPic.style.filter =
+          'drop-shadow(16px 0px 35px rgb(255, 255, 255)) invert(0%)';
+        setTimeout(() => {
+          $imgProfPic.style.filter =
+            'drop-shadow(0px 0px 0px rgb(0, 0, 0)) invert(0%)';
+        }, 200);
         firstSoundOn = false;
       }
     }
@@ -824,9 +829,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       fadeInOut($profileAudio);
       imgInterval('Create');
       matrixBg(true);
-      timerMsje = setTimeout(() => {
-        $suggestiveFinger2.style.display = 'none';
-      }, 1500);
     }
   });
 
@@ -837,7 +839,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $profileAudio.volume = 0.5;
       fadeInOut($profileAudio);
       matrixBg(false);
-      clearTimeout(timerMsje);
     }
   });
 
