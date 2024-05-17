@@ -44,19 +44,27 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $disclaimer = d.querySelector('#disclaimer'),
     $musicGif = d.querySelector('#music-gif'),
     $musicBtnAppearance = d.querySelector('#music-btn-appearance-audio'),
-    $firstSoundOn = d.querySelector('#first-sound-on');
+    $firstSoundOn = d.querySelector('#first-sound-on'),
+    $get = d.querySelector('#get'),
+    $ready = d.querySelector('#ready'),
+    $for = d.querySelector('#for'),
+    $the = d.querySelector('#the'),
+    $great = d.querySelector('#great'),
+    $awakening = d.querySelector('#awakening'),
+    $goToTop = d.querySelector('#go-to-top');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
   $typing.volume = 0.3;
   $phoneRing.volume = 0.4;
   $musicBtnAppearance.volume = 0.4;
-  $firstSoundOn.volume = 0.3;
 
   //Variables y constantes de uso global:
+  let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
-  let count = 0;
+  let count = 6;
   let fastClicksInit = false;
+  const textoHeader = $header.querySelector('h3').textContent;
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
   let fadeInterval = 0;
   let autoImginterval = 0;
@@ -682,19 +690,53 @@ d.addEventListener('DOMContentLoaded', (e) => {
   d.addEventListener('click', (e) => {
     //Manejo del click en prof pic
     if (e.target.matches('img#profile-pic')) {
-      if (!bunnyHandlerUniqueCall) {
-        count++;
-        if (!fastClicksInit) {
-          fastClicksInit = true;
-          setTimeout(() => {
-            fastClicksInit = false;
-            count = 0;
-          }, 2500);
+      const currentTime = new Date().getTime();
+      if (currentTime - lastClickTime > 550) {
+        lastClickTime = currentTime;
+        if (!bunnyHandlerUniqueCall) {
+          count--;
+          $header.querySelector('h3').textContent = count;
+          if (soundIsOn) {
+            switch (count) {
+              case 5:
+                $get.play();
+                break;
+              case 4:
+                $ready.play();
+                break;
+              case 3:
+                $for.play();
+                break;
+              case 2:
+                $the.play();
+                break;
+              case 1:
+                $great.play();
+                break;
+              case 0:
+                $awakening.play();
+                break;
+            }
+          }
+          if (!fastClicksInit) {
+            fastClicksInit = true;
+            setTimeout(() => {
+              fastClicksInit = false;
+              count = 6;
+            }, 4500);
+          }
+          if (count === 0) {
+            bunnyHandler();
+            setTimeout(() => {
+              $header.textContent = textoHeader;
+              $cajaPresentacion.querySelector('p').textContent =
+                textoPresentacion;
+            }, 4000);
+          }
+          console.log(count);
         }
-        if (count === 6) {
-          bunnyHandler();
-        }
-        console.log(count);
+      } else {
+        count = 6;
       }
     }
     //Manejo del botón de sonido
@@ -717,13 +759,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $typing.pause();
         $typing.currentTime = 0;
       }
-      if (firstSoundOn && !quoteModeIsOn) {
+      if (firstSoundOn && !quoteModeIsOn && !bunnyHandlerUniqueCall) {
         $firstSoundOn.play();
         $imgProfPic.style.filter =
-          'drop-shadow(16px 0px 35px rgb(255, 255, 255)) invert(0%)';
+          'drop-shadow(16px 0px 35px rgb(255, 255, 255, 50)) invert(0%)';
         setTimeout(() => {
-          $imgProfPic.style.filter =
-            'drop-shadow(0px 0px 0px rgb(0, 0, 0)) invert(0%)';
+          $imgProfPic.style.filter = 'none';
         }, 200);
         firstSoundOn = false;
       }
@@ -813,6 +854,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Scroll to top general
     if (e.target.matches('#scroll-to-top')) {
+      if (soundIsOn) $goToTop.play();
       window.scrollTo({
         behavior: 'smooth',
         top: 0,
@@ -826,7 +868,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
       console.log('Mouseover detectado');
       $profileAudio.volume = 0;
-      fadeInOut($profileAudio);
+      if (!quoteModeFirstLoad) fadeInOut($profileAudio);
       imgInterval('Create');
       matrixBg(true);
     }
@@ -837,7 +879,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Manejo del mouseout en profile pic
     if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
       $profileAudio.volume = 0.5;
-      fadeInOut($profileAudio);
+      if (!quoteModeFirstLoad) fadeInOut($profileAudio);
       matrixBg(false);
     }
   });
