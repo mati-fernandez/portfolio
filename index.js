@@ -198,6 +198,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'simula-el-fuego.mp3',
     'frecuencia-perdida.mp3',
     'toldo-etereo-2.mp3',
+    'gotas-de-esperanza.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
