@@ -51,7 +51,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $the = d.querySelector('#the'),
     $great = d.querySelector('#great'),
     $awakening = d.querySelector('#awakening'),
-    $goToTop = d.querySelector('#go-to-top');
+    $goToTop = d.querySelector('#go-to-top'),
+    $firstPage = d.querySelector('#first-page');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -258,6 +259,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
       //Fin manejo sonido
 
+      $firstPage.style.opacity = 0;
       $disclaimer.style.display = 'inline-block';
       $changeButton.style.pointerEvents = 'none';
       matrix2Bg(true);
@@ -277,6 +279,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
 
       setTimeout(() => {
+        $firstPage.style.display = 'none';
         $understood.style.display = 'block';
         $quoteText.textContent = dQ(quotes[0]);
         $quoteText.style.textShadow =
@@ -424,6 +427,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
+    $firstPage.style.display = 'block';
+    $firstPage.style.opacity = 1;
     $header.style.transition = 'var(--matrixBgTransition)';
     $disclaimer.style.display = 'none';
     $cajaCara.style.pointerEvents = 'none';
@@ -861,6 +866,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
         top: 0,
       });
     }
+  });
+
+  d.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.altKey && (e.key === 'q' || e.key === 'Q'))
+      startQuoteMode();
+    if (e.ctrlKey && e.shiftKey && e.altKey && (e.key === 'l' || e.key === 'L'))
+      exitQuoteMode();
   });
 
   //Manejo de eventos hover
