@@ -259,6 +259,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
       //Fin manejo sonido
 
+      $imgProfPic.style.cursor = 'auto';
       $firstPage.style.opacity = 0;
       $disclaimer.style.display = 'inline-block';
       $changeButton.style.pointerEvents = 'none';
@@ -336,6 +337,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Manejo de la visibilidad del conejo
   function bunnyHandler() {
+    $imgProfPic.style.cursor = 'auto';
     $cajaPresentacion.querySelector('p').textContent = 'F T W R';
     bunnyHandlerUniqueCall = true;
     console.log('bunnyHandler llamada');
