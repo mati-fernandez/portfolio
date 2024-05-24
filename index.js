@@ -1,72 +1,30 @@
+import * as s from './selectors.js';
 const d = document;
 //Establecer todo el js después de la carga del dom:
 d.addEventListener('DOMContentLoaded', (e) => {
-  //Selectores de uso global
-  const $header = d.querySelector('header'),
-    $cajaCentral = d.querySelector('#caja-central'),
-    $cajaCara = d.querySelector('#caja-cara'),
-    $cajaPresentacion = d.querySelector('#caja-presentacion'),
-    $audioEffect1 = d.querySelector('#toggle-btn-sound'),
-    $audioToggleBtn = d.querySelector('#audio-toggle'),
-    $seccionAptitudes = d.querySelector('#seccion-aptitudes'),
-    $seccionTecnologias = d.querySelector('#seccion-tecnologias'),
-    $seccionCpe = d.querySelector('#seccion-cpe'),
-    $footer = d.querySelector('footer'),
-    $suggestiveFinger1 = d.querySelector('#suggestive-finger1'),
-    $profileAudio = d.querySelector('#profile-audio'),
-    $thunderAudio = d.querySelector('#thunder'),
-    $rainAudio = d.querySelector('#rain'),
-    $suggestiveFinger3 = d.querySelector('#suggestive-finger3-wrapper'),
-    $cajaFondo = d.querySelector('#caja-fondo'),
-    $imgProfPic = d.querySelector('#profile-pic'),
-    $changeButton = d.querySelector('#change-button'),
-    $quoteModeGif = d.querySelector('#quote-mode'),
-    $cajaFdoMobile = d.querySelector('#caja-fondo-mobile'),
-    $qModeBkgIntro = d.querySelector('#quote-mode-bkg-intro'),
-    $mobileQModeBkgIntro = d.querySelector('#mobile-quote-mode-bkg-intro'),
-    $matrixProfPic = d.querySelector('#matrix'),
-    pic1 = d.querySelector('#profile-pic').src,
-    pic1h = d.querySelector('#matrix').src,
-    pic2 = 'prof-pic.png',
-    pic2h = 'prof-pic-hover.png',
-    $quoteText = d.querySelector('#presentacion'),
-    $typing = d.querySelector('#typing'),
-    $musicToggle = d.querySelector('#music-toggle'),
-    $languageToggle = d.querySelector('#language-toggle'),
-    $understood = d.querySelector('#understood'),
-    $exitQuoteModeBtn = d.querySelector('#exit-quote-mode-wrapper'),
-    $matrixBg = d.getElementById('matrix-bg'),
-    $matrix2Bg = d.querySelector('#matrix2-bg'),
-    $phoneRing = d.querySelector('#phone-ring'),
-    $pills = d.querySelectorAll('.pill'),
-    $nextSong = d.querySelector('#next-song'),
-    $whiteRabbit = d.querySelector('#white-rabbit'),
-    $disclaimer = d.querySelector('#disclaimer'),
-    $musicGif = d.querySelector('#music-gif'),
-    $musicBtnAppearance = d.querySelector('#music-btn-appearance-audio'),
-    $firstSoundOn = d.querySelector('#first-sound-on'),
-    $get = d.querySelector('#get'),
-    $ready = d.querySelector('#ready'),
-    $for = d.querySelector('#for'),
-    $the = d.querySelector('#the'),
-    $great = d.querySelector('#great'),
-    $awakening = d.querySelector('#awakening'),
-    $goToTop = d.querySelector('#go-to-top'),
-    $firstPage = d.querySelector('#first-page');
+  // Realiza una solicitud para wake up al backend al cargar la página
+  fetch('https://tu-api-en-render.com/wake-up')
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Wake up response:', data);
+    })
+    .catch((error) => {
+      console.error('Error waking up backend:', error);
+    });
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
-  $profileAudio.volume = 0;
-  $typing.volume = 0.3;
-  $phoneRing.volume = 0.4;
-  $musicBtnAppearance.volume = 0.4;
+  s.$profileAudio.volume = 0;
+  s.$typing.volume = 0.3;
+  s.$phoneRing.volume = 0.4;
+  s.$musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
   let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
   let count = 6;
   let fastClicksInit = false;
-  const textoHeader = $header.querySelector('h3').textContent;
-  const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
+  const textoHeader = s.$header.querySelector('h3').textContent;
+  const textoPresentacion = s.$cajaPresentacion.querySelector('p').textContent;
   let fadeInterval = 0;
   let autoImginterval = 0;
   console.log('Auto Image interval INITIALIZED!!!');
@@ -181,7 +139,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'quote-mode-pic3.png',
   ];
   let quoteImg = images[imgPosition];
-  let $quoteSong = null;
+  let quoteSong = null;
   let soundIsOn = false;
   const songsArray = [
     'simulando-realidad.mp3',
@@ -204,7 +162,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let songPosition = 0;
   let firstSoundOn = true;
   const disclaimer = [
-    $disclaimer.textContent,
+    s.$disclaimer.textContent,
     'Este contenido es puramente ficticio y tiene únicamente fines de entretenimiento. No asumimos responsabilidad por la exactitud o confiabilidad de la información presentada aquí.',
   ];
 
@@ -226,14 +184,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   function nextSong() {
     if (songPosition < songsArray.length - 1) {
-      $quoteSong.src = songsArray[songPosition + 1];
+      quoteSong.src = songsArray[songPosition + 1];
       songPosition += 1;
     } else {
-      $quoteSong.src = songsArray[0];
+      quoteSong.src = songsArray[0];
       songPosition = 0;
     }
-    $quoteSong.play();
-    $musicToggle.style.color = 'red';
+    quoteSong.play();
+    s.$musicToggle.style.color = 'red';
   }
 
   function startQuoteMode() {
@@ -251,63 +209,63 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
       //Manejo del sonido
       if (soundIsOn) {
-        $profileAudio.pause();
-        $rainAudio.volume = 0.2;
-        $thunderAudio.volume = 0.3;
-        $thunderAudio.play();
-        $rainAudio.play();
+        s.$profileAudio.pause();
+        s.$rainAudio.volume = 0.2;
+        s.$thunderAudio.volume = 0.3;
+        s.$thunderAudio.play();
+        s.$rainAudio.play();
       }
       //Fin manejo sonido
 
-      $imgProfPic.style.cursor = 'auto';
-      $firstPage.style.opacity = 0;
-      $disclaimer.style.display = 'inline-block';
-      $changeButton.style.pointerEvents = 'none';
+      s.$imgProfPic.style.cursor = 'auto';
+      s.$firstPage.style.opacity = 0;
+      s.$disclaimer.style.display = 'inline-block';
+      s.$changeButton.style.pointerEvents = 'none';
       matrix2Bg(true);
-      $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
+      s.$header.style.transition = 'none'; //FALTA: Al volver devolver estilo
       clearInterval(autoImginterval);
       console.log('auto img interval CLEARED!');
-      $imgProfPic.style.opacity = 0;
-      //   $msjeCondicional.style.display = 'none';
-      $cajaCentral.style.opacity = 0;
-      $quoteModeGif.style.display = 'block';
+      s.$imgProfPic.style.opacity = 0;
+      //   s.$msjeCondicional.style.display = 'none';
+      s.$cajaCentral.style.opacity = 0;
+      s.$quoteModeGif.style.display = 'block';
 
       //Media query para el fondo de transicion
       if (window.innerWidth > 630) {
-        $qModeBkgIntro.style.display = 'block';
+        s.$qModeBkgIntro.style.display = 'block';
       } else {
-        $mobileQModeBkgIntro.style.display = 'block';
+        s.$mobileQModeBkgIntro.style.display = 'block';
       }
 
       setTimeout(() => {
-        $firstPage.style.display = 'none';
-        $understood.style.display = 'block';
-        $quoteText.textContent = dQ(quotes[0]);
-        $quoteText.style.textShadow =
+        s.$firstPage.style.display = 'none';
+        s.$understood.style.display = 'block';
+        s.$quoteText.textContent = dQ(quotes[0]);
+        s.$quoteText.style.textShadow =
           '2px 2px 2px #b00000, -2px -2px 2px #b00000';
-        $musicToggle.style.color = '#fff';
-        $cajaPresentacion.style.textAlign = 'left';
-        $cajaPresentacion.style.textWrap = 'wrap';
-        $languageToggle.style.display = 'block';
-        $matrixProfPic.src = quoteImg;
-        $cajaCentral.style.opacity = 100;
-        $quoteModeGif.style.display = 'none';
-        resetGif($quoteModeGif);
+        s.$musicToggle.style.color = '#fff';
+        s.$cajaPresentacion.style.textAlign = 'left';
+        s.$cajaPresentacion.style.textWrap = 'wrap';
+        s.$languageToggle.style.display = 'block';
+        s.$matrixProfPic.src = quoteImg;
+        s.$cajaCentral.style.opacity = 100;
+        s.$quoteModeGif.style.display = 'none';
+        resetGif(s.$quoteModeGif);
         if (window.innerWidth > 630) {
-          $qModeBkgIntro.style.display = 'none';
+          s.$qModeBkgIntro.style.display = 'none';
         } else {
-          $mobileQModeBkgIntro.style.display = 'none';
+          s.$mobileQModeBkgIntro.style.display = 'none';
         }
         //Music BTN Appearence
         setTimeout(() => {
-          if (soundIsOn) $musicBtnAppearance.play();
+          if (soundIsOn) s.$musicBtnAppearance.play();
         }, 500);
         setTimeout(() => {
-          $musicGif.style.display = 'block';
+          s.$musicGif.style.display = 'block';
           setTimeout(() => {
-            $musicToggle.style.display = 'block';
-            $musicGif.style.display = 'none';
-            resetGif($musicGif);
+            s.$musicToggle.style.display = 'block';
+            s.$musicGif.style.display = 'none';
+            resetGif(s.$musicGif);
           }, 2400);
         }, 2000);
       }, 3700);
@@ -323,7 +281,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         console.log('El footer está en el viewport');
-        if (quoteModeFirstLoad) $whiteRabbit.style.display = 'block';
+        if (quoteModeFirstLoad) s.$whiteRabbit.style.display = 'block';
       } else {
         console.log('El footer no está en el viewport');
       }
@@ -337,8 +295,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Manejo de la visibilidad del conejo
   function bunnyHandler() {
-    $imgProfPic.style.cursor = 'auto';
-    $cajaPresentacion.querySelector('p').textContent = 'F T W R';
+    s.$imgProfPic.style.cursor = 'auto';
+    s.$cajaPresentacion.querySelector('p').textContent = 'F T W R';
     bunnyHandlerUniqueCall = true;
     console.log('bunnyHandler llamada');
     const observer = new IntersectionObserver(
@@ -346,79 +304,135 @@ d.addEventListener('DOMContentLoaded', (e) => {
       observerOptions
     );
     //Observar aparición del footer (para white rabbit)
-    observer.observe($footer);
+    observer.observe(s.$footer);
   }
 
   //Cargar canciones y sonidos
   const loadSounds = () => {
     //Canciones del quote mode (a partir de la uno se cargan al tocar next song)
-    $quoteSong = d.createElement('audio');
-    $quoteSong.src = songsArray[0];
-    d.body.insertAdjacentElement('beforeend', $quoteSong);
-    // $quoteSong.setAttribute('controls', 'true');
-    // $quoteSong.style.display = 'block';
-    // $quoteSong.style.position = 'absolute';
-    // $quoteSong.style.zIndex = 55;
-    // $quoteSong.style.top = '550px';
+    quoteSong = d.createElement('audio');
+    quoteSong.src = songsArray[0];
+    d.body.insertAdjacentElement('beforeend', quoteSong);
+    // quoteSong.setAttribute('controls', 'true');
+    // quoteSong.style.display = 'block';
+    // quoteSong.style.position = 'absolute';
+    // quoteSong.style.zIndex = 55;
+    // quoteSong.style.top = '550px';
 
     //Sonido de ingreso de pills
-    $pillsSound = d.createElement('audio');
-    $pillsSound.src = 'pills-intro.mp3';
-    d.body.insertAdjacentElement('beforeend', $pillsSound);
+    s.$pillsSound = d.createElement('audio');
+    s.$pillsSound.src = 'pills-intro.mp3';
+    d.body.insertAdjacentElement('beforeend', s.$pillsSound);
     //Sonido de fusion de pills
-    $pillsMerge = d.createElement('audio');
-    $pillsMerge.src = 'pills-merge.mp3';
-    $pillsMerge.volume = 0.2;
-    d.body.insertAdjacentElement('beforeend', $pillsMerge);
+    s.$pillsMerge = d.createElement('audio');
+    s.$pillsMerge.src = 'pills-merge.mp3';
+    s.$pillsMerge.volume = 0.2;
+    d.body.insertAdjacentElement('beforeend', s.$pillsMerge);
   };
 
   //Funcion de cambio de fondo cuando hover en profile-pic
   function matrixBg(hover) {
     if (hover) {
-      $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
-      $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
-      $footer.style.backgroundColor = 'rgba(0,0,0,0)';
-      $cajaFondo.style.opacity = 0;
-      $cajaFdoMobile.style.opacity = 0;
-      $imgProfPic.style.opacity = 0;
-      $matrixBg.style.opacity = 100;
+      s.$header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      s.$cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
+      s.$cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      s.$seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      s.$seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      s.$seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
+      s.$footer.style.backgroundColor = 'rgba(0,0,0,0)';
+      s.$cajaFondo.style.opacity = 0;
+      s.$cajaFdoMobile.style.opacity = 0;
+      s.$imgProfPic.style.opacity = 0;
+      s.$matrixBg.style.opacity = 100;
     } else if (!quoteModeIsOn) {
-      $matrixBg.style.opacity = 0;
-      $header.style.backgroundColor = 'var(--color1)';
-      $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
-      $seccionAptitudes.style.backgroundColor = 'var(--color2)';
-      $seccionTecnologias.style.backgroundColor = 'var(--color1)';
-      $seccionCpe.style.backgroundColor = 'var(--color2)';
-      $footer.style.backgroundColor = 'var(--color1)';
-      $cajaFondo.style.opacity = 100;
-      $cajaFdoMobile.style.opacity = 100;
-      $imgProfPic.style.opacity = 100;
+      s.$matrixBg.style.opacity = 0;
+      s.$header.style.backgroundColor = 'var(--color1)';
+      s.$cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
+      s.$seccionAptitudes.style.backgroundColor = 'var(--color2)';
+      s.$seccionTecnologias.style.backgroundColor = 'var(--color1)';
+      s.$seccionCpe.style.backgroundColor = 'var(--color2)';
+      s.$footer.style.backgroundColor = 'var(--color1)';
+      s.$cajaFondo.style.opacity = 100;
+      s.$cajaFdoMobile.style.opacity = 100;
+      s.$imgProfPic.style.opacity = 100;
       if (window.innerWidth > 630)
-        $cajaFondo.style.backgroundColor = 'var(--color1)';
+        s.$cajaFondo.style.backgroundColor = 'var(--color1)';
     }
   }
 
   //Funcion de cambio de fondo al entrar a quote mode
   function matrix2Bg() {
-    $header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-    $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
-    $cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-    $seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-    $seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-    $seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
-    $footer.style.backgroundColor = 'rgba(0,0,0,0)';
-    $matrix2Bg.style.opacity = 100;
-    $cajaFondo.style.opacity = 0; //Por si viene desde el conejo
-    $cajaFdoMobile.style.opacity = 0; //Por si viene desde el conejo
+    s.$header.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    s.$cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0)';
+    s.$cajaPresentacion.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    s.$seccionAptitudes.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    s.$seccionTecnologias.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    s.$seccionCpe.style.backgroundColor = 'rgba(0,0,0,0)';
+    s.$footer.style.backgroundColor = 'rgba(0,0,0,0)';
+    s.$matrix2Bg.style.opacity = 100;
+    s.$cajaFondo.style.opacity = 0; //Por si viene desde el conejo
+    s.$cajaFdoMobile.style.opacity = 0; //Por si viene desde el conejo
+  }
+
+  // Función para obtener la siguiente frase descifrada
+  async function getNextPhrase(quotePosition) {
+    const response = await fetch(
+      `https://tu-api-en-render.com/api/next-phrase?index=s.${quotePosition}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.nextIndex !== 0) {
+        // Manejar la frase descifrada recibida
+        console.log('Frase descifrada:', data.quote);
+        quotePosition += 1;
+        s.$quoteText.textContent = quote;
+        // Obtener la siguiente frase descifrada
+        getNextPhrase(data.nextIndex);
+      } else {
+        // Realizar acciones adicionales cuando no hay más frases disponibles
+        console.log('No hay más frases disponibles');
+        // Por ejemplo, ejecutar otra función
+        // executeAnotherFunction();
+        quote = quotes[0];
+        quotePosition = 0;
+        exitQuoteMode();
+        return;
+      }
+    } else {
+      console.error('Error al obtener la siguiente frase');
+    }
+    //Typed.js
+    if (typed) {
+      typed.destroy();
+    }
+    let options = {
+      showCursor: false,
+      strings: [quote],
+      typeSpeed: 50,
+      loop: false,
+      smartBackspace: false,
+      backDelay: 50000, //ms
+      preStringTyped: (arrayPos, self) => {
+        if (soundIsOn) s.$typing.play();
+      },
+      onComplete: (self) => {
+        s.$typing.pause();
+        s.$typing.currentTime = 0;
+      },
+    };
+    typed = new Typed('#presentacion', options);
   }
 
   //Resetear estilos de pills
   function resetPills() {
-    $pills.forEach((pill) => {
+    s.$pills.forEach((pill) => {
       pill.style.opacity = 1;
       pill.style.width = '80px';
       pill.style.height = '80px';
@@ -429,49 +443,49 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
-    $firstPage.style.display = 'block';
-    $firstPage.style.opacity = 1;
-    $header.style.transition = 'var(--matrixBgTransition)';
-    $disclaimer.style.display = 'none';
-    $cajaCara.style.pointerEvents = 'none';
+    s.$firstPage.style.display = 'block';
+    s.$firstPage.style.opacity = 1;
+    s.$header.style.transition = 'var(--matrixBgTransition)';
+    s.$disclaimer.style.display = 'none';
+    s.$cajaCara.style.pointerEvents = 'none';
     if (typed) {
       typed.destroy();
     }
-    if (soundIsOn) $phoneRing.play();
+    if (soundIsOn) s.$phoneRing.play();
     matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
     resetPills();
-    $musicToggle.classList.add('fa-beat-fade');
-    $nextSong.classList.add('fa-beat-fade');
-    $nextSong.style.display = 'none';
-    $matrix2Bg.style.opacity = 0;
-    $changeButton.classList.remove('fa-shake');
-    $quoteText.style.opacity = 0;
-    $rainAudio.pause();
-    $thunderAudio.pause();
-    $thunderAudio.currentTime = 0;
-    $quoteSong.pause();
-    $quoteSong.currentTime = 0;
-    $typing.pause();
-    $musicToggle.style.display = 'none';
-    $exitQuoteModeBtn.style.display = 'none';
-    $languageToggle.style.display = 'none';
-    $suggestiveFinger1.style.opacity = 0;
-    $changeButton.classList.remove('fa-shake');
-    $changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
-    $understood.style.display = 'none';
+    s.$musicToggle.classList.add('fa-beat-fade');
+    s.$nextSong.classList.add('fa-beat-fade');
+    s.$nextSong.style.display = 'none';
+    s.$matrix2Bg.style.opacity = 0;
+    s.$changeButton.classList.remove('fa-shake');
+    s.$quoteText.style.opacity = 0;
+    s.$rainAudio.pause();
+    s.$thunderAudio.pause();
+    s.$thunderAudio.currentTime = 0;
+    quoteSong.pause();
+    quoteSong.currentTime = 0;
+    s.$typing.pause();
+    s.$musicToggle.style.display = 'none';
+    s.$exitQuoteModeBtn.style.display = 'none';
+    s.$languageToggle.style.display = 'none';
+    s.$suggestiveFinger1.style.opacity = 0;
+    s.$changeButton.classList.remove('fa-shake');
+    s.$changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+    s.$understood.style.display = 'none';
     if (window.innerWidth > 630)
-      $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+      s.$cajaPresentacion.style.backgroundColor = 'var(--color1)';
     setTimeout(() => {
-      $quoteText.style.opacity = 100;
-      $quoteText.textContent = textoPresentacion;
-      $quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
-      $quoteText.style.textAlign = 'center';
-      $exitQuoteModeBtn.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
-      $exitQuoteModeBtn.style.pointerEvents = 'none';
+      s.$quoteText.style.opacity = 100;
+      s.$quoteText.textContent = textoPresentacion;
+      s.$quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+      s.$quoteText.style.textAlign = 'center';
+      s.$exitQuoteModeBtn.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+      s.$exitQuoteModeBtn.style.pointerEvents = 'none';
     }, 2000);
     setTimeout(() => {
-      $cajaCara.style.pointerEvents = 'auto';
+      s.$cajaCara.style.pointerEvents = 'auto';
     }, 5000);
   };
 
@@ -536,7 +550,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       ease: 'slow',
     });
     tl.add(() => {
-      if (soundIsOn) $pillsMerge.play();
+      if (soundIsOn) s.$pillsMerge.play();
     }, '-=1');
     tl.to(
       '#change-button',
@@ -578,25 +592,25 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     //Instrucciones al finalizar la timeline tl
     tl.eventCallback('onComplete', function () {
-      $changeButton.style.pointerEvents = 'auto';
-      $changeButton.style.textShadow =
+      s.$changeButton.style.pointerEvents = 'auto';
+      s.$changeButton.style.textShadow =
         '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
-      $suggestiveFinger1.style.opacity = 100;
-      $changeButton.classList.add('fa-shake');
-      $musicToggle.style.display = 'block';
-      $exitQuoteModeBtn.style.pointerEvents = 'auto';
+      s.$suggestiveFinger1.style.opacity = 100;
+      s.$changeButton.classList.add('fa-shake');
+      s.$musicToggle.style.display = 'block';
+      s.$exitQuoteModeBtn.style.pointerEvents = 'auto';
     });
   };
 
   //Funciones asignadas al changeButton
   const handleChange = () => {
     if (!quoteModeIsOn) {
-      if ($imgProfPic.src.includes(pic1)) {
-        $imgProfPic.src = pic2;
-        $matrixProfPic.src = pic2h;
+      if (s.$imgProfPic.src.includes(pic1)) {
+        s.$imgProfPic.src = pic2;
+        s.$matrixProfPic.src = pic2h;
       } else {
-        $imgProfPic.src = pic1;
-        $matrixProfPic.src = pic1h;
+        s.$imgProfPic.src = pic1;
+        s.$matrixProfPic.src = pic1h;
       }
     } else {
       //Iteracion imagenes
@@ -611,39 +625,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
         console.log('position', imgPosition);
         console.log('img', quoteImg);
       }
-      $matrixProfPic.src = quoteImg;
+      s.$matrixProfPic.src = quoteImg;
       //Iteracion quotes
       console.log('Quote number', quotePosition + 2);
-      if (quotePosition < quotes.length - 1) {
-        quote = dQ(quotes[quotePosition + 1]);
-        quotePosition += 1;
-        $quoteText.textContent = quote;
-      } else {
-        quote = quotes[0];
-        quotePosition = 0;
-        exitQuoteMode();
-        return;
-      }
-      //Typed.js
-      if (typed) {
-        typed.destroy();
-      }
-      let options = {
-        showCursor: false,
-        strings: [quote],
-        typeSpeed: 50,
-        loop: false,
-        smartBackspace: false,
-        backDelay: 50000, //ms
-        preStringTyped: (arrayPos, self) => {
-          if (soundIsOn) $typing.play();
-        },
-        onComplete: (self) => {
-          $typing.pause();
-          $typing.currentTime = 0;
-        },
-      };
-      typed = new Typed('#presentacion', options);
+
+      //Quotes de la API
+      getNextPhrase(quotePosition);
     }
   };
 
@@ -664,23 +651,23 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de efecto en toggleImg
   const imgToggleEffect = () => {
     if (soundIsOn) {
-      $audioEffect1.play();
+      s.$audioEffect1.play();
     }
     if (window.innerWidth > 630) {
-      $cajaCentral.style.transition = 'box-shadow 100ms ease-in-out';
+      s.$cajaCentral.style.transition = 'box-shadow 100ms ease-in-out';
       quoteModeIsOn
-        ? ($cajaCentral.style.boxShadow = '0 0 50px 1px red')
-        : ($cajaCentral.style.boxShadow = '0 0 50px 1px white');
+        ? (s.$cajaCentral.style.boxShadow = '0 0 50px 1px red')
+        : (s.$cajaCentral.style.boxShadow = '0 0 50px 1px white');
       const timeout = setTimeout(() => {
-        $cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.368)';
+        s.$cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.368)';
       }, 200);
     } else {
-      $cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
+      s.$cajaCentral.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
       quoteModeIsOn
-        ? ($cajaCara.style.boxShadow = '0 0 50px 1px red')
-        : ($cajaCara.style.boxShadow = '0 0 50px 1px white');
+        ? (s.$cajaCara.style.boxShadow = '0 0 50px 1px red')
+        : (s.$cajaCara.style.boxShadow = '0 0 50px 1px white');
       const timeout = setTimeout(() => {
-        $cajaCara.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
+        s.$cajaCara.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0)';
       }, 200);
     }
   };
@@ -703,26 +690,26 @@ d.addEventListener('DOMContentLoaded', (e) => {
         lastClickTime = currentTime;
         if (!bunnyHandlerUniqueCall) {
           count--;
-          $header.querySelector('h3').textContent = count;
+          s.$header.querySelector('h3').textContent = count;
           if (soundIsOn) {
             switch (count) {
               case 5:
-                $get.play();
+                s.$get.play();
                 break;
               case 4:
-                $ready.play();
+                s.$ready.play();
                 break;
               case 3:
-                $for.play();
+                s.$for.play();
                 break;
               case 2:
-                $the.play();
+                s.$the.play();
                 break;
               case 1:
-                $great.play();
+                s.$great.play();
                 break;
               case 0:
-                $awakening.play();
+                s.$awakening.play();
                 break;
             }
           }
@@ -736,8 +723,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
           if (count === 0) {
             bunnyHandler();
             setTimeout(() => {
-              $header.textContent = textoHeader;
-              $cajaPresentacion.querySelector('p').textContent =
+              s.$header.textContent = textoHeader;
+              s.$cajaPresentacion.querySelector('p').textContent =
                 textoPresentacion;
             }, 4000);
           }
@@ -749,30 +736,30 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Manejo del botón de sonido
     if (e.target.matches('#audio-toggle')) {
-      $suggestiveFinger3.style.display =
-        $suggestiveFinger3.style.display === 'none' ? 'block' : 'none';
-      $audioToggleBtn.classList.toggle('fa-volume-high');
-      $audioToggleBtn.classList.toggle('fa-volume-xmark');
+      s.$suggestiveFinger3.style.display =
+        s.$suggestiveFinger3.style.display === 'none' ? 'block' : 'none';
+      s.$audioToggleBtn.classList.toggle('fa-volume-high');
+      s.$audioToggleBtn.classList.toggle('fa-volume-xmark');
       soundIsOn ? (soundIsOn = false) : (soundIsOn = true);
       console.log('soundIsOn', soundIsOn);
       if (soundIsOn && quoteModeIsOn) {
-        $rainAudio.volume = 0.2;
-        $thunderAudio.volume = 0.3;
-        $rainAudio.play();
-        $thunderAudio.play();
+        s.$rainAudio.volume = 0.2;
+        s.$thunderAudio.volume = 0.3;
+        s.$rainAudio.play();
+        s.$thunderAudio.play();
       } else {
-        $rainAudio.pause();
-        $thunderAudio.pause();
-        $thunderAudio.currentTime = 0;
-        $typing.pause();
-        $typing.currentTime = 0;
+        s.$rainAudio.pause();
+        s.$thunderAudio.pause();
+        s.$thunderAudio.currentTime = 0;
+        s.$typing.pause();
+        s.$typing.currentTime = 0;
       }
       if (firstSoundOn && !quoteModeIsOn && !bunnyHandlerUniqueCall) {
-        $firstSoundOn.play();
-        $imgProfPic.style.filter =
+        s.$firstSoundOn.play();
+        s.$imgProfPic.style.filter =
           'drop-shadow(16px 0px 35px rgb(255, 255, 255, 50)) invert(0%)';
         setTimeout(() => {
-          $imgProfPic.style.filter = 'none';
+          s.$imgProfPic.style.filter = 'none';
         }, 200);
         firstSoundOn = false;
       }
@@ -782,7 +769,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (!quoteModeIsOn) imgInterval('Create');
       handleChange();
       imgToggleEffect();
-      $suggestiveFinger1.style.opacity = 0;
+      s.$suggestiveFinger1.style.opacity = 0;
     }
     //Manejo de los botones flecha animadas para deslizar pagina
     if (e.target.matches('#first-page')) {
@@ -793,50 +780,50 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Boton de musica
     if (e.target.matches('#music-toggle')) {
-      $musicToggle.classList.remove('fa-beat-fade');
-      $nextSong.style.display = 'block';
-      if ($musicToggle.style.color == 'rgb(255, 255, 255)') {
-        $quoteSong.play();
-        $musicToggle.style.color = '#ff0000';
+      s.$musicToggle.classList.remove('fa-beat-fade');
+      s.$nextSong.style.display = 'block';
+      if (s.$musicToggle.style.color == 'rgb(255, 255, 255)') {
+        quoteSong.play();
+        s.$musicToggle.style.color = '#ff0000';
         //Finalizacion de una cancion
-        $quoteSong.addEventListener('ended', () => {
+        quoteSong.addEventListener('ended', () => {
           nextSong();
         });
       } else {
-        $quoteSong.pause();
-        $musicToggle.style.color = '#fff';
+        quoteSong.pause();
+        s.$musicToggle.style.color = '#fff';
       }
     }
     //Boton siguiente cancion
     if (e.target.matches('#next-song')) {
-      $nextSong.classList.remove('fa-beat-fade');
+      s.$nextSong.classList.remove('fa-beat-fade');
       nextSong();
     }
     //Boton "Understood!"
     if (e.target.matches('#understood')) {
-      $understood.style.display = 'none';
-      if (soundIsOn) $pillsSound.play();
+      s.$understood.style.display = 'none';
+      if (soundIsOn) s.$pillsSound.play();
       animatePills();
     }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
-      $languageToggle.classList.remove('fa-beat-fade');
+      s.$languageToggle.classList.remove('fa-beat-fade');
       if (typed) {
         typed.destroy();
-        $typing.pause();
+        s.$typing.pause();
       }
       if (language == 'EN') {
         language = 'ES';
         quotes = [...quotesEsp];
-        $quoteText.textContent = dQ(quotes[quotePosition]);
-        $understood.textContent = '¡Entendido!';
-        $disclaimer.textContent = disclaimer[1];
+        s.$quoteText.textContent = dQ(quotes[quotePosition]);
+        s.$understood.textContent = '¡Entendido!';
+        s.$disclaimer.textContent = disclaimer[1];
       } else {
         language = 'EN';
         quotes = [...quotesEng];
-        $quoteText.textContent = dQ(quotes[quotePosition]);
-        $understood.textContent = 'Understood!';
-        $disclaimer.textContent = disclaimer[0];
+        s.$quoteText.textContent = dQ(quotes[quotePosition]);
+        s.$understood.textContent = 'Understood!';
+        s.$disclaimer.textContent = disclaimer[0];
       }
     }
     //Botón de salida de quote mode
@@ -853,16 +840,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
         startQuoteMode();
       }, 500);
     }
-    //Scroll to top del #a-ver
-    if (e.target.matches('#a-ver')) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: 0,
-      });
-    }
     //Scroll to top general
     if (e.target.matches('#scroll-to-top')) {
-      if (soundIsOn) $goToTop.play();
+      if (soundIsOn) s.$goToTop.play();
       window.scrollTo({
         behavior: 'smooth',
         top: 0,
@@ -882,8 +862,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Manejo del hover en profile-pic
     if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
       console.log('Mouseover detectado');
-      $profileAudio.volume = 0;
-      if (!quoteModeFirstLoad) fadeInOut($profileAudio);
+      s.$profileAudio.volume = 0;
+      if (!quoteModeFirstLoad) fadeInOut(s.$profileAudio);
       imgInterval('Create');
       matrixBg(true);
     }
@@ -893,8 +873,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   d.addEventListener('mouseout', (e) => {
     //Manejo del mouseout en profile pic
     if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
-      $profileAudio.volume = 0.5;
-      if (!quoteModeFirstLoad) fadeInOut($profileAudio);
+      s.$profileAudio.volume = 0.5;
+      if (!quoteModeFirstLoad) fadeInOut(s.$profileAudio);
       matrixBg(false);
     }
   });
