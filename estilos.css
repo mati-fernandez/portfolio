@@ -475,6 +475,31 @@ area {
   padding: 10px;
 }
 
+/*Solo PC (Por no hacer mobile first tengo que meter estos parches)*/
+@media (min-width: 631px) {
+  li:hover {
+    filter: brightness(5);
+    color: var(--color1);
+  }
+
+  .tech {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .tech:hover {
+    transform: scale(1.3);
+  }
+
+  .card > img {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .card > img:hover {
+    transform: scale(1.1);
+  }
+}
+
+/*Solo MOBILE*/
 @media (max-width: 630px) {
   #quote-mode {
     top: 50vh;

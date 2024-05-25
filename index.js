@@ -64,7 +64,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
   let count = 6;
-  let fastClicksInit = false;
+  let clicksTimeOut = false;
   const textoHeader = $header.querySelector('h3').textContent;
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
   let fadeInterval = 0;
@@ -726,17 +726,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
                 break;
             }
           }
-          if (!fastClicksInit) {
-            fastClicksInit = true;
+          if (!clicksTimeOut) {
+            clicksTimeOut = true;
             setTimeout(() => {
-              fastClicksInit = false;
+              clicksTimeOut = false;
               count = 6;
+              $header.querySelector('h3').textContent = textoHeader;
             }, 4500);
           }
           if (count === 0) {
             bunnyHandler();
             setTimeout(() => {
-              $header.textContent = textoHeader;
+              $header.querySelector('h3').textContent = textoHeader;
               $cajaPresentacion.querySelector('p').textContent =
                 textoPresentacion;
             }, 4000);
