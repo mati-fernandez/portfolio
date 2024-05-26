@@ -55,7 +55,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $firstPage = d.querySelector('#first-page');
 
   // Realiza una solicitud para wake up al backend al cargar la página
-  fetch('https://vigenere-api.onrender.com/wake-up', {
+  const wakeUpURL = 'https://vigenere-api.onrender.com/wake-up';
+  const wakeUpLocalURL = 'http://localhost:3000/wake-up';
+  // CAMBIAR URL SEGUN A QUE BACKEND NECESITO APUNTAR
+  fetch(wakeUpLocalURL, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -338,16 +341,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
 
   // Función para obtener la siguiente frase descifrada
-  function getNextPhrase(index) {
-    fetch(
-      `https://vigenere-api.onrender.com/api/next-phrase?index=${index}&language=${language}`,
-      {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    )
+  // CAMBIAR URL SEGUN A QUE BACKEND NECESITO APUNTAR
+  function getNextPhrase() {
+    let nextPhraseURL = `https://vigenere-api.onrender.com/api/next-phrase?index=${quotePosition}&language=${language}`;
+    let nextPhraseLocalURL = `http://localhost:3000/api/next-phrase?index=${quotePosition}&language=${language}`;
+    console.log(nextPhraseLocalURL);
+    fetch(nextPhraseLocalURL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -356,89 +360,19 @@ d.addEventListener('DOMContentLoaded', (e) => {
       })
       .then((data) => {
         if (data.phrase) {
-          console.log('Next phrase:', data.phrase);
+          console.log('Phrase:', data.phrase);
           // Aquí puedes actualizar tu frontend con la nueva frase
+          $cajaPresentacion.querySelector('p').textContent = data.phrase;
         } else {
           console.log('No hay más frases disponibles');
           // Aquí puedes manejar el caso cuando no hay más frases
+          quotePosition = 0;
         }
       })
       .catch((error) => {
         console.error('Error fetching next phrase:', error);
       });
   }
-
-  //   function getNextPhrase(index) {
-  //     fetch(
-  //       `https://tu-api-en-render.com/api/next-phrase?index=${index}&language=${language}`,
-  //       {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       }
-  //     )
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         if (data.phrase) {
-  //           console.log('Next phrase:', data.phrase);
-  //           // Aquí puedes actualizar tu frontend con la nueva frase
-  //         } else {
-  //           console.log('No hay más frases disponibles');
-  //           // Aquí puedes manejar el caso cuando no hay más frases
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching next phrase:', error);
-  //       });
-  //   }
-
-  //   async function getNextPhrase(currentIndex) {
-  //     const response = await fetch(
-  //       `https://vigenere-api.onrender.com/api/next-phrase?index=${currentIndex}&language=${language}`,
-  //       {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       if (data.nextIndex !== 0) {
-  //         console.log('Frase descifrada:', data.phrase);
-  //         $quoteText.textContent = data.phrase;
-  //         currentIndex = data.nextIndex; // Actualiza el índice para la próxima solicitud
-  //       } else {
-  //         console.log('No hay más frases disponibles');
-  //         // Realizar alguna acción adicional, si es necesario
-  //         console.warn(`Dese data.message anda?: ${data.message}`);
-  //       }
-  //     } else {
-  //       console.error('Error al obtener la siguiente frase');
-  //     }
-  //   }
-
-  // Función para obtener la siguiente frase descifrada
-  //   function getNextPhrase(index, language) {
-  //     fetch(
-  //       `https://tu-api-en-render.com/api/next-phrase?index=${index}&language=${language}`
-  //     )
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         if (data.phrase) {
-  //           console.log('Next phrase:', data.phrase);
-  //           // Aquí puedes actualizar tu frontend con la nueva frase
-  //         } else {
-  //           console.log('No hay más frases disponibles');
-  //           // Aquí puedes manejar el caso cuando no hay más frases
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching next phrase:', error);
-  //       });
-  //   }
 
   //Resetear estilos de pills
   function resetPills() {
@@ -632,7 +566,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       } else {
         quoteImg = images[0];
         imgPosition = 0;
-        console.log('position', imgPosition);
+        console.log('imgPosition', imgPosition);
         console.log('img', quoteImg);
       }
       $matrixProfPic.src = quoteImg;
@@ -640,7 +574,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       console.log('Quote number', quotePosition + 2);
 
       //Quotes de la API
-      getNextPhrase(quotePosition);
+      quotePosition++;
+      getNextPhrase();
     }
   };
 
