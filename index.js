@@ -200,6 +200,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'frecuencia-perdida.mp3',
     'toldo-etereo-2.mp3',
     'gotas-de-esperanza.mp3',
+    'synthetic-heartstrings.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
