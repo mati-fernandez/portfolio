@@ -54,29 +54,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $goToTop = d.querySelector('#go-to-top'),
     $firstPage = d.querySelector('#first-page');
 
-  // Realiza una solicitud para wake up al backend al cargar la página
-  const wakeUpURL = 'https://vigenere-api.onrender.com/wake-up';
-  const wakeUpLocalURL = 'http://localhost:3000/wake-up';
-  // CAMBIAR URL SEGUN A QUE BACKEND NECESITO APUNTAR
-  fetch(wakeUpLocalURL, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log('Wake up response:', data);
-    })
-    .catch((error) => {
-      console.error('Error waking up backend:', error);
-    });
-
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
   $typing.volume = 0.3;
@@ -124,6 +101,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'frecuencia-perdida.mp3',
     'toldo-etereo-2.mp3',
     'gotas-de-esperanza.mp3',
+    'olvidos-del-corazon.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
@@ -133,6 +111,29 @@ d.addEventListener('DOMContentLoaded', (e) => {
   ];
 
   /************************* FUNCIONES ******************************/
+
+  // Realiza una solicitud para wake up al backend al cargar la página
+  const wakeUpURL = 'https://vigenere-api.onrender.com/wake-up';
+  const wakeUpLocalURL = 'http://localhost:3000/wake-up';
+  // CAMBIAR URL SEGUN A QUE BACKEND NECESITO APUNTAR
+  fetch(wakeUpURL, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Wake up response:', data);
+    })
+    .catch((error) => {
+      console.error('Error waking up backend:', error);
+    });
 
   // Función para reiniciar el GIF
   function resetGif(gifImg) {
@@ -369,11 +370,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   // Función para obtener la siguiente frase descifrada
   // CAMBIAR URL SEGUN A QUE BACKEND NECESITO APUNTAR
-  function getNextPhrase() {
+  function getNextPhrase(typeEffect) {
     const nextPhraseURL = `https://vigenere-api.onrender.com/api/next-phrase?index=${quotePosition}&language=${language}`;
     const nextPhraseLocalURL = `http://localhost:3000/api/next-phrase?index=${quotePosition}&language=${language}`;
-    console.log(nextPhraseLocalURL);
-    fetch(nextPhraseLocalURL, {
+    // console.log(nextPhraseLocalURL);
+    fetch(nextPhraseURL, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -389,11 +390,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
         if (data.phrase) {
           console.log('Phrase:', data.phrase);
           // Aquí puedes actualizar tu frontend con la nueva frase
-          typeQuote(data.phrase);
+          if (typeEffect) {
+            typeQuote(data.phrase);
+          } else {
+            $cajaPresentacion.querySelector('p').textContent = data.phrase;
+          }
         } else {
           console.log('No hay más frases disponibles');
           // Aquí puedes manejar el caso cuando no hay más frases
-          quotePosition = 0;
+          exitQuoteMode();
         }
       })
       .catch((error) => {
@@ -414,6 +419,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
     quoteModeIsOn = false;
+    quotePosition = 0;
+    imgPosition = 0;
     $firstPage.style.display = 'block';
     $firstPage.style.opacity = 1;
     $header.style.transition = 'var(--matrixBgTransition)';
@@ -602,7 +609,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
       //Quotes de la API
       quotePosition++;
-      getNextPhrase();
+      getNextPhrase(true);
     }
   };
 
@@ -784,16 +791,16 @@ d.addEventListener('DOMContentLoaded', (e) => {
         typed.destroy();
         $typing.pause();
       }
-      if (language == 'EN') {
-        language = 'ES';
-        quotes = [...quotesEsp];
-        $quoteText.textContent = dQ(quotes[quotePosition]);
+      if (language == 'en') {
+        language = 'es';
+        // quotePosition--;
+        getNextPhrase(false);
         $understood.textContent = '¡Entendido!';
         $disclaimer.textContent = disclaimer[1];
       } else {
-        language = 'EN';
-        quotes = [...quotesEng];
-        $quoteText.textContent = dQ(quotes[quotePosition]);
+        language = 'en';
+        // quotePosition--;
+        getNextPhrase(false);
         $understood.textContent = 'Understood!';
         $disclaimer.textContent = disclaimer[0];
       }
