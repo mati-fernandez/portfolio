@@ -340,11 +340,38 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $cajaFdoMobile.style.opacity = 0; //Por si viene desde el conejo
   }
 
+  // Funcion para usar typed.js en la quote
+  const typeQuote = (quote) => {
+    if (quotePosition === 0) {
+      $cajaPresentacion.querySelector('p').textContent = quote;
+    } else {
+      if (typed) {
+        typed.destroy();
+      }
+      let options = {
+        showCursor: false,
+        strings: [quote],
+        typeSpeed: 50,
+        loop: false,
+        smartBackspace: false,
+        backDelay: 50000, //ms
+        preStringTyped: (arrayPos, self) => {
+          if (soundIsOn) $typing.play();
+        },
+        onComplete: (self) => {
+          $typing.pause();
+          $typing.currentTime = 0;
+        },
+      };
+      typed = new Typed('#presentacion', options);
+    }
+  };
+
   // Función para obtener la siguiente frase descifrada
   // CAMBIAR URL SEGUN A QUE BACKEND NECESITO APUNTAR
   function getNextPhrase() {
-    let nextPhraseURL = `https://vigenere-api.onrender.com/api/next-phrase?index=${quotePosition}&language=${language}`;
-    let nextPhraseLocalURL = `http://localhost:3000/api/next-phrase?index=${quotePosition}&language=${language}`;
+    const nextPhraseURL = `https://vigenere-api.onrender.com/api/next-phrase?index=${quotePosition}&language=${language}`;
+    const nextPhraseLocalURL = `http://localhost:3000/api/next-phrase?index=${quotePosition}&language=${language}`;
     console.log(nextPhraseLocalURL);
     fetch(nextPhraseLocalURL, {
       method: 'GET',
@@ -362,7 +389,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         if (data.phrase) {
           console.log('Phrase:', data.phrase);
           // Aquí puedes actualizar tu frontend con la nueva frase
-          $cajaPresentacion.querySelector('p').textContent = data.phrase;
+          typeQuote(data.phrase);
         } else {
           console.log('No hay más frases disponibles');
           // Aquí puedes manejar el caso cuando no hay más frases
