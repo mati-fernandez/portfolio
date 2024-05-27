@@ -214,7 +214,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $musicToggle.style.color = '#fff';
         $cajaPresentacion.style.textAlign = 'left';
         $cajaPresentacion.style.textWrap = 'wrap';
-        $languageToggle.style.display = 'block';
         $matrixProfPic.src = quoteImg;
         $cajaCentral.style.opacity = 100;
         $quoteModeGif.style.display = 'none';
@@ -392,8 +391,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
           } else {
             $cajaPresentacion.querySelector('p').textContent = data.phrase;
           }
-          if (quotePosition === 0 && quoteModeIsOn)
+          if (quotePosition === 0 && quoteModeIsOn) {
             $understood.style.display = 'block';
+            $languageToggle.style.display = 'block';
+          }
         } else {
           console.log('No hay más frases disponibles');
           // Aquí puedes manejar el caso cuando no hay más frases
