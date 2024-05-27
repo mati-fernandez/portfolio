@@ -392,6 +392,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
           } else {
             $cajaPresentacion.querySelector('p').textContent = data.phrase;
           }
+          if (quotePosition === 0 && quoteModeIsOn)
+            $understood.style.display = 'block';
         } else {
           console.log('No hay más frases disponibles');
           // Aquí puedes manejar el caso cuando no hay más frases
@@ -400,10 +402,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       })
       .catch((error) => {
         console.error('Error fetching next phrase:', error);
-      })
-      .finally(() => {
-        if (quotePosition === 0 && quoteModeIsOn)
-          $understood.style.display = 'block';
       });
   }
 
