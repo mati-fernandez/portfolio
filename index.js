@@ -206,9 +206,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
 
       setTimeout(() => {
+        $cajaPresentacion.querySelector('p').textContent = 'Loading...';
+        getNextPhrase(0);
         $firstPage.style.display = 'none';
         $understood.style.display = 'block';
-        getNextPhrase(0);
         $quoteText.style.textShadow =
           '2px 2px 2px #b00000, -2px -2px 2px #b00000';
         $musicToggle.style.color = '#fff';
@@ -237,10 +238,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
           }, 2400);
         }, 2000);
       }, 3700);
-    } else {
-      console.log(
-        'Por ahora no pasa nada en quote mode si haces click derecho a profile pic'
-      );
     }
   }
 
