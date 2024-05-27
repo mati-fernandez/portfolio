@@ -61,6 +61,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
+  let understoodClicked = false;
   let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
   let count = 6;
@@ -391,7 +392,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
           } else {
             $cajaPresentacion.querySelector('p').textContent = data.phrase;
           }
-          if (quotePosition === 0 && quoteModeIsOn) {
+          if (quotePosition === 0 && quoteModeIsOn && !understoodClicked) {
             $understood.style.display = 'block';
             $languageToggle.style.display = 'block';
           }
@@ -787,6 +788,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
+      understoodClicked = true;
       $languageToggle.classList.remove('fa-beat-fade');
       if (typed) {
         typed.destroy();
@@ -794,15 +796,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
       if (language == 'en') {
         language = 'es';
-        // quotePosition--;
         getNextPhrase(false);
-        $understood.textContent = '¡Entendido!';
+        if (understoodClicked) $understood.textContent = '¡Entendido!';
         $disclaimer.textContent = disclaimer[1];
       } else {
         language = 'en';
-        // quotePosition--;
         getNextPhrase(false);
-        $understood.textContent = 'Understood!';
+        if (understoodClicked) $understood.textContent = 'Understood!';
         $disclaimer.textContent = disclaimer[0];
       }
     }
