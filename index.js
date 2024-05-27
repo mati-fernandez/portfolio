@@ -208,7 +208,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       setTimeout(() => {
         $cajaPresentacion.querySelector('p').textContent = 'Loading...';
         getNextPhrase(0);
-        $firstPage.style.display = 'none';
+        if (quoteModeIsOn) $firstPage.style.display = 'none';
         $quoteText.style.textShadow =
           '2px 2px 2px #b00000, -2px -2px 2px #b00000';
         $musicToggle.style.color = '#fff';
@@ -228,9 +228,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
           if (soundIsOn) $musicBtnAppearance.play();
         }, 500);
         setTimeout(() => {
-          $musicGif.style.display = 'block';
+          if (quoteModeIsOn) $musicGif.style.display = 'block';
           setTimeout(() => {
-            $musicToggle.style.display = 'block';
+            if (quoteModeIsOn) $musicToggle.style.display = 'block';
             $musicGif.style.display = 'none';
             resetGif($musicGif);
           }, 2400);
@@ -812,13 +812,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Agujero del conejo
     if (e.target.matches('area')) {
-      window.scrollTo({
-        behavior: 'smooth',
-        top: 0,
-      });
-      setTimeout(() => {
-        startQuoteMode();
-      }, 500);
+      if (!quoteModeIsOn) {
+        window.scrollTo({
+          behavior: 'smooth',
+          top: 0,
+        });
+        setTimeout(() => {
+          startQuoteMode();
+        }, 500);
+      } else {
+        exitQuoteMode();
+      }
     }
     //Scroll to top general
     if (e.target.matches('#scroll-to-top')) {
