@@ -209,7 +209,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $cajaPresentacion.querySelector('p').textContent = 'Loading...';
         getNextPhrase(0);
         $firstPage.style.display = 'none';
-        $understood.style.display = 'block';
         $quoteText.style.textShadow =
           '2px 2px 2px #b00000, -2px -2px 2px #b00000';
         $musicToggle.style.color = '#fff';
@@ -401,6 +400,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
       })
       .catch((error) => {
         console.error('Error fetching next phrase:', error);
+      })
+      .finally(() => {
+        if (quotePosition === 0 && quoteModeIsOn)
+          $understood.style.display = 'block';
       });
   }
 
