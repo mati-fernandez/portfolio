@@ -69,8 +69,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   const textoHeader = $header.querySelector('h3').textContent;
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
   let fadeInterval = 0;
-  let autoImginterval = 0;
-  console.log('Auto Image interval INITIALIZED!!!');
+  //   let autoImginterval = 0;
+  //   console.log('Auto Image interval INITIALIZED!!!');
   let quoteModeIsOn = false;
   let quoteModeFirstLoad = true;
   let imgPosition = 0;
@@ -192,8 +192,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $changeButton.style.pointerEvents = 'none';
       matrix2Bg(true);
       $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
-      clearInterval(autoImginterval);
-      console.log('auto img interval CLEARED!');
+      //   clearInterval(autoImginterval);
+      //   console.log('auto img interval CLEARED!');
       $imgProfPic.style.opacity = 0;
       //   $msjeCondicional.style.display = 'none';
       $cajaCentral.style.opacity = 0;
@@ -419,6 +419,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
+    $changeButton.style.pointerEvents = 'auto';
     understoodClicked = false;
     quoteModeIsOn = false;
     quotePosition = 0;
@@ -581,7 +582,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
         '2px 2px 2px #ff0000, -2px -2px 2px #ff0000';
       $suggestiveFinger1.style.opacity = 100;
       $changeButton.classList.add('fa-shake');
-      $musicToggle.style.display = 'block';
       $exitQuoteModeBtn.style.pointerEvents = 'auto';
     });
   };
@@ -589,13 +589,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funciones asignadas al changeButton
   const handleChange = () => {
     if (!quoteModeIsOn) {
-      if ($imgProfPic.src.includes(pic1)) {
-        $imgProfPic.src = pic2;
-        $matrixProfPic.src = pic2h;
-      } else {
-        $imgProfPic.src = pic1;
-        $matrixProfPic.src = pic1h;
-      }
+      //   if ($imgProfPic.src.includes(pic1)) {
+      //     $imgProfPic.src = pic2;
+      //     $matrixProfPic.src = pic2h;
+      //   } else {
+      //     $imgProfPic.src = pic1;
+      //     $matrixProfPic.src = pic1h;
+      //   }
     } else {
       //Iteracion imagenes
       if (imgPosition < images.length - 1) {
@@ -620,18 +620,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
   };
 
   //Reemplazo de prof-pic por tiempo
-  const imgInterval = (mode) => {
-    clearInterval(autoImginterval);
-    console.log('auto change img Interval cleared');
-    autoImginterval = setInterval(() => {
-      handleChange();
-      console.log('auto change img interval ID', autoImginterval);
-    }, 33000);
-    console.log('auto change img Interval CREATED!');
-  };
+  //   const imgInterval = (mode) => {
+  //     clearInterval(autoImginterval);
+  //     console.log('auto change img Interval cleared');
+  //     autoImginterval = setInterval(() => {
+  //       handleChange();
+  //       console.log('auto change img interval ID', autoImginterval);
+  //     }, 33000);
+  //     console.log('auto change img Interval CREATED!');
+  //   };
 
   //Llamar a la func de cambio de pic auto al entrar por primera vez a la web
-  imgInterval('Create');
+  //   imgInterval('Create');
 
   //Funcion de efecto en toggleImg
   const imgToggleEffect = () => {
@@ -657,19 +657,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
   };
 
-  function dQ(q) {
-    let decQ = '';
-    for (let char of q) {
-      const decChar = String.fromCharCode(char.charCodeAt(0) - 1);
-      decQ += decChar;
-    }
-    return decQ;
-  }
-
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
     //Manejo del click en prof pic
-    if (e.target.matches('img#profile-pic')) {
+    if (e.target.matches('#prof-pic-area')) {
       const currentTime = new Date().getTime();
       if (currentTime - lastClickTime > 550) {
         lastClickTime = currentTime;
@@ -752,7 +743,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Manejo del boton change
     if (e.target.matches('#change-button')) {
-      if (!quoteModeIsOn) imgInterval('Create');
+      //   if (!quoteModeIsOn) imgInterval('Create');
       handleChange();
       imgToggleEffect();
       $suggestiveFinger1.style.opacity = 0;
@@ -816,7 +807,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       exitQuoteMode();
     }
     //Agujero del conejo
-    if (e.target.matches('area')) {
+    if (e.target.matches('#rabbit-hole-area')) {
       if (!quoteModeIsOn) {
         window.scrollTo({
           behavior: 'smooth',
@@ -849,11 +840,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos hover
   d.addEventListener('mouseover', (e) => {
     //Manejo del hover en profile-pic
-    if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
+    if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
       console.log('Mouseover detectado');
       $profileAudio.volume = 0;
       if (!quoteModeFirstLoad) fadeInOut($profileAudio);
-      imgInterval('Create');
+      //   imgInterval('Create');
       matrixBg(true);
     }
   });
@@ -861,7 +852,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos mouseout
   d.addEventListener('mouseout', (e) => {
     //Manejo del mouseout en profile pic
-    if (e.target.matches('img#profile-pic') && !quoteModeIsOn) {
+    if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
       $profileAudio.volume = 0.5;
       if (!quoteModeFirstLoad) fadeInOut($profileAudio);
       matrixBg(false);

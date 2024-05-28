@@ -79,11 +79,69 @@
             id="matrix"
           />
           <div id="caja-fondo-mobile"></div>
-          <img
-            src="prof-pic-v2.png"
-            alt="Matias profile picture"
-            id="profile-pic"
-          />
+          <div style="position: relative">
+            <img
+              name="profile-pic"
+              src="profile-pic.png"
+              alt="Matias profile picture"
+              id="profile-pic"
+              width="400"
+              height="372"
+              usemap="#m_profile-pic"
+            />
+            <svg
+              id="for-prof-pic-area"
+              width="400"
+              height="372"
+              style="position: absolute; top: 0; left: 0"
+            >
+              <polygon
+                points="5,297
+                20,250
+                130,200
+                150,180
+                140, 170
+                140, 150
+                120, 120
+                120, 35
+                150, 0
+                250, 0
+                270, 35
+                270, 120
+                255, 170
+                240, 190
+                300, 230
+                350, 250
+                380,300"
+                fill="none"
+                stroke="aqua"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+          <map name="m_profile-pic" id="m_profile-pic">
+            <area
+              id="prof-pic-area"
+              shape="poly"
+              coords="5,297
+                20,250
+                130,200
+                150,180
+                140, 170
+                140, 150
+                120, 120
+                120, 35
+                150, 0
+                250, 0
+                270, 35
+                270, 120
+                255, 170
+                240, 190
+                300, 230
+                350, 250
+                380,300"
+            />
+          </map>
         </div>
         <div id="caja-presentacion">
           <div>
@@ -364,7 +422,11 @@
         usemap="#m_white-rabbit"
       />
       <map name="m_white-rabbit" id="m_white-rabbit">
-        <area shape="poly" coords="194,173,306,173,306,210,194,210,194,173" />
+        <area
+          shape="poly"
+          coords="194,173,306,173,306,210,194,210,194,173"
+          id="rabbit-hole-area"
+        />
       </map>
       <h2 id="contacto" data-aos="zoom-in" data-aos-offset="-100">Contacto</h2>
       <div class="contacto-links">

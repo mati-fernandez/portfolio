@@ -239,7 +239,6 @@ div {
 }
 
 #caja-cara img {
-  cursor: pointer;
   position: absolute;
   height: 100%;
   transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
@@ -248,6 +247,12 @@ div {
 img#profile-pic {
   z-index: 1;
   transition: opacity 2.8s ease-in-out, filter 200ms ease-in-out;
+}
+
+/*para ajustar coords de area, acá se ven*/
+svg#for-prof-pic-area {
+  display: none;
+  z-index: 9999;
 }
 
 #caja-fondo-mobile {
@@ -611,6 +616,11 @@ area {
     border-radius: 200px;
     transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
     justify-content: center;
+  }
+
+  #profile-pic {
+    width: auto;
+    height: auto;
   }
 
   #caja-fondo-mobile {
