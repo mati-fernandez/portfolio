@@ -419,6 +419,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
+    understoodClicked = false;
     quoteModeIsOn = false;
     quotePosition = 0;
     imgPosition = 0;
@@ -434,8 +435,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
     resetPills();
-    $musicToggle.classList.add('fa-beat-fade');
-    $nextSong.classList.add('fa-beat-fade');
     $nextSong.style.display = 'none';
     $matrix2Bg.style.opacity = 0;
     $changeButton.classList.remove('fa-shake');
@@ -465,7 +464,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }, 2000);
     setTimeout(() => {
       $cajaCara.style.pointerEvents = 'auto';
-    }, 5000);
+    }, 4000);
+    setTimeout(() => {
+      $changeButton.classList.remove('fa-shake');
+      $changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
+      $musicToggle.style.display = 'none';
+      $suggestiveFinger1.style.opacity = 0;
+    }, 6000);
   };
 
   //Efecto fade in para audio (con ayuda de copilot quedó pero se puede "hackear")
