@@ -74,7 +74,7 @@
         <div id="caja-fondo"></div>
         <div id="caja-cara">
           <img
-            src="prof-pic-hover-v2.png"
+            src="profile-pic-hover.png"
             alt="Matrix profile picture"
             id="matrix"
           />
@@ -437,6 +437,24 @@
       information presented herein.
     </div>
     <!-- Scripts cargan al final -->
+    <script>
+      //Carga rapida de imagen desde localStorage si existe
+      const profPics = [
+        'profile-pic.png',
+        'profile-pic-2.png',
+        'profile-pic-3.png',
+        'profile-pic-4.png',
+        'profile-pic-5.png',
+        'profile-pic-6.png',
+        'profile-pic-7.png',
+      ];
+      $imgProfPic = document.querySelector('#profile-pic');
+      $matrixProfPic = document.querySelector('#matrix');
+      let profPicPos = Number(localStorage.getItem('profPicCloth')) || 0;
+      $imgProfPic.src = profPics[profPicPos];
+      console.log('Pos de img inicial', profPicPos);
+      if (profPicPos === 6) $matrixProfPic.src = 'profile-pic-hover-2.png';
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();

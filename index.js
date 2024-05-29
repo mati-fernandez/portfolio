@@ -24,7 +24,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $cajaFdoMobile = d.querySelector('#caja-fondo-mobile'),
     $qModeBkgIntro = d.querySelector('#quote-mode-bkg-intro'),
     $mobileQModeBkgIntro = d.querySelector('#mobile-quote-mode-bkg-intro'),
-    $matrixProfPic = d.querySelector('#matrix'),
     $quoteText = d.querySelector('#presentacion'),
     $typing = d.querySelector('#typing'),
     $musicToggle = d.querySelector('#music-toggle'),
@@ -57,17 +56,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
-  const profPics = [
-    'profile-pic.png',
-    'profile-pic-2.png',
-    'profile-pic-3.png',
-    'profile-pic-4.png',
-    'profile-pic-5.png',
-    'profile-pic-6.png',
-  ];
-  let profPicPos = Number(localStorage.getItem('profPicCloth')) || 0;
-  $imgProfPic.src = profPics[profPicPos];
-  console.log('Pos de img inicial', profPicPos);
   let understoodClicked = false;
   let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
@@ -466,6 +454,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $exitQuoteModeBtn.style.pointerEvents = 'none';
     }, 2000);
     setTimeout(() => {
+      $matrixProfPic.src =
+        profPicPos === 6
+          ? ($matrixProfPic.src = 'profile-pic-hover-2.png')
+          : ($matrixProfPic.src = 'profile-pic-hover.png');
       $cajaCara.style.pointerEvents = 'auto';
     }, 4000);
     setTimeout(() => {
@@ -599,6 +591,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $imgProfPic.src = profPics[profPicPos];
       localStorage.setItem('profPicCloth', profPicPos.toString());
       console.log('prof pic pos', profPicPos);
+      if (profPicPos === 6) {
+        $matrixProfPic.src = 'profile-pic-hover-2.png';
+      } else {
+        $matrixProfPic.src = 'profile-pic-hover.png';
+      }
     } else {
       //Iteracion imagenes
       if (imgPosition < images.length - 1) {
