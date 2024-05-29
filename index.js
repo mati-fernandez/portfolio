@@ -25,8 +25,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $qModeBkgIntro = d.querySelector('#quote-mode-bkg-intro'),
     $mobileQModeBkgIntro = d.querySelector('#mobile-quote-mode-bkg-intro'),
     $matrixProfPic = d.querySelector('#matrix'),
-    $pic1 = d.querySelector('#profile-pic').src,
-    $pic2 = 'profile-pic-2.png',
     $quoteText = d.querySelector('#presentacion'),
     $typing = d.querySelector('#typing'),
     $musicToggle = d.querySelector('#music-toggle'),
@@ -59,6 +57,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
+  const profPics = [
+    'profile-pic.png',
+    'profile-pic-2.png',
+    'profile-pic-3.png',
+    'profile-pic-4.png',
+    'profile-pic-5.png',
+    'profile-pic-6.png',
+  ];
+  let profPicPos = Number(localStorage.getItem('profPicCloth')) || 0;
+  $imgProfPic.src = profPics[profPicPos];
+  console.log('Pos de img inicial', profPicPos);
   let understoodClicked = false;
   let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
@@ -67,8 +76,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
   const textoHeader = $header.querySelector('h3').textContent;
   const textoPresentacion = $cajaPresentacion.querySelector('p').textContent;
   let fadeInterval = 0;
-  //   let autoImginterval = 0;
-  //   console.log('Auto Image interval INITIALIZED!!!');
   let quoteModeIsOn = false;
   let quoteModeFirstLoad = true;
   let imgPosition = 0;
@@ -189,11 +196,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $disclaimer.style.display = 'inline-block';
       $changeButton.style.pointerEvents = 'none';
       matrix2Bg(true);
-      $header.style.transition = 'none'; //FALTA: Al volver devolver estilo
-      //   clearInterval(autoImginterval);
-      //   console.log('auto img interval CLEARED!');
+      $header.style.transition = 'none';
       $imgProfPic.style.opacity = 0;
-      //   $msjeCondicional.style.display = 'none';
       $cajaCentral.style.opacity = 0;
       $quoteModeGif.style.display = 'block';
 
@@ -587,11 +591,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funciones asignadas al changeButton
   const handleChange = () => {
     if (!quoteModeIsOn) {
-      if ($imgProfPic.src.includes($pic1)) {
-        $imgProfPic.src = $pic2;
+      if (profPicPos === profPics.length - 1) {
+        profPicPos = 0;
       } else {
-        $imgProfPic.src = $pic1;
+        profPicPos++;
       }
+      $imgProfPic.src = profPics[profPicPos];
+      localStorage.setItem('profPicCloth', profPicPos.toString());
+      console.log('prof pic pos', profPicPos);
     } else {
       //Iteracion imagenes
       if (imgPosition < images.length - 1) {
