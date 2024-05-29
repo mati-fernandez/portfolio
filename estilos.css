@@ -250,9 +250,12 @@ img#profile-pic {
 }
 
 /*para ajustar coords de area, acá se ven*/
-svg#for-prof-pic-area {
-  display: none;
+/* svg#for-prof-pic-area {
   z-index: 9999;
+} */
+
+#prof-pic-area-mobile {
+  display: none;
 }
 
 #caja-fondo-mobile {
@@ -621,6 +624,16 @@ area {
   #profile-pic {
     width: auto;
     height: auto;
+  }
+
+  #prof-pic-area {
+    display: none;
+  }
+
+  #prof-pic-area-mobile {
+    display: block;
+    opacity: 0;
+    z-index: 9999;
   }
 
   #caja-fondo-mobile {

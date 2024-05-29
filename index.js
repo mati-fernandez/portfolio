@@ -25,10 +25,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $qModeBkgIntro = d.querySelector('#quote-mode-bkg-intro'),
     $mobileQModeBkgIntro = d.querySelector('#mobile-quote-mode-bkg-intro'),
     $matrixProfPic = d.querySelector('#matrix'),
-    pic1 = d.querySelector('#profile-pic').src,
-    pic1h = d.querySelector('#matrix').src,
-    pic2 = 'prof-pic.png',
-    pic2h = 'prof-pic-hover.png',
+    $pic1 = d.querySelector('#profile-pic').src,
+    $pic2 = 'profile-pic-2.png',
     $quoteText = d.querySelector('#presentacion'),
     $typing = d.querySelector('#typing'),
     $musicToggle = d.querySelector('#music-toggle'),
@@ -589,13 +587,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Funciones asignadas al changeButton
   const handleChange = () => {
     if (!quoteModeIsOn) {
-      //   if ($imgProfPic.src.includes(pic1)) {
-      //     $imgProfPic.src = pic2;
-      //     $matrixProfPic.src = pic2h;
-      //   } else {
-      //     $imgProfPic.src = pic1;
-      //     $matrixProfPic.src = pic1h;
-      //   }
+      if ($imgProfPic.src.includes($pic1)) {
+        $imgProfPic.src = $pic2;
+      } else {
+        $imgProfPic.src = $pic1;
+      }
     } else {
       //Iteracion imagenes
       if (imgPosition < images.length - 1) {
@@ -618,20 +614,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       getNextPhrase(true);
     }
   };
-
-  //Reemplazo de prof-pic por tiempo
-  //   const imgInterval = (mode) => {
-  //     clearInterval(autoImginterval);
-  //     console.log('auto change img Interval cleared');
-  //     autoImginterval = setInterval(() => {
-  //       handleChange();
-  //       console.log('auto change img interval ID', autoImginterval);
-  //     }, 33000);
-  //     console.log('auto change img Interval CREATED!');
-  //   };
-
-  //Llamar a la func de cambio de pic auto al entrar por primera vez a la web
-  //   imgInterval('Create');
 
   //Funcion de efecto en toggleImg
   const imgToggleEffect = () => {
@@ -660,7 +642,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
     //Manejo del click en prof pic
-    if (e.target.matches('#prof-pic-area')) {
+    if (
+      e.target.matches('#prof-pic-area') ||
+      e.target.matches('svg#prof-pic-area-mobile')
+    ) {
       const currentTime = new Date().getTime();
       if (currentTime - lastClickTime > 550) {
         lastClickTime = currentTime;
@@ -840,22 +825,40 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos hover
   d.addEventListener('mouseover', (e) => {
     //Manejo del hover en profile-pic
-    if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
-      console.log('Mouseover detectado');
-      $profileAudio.volume = 0;
-      if (!quoteModeFirstLoad) fadeInOut($profileAudio);
-      //   imgInterval('Create');
-      matrixBg(true);
+    if (window.innerWidth > 630) {
+      if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
+        console.log('Mouseover PC');
+        $profileAudio.volume = 0;
+        if (!quoteModeFirstLoad) fadeInOut($profileAudio);
+        //   imgInterval('Create');
+        matrixBg(true);
+      }
+    } else {
+      if (e.target.matches('svg#prof-pic-area-mobile') && !quoteModeIsOn) {
+        console.log('Mouseover mobile');
+        $profileAudio.volume = 0;
+        if (!quoteModeFirstLoad) fadeInOut($profileAudio);
+        //   imgInterval('Create');
+        matrixBg(true);
+      }
     }
   });
 
   //Manejo de eventos mouseout
   d.addEventListener('mouseout', (e) => {
     //Manejo del mouseout en profile pic
-    if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
-      $profileAudio.volume = 0.5;
-      if (!quoteModeFirstLoad) fadeInOut($profileAudio);
-      matrixBg(false);
+    if (window.innerWidth > 630) {
+      if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
+        $profileAudio.volume = 0.5;
+        if (!quoteModeFirstLoad) fadeInOut($profileAudio);
+        matrixBg(false);
+      }
+    } else {
+      if (e.target.matches('svg#prof-pic-area-mobile') && !quoteModeIsOn) {
+        $profileAudio.volume = 0.5;
+        if (!quoteModeFirstLoad) fadeInOut($profileAudio);
+        matrixBg(false);
+      }
     }
   });
 
@@ -864,7 +867,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     event.preventDefault();
     //Click derecho en profile pic
     if (event.target.matches('img#profile-pic')) {
-      //   startQuoteMode();
       // Agregar algun efecto quizas
     }
   });
