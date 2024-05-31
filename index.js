@@ -56,6 +56,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
+  let language = localStorage.getItem('language') ?? 'en';
   let understoodClicked = false;
   let lastClickTime = 0;
   let bunnyHandlerUniqueCall = false;
@@ -69,7 +70,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let imgPosition = 0;
   let quotePosition = 0;
   let typed = null;
-  let language = 'en';
   const images = [
     'quote-mode-pic1.png',
     'quote-mode-pic2.png',
@@ -100,10 +100,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
   ];
   let songPosition = 0;
   let firstSoundOn = true;
-  const disclaimer = [
-    $disclaimer.textContent,
-    'Este contenido es puramente ficticio y tiene únicamente fines de entretenimiento. No asumimos responsabilidad por la exactitud o confiabilidad de la información presentada aquí.',
-  ];
 
   /************************* FUNCIONES ******************************/
 
@@ -129,6 +125,22 @@ d.addEventListener('DOMContentLoaded', (e) => {
     .catch((error) => {
       console.error('Error waking up backend:', error);
     });
+
+  //Establecer lenguaje
+  function updateTextLanguage() {
+    console.log('Idioma:', language === 'es' ? 'Español' : 'Inglés');
+    if (language === 'en') {
+      $cajaPresentacion.querySelector('p').textContent = 'Loading...';
+      $disclaimer.textContent =
+        'This content is purely fictional and for entertainment purposes only. We do not assume responsibility for the accuracy or reliability of any information presented herein.';
+      if (!understoodClicked) $understood.textContent = 'Understood!';
+    } else {
+      $cajaPresentacion.querySelector('p').textContent = 'Cargando...';
+      $disclaimer.textContent =
+        'Este contenido es puramente ficticio y tiene únicamente fines de entretenimiento. No asumimos responsabilidad por la exactitud o confiabilidad de la información presentada aquí.';
+      if (!understoodClicked) $understood.textContent = '¡Entendido!';
+    }
+  }
 
   // Función para reiniciar el GIF
   function resetGif(gifImg) {
@@ -197,7 +209,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
 
       setTimeout(() => {
-        $cajaPresentacion.querySelector('p').textContent = 'Loading...';
+        updateTextLanguage();
         getNextPhrase(0);
         if (quoteModeIsOn) $firstPage.style.display = 'none';
         $quoteText.style.textShadow =
@@ -767,13 +779,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
     //Boton "Understood!"
     if (e.target.matches('#understood')) {
+      understoodClicked = true;
       $understood.style.display = 'none';
       if (soundIsOn) $pillsSound.play();
       animatePills();
     }
     //Botón de lenguaje
     if (e.target.matches('#language-toggle')) {
-      understoodClicked = true;
       $languageToggle.classList.remove('fa-beat-fade');
       if (typed) {
         typed.destroy();
@@ -782,13 +794,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
       if (language == 'en') {
         language = 'es';
         getNextPhrase(false);
-        if (understoodClicked) $understood.textContent = '¡Entendido!';
-        $disclaimer.textContent = disclaimer[1];
+        localStorage.setItem('language', 'es');
+        updateTextLanguage();
       } else {
         language = 'en';
         getNextPhrase(false);
-        if (understoodClicked) $understood.textContent = 'Understood!';
-        $disclaimer.textContent = disclaimer[0];
+        localStorage.setItem('language', 'en');
+        updateTextLanguage();
       }
     }
     //Botón de salida de quote mode
