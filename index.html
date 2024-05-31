@@ -99,9 +99,10 @@
               'profile-pic-5.png',
               'profile-pic-6.png',
               'profile-pic-7.png',
+              'profile-pic-8.png',
             ];
             const matrixProfPics = [
-              'profile-pic-hover-2.png',
+              'profile-pic-hover.png',
               'profile-pic-hover-2.png',
             ];
             const preloadedImages = profPics.map((url) => {
@@ -119,7 +120,7 @@
             let profPicPos = Number(localStorage.getItem('profPicIndex')) || 0;
             $imgProfPic.src = profPics[profPicPos];
             console.log('Pos de img inicial', profPicPos);
-            if (profPicPos === 6)
+            if (profPicPos === 7)
               $matrixProfPic.src = 'profile-pic-hover-2.png';
           </script>
           <svg

@@ -603,7 +603,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       localStorage.setItem('profPicIndex', nextIndex.toString());
       console.log('prof pic pos', nextIndex);
       console.log('nextIndex', nextIndex + 1);
-      if (index === 5) {
+      if (index === 6) {
         $matrixProfPic.src = 'profile-pic-hover-2.png';
       } else {
         $matrixProfPic.src = 'profile-pic-hover.png';
