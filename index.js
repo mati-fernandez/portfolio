@@ -582,22 +582,22 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funciones asignadas al changeButton
   const handleChange = () => {
+    //Iteracion imagenes
     if (!quoteModeIsOn) {
-      if (profPicPos === profPics.length - 1) {
-        profPicPos = 0;
-      } else {
-        profPicPos++;
-      }
-      $imgProfPic.src = profPics[profPicPos];
-      localStorage.setItem('profPicCloth', profPicPos.toString());
-      console.log('prof pic pos', profPicPos);
-      if (profPicPos === 6) {
+      const currentSrc = $imgProfPic.src.split('/').pop();
+      const index = profPics.indexOf(currentSrc);
+      const nextIndex = (index + 1) % profPics.length;
+      $imgProfPic.src = profPics[nextIndex];
+      localStorage.setItem('profPicIndex', nextIndex.toString());
+      console.log('prof pic pos', nextIndex);
+      console.log('nextIndex', nextIndex + 1);
+      if (index === 5) {
         $matrixProfPic.src = 'profile-pic-hover-2.png';
       } else {
         $matrixProfPic.src = 'profile-pic-hover.png';
       }
     } else {
-      //Iteracion imagenes
+      //Iteracion imagenes QUOTE MODE ON!
       if (imgPosition < images.length - 1) {
         quoteImg = images[imgPosition + 1];
         imgPosition += 1;

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="estilos.css" />
   </head>
   <body>
+    <audio src="first-sound-on.mp3" id="first-sound-on"></audio>
     <video src="matrix-bg.mp4" id="matrix-bg" autoplay muted loop></video>
     <img src="quote-mode.gif" id="quote-mode" />
     <img src="quote-mode-bkg-intro.jpg" id="quote-mode-bkg-intro" />
@@ -88,6 +89,39 @@
             height="372"
             usemap="#m_profile-pic"
           />
+          <script>
+            //Carga rapida de imagen desde localStorage si existe
+            const profPics = [
+              'profile-pic.png',
+              'profile-pic-2.png',
+              'profile-pic-3.png',
+              'profile-pic-4.png',
+              'profile-pic-5.png',
+              'profile-pic-6.png',
+              'profile-pic-7.png',
+            ];
+            const matrixProfPics = [
+              'profile-pic-hover-2.png',
+              'profile-pic-hover-2.png',
+            ];
+            const preloadedImages = profPics.map((url) => {
+              const img = new Image();
+              img.src = url;
+              return img;
+            });
+            const preloadedHoverImages = matrixProfPics.map((url) => {
+              const img = new Image();
+              img.src = url;
+              return img;
+            });
+            const $imgProfPic = document.querySelector('#profile-pic');
+            const $matrixProfPic = document.querySelector('#matrix');
+            let profPicPos = Number(localStorage.getItem('profPicIndex')) || 0;
+            $imgProfPic.src = profPics[profPicPos];
+            console.log('Pos de img inicial', profPicPos);
+            if (profPicPos === 6)
+              $matrixProfPic.src = 'profile-pic-hover-2.png';
+          </script>
           <svg
             id="prof-pic-area-mobile"
             style="position: absolute; top: 0; left: 0"
@@ -437,24 +471,7 @@
       information presented herein.
     </div>
     <!-- Scripts cargan al final -->
-    <script>
-      //Carga rapida de imagen desde localStorage si existe
-      const profPics = [
-        'profile-pic.png',
-        'profile-pic-2.png',
-        'profile-pic-3.png',
-        'profile-pic-4.png',
-        'profile-pic-5.png',
-        'profile-pic-6.png',
-        'profile-pic-7.png',
-      ];
-      $imgProfPic = document.querySelector('#profile-pic');
-      $matrixProfPic = document.querySelector('#matrix');
-      let profPicPos = Number(localStorage.getItem('profPicCloth')) || 0;
-      $imgProfPic.src = profPics[profPicPos];
-      console.log('Pos de img inicial', profPicPos);
-      if (profPicPos === 6) $matrixProfPic.src = 'profile-pic-hover-2.png';
-    </script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
@@ -463,7 +480,6 @@
     <script src="selectors.js" type="module"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <audio src="first-sound-on.mp3" id="first-sound-on"></audio>
     <audio src="go-to-top.mp3" id="go-to-top"></audio>
     <audio src="get.mp3" id="get"></audio>
     <audio src="ready.mp3" id="ready"></audio>
