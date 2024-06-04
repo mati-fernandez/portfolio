@@ -48,7 +48,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $awakening = d.querySelector('#awakening'),
     $goToTop = d.querySelector('#go-to-top'),
     $firstPage = d.querySelector('#first-page'),
-    $name = d.querySelector('header>h3');
+    $name = d.querySelector('header>h3'),
+    $body = d.querySelector('body');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -172,34 +173,38 @@ d.addEventListener('DOMContentLoaded', (e) => {
   const alternateNames = [
     'FERNAND3Z MA7IA5',
     'F3RNΛNDEZ MΛTIΔS',
-    'FERNANDEZ MATIAS',
-    'FERNANDEZ MATIAS',
+    'FERNAND3Z MAT1AS',
+    'F3RNΛNDEZ MA7IΛ5',
   ];
   const alternateColors = ['#ffeeee', '#ffdddd', '#ffcccc', '#ffbbbb'];
 
   let changeInterval;
   let nameInterval;
   let nameCounter = 0;
+  console.log('nameInterval:', nameInterval);
+  console.log('changeInterval:', changeInterval);
   function changingHeaderLetters() {
-    changeInterval = setInterval(() => {
+    if (nameInterval !== undefined) clearInterval(nameInterval);
+    if (changeInterval !== undefined) clearInterval(changeInterval);
+    if (quoteModeIsOn) {
       nameInterval = setInterval(() => {
         $name.textContent = alternateNames[nameCounter % alternateNames.length];
         nameCounter++;
       }, 200);
-      setTimeout(() => {
-        clearInterval(nameInterval);
-      }, 2000);
-    }, 6000);
-  }
-
-  let colorInterval;
-  let colorCounter = 0;
-  function changingHeaderColor() {
-    colorInterval = setInterval(() => {
-      $name.style.color =
-        alternateColors[colorCounter % alternateColors.length];
-      colorCounter++;
-    }, 200);
+    } else {
+      changeInterval = setInterval(() => {
+        nameInterval = setInterval(() => {
+          $name.textContent =
+            alternateNames[nameCounter % alternateNames.length];
+          nameCounter++;
+        }, 200);
+        setTimeout(() => {
+          clearInterval(nameInterval);
+        }, 2000);
+      }, 6000);
+    }
+    console.log('cHL invoked. nameInterval:', nameInterval);
+    console.log('cHL invoked. changeInterval:', changeInterval);
   }
 
   function startQuoteMode() {
@@ -243,13 +248,15 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
 
       setTimeout(() => {
-        changingHeaderColor();
+        $name.style.color = '#000';
+        $name.style.animation = 'qmColor 11s ease-in-out infinite';
         changingHeaderLetters();
         updateTextLanguage();
         getNextPhrase(0);
         if (quoteModeIsOn) $firstPage.style.display = 'none';
         $quoteText.style.textShadow =
-          '2px 2px 2px #b00000, -2px -2px 2px #b00000';
+          '2px 2px 5px #e9370f, -2px -2px 5px #e90f0f';
+        $understood.style.fontFamily = "'Bitstream Vera Sans Mono', monospace";
         $musicToggle.style.color = '#fff';
         $cajaPresentacion.style.textAlign = 'left';
         $cajaPresentacion.style.textWrap = 'wrap';
@@ -457,11 +464,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
-    clearInterval(colorInterval);
+    quoteModeIsOn = false;
+    changingHeaderLetters();
+    $name.style.animation = 'none';
     $name.style.color = '#fff';
     $changeButton.style.pointerEvents = 'auto';
     understoodClicked = false;
-    quoteModeIsOn = false;
     quotePosition = 0;
     imgPosition = 0;
     $firstPage.style.display = 'block';
@@ -585,7 +593,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       '#change-button',
       {
         duration: 2,
-        textShadow: '2px 2px 2px #ff0000, -2px -2px 2px #ff0000',
+        textShadow: '2px 2px 2px #f00, -2px -2px 2px #f00',
       },
       '-=2'
     );

@@ -23,11 +23,18 @@ html {
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: 'Bitstream Vera Sans Mono';
+  src: url('VeraMono.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   line-height: 2rem;
   margin: 0;
-  font-family: monospace;
-  font-size: large;
+  font-family: 'Bitstream Vera Sans Mono', monospace;
+  font-size: larger;
   text-wrap: balance;
   user-select: none;
   background-color: var(--color2);
@@ -89,15 +96,37 @@ body {
 }
 
 header {
+  font-family: monospace;
   height: 10vh;
   background-color: var(--color1);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color3);
+  color: #fff;
   z-index: 1;
   position: relative;
   transition: var(--matrixBgTransition);
+}
+
+@keyframes qmColor {
+  0% {
+    color: rgb(0, 0, 0, 0.8);
+  }
+  25% {
+    color: rgba(255, 8, 0, 0.488);
+  }
+  80% {
+    color: rgb(0, 0, 0, 0.8);
+  }
+  90% {
+    color: rgba(255, 8, 0, 0.488);
+  }
+  95% {
+    color: rgb(255, 255, 255, 0.8);
+  }
+  99% {
+    color: rgba(255, 8, 0, 0.488);
+  }
 }
 
 section {
@@ -291,10 +320,9 @@ img#matrix {
   left: 50%;
   transform: translateX(-50%);
   padding: 5px 10px;
-  font-weight: 600;
   color: #ffffff;
   background-color: var(--color2);
-  border: 1px solid red;
+  border: 1px solid #e90f0f;
   border-radius: 20px;
   z-index: 999;
 }
