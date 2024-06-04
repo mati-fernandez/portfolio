@@ -19,11 +19,18 @@
   background: #000000;
 }
 
-body,
 html {
   scroll-behavior: smooth;
+}
+
+body {
   line-height: 2rem;
   margin: 0;
+  font-family: monospace;
+  font-size: large;
+  text-wrap: balance;
+  user-select: none;
+  background-color: var(--color2);
 }
 
 #matrix-bg {
@@ -91,14 +98,6 @@ header {
   z-index: 1;
   position: relative;
   transition: var(--matrixBgTransition);
-}
-
-body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  text-wrap: balance;
-  user-select: none;
-  background-color: var(--color2);
 }
 
 section {
@@ -215,7 +214,7 @@ div {
 
 #caja-central {
   margin: auto;
-  width: 600px;
+  width: 620px;
   height: 300px;
   display: flex;
   flex-direction: row;

@@ -47,7 +47,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $great = d.querySelector('#great'),
     $awakening = d.querySelector('#awakening'),
     $goToTop = d.querySelector('#go-to-top'),
-    $firstPage = d.querySelector('#first-page');
+    $firstPage = d.querySelector('#first-page'),
+    $name = d.querySelector('header>h3');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -168,6 +169,39 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $musicToggle.style.color = 'red';
   }
 
+  const alternateNames = [
+    'FERNAND3Z MA7IA5',
+    'F3RNΛNDEZ MΛTIΔS',
+    'FERNANDEZ MATIAS',
+    'FERNANDEZ MATIAS',
+  ];
+  const alternateColors = ['#ffeeee', '#ffdddd', '#ffcccc', '#ffbbbb'];
+
+  let changeInterval;
+  let nameInterval;
+  let nameCounter = 0;
+  function changingHeaderLetters() {
+    changeInterval = setInterval(() => {
+      nameInterval = setInterval(() => {
+        $name.textContent = alternateNames[nameCounter % alternateNames.length];
+        nameCounter++;
+      }, 200);
+      setTimeout(() => {
+        clearInterval(nameInterval);
+      }, 2000);
+    }, 6000);
+  }
+
+  let colorInterval;
+  let colorCounter = 0;
+  function changingHeaderColor() {
+    colorInterval = setInterval(() => {
+      $name.style.color =
+        alternateColors[colorCounter % alternateColors.length];
+      colorCounter++;
+    }, 200);
+  }
+
   function startQuoteMode() {
     //Si no estabas en quote mode
     if (!quoteModeIsOn) {
@@ -209,6 +243,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }
 
       setTimeout(() => {
+        changingHeaderColor();
+        changingHeaderLetters();
         updateTextLanguage();
         getNextPhrase(0);
         if (quoteModeIsOn) $firstPage.style.display = 'none';
@@ -421,6 +457,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
+    clearInterval(colorInterval);
+    $name.style.color = '#fff';
     $changeButton.style.pointerEvents = 'auto';
     understoodClicked = false;
     quoteModeIsOn = false;
