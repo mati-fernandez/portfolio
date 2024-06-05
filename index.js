@@ -48,8 +48,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $awakening = d.querySelector('#awakening'),
     $goToTop = d.querySelector('#go-to-top'),
     $firstPage = d.querySelector('#first-page'),
-    $name = d.querySelector('header>h3'),
-    $body = d.querySelector('body');
+    $name = d.querySelector('header>h3');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -79,6 +78,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
   ];
   let quoteImg = images[imgPosition];
   let quoteSong = null;
+  let $pillsSound = null;
+  let $pillsMerge = null;
+  let electricitySound = null;
   let soundIsOn = false;
   const songsArray = [
     'simulando-realidad.mp3',
@@ -171,10 +173,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
   }
 
   const alternateNames = [
-    'FERNAND3Z MA7IA5',
-    'F3RNΛNDEZ MΛTIΔS',
-    'FERNAND3Z MAT1AS',
-    'F3RNΛNDEZ MA7IΛ5',
+    'ꟻERNAИD3Z MA7IA5',
+    'FERNΛNÐEɀ MΛTIΔ$',
+    'ƑƎʁNANƊ3Ȥ MAT1AS',
+    'F3ɌNΛNDEZ MA7IΛ5',
+    'FERNAȠDEƩ MATIA5',
   ];
   const alternateColors = ['#ffeeee', '#ffdddd', '#ffcccc', '#ffbbbb'];
 
@@ -183,6 +186,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   let nameCounter = 0;
   console.log('nameInterval:', nameInterval);
   console.log('changeInterval:', changeInterval);
+
   function changingHeaderLetters() {
     if (nameInterval !== undefined) clearInterval(nameInterval);
     if (changeInterval !== undefined) clearInterval(changeInterval);
@@ -193,15 +197,17 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }, 200);
     } else {
       changeInterval = setInterval(() => {
+        electricitySound.play();
         nameInterval = setInterval(() => {
           $name.textContent =
             alternateNames[nameCounter % alternateNames.length];
           nameCounter++;
-        }, 200);
+        }, 50);
         setTimeout(() => {
           clearInterval(nameInterval);
+          $name.textContent = 'FERNANDEZ MATIAS';
         }, 2000);
-      }, 6000);
+      }, 9000);
     }
     console.log('cHL invoked. nameInterval:', nameInterval);
     console.log('cHL invoked. changeInterval:', changeInterval);
@@ -322,11 +328,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     quoteSong = d.createElement('audio');
     quoteSong.src = songsArray[0];
     d.body.insertAdjacentElement('beforeend', quoteSong);
-    // quoteSong.setAttribute('controls', 'true');
-    // quoteSong.style.display = 'block';
-    // quoteSong.style.position = 'absolute';
-    // quoteSong.style.zIndex = 55;
-    // quoteSong.style.top = '550px';
 
     //Sonido de ingreso de pills
     $pillsSound = d.createElement('audio');
@@ -337,6 +338,10 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $pillsMerge.src = 'pills-merge.mp3';
     $pillsMerge.volume = 0.2;
     d.body.insertAdjacentElement('beforeend', $pillsMerge);
+    //Sonido de header al salir del qm
+    electricitySound = d.createElement('audio');
+    electricitySound.src = 'electric-sparks.mp3';
+    d.body.insertAdjacentElement('beforeend', electricitySound);
   };
 
   //Funcion de cambio de fondo cuando hover en profile-pic
@@ -504,6 +509,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if (window.innerWidth > 630)
       $cajaPresentacion.style.backgroundColor = 'var(--color1)';
     setTimeout(() => {
+      $name.textContent = 'FERNANDEZ MATIAS';
       $quoteText.style.opacity = 100;
       $quoteText.textContent = textoPresentacion;
       $quoteText.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
