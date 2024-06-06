@@ -197,7 +197,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }, 200);
     } else {
       changeInterval = setInterval(() => {
-        electricitySound.play();
+        if (soundIsOn) electricitySound.play();
         nameInterval = setInterval(() => {
           $name.textContent =
             alternateNames[nameCounter % alternateNames.length];
