@@ -101,6 +101,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     'gotas-de-esperanza.mp3',
     'synthetic-heartstrings.mp3',
     'olvidos-del-corazon.mp3',
+    'fading-echoes-acoustic.mp3',
+    'fading-echoes.mp3',
   ];
   let songPosition = 0;
   let firstSoundOn = true;
