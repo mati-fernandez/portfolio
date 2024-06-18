@@ -40,6 +40,17 @@ body {
   background-color: var(--color2);
 }
 
+#exit-qm-vid {
+  opacity: 0;
+  position: fixed;
+  width: 100%;
+  z-index: -9999;
+  align-items: center;
+  top: 50%; /*Para centrar el eje vertical (por caso de pantalla cuadrada)*/
+  transform: translate(0, -50%);
+  mask-image: linear-gradient(transparent, black 10%, black 90%, transparent);
+}
+
 #matrix-bg {
   z-index: 0;
   position: fixed;
@@ -535,6 +546,13 @@ area {
 
 /*Solo MOBILE*/
 @media (max-width: 630px) {
+  #exit-qm-vid {
+    width: auto;
+    right: 0;
+    top: 15vh;
+    transform: translateX(0);
+  }
+
   #quote-mode {
     top: 50vh;
     left: 50vw;

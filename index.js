@@ -48,7 +48,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $awakening = d.querySelector('#awakening'),
     $goToTop = d.querySelector('#go-to-top'),
     $firstPage = d.querySelector('#first-page'),
-    $name = d.querySelector('header>h3');
+    $name = d.querySelector('header>h3'),
+    $exitQmVid = d.querySelector('#exit-qm-vid');
 
   //Establecer volumenes (en hmtl no los toma al menos en chrome)
   $profileAudio.volume = 0;
@@ -221,6 +222,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       quoteModeIsOn = true;
       //Solo en primera carga del quote mode
       if (quoteModeFirstLoad) {
+        loadVids();
         loadSounds();
         quoteModeFirstLoad = false;
       }
@@ -345,6 +347,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
     electricitySound.src = 'electric-sparks.mp3';
     d.body.insertAdjacentElement('beforeend', electricitySound);
   };
+
+  //Cargar videos del qm
+  function loadVids() {
+    $exitQmVid.src = 'exit-qm.mp4';
+  }
 
   //Funcion de cambio de fondo cuando hover en profile-pic
   function matrixBg(hover) {
@@ -471,6 +478,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
+    $header.style.zIndex = 99999;
+    $exitQmVid.style.zIndex = 999;
+    $exitQmVid.style.opacity = 1;
+    $exitQmVid.play();
+    setTimeout(() => {
+      $exitQmVid.style.opacity = 0;
+    }, 2200);
+    setTimeout(() => {
+      $header.style.zIndex = 1;
+      $exitQmVid.style.transition = 'none';
+      $exitQmVid.style.zIndex = -999;
+    }, 5000);
     quoteModeIsOn = false;
     changingHeaderLetters();
     $name.style.animation = 'none';
@@ -508,8 +527,19 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $changeButton.classList.remove('fa-shake');
     $changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
     $understood.style.display = 'none';
-    if (window.innerWidth > 630)
+    if (window.innerWidth > 630) {
       $cajaPresentacion.style.backgroundColor = 'var(--color1)';
+      setTimeout(() => {
+        $exitQmVid.style.transition = 'opacity 6s ease-in';
+      }, 2200);
+    } else {
+      $exitQmVid.style.transform = 'translateX(66%)';
+      $exitQmVid.style.transition =
+        'transform 5s ease-in-out, opacity 6s ease-in';
+      setTimeout(() => {
+        $exitQmVid.style.transform = 'none';
+      }, 5000);
+    }
     setTimeout(() => {
       $name.textContent = 'FERNANDEZ MATIAS';
       $quoteText.style.opacity = 100;
