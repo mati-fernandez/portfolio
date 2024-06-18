@@ -539,11 +539,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if (window.innerWidth > 630) {
       $cajaPresentacion.style.backgroundColor = 'var(--color1)';
       setTimeout(() => {
-        $exitQmVid.style.transition = 'opacity 6s ease-in';
+        $exitQmVid.style.transition = 'opacity 6s ease-out';
       }, 2200);
     } else {
-      $exitQmVid.style.transform = 'translateX(66%)';
-      $exitQmVid.style.transition = 'transform 5s ease-in, opacity 6s ease-in';
+      $exitQmVid.style.transform = 'translateX(-45%)';
+      $exitQmVid.style.transition =
+        'transform 5s ease-out, opacity 6s ease-out';
       setTimeout(() => {
         $exitQmVid.style.transform = 'none';
       }, 5000);

@@ -547,7 +547,7 @@ area {
 @media (max-width: 630px) {
   #exit-qm-vid {
     width: auto;
-    right: 0;
+    left: 0;
     top: 15vh;
     transform: translateX(0);
   }
