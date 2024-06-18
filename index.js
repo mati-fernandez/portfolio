@@ -543,8 +543,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       }, 2200);
     } else {
       $exitQmVid.style.transform = 'translateX(66%)';
-      $exitQmVid.style.transition =
-        'transform 5s ease-in-out, opacity 6s ease-in';
+      $exitQmVid.style.transition = 'transform 5s ease-in, opacity 6s ease-in';
       setTimeout(() => {
         $exitQmVid.style.transform = 'none';
       }, 5000);
