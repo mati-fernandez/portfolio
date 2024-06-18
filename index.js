@@ -367,8 +367,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $cajaFdoMobile.style.opacity = 0;
       $imgProfPic.style.opacity = 0;
       $matrixBg.style.opacity = 100;
-    } else if (!quoteModeIsOn) {
-      $matrixBg.style.opacity = 0;
+    } else {
+      if (quoteModeIsOn) {
+        setTimeout(() => {
+          $matrixBg.style.opacity = 0;
+        }, 3000);
+      } else {
+        $matrixBg.style.opacity = 0;
+      }
       $header.style.backgroundColor = 'var(--color1)';
       $cajaCentral.style.boxShadow = '0 0 0 0 rgba(0, 0, 0, 0.368)';
       $seccionAptitudes.style.backgroundColor = 'var(--color2)';
@@ -478,9 +484,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Funcion de salida del quote mode
   const exitQuoteMode = () => {
-    $header.style.zIndex = 99999;
+    matrixBg(false);
+    $matrixBg.style.opacity = 100;
+    $matrixBg.style.zIndex = 888;
+    // $header.style.zIndex = 99999;
     $exitQmVid.style.zIndex = 999;
-    $exitQmVid.style.opacity = 1;
+    $exitQmVid.style.opacity = 0.9;
     $exitQmVid.play();
     setTimeout(() => {
       $exitQmVid.style.opacity = 0;
@@ -489,6 +498,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $header.style.zIndex = 1;
       $exitQmVid.style.transition = 'none';
       $exitQmVid.style.zIndex = -999;
+      $matrixBg.style.zIndex = 1;
     }, 5000);
     quoteModeIsOn = false;
     changingHeaderLetters();
@@ -507,7 +517,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
       typed.destroy();
     }
     if (soundIsOn) $phoneRing.play();
-    matrixBg(false);
     // bgExitEffect(); El de mis 3 caras en secuencia
     resetPills();
     $nextSong.style.display = 'none';
