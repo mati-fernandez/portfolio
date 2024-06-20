@@ -350,7 +350,11 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Cargar videos del qm
   function loadVids() {
-    $exitQmVid.src = 'exit-qm.mp4';
+    if (window.innerWidth > 630) {
+      $exitQmVid.src = 'exit-qm.mp4';
+    } else {
+      $exitQmVid.src = 'exit-qm-mobile.mp4';
+    }
   }
 
   //Funcion de cambio de fondo cuando hover en profile-pic
@@ -542,7 +546,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $exitQmVid.style.transition = 'opacity 6s ease-out';
       }, 2200);
     } else {
-      $exitQmVid.style.transform = 'translateX(-45%)';
+      //   $exitQmVid.style.transform = 'translateX(-45%)';
       $exitQmVid.style.transition =
         'transform 5s ease-out, opacity 6s ease-out';
       setTimeout(() => {

@@ -546,10 +546,10 @@ area {
 /*Solo MOBILE*/
 @media (max-width: 630px) {
   #exit-qm-vid {
-    width: auto;
+    /*Para borrar estilos PC*/
     left: 0;
-    top: 15vh;
-    transform: translateX(0);
+    top: 0;
+    transform: translate(0, 0);
   }
 
   #quote-mode {
