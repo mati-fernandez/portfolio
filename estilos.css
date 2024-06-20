@@ -545,13 +545,6 @@ area {
 
 /*Solo MOBILE*/
 @media (max-width: 630px) {
-  #exit-qm-vid {
-    /*Para borrar estilos PC*/
-    left: 0;
-    top: 0;
-    transform: translate(0, 0);
-  }
-
   #quote-mode {
     top: 50vh;
     left: 50vw;

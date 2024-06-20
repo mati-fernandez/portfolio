@@ -58,6 +58,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
+  const wideVersionMinWidth = 630;
+  let wideVersion = window.innerWidth > wideVersionMinWidth ? true : false;
   let language = localStorage.getItem('language') ?? 'en';
   let understoodClicked = false;
   let lastClickTime = 0;
@@ -350,7 +352,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
   //Cargar videos del qm
   function loadVids() {
-    if (window.innerWidth > 630) {
+    if (wideVersion) {
       $exitQmVid.src = 'exit-qm.mp4';
     } else {
       $exitQmVid.src = 'exit-qm-mobile.mp4';
@@ -496,6 +498,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $exitQmVid.style.opacity = 0.9;
     $exitQmVid.play();
     setTimeout(() => {
+      $exitQmVid.style.transition = 'opacity 3.8s ease-out';
       $exitQmVid.style.opacity = 0;
     }, 2200);
     setTimeout(() => {
@@ -542,16 +545,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $understood.style.display = 'none';
     if (window.innerWidth > 630) {
       $cajaPresentacion.style.backgroundColor = 'var(--color1)';
-      setTimeout(() => {
-        $exitQmVid.style.transition = 'opacity 6s ease-out';
-      }, 2200);
-    } else {
-      //   $exitQmVid.style.transform = 'translateX(-45%)';
-      $exitQmVid.style.transition =
-        'transform 5s ease-out, opacity 6s ease-out';
-      setTimeout(() => {
-        $exitQmVid.style.transform = 'none';
-      }, 5000);
     }
     setTimeout(() => {
       $name.textContent = 'FERNANDEZ MATIAS';
@@ -981,6 +974,19 @@ d.addEventListener('DOMContentLoaded', (e) => {
     //Click derecho en profile pic
     if (event.target.matches('img#profile-pic')) {
       // Agregar algun efecto quizas
+    }
+  });
+
+  window.addEventListener('resize', (e) => {
+    // console.log('Resize event, window innerWidth', e.target.innerWidth);
+    if (e.target.innerWidth > wideVersionMinWidth && !wideVersion) {
+      wideVersion = true;
+      loadVids();
+      console.log('Wide version', wideVersion);
+    } else if (e.target.innerWidth <= wideVersionMinWidth && wideVersion) {
+      wideVersion = false;
+      loadVids();
+      console.log('Wide version', wideVersion);
     }
   });
 });
