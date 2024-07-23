@@ -326,7 +326,8 @@ img#matrix {
   display: none;
   cursor: pointer;
   position: absolute;
-  left: 50%;
+  bottom: 25%;
+  left: 56vw;
   transform: translateX(-50%);
   padding: 5px 10px;
   color: #ffffff;
@@ -693,6 +694,8 @@ area {
 
   #understood {
     font-size: 18px;
+    left: 50vw;
+    bottom: 10vh;
   }
 
   #exit-quote-mode-wrapper {
