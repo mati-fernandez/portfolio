@@ -597,11 +597,6 @@ area {
     font-size: 50px;
   }
 
-  #suggestive-finger2-wrapper {
-    top: 23vh;
-    left: 10vw;
-  }
-
   #suggestive-finger3-wrapper {
     top: 40px;
   }
@@ -784,17 +779,6 @@ area {
     margin-bottom: 10%;
   }
 
-  #msje-condicional div {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 0 1rem 0rem 1rem;
-  }
-
-  #a-ver {
-    margin-bottom: 1.7rem;
-  }
-
   footer {
     height: 25vh;
   }
@@ -809,11 +793,12 @@ area {
 
   .red-social {
     height: 3rem;
+    margin: 0 5vw;
   }
 
   #scroll-to-top {
     top: 50px;
     right: 50px;
-    padding: 10px;
+    padding: 0 10px;
   }
 }
