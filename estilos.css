@@ -252,16 +252,16 @@ div {
 
 #caja-central {
   margin: auto;
-  width: 620px;
+  width: 800px;
   height: 300px;
   display: flex;
   flex-direction: row;
   border-radius: 20px;
-  overflow: hidden;
   z-index: 1;
 }
 
 #caja-fondo {
+  border-radius: 20px;
   background-color: var(--color1);
   width: 100%;
   height: 100%;
@@ -286,13 +286,13 @@ img#profile-pic {
   transition: opacity 2.8s ease-in-out, filter 200ms ease-in-out;
 }
 
-/*para ajustar coords de area, acá se ven*/
-/* svg#for-prof-pic-area {
+/* para ajustar coords de area, acá se ven*/
+svg#for-prof-pic-area {
   z-index: 9999;
-} */
+}
 
 #prof-pic-area-mobile {
-  display: none;
+  display: block;
 }
 
 #caja-fondo-mobile {
@@ -311,11 +311,11 @@ img#matrix {
   align-items: center;
   width: 60%;
   color: var(--color3);
-  padding: 28px 30px 30px 25px;
-  line-height: 3.5vh;
+  padding: 0 55px 0 23px;
   text-align: center;
   transition: var(--matrixBgTransition);
   z-index: 0;
+  overflow: visible;
 }
 
 #caja-presentacion p {
@@ -326,8 +326,8 @@ img#matrix {
   display: none;
   cursor: pointer;
   position: absolute;
-  bottom: 25%;
-  left: 56vw;
+  bottom: -25px;
+  left: 45%;
   transform: translateX(-50%);
   padding: 5px 10px;
   color: #ffffff;
@@ -521,7 +521,7 @@ area {
 }
 
 /*Solo PC (Por no hacer mobile first tengo que meter estos parches)*/
-@media (min-width: 631px) {
+@media (min-width: 801px) {
   li:hover {
     filter: brightness(5);
     color: var(--color1);
@@ -545,7 +545,7 @@ area {
 }
 
 /*Solo MOBILE*/
-@media (max-width: 630px) {
+@media (max-width: 800px) {
   #quote-mode {
     top: 50vh;
     left: 50vw;
@@ -637,7 +637,6 @@ area {
   }
 
   #caja-central {
-    overflow: visible;
     height: fit-content;
     flex-direction: column;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0); /*para pisar el otro */
@@ -648,11 +647,11 @@ area {
   }
 
   #caja-cara {
+    overflow: hidden;
     height: 30vh;
     width: 30vh;
     margin-top: 50px;
     margin: auto;
-    overflow: hidden;
     border-radius: 200px;
     transition: opacity 2.8s ease-in-out, box-shadow 100ms ease-in-out;
     justify-content: center;
@@ -664,12 +663,12 @@ area {
   }
 
   #prof-pic-area {
-    display: none;
+    display: block;
   }
 
   #prof-pic-area-mobile {
     display: block;
-    opacity: 0;
+    /* opacity: 0; */
     z-index: 9999;
   }
 
@@ -695,7 +694,7 @@ area {
   #understood {
     font-size: 18px;
     left: 50vw;
-    bottom: 10vh;
+    bottom: -25px;
   }
 
   #exit-quote-mode-wrapper {
