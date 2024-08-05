@@ -58,7 +58,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   $musicBtnAppearance.volume = 0.4;
 
   //Variables y constantes de uso global:
-  const wideVersionMinWidth = 630;
+  const wideVersionMinWidth = 800;
   let wideVersion = window.innerWidth > wideVersionMinWidth ? true : false;
   let language = localStorage.getItem('language') ?? 'en';
   let understoodClicked = false;
@@ -253,7 +253,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $quoteModeGif.style.display = 'block';
 
       //Media query para el fondo de transicion
-      if (window.innerWidth > 630) {
+      if (window.innerWidth > wideVersionMinWidth) {
         $qModeBkgIntro.style.display = 'block';
       } else {
         $mobileQModeBkgIntro.style.display = 'block';
@@ -276,7 +276,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         $cajaCentral.style.opacity = 100;
         $quoteModeGif.style.display = 'none';
         resetGif($quoteModeGif);
-        if (window.innerWidth > 630) {
+        if (window.innerWidth > wideVersionMinWidth) {
           $qModeBkgIntro.style.display = 'none';
         } else {
           $mobileQModeBkgIntro.style.display = 'none';
@@ -390,7 +390,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
       $cajaFondo.style.opacity = 100;
       $cajaFdoMobile.style.opacity = 100;
       $imgProfPic.style.opacity = 100;
-      if (window.innerWidth > 630)
+      if (window.innerWidth > wideVersionMinWidth)
         $cajaFondo.style.backgroundColor = 'var(--color1)';
     }
   }
@@ -543,7 +543,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     $changeButton.classList.remove('fa-shake');
     $changeButton.style.textShadow = '0 0 0 #000000, 0 0 0 #000000';
     $understood.style.display = 'none';
-    if (window.innerWidth > 630) {
+    if (window.innerWidth > wideVersionMinWidth) {
       $cajaPresentacion.style.backgroundColor = 'var(--color1)';
     }
     setTimeout(() => {
@@ -726,7 +726,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     if (soundIsOn) {
       $audioEffect1.play();
     }
-    if (window.innerWidth > 630) {
+    if (window.innerWidth > wideVersionMinWidth) {
       $cajaCentral.style.transition = 'box-shadow 100ms ease-in-out';
       quoteModeIsOn
         ? ($cajaCentral.style.boxShadow = '0 0 50px 1px red')
@@ -748,10 +748,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos click
   d.addEventListener('click', (e) => {
     //Manejo del click en prof pic
-    if (
-      e.target.matches('#prof-pic-area') ||
-      e.target.matches('svg#prof-pic-area-mobile')
-    ) {
+    if (e.target.matches('#prof-pic-area') || e.target.matches('#caja-cara')) {
       const currentTime = new Date().getTime();
       if (currentTime - lastClickTime > 550) {
         lastClickTime = currentTime;
@@ -931,7 +928,8 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos hover
   d.addEventListener('mouseover', (e) => {
     //Manejo del hover en profile-pic
-    if (window.innerWidth > 630) {
+    // DESKTOP
+    if (window.innerWidth > wideVersionMinWidth) {
       if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
         console.log('Mouseover PC');
         $profileAudio.volume = 0;
@@ -939,12 +937,12 @@ d.addEventListener('DOMContentLoaded', (e) => {
         //   imgInterval('Create');
         matrixBg(true);
       }
+      // MOBILE
     } else {
-      if (e.target.matches('svg#prof-pic-area-mobile') && !quoteModeIsOn) {
+      if (e.target.matches('#caja-cara') && !quoteModeIsOn) {
         console.log('Mouseover mobile');
         $profileAudio.volume = 0;
         if (!quoteModeFirstLoad) fadeInOut($profileAudio);
-        //   imgInterval('Create');
         matrixBg(true);
       }
     }
@@ -953,14 +951,14 @@ d.addEventListener('DOMContentLoaded', (e) => {
   //Manejo de eventos mouseout
   d.addEventListener('mouseout', (e) => {
     //Manejo del mouseout en profile pic
-    if (window.innerWidth > 630) {
+    if (window.innerWidth > wideVersionMinWidth) {
       if (e.target.matches('#prof-pic-area') && !quoteModeIsOn) {
         $profileAudio.volume = 0.5;
         if (!quoteModeFirstLoad) fadeInOut($profileAudio);
         matrixBg(false);
       }
     } else {
-      if (e.target.matches('svg#prof-pic-area-mobile') && !quoteModeIsOn) {
+      if (e.target.matches('#caja-cara') && !quoteModeIsOn) {
         $profileAudio.volume = 0.5;
         if (!quoteModeFirstLoad) fadeInOut($profileAudio);
         matrixBg(false);

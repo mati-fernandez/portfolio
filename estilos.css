@@ -1,3 +1,16 @@
+*,
+*::before,
+*::after,
+html {
+  box-sizing: border-box;
+  user-select: none; /* Estándar moderno */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  /* Elimina el color de resaltado en dispositivos móviles */
+  -webkit-tap-highlight-color: transparent;
+}
+
 :root {
   --color1: #303e2d;
   --color2: #000000;
@@ -286,13 +299,13 @@ img#profile-pic {
   transition: opacity 2.8s ease-in-out, filter 200ms ease-in-out;
 }
 
-/* para ajustar coords de area, acá se ven*/
-svg#for-prof-pic-area {
+/*para ajustar coords de area, acá se ven*/
+/* svg#for-prof-pic-area {
   z-index: 9999;
-}
+} */
 
 #prof-pic-area-mobile {
-  display: block;
+  display: none;
 }
 
 #caja-fondo-mobile {
@@ -644,9 +657,12 @@ area {
 
   #caja-fondo {
     display: none;
+    pointer-events: none;
   }
 
   #caja-cara {
+    pointer-events: all;
+    cursor: pointer;
     overflow: hidden;
     height: 30vh;
     width: 30vh;
@@ -658,21 +674,22 @@ area {
   }
 
   #profile-pic {
+    pointer-events: none;
     width: auto;
     height: auto;
   }
 
-  #prof-pic-area {
-    display: block;
+  #matrix {
+    cursor: auto;
   }
 
-  #prof-pic-area-mobile {
-    display: block;
-    /* opacity: 0; */
-    z-index: 9999;
+  /*Este no tocar, es para sacar el del Desktop*/
+  #prof-pic-area {
+    display: none;
   }
 
   #caja-fondo-mobile {
+    pointer-events: none;
     display: block;
     background-color: var(--color1);
     position: absolute;
@@ -693,8 +710,8 @@ area {
 
   #understood {
     font-size: 18px;
-    left: 50vw;
-    bottom: -25px;
+    left: 50%;
+    bottom: 0;
   }
 
   #exit-quote-mode-wrapper {
